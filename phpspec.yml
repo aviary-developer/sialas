@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: sialas
+        psr4_prefix: sialas
+        src_path: app

@@ -10,9 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::resource('marcas','MarcasController');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::resource('categorias', 'CategoriasController');
+
+Route::resource('servicios','ServiciosController');
+
+Route::resource('users','UsersController');
+
+Route::resource ('clientes', 'ClientesController');

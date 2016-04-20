@@ -11,6 +11,7 @@
             }
 
             body {
+
                 margin: 0;
                 padding: 0;
                 width: 100%;
@@ -36,6 +37,7 @@
         </style>
     </head>
     <body>
+        @yield('layout')
         <div class="container">
             <div class="content">
                 {!! Form::open(['url' => '#']) !!}

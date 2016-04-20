@@ -17,6 +17,7 @@ class CreateServiciosTable extends Migration
             $table->string('nombre', 30);
             $table->string('proveedor', 30);
             $table->string('n_recibo', 30);
+            $table->boolean('estado');
             $table->timestamps();
         });
     }

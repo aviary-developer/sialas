@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 
+
+use sialas\servicios;
+use DB;
+
 class ServiciosController extends Controller
 {
     /**
@@ -16,7 +20,11 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-        return view('servicios.index');
+
+        $servicios=Servicios::All();//->paginate(10);
+        //$servicios = DB::table('servicios')->orderBy('nombre', 'asc')->paginate(10);
+
+        return view('servicios.index',compact('servicios'));
     }
 
     /**
@@ -26,7 +34,7 @@ class ServiciosController extends Controller
      */
     public function create()
     {
-        //
+        return view('servicios.crear');
     }
 
     /**

@@ -15,3 +15,11 @@ Route::resource('marcas','MarcasController');
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::resource('servicios','ServiciosController');
+
+Route::resource('users','UsersController');
+
+Route::resource ('clientes', 'ClientesController');
+

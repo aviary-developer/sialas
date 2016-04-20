@@ -35,7 +35,8 @@
             }
         </style>
     </head>
-    <body>
+    <body >
+        @yield('layout')
         <div class="container">
             <div class="content">
                 {!! Form::open(['url' => '#']) !!}

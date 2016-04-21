@@ -12,6 +12,7 @@ $cgris0 : #f9f9f9;
 $cgris1 : #ececec;
 $cgris2 : #acacac;
 $cgris3 : #8c8c8c;
+$cgris4 : #3c3c3c;
 $cnaranja1 : #e2b11e;
 //Medidas
 
@@ -139,7 +140,46 @@ nav div li{
 }
 .lfloat{
   width: 75px;
-  height: 4vh;
+  height: 2vh;
+}
+.tooltip {
+    position: relative;
+    display: inline-block;
+
+    .tooltiptext {
+      visibility: hidden;
+      width: 70px;
+      background-color: $cgris4;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      -webkit-user-select: none;
+      cursor: default;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      top: 100%;
+      left: 50%;
+      margin-left: -35px;
+    }
+}
+
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.circ{
+  width: 50px;
+  transition-timing-function: linear;
+  margin: 5px 0px 5px 0px;
+}
+.circ:hover{
+  width: 55px;
+  position: static;
+  margin-bottom: 0px;
 }
 /*
 @mixin border-radius($radius) {

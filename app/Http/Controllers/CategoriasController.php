@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
+use Redirect;
 
 class CategoriasController extends Controller
 {
@@ -41,8 +42,8 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return $request;
+        Categorias::create($request->All());
+        return redirect('/categorias');
     }
 
     /**
@@ -65,6 +66,8 @@ class CategoriasController extends Controller
     public function edit($id)
     {
         //
+        $categoria = Categorias::find($id);
+        return view('Categorias.edit',compact('categoria'));
     }
 
     /**
@@ -77,6 +80,10 @@ class CategoriasController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $categoria = Categorias::find($id);
+        $categoria->fill($request->All());
+        $categoria->save();
+        return Redirect::to('/categorias');
     }
 
     /**

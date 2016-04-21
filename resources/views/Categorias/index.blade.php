@@ -2,7 +2,24 @@
 @section ('layout')
 <div class="launcher">
   <div class="lfloat"></div>
-  <a href="#">Link 1</a>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Atras</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Nuevo</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Ayuda</span>
+  </div>
 </div>
 <div class="panel">
   <table>
@@ -21,6 +38,9 @@
       </td>
       <td>
         {{$c->nombre}}
+      </td>
+      <td>
+        {!! link_to_route('categorias.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
       </td>
     </tr>
     @endforeach

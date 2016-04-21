@@ -30,6 +30,7 @@ class CategoriasController extends Controller
     public function create()
     {
         //
+        return view('Categorias.create');
     }
 
     /**
@@ -41,6 +42,7 @@ class CategoriasController extends Controller
     public function store(Request $request)
     {
         //
+        return $request;
     }
 
     /**

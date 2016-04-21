@@ -9,7 +9,8 @@
     <body><header>
       <nav>
         <div>
-          <li class="mhome"><img src="../public/img/WB/general/WB.svg" alt="Logo" class="logoInicio" /></li>
+
+          <li class="mhome"><img src ={!! asset('img/WB/general/WB.svg') !!} alt="Logo" class="logoInicio" /></li>
           <li class="moption">
             <a href="#">
               Venta
@@ -46,18 +47,6 @@
     <div class="separador"></div>
     <div class="contenido">
       @yield('layout')
-      <div class="container">
-        <div class="content">
-          {!! Form::open(['url' => '#']) !!}
-          {!!Form::submit('Soy Un Botón')!!}
-          <?php $fecha= new Carbon\Carbon;
-          echo $fecha->now();?>
-          {!! Form::close() !!}
-          <div class="title">SIALAS</div>
-          <div class="title">by</div>
-          <div class="title">Laravel 5</div>
-        </div>
-      </div>
     </div>
     <footer>
       <p>

@@ -21,10 +21,10 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->string('nom_usuario');
             $table->double('salario');
-            $table->time('hora_inicio');
-            $table->time('hora_fin');
-            $table->double('comision');
             $table->date('fecha_de_nacimiento');
+            $table->string('telefono');
+            $table->date('fecha_inicio');
+            $table->string('direccion');
         });
     }
 

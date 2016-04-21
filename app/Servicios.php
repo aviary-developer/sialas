@@ -8,5 +8,5 @@ class Servicios extends Model
 {
     protected $table ='servicios';
 
-    protected $fillable = ['nombre','proveedor','n_recibo'];
+    protected $fillable = ['nombre','proveedor','n_recibo','estado'];
 }

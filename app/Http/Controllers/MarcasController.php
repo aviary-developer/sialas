@@ -28,7 +28,7 @@ class MarcasController extends Controller
      */
     public function create()
     {
-        //
+        return wiew('marcas.create');
     }
 
     /**

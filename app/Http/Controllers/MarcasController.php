@@ -39,7 +39,8 @@ class MarcasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Marcas::create($request->All());
+        return redirect('/marcas');
     }
 
     /**

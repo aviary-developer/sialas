@@ -10,6 +10,8 @@ use sialas\Http\Controllers\Controller;
 
 use sialas\servicios;
 use DB;
+use Redirect;
+
 
 class ServiciosController extends Controller
 {
@@ -34,7 +36,7 @@ class ServiciosController extends Controller
      */
     public function create()
     {
-        return view('servicios.crear');
+        return view('servicios.create');
     }
 
     /**
@@ -45,7 +47,11 @@ class ServiciosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       echo "welcome to the store";
+      $servicio = new Servicios;
+      $servicio->create($request->all());
+
+      return Redirect::to('/servicios');
     }
 
     /**
@@ -67,7 +73,11 @@ class ServiciosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $servicio = Servicios::find($id);
+
+        return view('servicios.edit',compact('servicio'));
+
+        
     }
 
     /**
@@ -79,7 +89,13 @@ class ServiciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $servicios=Servicios::find($id);
+
+        $servicios->fill($request->All());
+
+        $servicios->save();
+
+        return Redirect::to('/servicios');
     }
 
     /**

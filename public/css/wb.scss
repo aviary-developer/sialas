@@ -1,0 +1,138 @@
+/*
+Hoja de estilo CSS para el proyecto WB 2016
+Versión Alfa.
+*/
+
+//Declaración de variables
+//Colores
+$cazul1 : #0099ff;
+$cazul2 : #0066cc;
+$cblanco : #fff;
+$cgris1 : #ececec;
+$cgris2 : #acacac;
+$cgris3 : #8c8c8c;
+$cnaranja1 : #e2b11e;
+//Medidas
+
+//Tipografía
+@font-face {
+  font-family: "Belin Sans FB";
+  src: url("../fonts/BRLNSR.tftt");
+}
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("../fonts/MyriadPro-Regular.otf");
+}
+$ftitulos : "Berlin Sans FB";
+$fcuerpo : "Myriad Pro";
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: $fcuerpo;
+}
+body{
+  background-color: $cgris2;
+}
+h2 {
+  font-family: $ftitulos;
+  font-weight: 500;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+//Menu de pantalla principal
+//Objetos
+
+header{
+  background-color: $cazul1;
+  min-height: 36px;
+  position: fixed;
+  width: 100%;
+  padding-top: 4px;
+}
+footer{
+  background-color: $cgris3;
+  color: $cblanco;
+  width: 99%;
+  height: 20px;
+  font-size: 10pt;
+  padding-left: 1%;
+  margin-top: 6px;
+}
+nav div li{
+  display: table-cell;
+  width: 120px;
+  text-align: center;
+  color: $cblanco;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  transition: background 0.5s, width 0.5s;
+}
+
+//Funciones
+
+.mhome{
+  background-color: $cazul2;
+  width: 66px;
+  border-radius: 0px 20px 20px 0px;
+  padding-top: 5px;
+}
+//Imagen de inicio
+.logoInicio{
+  width: 35px;
+}
+.moption{
+  border-radius: 20px;
+  transition-timing-function: ease;
+}
+.moption:hover{
+  width: 126px;
+  background-color: $cnaranja1;
+}
+.mhome:hover{
+  width: 72px;
+}
+
+//Contenedor principal
+.contenido{
+  min-height: 88vh;
+  width: 100%;
+  background-color: $cgris1;
+  display: inline-flex;
+}
+.separador{
+  height: 50px;
+}
+
+//Funciones contenido
+.c1 {
+  width: 33%;
+}
+.c2{
+  width: 66%;
+}
+
+.torre{
+  background: url(../img/WB/general/Torre.jpg) no-repeat scroll;
+  background-size: auto 88vh;
+  background-position: left;
+  height: 88vh;
+}
+.titular{
+  font-size: 32pt;
+  color: $cazul2;
+  margin-top: 20px;
+}
+/*
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box { @include border-radius(10px); }
+*/

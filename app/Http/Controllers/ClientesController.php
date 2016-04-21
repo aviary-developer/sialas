@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\clientes;
+use Redirect;
 
 class ClientesController extends Controller
 {
@@ -30,7 +31,9 @@ class ClientesController extends Controller
     public function create()
     {
         //
+        return view('cliente.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -40,7 +43,8 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Clientes::create($request->All());
+        return redirect('/clientes');
     }
 
     /**
@@ -63,6 +67,8 @@ class ClientesController extends Controller
     public function edit($id)
     {
         //
+        $clientes=Clientes::find($id);
+        return view('cliente.edit', compact('clientes'));
     }
 
     /**
@@ -75,6 +81,11 @@ class ClientesController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $clientes=Clientes::find($id);
+        $clientes->fill($request->all());
+        $clientes->save();
+        return Redirect::to('/clientes');
+
     }
 
     /**

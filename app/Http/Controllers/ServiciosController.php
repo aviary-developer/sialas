@@ -23,10 +23,10 @@ class ServiciosController extends Controller
     public function index()
     {
 
-        $servicios=Servicios::All();//->paginate(10);
-        //$servicios = DB::table('servicios')->orderBy('nombre', 'asc')->paginate(10);
+        $activos= DB::table('servicios')->where('estado','=', 1)->get();
+        $inactivos= DB::table('servicios')->where('estado', 0)->get();
 
-        return view('servicios.index',compact('servicios'));
+        return view('servicios.index',compact('activos','inactivos'));
     }
 
     /**

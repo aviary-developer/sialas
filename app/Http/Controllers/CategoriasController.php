@@ -8,6 +8,7 @@ use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
 use Redirect;
+use DB;
 
 class CategoriasController extends Controller
 {
@@ -19,8 +20,9 @@ class CategoriasController extends Controller
     public function index()
     {
         //
+        $cat = DB::table('categorias')->where('id','2')->get();
         $categoria = Categorias::All();
-        return view('Categorias.index',compact('categoria'));
+        return view('Categorias.index',compact('categoria','cat'));
     }
 
     /**

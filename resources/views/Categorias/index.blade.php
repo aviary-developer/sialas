@@ -10,9 +10,9 @@
   </div>
   <div class="tooltip">
     <a href="#">
-      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
     </a>
-    <span class="tooltiptext">Nuevo</span>
+    <span class="tooltiptext" id="tt">Nuevo</span>
   </div>
   <div class="tooltip">
     <a href="#">
@@ -22,28 +22,62 @@
   </div>
 </div>
 <div class="panel">
-  <table>
-    <tr>
-      <th>
-        Id
-      </th>
-      <th>
-        Nombre
-      </th>
-    </tr>
-    @foreach($categoria as $c)
-    <tr>
-      <td>
-        {{$c->id}}
-      </td>
-      <td>
-        {{$c->nombre}}
-      </td>
-      <td>
-        {!! link_to_route('categorias.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
-      </td>
-    </tr>
-    @endforeach
-  </table>
+  <div class="enc">
+    <h2>Categorias</h2>
+  </div>
+  <center>
+    <table id="block">
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Acciones
+        </th>
+      </tr>
+      @foreach($categoria as $c)
+        <tr>
+          <td>
+            {{$c->id}}
+          </td>
+          <td>
+            {{$c->nombre}}
+          </td>
+          <td>
+            {!! link_to_route('categorias.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
+          </td>
+        </tr>
+      @endforeach
+    </table>
+    <table id="none">
+      <tr>
+        <th>
+          Id
+        </th>
+        <th>
+          Nombre
+        </th>
+        <th>
+          Acciones
+        </th>
+      </tr>
+      @foreach($cat as $c)
+        <tr>
+          <td>
+            {{$c->id}}
+          </td>
+          <td>
+            {{$c->nombre}}
+          </td>
+          <td>
+            {!! link_to_route('categorias.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
+          </td>
+        </tr>
+      @endforeach
+    </table>
+  </center>
 </div>
 @stop

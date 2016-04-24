@@ -4,6 +4,7 @@
         <title>WB</title>
 
         <link rel="stylesheet" href="{{{ asset('/css/wb.min.css') }}}" type="text/css">
+        <script type="text/javascript" src="{{{ asset('/js/wb.js') }}}"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
     </head>
     <body><header>

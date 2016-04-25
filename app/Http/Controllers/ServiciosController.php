@@ -11,6 +11,7 @@ use sialas\Http\Controllers\Controller;
 use sialas\servicios;
 use DB;
 use Redirect;
+use Session;
 
 
 class ServiciosController extends Controller
@@ -106,6 +107,10 @@ class ServiciosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $servicios = Servicios::find($id);
+         $servicios->estado=false;
+         $servicios->save();
+         Session::flash('mensaje','Registro enviado a papelera');
+         return Redirect::to('/servicios');
     }
 }

@@ -13,6 +13,12 @@
     <a href="#">
       <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
     </a>
+    <span class="tooltiptext" id="tt">Nuevo</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+    </a>
     <span class="tooltiptext" id="tt">Inactivos</span>
   </div>
   <div class="tooltip">
@@ -45,7 +51,7 @@
 			<td>{{$activo->nombre}}</td>
 			<td>{{$activo->proveedor}}</td>
 			<td>{!!link_to_route('servicios.edit', $title = 'Editar', $parameters = $activo->id)!!}</td>
-			<td>Papelera</td>
+			<td>@include('servicios.formularios.darDeBaja')</td>
 		</tr>
 		<?php $a=$a+1; ?>
 	@endforeach
@@ -67,8 +73,7 @@
 			<td>{{$servicio->n_recibo}}</td>
 			<td>{{$servicio->nombre}}</td>
 			<td>{{$servicio->proveedor}}</td>
-			
-			<td>Dar de alta</td>
+			<td>@include('servicios.formularios.darDeAlta')</td>
 		</tr>
 		<?php $a=$a+1; ?>
 	@endforeach

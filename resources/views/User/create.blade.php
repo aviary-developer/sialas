@@ -1,9 +1,34 @@
 @extends('welcome')
 @section('layout')
-
+<div class="launcher">
+    <div class="lfloat"></div>
+    <div class="tooltip">
+      <a href="#">
+        <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      </a>
+      <span class="tooltiptext">Atras</span>
+    </div>
+    <div class="tooltip">
+      <a href="#">
+        <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      </a>
+      <span class="tooltiptext">Nuevo</span>
+    </div>
+    <div class="tooltip">
+      <a href="#">
+        <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      </a>
+      <span class="tooltiptext">Ayuda</span>
+    </div>
+  </div>
+<div class="panel">
+	<div class="enc">
+		<h2>Usuarios Registrados</h2>
+	</div>
 	{!!Form::open(['route'=>'users.store','method'=>'POST'])!!}
 
-@include('user.formularios.formulario')
-{!!Form::submit('Guardar')!!}
-{!!Form::close()!!}
+	@include('user.formularios.formulario')
+	{!!Form::submit('Guardar')!!}
+	{!!Form::close()!!}
+</div>
 @stop

@@ -1,15 +1,15 @@
 {!!Form::open(['url'=>['darAltaCaja',$caja->id],'method'=>'POST'])!!}
 <button class="btn btn-danger" type="button" onClick="return swal({
-title: '¿Esta seguro que desea dar de Alta?',
+title: '¿Esta seguro que desea restaurar?',
 text: 'El registro volverá a estar disponible!',   type: 'warning',
 showCancelButton: true,   confirmButtonColor: '#06c',
-confirmButtonText: 'Si, dar de Alta!',
+confirmButtonText: 'Si, restaurar!',
 cancelButtonText: 'No, Cancelar!',   closeOnConfirm: true,
 closeOnCancel: false }, function(isConfirm){
 if (isConfirm) { submit();
-swal('Deleted!', 'Registro dado de Alta', 'success');
+swal('Deleted!', 'Registro Restaurado', 'success');
 } else {
 swal({   title: 'El registro se mantiene igual',type:'info',
 text: 'Se Cerrará en 2 Segundos',   timer: 2000,
-showConfirmButton: false });} });">Dar de Alta</button>
+showConfirmButton: false });} });">Restaurar</button>
 {!!Form::close()!!}

@@ -4,10 +4,33 @@
 <?php $men=Session::get('mensaje');
 echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 @endif
-<div>
-	<strong>Cajas Activas</strong>
-
-	<table border="1">
+<div class="launcher">
+  <div class="lfloat"></div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Atras</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+    </a>
+    <span class="tooltiptext" id="tt">Nuevo</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Ayuda</span>
+  </div>
+</div>
+<div class="panel">
+  <div class="enc">
+    <h2>Cajas</h2>
+  </div>
+  <center>
+	<table id="block">
 		<tr>
 			<th>N°</th>
 			<th>Nombre</th>
@@ -27,12 +50,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 		<?php $a=$a+1; ?>
 	@endforeach
 	</table>
-</div>
-
-<div>
-	<strong>Cajas Inactivas</strong>
-
-	<table border="1">
+	<table id="none">
 		<tr>
 			<th>N°</th>
 			<th>Nombre</th>
@@ -44,11 +62,12 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 	<tr>
 	<td>{{$a}}</td>
 	<td>{{$caja->nombre}}</td>
-	<td>{{$caja->ubicacion}}</td>da
+	<td>{{$caja->ubicacion}}</td>
 	<td>@include('Cajas.Formularios.darDeAlta')</td>
 	</tr>
 		<?php $a=$a+1; ?>
 	@endforeach
 	</table>
+</center>
 </div>
 @stop

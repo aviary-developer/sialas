@@ -3,8 +3,10 @@
     <head>
         <title>WB</title>
 
-        <link rel="stylesheet" href="{{{ asset('/css/wb.min.css') }}}" type="text/css">
-        <script type="text/javascript" src="{{{ asset('/js/wb.js') }}}"></script>
+        <!--<link rel="stylesheet" href="{{{ asset('/css/wb.min.css') }}}" type="text/css">-->
+        {!!Html::style('css/wb.min.css')!!}
+        {!!Html::script('js/wb.js')!!}
+        <!--<script type="text/javascript" src="{{{ asset('/js/wb.js') }}}"></script>-->
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         {!!Html::style('libreriaSweetAlert/sweet-alert.css')!!}
         {!!Html::script('libreriaSweetAlert/sweet-alert.min.js')!!}

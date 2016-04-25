@@ -1,5 +1,5 @@
 function activo (vis,ocu,bot,img){
-  var host = "http://"+window.location.hostname;
+  var host = "http://"+window.location.host;
   if (document.getElementById(vis).style.display == "none") {
     document.getElementById(vis).style.display = "table";
     document.getElementById(ocu).style.display = "none";

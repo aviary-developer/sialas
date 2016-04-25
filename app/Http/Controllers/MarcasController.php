@@ -62,7 +62,8 @@ class MarcasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $marcas = Marcas::find($id);
+        return view('Marcas.edit',compact('marcas'));
     }
 
     /**
@@ -74,7 +75,10 @@ class MarcasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $marcas = Marcas::find($id);
+        $marcas->fill($request->All());
+        $marcas->save();
+        return Redirect::to('/marcas');
     }
 
     /**

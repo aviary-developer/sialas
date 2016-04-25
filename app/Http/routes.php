@@ -23,3 +23,6 @@ Route::resource('servicios','ServiciosController');
 Route::resource('users','UsersController');
 
 Route::resource ('clientes', 'ClientesController');
+
+Route::resource('cajas', 'CajasController');
+Route::match(['get','post'],'/darAltaCaja/{id}','CajasController@darAlta');

@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\clientes;
+use DB;
 use Redirect;
+use Session;
 
 class ClientesController extends Controller
 {
@@ -20,7 +22,9 @@ class ClientesController extends Controller
     $cliente=Clientes::All();
     //return $cliente;
     return view('Cliente.index',compact('cliente'));
-
+        /*$cajasActivas= Cajas::where('estado','=', 1)->get();
+        $cajasInactivas= Cajas::where('estado','=', 0)->get();
+        return view('cajas.index',compact('cajasActivas','cajasInactivas'));*/
     }
 
     /**
@@ -44,7 +48,8 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         Clientes::create($request->All());
-        return redirect('/clientes');
+        return redirect('/clientes')->with('mensaje','Registro Guardado');
+        //return redirect('/clientes');
     }
 
     /**
@@ -56,6 +61,8 @@ class ClientesController extends Controller
     public function show($id)
     {
         //
+        $clientes = clientes::where('id','=',$id)->get();
+        return view('clientes.show',compact('clientes'));
     }
 
     /**

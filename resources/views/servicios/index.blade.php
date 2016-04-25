@@ -1,6 +1,9 @@
 @extends('welcome')
 @section('layout')
-
+  @if(Session::has('mensaje'))
+  <?php $men=Session::get('mensaje');
+  echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
+  @endif
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
@@ -13,13 +16,13 @@
     <a href="#">
       <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
     </a>
-    <span class="tooltiptext" id="tt">Nuevo</span>
+    <span class="tooltiptext" id="tt">Inactivos</span>
   </div>
   <div class="tooltip">
-    <a href="#">
-      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+    <a href="servicios/create">
+      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
     </a>
-    <span class="tooltiptext" id="tt">Inactivos</span>
+    <span class="tooltiptext" id="tt">Nuevo</span>
   </div>
   <div class="tooltip">
     <a href="#">
@@ -29,7 +32,7 @@
   </div>
 </div>
 
-<div class="panel"> 
+<div class="panel">
 
 	<div class="enc">
     <h2>Categorias</h2>
@@ -63,7 +66,7 @@
 			<th>N° de recibo</th>
 			<th>Servicio</th>
 			<th>Proveedor</th>
-			
+
 			<th>Opciones</th>
 		</tr>
 	<?php $a=1; ?>

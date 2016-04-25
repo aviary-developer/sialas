@@ -9,6 +9,7 @@ use sialas\Http\Controllers\Controller;
 
 
 use sialas\servicios;
+use sialas\Http\Requests\ServiciosRequest;
 use DB;
 use Redirect;
 use Session;
@@ -24,8 +25,8 @@ class ServiciosController extends Controller
     public function index()
     {
 
-        $activos= DB::table('servicios')->where('estado', 1)->get();
-        $inactivos= DB::table('servicios')->where('estado', 0)->get();
+        $activos= Servicios::where('estado', 1)->get();
+        $inactivos= Servicios::where('estado', 0)->get();
 
         return view('servicios.index',compact('activos','inactivos'));
     }
@@ -46,13 +47,10 @@ class ServiciosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ServiciosRequest $request)
     {
-       echo "welcome to the store";
-      $servicio = new Servicios;
-      $servicio->create($request->all());
-
-      return Redirect::to('/servicios');
+      Servicios::create($request->all());
+      return redirect('/servicios')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -78,7 +76,7 @@ class ServiciosController extends Controller
 
         return view('servicios.edit',compact('servicio'));
 
-        
+
     }
 
     /**
@@ -88,7 +86,7 @@ class ServiciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ServiciosRequest $request, $id)
     {
         $servicios=Servicios::find($id);
 
@@ -96,7 +94,7 @@ class ServiciosController extends Controller
 
         $servicios->save();
 
-        return Redirect::to('/servicios');
+        return redirect('/servicios')->with('mensaje','¡Registro Actualizado!');
     }
 
     /**
@@ -112,5 +110,15 @@ class ServiciosController extends Controller
          $servicios->save();
          Session::flash('mensaje','Registro enviado a papelera');
          return Redirect::to('/servicios');
+    }
+
+    public function darAlta($id){
+
+        $servicios = Servicios::find($id);
+         $servicios->estado=true;
+         $servicios->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/servicios');
+
     }
 }

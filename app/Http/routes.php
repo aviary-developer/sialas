@@ -36,7 +36,7 @@ Route::resource('categorias', 'CategoriasController');
 
 
 Route::resource('servicios','ServiciosController');
-
+Route::match(['get','post'],'/darAltaServicio/{id}','ServiciosController@darAlta');
 
 
 

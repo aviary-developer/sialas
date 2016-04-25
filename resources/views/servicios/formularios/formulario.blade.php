@@ -6,5 +6,3 @@
 
 {!!Form::label('lrecibo','Número de factura:')!!}	
 {!!Form::text('n_recibo',null,['placeholder'=>'Recibo'])!!}
-
-{!! Form::hidden('estado', 'true') !!}

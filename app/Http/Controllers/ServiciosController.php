@@ -23,7 +23,7 @@ class ServiciosController extends Controller
     public function index()
     {
 
-        $activos= DB::table('servicios')->where('estado','=', 1)->get();
+        $activos= DB::table('servicios')->where('estado', 1)->get();
         $inactivos= DB::table('servicios')->where('estado', 0)->get();
 
         return view('servicios.index',compact('activos','inactivos'));

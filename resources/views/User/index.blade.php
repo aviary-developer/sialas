@@ -23,6 +23,17 @@
   </div>
 </div>
 
+<div class="panel">
+	<div class="enc">
+	</div>
+
+	<div class="block">
+	</div>
+
+	<div class="none">
+	</div>
+</div>
+
 <table>
 <th>Nombre</th>
 @foreach($usuario as $u)

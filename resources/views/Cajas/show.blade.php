@@ -27,47 +27,46 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Cajas</h2>
+    <h2>Detalles de Caja</h2>
   </div>
   <center>
-	<table id="block">
+	<table clas="none">
+    @foreach($cajas as $caja)
 		<tr>
-			<th>N°</th>
-			<th>Nombre</th>
-			<th>Ubicación</th>
-			<th colspan="3">Opciones</th>
+      <td>Identificador:
+      </td>
+      <td>{{$caja->id}}
+      </td>
 		</tr>
-	<?php $a=1; ?>
-	@foreach($cajasActivas as $caja)
-	<tr>
-	<td>{{$a}}</td>
-	<td>{{$caja->nombre}}</td>
-	<td>{{$caja->ubicacion}}</td>
-	<td>{!! link_to_route("cajas.edit", $title = "Editar", $parameters=$caja->id, $attributes=[]) !!}
-	</td>
-	<td>@include('Cajas.Formularios.darDeBaja')</td>
-  <td>{!! link_to_route("cajas.show", $title = "Ver más...", $parameters=$caja->id, $attributes=[]) !!}
-	</tr>
-		<?php $a=$a+1; ?>
-	@endforeach
+    <tr>
+      <td>Nombre:
+      </td>
+      <td>{{$caja->nombre}}
+      </td>
+		</tr>
+    <tr>
+      <td>Ubicación:
+      </td>
+      <td>{{$caja->ubicacion}}
+      </td>
+		</tr>
+    <tr>
+      <td>Fecha de Creación:
+      </td>
+      <td>{{$caja->created_at}}
+      </td>
+    </tr>
+  @endforeach
 	</table>
-	<table id="none">
+  <div class="enc">
+    <h2>Transacciones</h2>
+  </div>
+	<table>
 		<tr>
 			<th>N°</th>
-			<th>Nombre</th>
-			<th>Ubicación</th>
-			<th colspan="2">Opciones</th>
+			<th>Tipo</th>
+			<th>Valor</th>
 		</tr>
-	<?php $a=1; ?>
-	@foreach($cajasInactivas as $caja)
-	<tr>
-	<td>{{$a}}</td>
-	<td>{{$caja->nombre}}</td>
-	<td>{{$caja->ubicacion}}</td>
-	<td>@include('Cajas.Formularios.darDeAlta')</td>
-	</tr>
-		<?php $a=$a+1; ?>
-	@endforeach
 	</table>
 </center>
 </div>

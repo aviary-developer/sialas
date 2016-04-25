@@ -54,7 +54,8 @@ class CajasController extends Controller
      */
     public function show($id)
     {
-        //
+        $cajas = Cajas::where('id','=',$id)->get();
+        return view('Cajas.show',compact('cajas'));
     }
 
     /**

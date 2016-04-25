@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('telefono');
             $table->date('fecha_inicio');
             $table->string('direccion');
+            $table->boolean('estado')->default(true);
         });
     }
 

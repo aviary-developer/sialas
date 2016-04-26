@@ -15,6 +15,7 @@ $cgris3 : #8c8c8c;
 $cgris4 : #3c3c3c;
 $cgris5 : #4c4c4c;
 $cnaranja1 : #e2b11e;
+$cnaranja2 : #fcd4a5;
 $cnegro : #000000;
 //Medidas
 
@@ -136,16 +137,16 @@ nav div li{
       background-color: $cgris4;
       color: #fff;
       text-align: center;
-      border-radius: 6px;
-      padding: 5px 0;
+      border-radius: 20px;
+      padding: 5px 5px;
       -webkit-user-select: none;
       cursor: default;
 
       /* Position the tooltip */
       position: absolute;
       z-index: 1;
-      top: 100%;
-      left: 50%;
+      top: 20%;
+      left: 165%;
       margin-left: -35px;
     }
 }

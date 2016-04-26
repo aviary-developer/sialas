@@ -4,19 +4,25 @@
   <div class="lfloat"></div>
   <div class="tooltip">
     <a href="#">
-      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
     <a href="#">
-      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+      <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
     </a>
-    <span class="tooltiptext" id="tt">Nuevo</span>
+    <span class="tooltiptext" id="tt">Papelera</span>
   </div>
   <div class="tooltip">
     <a href="#">
-      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Reporte</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/ayu.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Ayuda</span>
   </div>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="70px" height="70px" viewBox="0 0 70 70" enable-background="new 0 0 70 70" xml:space="preserve">
+<g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="276.4473" y1="-328.7466" x2="318.8736" y2="-371.1729" gradientTransform="matrix(1 0 0 -1 -262.6602 -314.96)">
+		<stop  offset="0.5" style="stop-color:#F7941E"/>
+		<stop  offset="0.5" style="stop-color:#F15A29"/>
+	</linearGradient>
+	<circle fill="url(#SVGID_1_)" cx="35" cy="35" r="30"/>
+</g>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="272.9111" y1="-325.2109" x2="322.4087" y2="-374.7085" gradientTransform="matrix(1 0 0 -1 -262.6602 -314.96)">
+	<stop  offset="0.5" style="stop-color:#F7941E"/>
+	<stop  offset="0.5" style="stop-color:#F15A29"/>
+</linearGradient>
+<path fill="url(#SVGID_2_)" d="M35,0C15.67,0,0,15.67,0,35s15.67,35,35,35s35-15.67,35-35S54.33,0,35,0z M35,67
+	C17.327,67,3,52.674,3,35C3,17.327,17.327,3,35,3c17.674,0,32,14.327,32,32C67,52.674,52.674,67,35,67z"/>
+<g>
+	<polygon fill="#231F20" points="30.717,24.686 30.104,29.1 46.909,30.64 47.995,26.246 	"/>
+	<polygon fill="#6D6E71" points="14.154,35.663 14.154,45.205 43.025,48.955 43.025,39.333 	"/>
+	<polygon fill="#414042" points="44.574,38.925 44.574,48.955 52.729,43.491 52.729,33.46 	"/>
+	<path fill="#808285" d="M43.025,39.333c0,0,1.119,0.472,1.549-0.408v10.03c0,0-0.594,0.634-1.549,0V39.333z"/>
+	<path fill="#808285" d="M14.154,35.663c0,0-0.794-0.011-0.794-0.282v9.135c0,0,0.19,0.61,0.794,0.689V35.663z"/>
+	<path fill="#58595B" d="M52.729,33.46l-28.875-2.539L13.359,35.38c0,0-0.027,0.177,0.794,0.282l28.662,3.643
+		c0,0,1.33,0.5,1.76-0.381L52.729,33.46z"/>
+	<polygon fill="#414042" points="59.577,36.74 59.577,44.732 54.9,48.702 54.9,40.292 	"/>
+	<polygon fill="#58595B" points="47.126,40.602 49.3,40.872 49.309,46.636 47.126,46.364 	"/>
+	<polygon fill="#414042" points="47.126,40.602 51.38,38.092 52.729,38.092 49.3,40.872 	"/>
+	<polygon fill="#58595B" points="16.73,37.175 16.73,41.634 39.35,44.732 39.35,40.021 	"/>
+	<polygon fill="#231F20" points="38.264,46.962 17.437,44.354 17.437,41.73 38.268,44.585 	"/>
+	<polygon fill="#414042" points="26.894,31.189 28.04,28.91 47.615,30.705 46.146,32.882 	"/>
+	<polygon fill="#FFFFFF" points="10.423,48.376 21.027,42.223 38.268,44.585 28.59,51.203 	"/>
+	<path fill="#FFFFFF" d="M30.717,29.155c0,0,1.619-2.801,1.945-10.359l15.555,1.033c0,0-0.563,5.884-2.023,10.745L30.717,29.155z"/>
+	<path fill="#231F20" d="M39.35,41.579l3.316,0.261c0,0,1.424,0.659,4.46-1.131v0.499l-2.552,1.047c0,0-0.774,0.207-5.225-0.295
+		V41.579L39.35,41.579z"/>
+	<polygon fill="#BCBEC0" points="55.717,40.292 55.498,47.561 59.143,44.348 59.143,37.501 	"/>
+	<polygon fill="#00A79D" points="11.945,47.995 13.359,48.32 23.278,42.529 21.659,42.309 	"/>
+	<ellipse fill="#27AAE1" cx="29.454" cy="46.962" rx="3.534" ry="1.142"/>
+	<polygon fill="#231F20" points="13.359,38.146 16.73,38.534 16.73,38.925 13.359,38.508 	"/>
+	<polygon fill="#58595B" points="53.65,36.303 59.577,36.74 54.9,40.292 49.3,39.73 	"/>
+	<polygon fill="#808285" points="49.3,39.73 54.9,40.292 54.9,48.702 49.309,48.104 	"/>
+</g>
+</svg>

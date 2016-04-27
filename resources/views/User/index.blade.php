@@ -5,27 +5,40 @@
   <div class="lfloat"></div>
   <div class="tooltip">
     <a href="#">
-      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
     <a href="#">
-      <img id= "im" src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+      <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext" id="tt">Nuevo</span>
   </div>
   <div class="tooltip">
     <a href="#">
-      <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+      <img id= "im "src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ" onclick="activo(block, none, tt, im)"/>
     </a>
-    <span class="tooltiptext">Ayuda</span>
+    <span class="tooltiptext" id="tt">Papelera</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext" id="tt">Reporte</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/ayu.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext" id="tt">Ayuda</span>
   </div>
 </div>
 
 <div class="panel">
 	<div class="enc">
-		<h2>Usuarios Registrados</h2>
+		<h2>Usuarios</h2>
+		<h3 id="txt">Nuevo</h3>
 	</div>
 	<center>
 		<table id="block">

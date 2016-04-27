@@ -4,9 +4,11 @@ namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
 use sialas\User;
-
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use DB;
+use Redirect;
+use Session;
 
 class UsersController extends Controller
 {
@@ -18,8 +20,9 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $usuario=User::All();//estamos guardando dentro de la var todo lo q tiene la taba usuarios
-        return view('user.index',compact('usuario'));
+        $usuarioAc=User::where('estado','=', 1)->get();//estamos guardando dentro de la var todo lo q tiene la taba usuarios
+        $usuarioIn=User::where('estado','=', 0)->get();
+        return view('user.index',compact('usuarioAc', 'usuarioIn'));
     }
 
     /**
@@ -42,7 +45,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-        return $request;
+         Cajas::create($request->All());
+        return redirect('/user')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -54,6 +58,8 @@ class UsersController extends Controller
     public function show($id)
     {
         //
+        $usuario = User::where('id','=',$id)->get();
+        return view('User.show',compact('user'));
     }
 
     /**
@@ -65,6 +71,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
+        $usuario=User::find($id);
+        return view('user.edit', compact('user'));
     }
 
     /**
@@ -76,7 +84,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario=User::find($id);
+        $usuario->fill($request->all());
+        $usuario->save();
+        Session::flash('mensaje','¡Registro Actualizado!');
+        return Redirect::to('/user');
     }
 
     /**
@@ -87,6 +99,18 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario=User::find($id);
+        $usuario->estado=false;
+        $usuario->save();
+        Session::flash('mensaje','Registro dado de Baja');
+         return Redirect::to('/user');
+    }
+    public function darAlta($id)
+    {
+        $usuario=User::find($id);
+        $usuario->estado=true;
+        $usuario->save();
+        Session::flash('mensaje','Registro dado de Alta');
+        return Redirect::to('/user');
     }
 }

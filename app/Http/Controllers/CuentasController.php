@@ -7,15 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 
-
-use sialas\servicios;
-use sialas\Http\Requests\ServiciosRequest;
-use DB;
-use Redirect;
-use Session;
-
-
-class ServiciosController extends Controller
+class CuentasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,11 +16,13 @@ class ServiciosController extends Controller
      */
     public function index()
     {
-
-        $activos= Servicios::where('estado', 1)->get();
-        $inactivos= Servicios::where('estado', 0)->get();
-
-        return view('servicios.index',compact('activos','inactivos'));
+      $id=array("1","2");
+      $codigo=array("1","11");
+      $cuenta=    array("Activo","Activo Corriente");
+      $saldo=     array("0.00","0.00");
+      $tipo_saldo=array("Deudor","Deudor");
+      $depende_de=array("0","1");
+        return view('cuentas.index');
     }
 
     /**
@@ -38,7 +32,7 @@ class ServiciosController extends Controller
      */
     public function create()
     {
-        return view('servicios.create');
+        //
     }
 
     /**
@@ -47,11 +41,9 @@ class ServiciosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServiciosRequest $request)
+    public function store(Request $request)
     {
-      Servicios::create($request->all());
-      return redirect('/cajas')->with('mensaje','Registro Guardado');
-      return Redirect::to('/servicios');
+        //
     }
 
     /**
@@ -73,11 +65,7 @@ class ServiciosController extends Controller
      */
     public function edit($id)
     {
-        $servicio = Servicios::find($id);
-
-        return view('servicios.edit',compact('servicio'));
-
-
+        //
     }
 
     /**
@@ -87,15 +75,9 @@ class ServiciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ServiciosRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        $servicios=Servicios::find($id);
-
-        $servicios->fill($request->All());
-
-        $servicios->save();
-
-        return Redirect::to('/servicios');
+        //
     }
 
     /**
@@ -106,20 +88,6 @@ class ServiciosController extends Controller
      */
     public function destroy($id)
     {
-        $servicios = Servicios::find($id);
-         $servicios->estado=false;
-         $servicios->save();
-         Session::flash('mensaje','Registro enviado a papelera');
-         return Redirect::to('/servicios');
-    }
-
-    public function darAlta($id){
-
-        $servicios = Servicios::find($id);
-         $servicios->estado=true;
-         $servicios->save();
-         Session::flash('mensaje','Registro dado de Alta');
-         return Redirect::to('/servicios');
-
+        //
     }
 }

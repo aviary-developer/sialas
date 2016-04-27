@@ -23,7 +23,7 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Categorias</h2>
+      <h2>Cajas</h2>
     </div>
 {!! Form::open(['route'=>'cajas.store','methoh'=>'POST'])!!}
 @include('cajas.Formularios.formulario')

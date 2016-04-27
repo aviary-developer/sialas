@@ -7,10 +7,16 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href="#">
+    <a href='#'>
       <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
+  </div>
+  <div class="tooltip">
+    <a href={!! asset('/categorias/create') !!}>
+      <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Nuevo</span>
   </div>
   <div class="tooltip">
     <a href="#">
@@ -36,6 +42,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 <div class="panel">
   <div class="enc">
     <h2>Marcas</h2>
+    <h3 id='txt'> |Activos</h3>
   </div>
   <center>
     <table id="block">

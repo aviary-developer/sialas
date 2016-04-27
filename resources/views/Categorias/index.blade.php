@@ -13,7 +13,7 @@
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/categorias/create') !!}>
+    <a href={!! asset('/marcas/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>

@@ -1,2 +1,2 @@
 {!! Form::label('lNombre','Nombre:') !!}
-{!!Form::text('nombre',null,['placeholder'=>'Nombre de la cateroria'])!!}
+{!!Form::text('nombre',null,['placeholder'=>'Nombre de la categoria'])!!}

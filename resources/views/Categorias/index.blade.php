@@ -1,15 +1,19 @@
 @extends ('welcome')
 @section ('layout')
+@if(Session::has('mensaje'))
+  <?php $men=Session::get('mensaje');
+  echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
+@endif
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href="#">
+    <a href='#'>
       <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href="#">
+    <a href={!! asset('/categorias/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
@@ -36,6 +40,7 @@
 <div class="panel">
   <div class="enc">
     <h2>Categorias</h2>
+    <h3 id='txt'> |Activos</h3>
   </div>
   <center>
     <table id="block">
@@ -50,7 +55,7 @@
           Acciones
         </th>
       </tr>
-      @foreach($categoria as $c)
+      @foreach($categoriasActivas as $c)
         <tr>
           <td>
             {{$c->id}}
@@ -76,7 +81,7 @@
           Acciones
         </th>
       </tr>
-      @foreach($cat as $c)
+      @foreach($categoriasInactivas as $c)
         <tr>
           <td>
             {{$c->id}}

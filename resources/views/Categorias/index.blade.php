@@ -10,6 +10,12 @@
   </div>
   <div class="tooltip">
     <a href="#">
+      <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Nuevo</span>
+  </div>
+  <div class="tooltip">
+    <a href="#">
       <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
     </a>
     <span class="tooltiptext" id="tt">Papelera</span>

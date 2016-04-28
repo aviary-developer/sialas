@@ -181,7 +181,16 @@ nav div li{
     visibility: visible;
   }
 }
-
+pre {
+  -webkit-user-select: none;
+  span{
+    font-weight: bold;
+  }
+}
+.datos{
+  padding: 10px;
+  display: inline-block;
+}
 .circ{
   width: 50px;
   transition-timing-function: linear;

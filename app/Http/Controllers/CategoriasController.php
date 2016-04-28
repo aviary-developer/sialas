@@ -10,6 +10,7 @@ use sialas\Categorias;
 use Redirect;
 use Session;
 use View;
+use Carbon\Carbon;
 
 class CategoriasController extends Controller
 {
@@ -58,9 +59,9 @@ class CategoriasController extends Controller
     public function show($id)
     {
         //
-        $categorias = Categorias::find($id);
+        $c = Categorias::find($id);
         //return view('Categorias.show',compact('categorias'));
-        return View::make('Categorias.show')->with('categorias', $categorias);
+        return View::make('Categorias.show')->with('c', $c);
     }
 
     /**

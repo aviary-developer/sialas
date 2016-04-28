@@ -127,7 +127,7 @@
                   <span class="tooltiptextup">Activar</span>
                 </div>
                 <div class="tooltip">
-                  <a href={!! asset('/categorias/create') !!}>
+                  <a href={!! asset('/categorias/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Ver</span>

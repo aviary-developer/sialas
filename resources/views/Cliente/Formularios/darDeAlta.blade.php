@@ -1,4 +1,4 @@
-{!!Form::open(['url'=>['darAltaServicio',$servicio->id],'method'=>'POST'])!!}
+{!!Form::open(['url'=>['darAltaCaja',$caja->id],'method'=>'POST'])!!}
 <button class="btn btn-danger" type="button" onClick="return swal({
 title: '¿Esta seguro que desea restaurar?',
 text: 'El registro volverá a estar disponible!',   type: 'warning',

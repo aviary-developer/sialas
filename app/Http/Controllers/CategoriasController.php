@@ -96,5 +96,10 @@ class CategoriasController extends Controller
     public function destroy($id)
     {
         //
+        $categorias = Categorias::find($id);
+         $categorias->estado=false;
+         $categorias->save();
+         Session::flash('mensaje','Registro dado de Baja');
+         return Redirect::to('/categorias');
     }
 }

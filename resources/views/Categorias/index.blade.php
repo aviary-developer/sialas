@@ -68,15 +68,13 @@
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
               <div class="image">
                 <div class="tooltip">
-                  <a href={!! asset('/categorias/create') !!}>
+                  <a href={!! asset('/categorias/'.$c->id.'/edit') !!}>
                     <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Editar</span>
                 </div>
                 <div class="tooltip">
-                  <a href={!! asset('/categorias/create') !!}>
-                    <img src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
-                  </a>
+                    @include('Categorias.Formularios.darDeBaja')
                   <span class="tooltiptextup">Papelera</span>
                 </div>
                 <div class="tooltip">

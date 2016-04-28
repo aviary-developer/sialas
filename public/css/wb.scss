@@ -17,6 +17,8 @@ $cgris5 : #4c4c4c;
 $cnaranja1 : #e2b11e;
 $cnaranja2 : #fcd4a5;
 $cnegro : #000000;
+$cverde1 : #2bb673;
+$cverde2 : #00a14b;
 //Medidas
 
 //Tipografía
@@ -209,7 +211,7 @@ nav div li{
   display: none;
 }
 tr{
-  background: $cgris2;
+  //background: $cgris2;
   :first-child{
     border-radius: 20px 0px 0px 20px;
     text-align: center;
@@ -221,23 +223,38 @@ tr{
   td{
     padding: 5px;
     max-width: 600px;
-    border: $cgris3 solid 1px;
+    //border: $cgris3 solid 1px;
   }
   td:last-child{
     padding: 0px;
     width: 100px;
   }
   th{
-    background: $cgris4;
-    border: $cnegro solid 1px;
+    //background: $cverde2;
+    //border: $cverde2 - 10 solid 1px;
     color: $cblanco;
     font-weight: bold;
     padding: 5px;
     max-width: 40%;
   }
 }
-tr:hover{
-  background: $cnaranja1;
+$class-slug: td !default;
+@for $i from 1 through 11
+{
+  tr:nth-child(#{$i}){
+    background: $cverde1 + $i * 15;
+  }
+  td:nth-child(#{$i}){
+    border-color: $cverde1 + $i * 10;
+    border-width: 1px;
+    border-style: solid;
+  }
+  th:nth-child(#{$i}){
+    background: $cazul2 + $i * 10;
+  }
+  tr:nth-child(#{$i}):hover{
+    background: $cazul1 + $i * 10;
+  }
 }
 table{
   min-width: 50%;
@@ -305,9 +322,9 @@ input[type=submit]:hover{
       /* Position the tooltip */
       position: absolute;
       z-index: 1;
-      top: 0%;
+      bottom: -50%;
       left: 50%;
-      margin-left: -35px;
+      margin-left: -75px;
     }
 }
 

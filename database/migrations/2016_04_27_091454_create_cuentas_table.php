@@ -16,7 +16,6 @@ class CreateCuentasTable extends Migration
             $table->increments('id');
             $table->string('codigo', 10);
             $table->string('cuenta', 50);
-            $table->double('saldo');
             $table->string('tipo_saldo',15);
             $table->integer('depende_de');
             $table->timestamps();

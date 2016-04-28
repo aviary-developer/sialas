@@ -8,6 +8,7 @@ use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
 use Redirect;
+use Session;
 
 class CategoriasController extends Controller
 {
@@ -19,8 +20,8 @@ class CategoriasController extends Controller
     public function index()
     {
         //
-        $categoriasActivas= Categorias::where('estado','=', 1)->get();
-        $categoriasInactivas= Categorias::where('estado','=', 0)->get();
+        $categoriasActivas= Categorias::where('estado','=', 1)->orderBy('nombre')->get();
+        $categoriasInactivas= Categorias::where('estado','=', 0)->orderBy('nombre')->get();
         return view('categorias.index',compact('categoriasActivas','categoriasInactivas'));
     }
 
@@ -100,6 +101,13 @@ class CategoriasController extends Controller
          $categorias->estado=false;
          $categorias->save();
          Session::flash('mensaje','Registro dado de Baja');
+         return Redirect::to('/categorias');
+    }
+    public function darAlta($id){
+      $categorias = Categorias::find($id);
+         $categorias->estado=true;
+         $categorias->save();
+         Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/categorias');
     }
 }

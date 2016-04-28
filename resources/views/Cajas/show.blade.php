@@ -53,7 +53,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <tr>
       <td>Fecha de Creación:
       </td>
-      <td>{{$caja->created_at}}
+      <td>{{$caja->created_at->format('d-m-Y g:i:s a')}}
       </td>
     </tr>
   @endforeach

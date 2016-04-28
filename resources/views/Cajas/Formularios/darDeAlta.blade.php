@@ -1,5 +1,5 @@
 {!!Form::open(['url'=>['darAltaCaja',$caja->id],'method'=>'POST'])!!}
-<button class="btn btn-danger" type="button" onClick="return swal({
+<img src={!! asset('/img/WB/upp.svg') !!} alt="" class="circ" onclick="return swal({
 title: '¿Esta seguro que desea restaurar?',
 text: 'El registro volverá a estar disponible!',   type: 'warning',
 showCancelButton: true,   confirmButtonColor: '#06c',
@@ -11,5 +11,5 @@ swal('Deleted!', 'Registro Restaurado', 'success');
 } else {
 swal({   title: 'El registro se mantiene igual',type:'info',
 text: 'Se Cerrará en 2 Segundos',   timer: 2000,
-showConfirmButton: false });} });">Restaurar</button>
+showConfirmButton: false });} });"/>
 {!!Form::close()!!}

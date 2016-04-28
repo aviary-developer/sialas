@@ -96,7 +96,29 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 	<td>{{$a}}</td>
 	<td>{{$caja->nombre}}</td>
 	<td>{{$caja->ubicacion}}</td>
-	<td>@include('Cajas.Formularios.darDeAlta')</td>
+  <td>
+    <div class="up">
+      <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
+      <div class="image">
+        <div class="tooltip">
+          <a href={!! asset('/cajas/'.$caja->id.'/edit') !!}>
+            <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
+          </a>
+          <span class="tooltiptextup">Editar</span>
+        </div>
+        <div class="tooltip">
+            @include('Cajas.Formularios.darDeAlta')
+          <span class="tooltiptextup">Activar</span>
+        </div>
+        <div class="tooltip">
+          <a href={!! asset("/cajas/".$caja->id) !!}>
+            <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
+          </a>
+          <span class="tooltiptextup">Ver</span>
+        </div>
+      </div>
+    </div>
+  </td>
 	</tr>
 		<?php $a=$a+1; ?>
 	@endforeach

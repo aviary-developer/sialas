@@ -19,8 +19,8 @@ class CajasController extends Controller
      */
     public function index()
     {
-        $cajasActivas= Cajas::where('estado','=', 1)->get();
-        $cajasInactivas= Cajas::where('estado','=', 0)->get();
+        $cajasActivas= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->paginate(10);
+        $cajasInactivas= Cajas::where('estado','=', 0)->orderBy('nombre','asc')->paginate(10);
         return view('cajas.index',compact('cajasActivas','cajasInactivas'));
     }
 

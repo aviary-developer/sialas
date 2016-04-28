@@ -10,13 +10,7 @@
     </div>
     <div class="tooltip">
       <a href="#">
-        <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
-      </a>
-      <span class="tooltiptext">Nuevo</span>
-    </div>
-    <div class="tooltip">
-      <a href="#">
-        <img src={!! asset('/img/WB/general/circ.svg') !!} alt="" class="circ"/>
+        <img src={!! asset('/img/WB/general/ayu.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Ayuda</span>
     </div>

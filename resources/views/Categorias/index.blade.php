@@ -13,7 +13,7 @@
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/categorias/create') !!}>
+    <a href={!! asset('/marcas/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
@@ -64,7 +64,27 @@
             {{$c->nombre}}
           </td>
           <td>
-            {!! link_to_route('categorias.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
+            <div class="up">
+              <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
+              <div class="image">
+                <div class="tooltip">
+                  <a href={!! asset('/categorias/'.$c->id.'/edit') !!}>
+                    <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Editar</span>
+                </div>
+                <div class="tooltip">
+                    @include('Categorias.Formularios.darDeBaja')
+                  <span class="tooltiptextup">Papelera</span>
+                </div>
+                <div class="tooltip">
+                  <a href={!! asset('/categorias/create') !!}>
+                    <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Ver</span>
+                </div>
+              </div>
+            </div>
           </td>
         </tr>
       @endforeach

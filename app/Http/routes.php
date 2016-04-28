@@ -16,6 +16,7 @@ Route::get('/', function () {
 
 
 Route::resource('marcas','MarcasController');
+Route::match(['get','post'],'/darAltaMarcas/{id}','MarcasController@darAlta');
 
 
 

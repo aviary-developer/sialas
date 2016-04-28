@@ -17,6 +17,8 @@ $cgris5 : #4c4c4c;
 $cnaranja1 : #e2b11e;
 $cnaranja2 : #fcd4a5;
 $cnegro : #000000;
+$cverde1 : #2bb673;
+$cverde2 : #00a14b;
 //Medidas
 
 //Tipografía
@@ -150,10 +152,34 @@ nav div li{
       left: 165%;
       margin-left: -35px;
     }
+
+    .tooltiptextup {
+      visibility: hidden;
+      width: 70px;
+      background-color: $cgris4;
+      color: #fff;
+      text-align: center;
+      border-radius: 20px;
+      padding: 5px 5px;
+      -webkit-user-select: none;
+      cursor: default;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      bottom: 100%;
+      left: 50%;
+      margin-left: -35px;
+    }
 }
 
-.tooltip:hover .tooltiptext {
+.tooltip:hover {
+  .tooltiptext {
     visibility: visible;
+  }
+  .tooltiptextup {
+    visibility: visible;
+  }
 }
 
 .circ{
@@ -185,7 +211,7 @@ nav div li{
   display: none;
 }
 tr{
-  background: $cgris2;
+  //background: $cgris2;
   :first-child{
     border-radius: 20px 0px 0px 20px;
     text-align: center;
@@ -196,23 +222,42 @@ tr{
   }
   td{
     padding: 5px;
-    max-width: 40%;
-    border: $cgris3 solid 1px;
+    max-width: 600px;
+    //border: $cgris3 solid 1px;
+  }
+  td:last-child{
+    padding: 0px;
+    width: 100px;
   }
   th{
-    background: $cgris4;
-    border: $cnegro solid 1px;
+    //background: $cverde2;
+    //border: $cverde2 - 10 solid 1px;
     color: $cblanco;
     font-weight: bold;
     padding: 5px;
     max-width: 40%;
   }
 }
-tr:hover{
-  background: $cnaranja1;
+$class-slug: td !default;
+@for $i from 1 through 11
+{
+  tr:nth-child(#{$i}){
+    background: $cverde1 + $i * 15;
+  }
+  td:nth-child(#{$i}){
+    border-color: $cverde1 + $i * 10;
+    border-width: 1px;
+    border-style: solid;
+  }
+  th:nth-child(#{$i}){
+    background: $cazul2 + $i * 10;
+  }
+  tr:nth-child(#{$i}):hover{
+    background: $cazul1 + $i * 10;
+  }
 }
 table{
-  width: 80%;
+  min-width: 50%;
 }
 input, select, textarea{
   display: block;
@@ -247,6 +292,44 @@ input[type=submit]:hover{
   margin-top: 20px;
   margin-left: 5px;
   color: $cazul1;
+}
+.plus{
+  width: 25px;
+  transition-timing-function: linear;
+  margin: 5px 0px 5px 0px;
+}
+.plus:hover{
+  width: 30px;
+  position: static;
+  margin-top: 0px;
+}
+.up {
+    position: relative;
+    display: -webkit-inline-box;
+
+    .image {
+      display: flex;
+      visibility: hidden;
+      max-width: 220px;
+      background-color: $cgris1;
+      text-align: center;
+      border-radius: 50px;
+      padding: 5px 5px;
+      -webkit-user-select: none;
+      cursor: default;
+      box-shadow: 0px 0px 10px $cgris3;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      bottom: -50%;
+      left: 50%;
+      margin-left: -75px;
+    }
+}
+
+.up:hover .image {
+    visibility: visible;
 }
 /*
 @mixin border-radius($radius) {

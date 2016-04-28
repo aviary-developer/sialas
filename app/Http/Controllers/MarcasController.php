@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Marcas;
 use sialas\Http\Controllers\Controller;
+use Redirect;
+use Session;
 
 class MarcasController extends Controller
 {
@@ -17,8 +19,10 @@ class MarcasController extends Controller
      */
     public function index()
     {
-        $marcas=Marcas::All();
-        return view('marcas.index',compact('marcas'));
+        $marcasActivas= Marcas::where('estado','=', 1)->get();
+        $marcasInactivas= Marcas::where('estado','=', 0)->get();
+       
+        return view('marcas.index',compact('marcasActivas','marcasInactivas'));
     }
 
     /**
@@ -40,7 +44,9 @@ class MarcasController extends Controller
     public function store(Request $request)
     {
         Marcas::create($request->All());
-        return redirect('/marcas');
+        return redirect('/marcas')->with('mensaje','Registro Guardado');
+
+
     }
 
     /**
@@ -51,7 +57,8 @@ class MarcasController extends Controller
      */
     public function show($id)
     {
-        //
+        $marcas = Marcas::where('id','=',$id)->get();
+        return view('Marcas.show',compact('marcas'));
     }
 
     /**
@@ -78,6 +85,7 @@ class MarcasController extends Controller
         $marcas = Marcas::find($id);
         $marcas->fill($request->All());
         $marcas->save();
+        Session::flash('mensaje','¡Registro Actualizado!');
         return Redirect::to('/marcas');
     }
 
@@ -89,6 +97,17 @@ class MarcasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $marcas = Marcas::find($id);
+         $marcas->estado=false;
+         $marcas->save();
+         Session::flash('mensaje','Registro dado de Baja');
+         return Redirect::to('/marcas');
+    }
+    public function darAlta($id){
+        $marcas = Marcas::find($id);
+         $marcas->estado=true;
+         $marcas->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/marcas');
     }
 }

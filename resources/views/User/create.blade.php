@@ -23,10 +23,9 @@
   </div>
 <div class="panel">
 	<div class="enc">
-		<h2>Usuarios Registrados</h2>
+		<h2>Usuarios</h2>
 	</div>
 	{!!Form::open(['route'=>'users.store','method'=>'POST'])!!}
-
 	@include('user.formularios.formulario')
 	{!!Form::submit('Guardar')!!}
 	{!!Form::close()!!}

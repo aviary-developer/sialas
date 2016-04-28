@@ -13,7 +13,7 @@
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/marcas/create') !!}>
+    <a href={!! asset('/categorias/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
@@ -79,7 +79,7 @@
                   <span class="tooltiptextup">Papelera</span>
                 </div>
                 <div class="tooltip">
-                  <a href={!! asset('/categorias/create') !!}>
+                  <a href={!! asset('/categorias/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Ver</span>

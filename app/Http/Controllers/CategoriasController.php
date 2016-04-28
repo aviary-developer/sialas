@@ -9,6 +9,7 @@ use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
 use Redirect;
 use Session;
+use View;
 
 class CategoriasController extends Controller
 {
@@ -57,6 +58,9 @@ class CategoriasController extends Controller
     public function show($id)
     {
         //
+        $categorias = Categorias::find($id);
+        //return view('Categorias.show',compact('categorias'));
+        return View::make('Categorias.show')->with('categorias', $categorias);
     }
 
     /**

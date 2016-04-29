@@ -19,12 +19,14 @@ class ClientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-    $cliente=Clientes::All();
-    //return $cliente;
-    return view('Cliente.index',compact('cliente'));
-        /*$cajasActivas= Cajas::where('estado','=', 1)->get();
-        $cajasInactivas= Cajas::where('estado','=', 0)->get();
-        return view('cajas.index',compact('cajasActivas','cajasInactivas'));*/
+   //$cliente=Clientes::All();
+   // return $cliente;
+    //return view('clientes.index',compact('cliente'));
+
+        $clientesActivos= Clientes::where('estado','=', 1)->orderBy('nombre')->get();
+        $clientesInactivos= Clientes::where('estado','=', 0)->orderBy('nombre')->get();
+        return view('clientes.index',compact('clientesActivos','clientesInactivos'));
+       
     }
 
     /**
@@ -35,7 +37,7 @@ class ClientesController extends Controller
     public function create()
     {
         //
-        return view('cliente.create');
+        return view('Clientes.create');
     }
 
 
@@ -48,8 +50,8 @@ class ClientesController extends Controller
     public function store(Request $request)
     {
         Clientes::create($request->All());
-        return redirect('/clientes')->with('mensaje','Registro Guardado');
-        //return redirect('/clientes');
+        return redirect('/clientes');
+
     }
 
     /**
@@ -61,8 +63,9 @@ class ClientesController extends Controller
     public function show($id)
     {
         //
-        $clientes = clientes::where('id','=',$id)->get();
-        return view('clientes.show',compact('clientes'));
+         $c = Clientes::find($id);
+        //return view('Categorias.show',compact('categorias'));
+        return View::make('Clientes.show')->with('c', $c);
     }
 
     /**
@@ -74,8 +77,9 @@ class ClientesController extends Controller
     public function edit($id)
     {
         //
-        $clientes=Clientes::find($id);
-        return view('cliente.edit', compact('clientes'));
+        $cliente=Clientes::find($id);
+        return view('Clientes.edit', compact('cliente'));
+
     }
 
     /**
@@ -88,10 +92,11 @@ class ClientesController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $clientes=Clientes::find($id);
-        $clientes->fill($request->all());
-        $clientes->save();
+        $cliente=Clientes::find($id);
+        $cliente->fill($request->all());
+        $cliente->save();
         return Redirect::to('/clientes');
+
 
     }
 
@@ -103,6 +108,22 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $clientes = Clientes::find($id);
+         $clientes->estado=false;
+         $clientes->save();
+         Session::flash('mensaje','Registro dado de Baja');
+         return Redirect::to('/clientes');
+
+    }
+     public function darAlta($id){
+
+        $clientes = Clientes::find($id);
+         $clientes->estado=true;
+         $clientes->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/clientes');
+
+
     }
 }
+

@@ -57,7 +57,7 @@ Route::resource('users','UsersController');
 
 
 Route::resource ('clientes', 'ClientesController');
-Route::match(['get','post'],'/darAltaCliente/{id}','ClientesController@darAlta');
+Route::match(['get','post'],'/darAltaClientes/{id}','ClientesController@darAlta');
 
 
 

@@ -27,11 +27,20 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Marca</h2>
-    <h3 id="txt"> |{{$marcas->nombre}}</h3>
+    <h2>Marcas</h2>
+    <h3 id="txt"> |{{$c->nombre}}</h3>
   </div>
-  <div>
-
+  <div class="datos">
+    <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$c->id !!}</span></pre>
+    <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nombre }}</span></pre>
+    @if($c->estado == 1)
+      <?php $var = 'Activo'?>
+    @else
+      <?php $var = 'En papelera'?>
+    @endif
+    <pre>Estado:&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
+    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$c->created_at->format('d-m-Y g:i:s a')}} </span></pre>
+    <pre>Fecha de última edición:&#09;&#09;<span>{{$c->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
   </div>
 </div>
 @stop

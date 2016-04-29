@@ -7,9 +7,9 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href={!! asset('/marcas') !!}>
-        <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
-      </a>
+    <a href='#'>
+      <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
+    </a>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">

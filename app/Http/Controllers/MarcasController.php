@@ -8,6 +8,7 @@ use sialas\Http\Requests;
 use sialas\Marcas;
 use sialas\Http\Controllers\Controller;
 use Redirect;
+use View;
 use Session;
 
 class MarcasController extends Controller
@@ -19,8 +20,8 @@ class MarcasController extends Controller
      */
     public function index()
     {
-        $marcasActivas= Marcas::where('estado','=', 1)->get();
-        $marcasInactivas= Marcas::where('estado','=', 0)->get();
+        $marcasActivas= Marcas::where('estado','=', 1)->orderBy('nombre')->get();
+        $marcasInactivas= Marcas::where('estado','=', 0)->orderBy('nombre')->get();
        
         return view('marcas.index',compact('marcasActivas','marcasInactivas'));
     }
@@ -57,9 +58,11 @@ class MarcasController extends Controller
      */
     public function show($id)
     {
-        $marcas = Marcas::where('id','=',$id)->get();
-        return view('Marcas.show',compact('marcas'));
+        $c = Marcas::find($id);
+        //return view('Categorias.show',compact('categorias'));
+        return View::make('Marcas.show')->with('c', $c);
     }
+    
 
     /**
      * Show the form for editing the specified resource.

@@ -13,7 +13,8 @@ class CreateCuentasTable extends Migration
     public function up()
     {
         Schema::create('cuentas', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('id');
+            $table->primary('id');
             $table->string('codigo', 10);
             $table->string('cuenta', 50);
             $table->string('tipo_saldo',15);

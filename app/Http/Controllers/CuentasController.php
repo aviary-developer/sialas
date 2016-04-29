@@ -44,7 +44,6 @@ class CuentasController extends Controller
       "0","31","31","31","31","0","36","36","36","36",
       "36","36");
 
-
       $contador=Cuentas::count();
       if($contador<1){
      for($i=0;$i<42;$i++){
@@ -57,7 +56,9 @@ class CuentasController extends Controller
           ]);
       }
       }
-        //return view('cuentas.index');
+
+      $cuentas= Cuentas::orderBy('codigo')->get();
+        return view('cuentas.index',compact('cuentas'));
     }
 
     /**

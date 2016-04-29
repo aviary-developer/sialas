@@ -19,7 +19,7 @@
     <div class="enc">
       <h2>Cajas</h2>
     </div>
-{!! Form::open(['route'=>'cajas.store','methoh'=>'POST'])!!}
+{!! Form::open(['route'=>'cajas.store','method'=>'POST'])!!}
 @include('cajas.Formularios.formulario')
 {!!Form::submit('Guardar')!!}
 {!!Form::close()!!}

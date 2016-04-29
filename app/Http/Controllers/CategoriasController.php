@@ -19,10 +19,10 @@ class CategoriasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $categoriasActivas= Categorias::where('estado','=', 1)->orderBy('nombre')->get();
+        $categoriasActivas= Categorias::nombre($request->get('nombre'))->where('estado','=', 1)->orderBy('nombre')->get();
         $categoriasInactivas= Categorias::where('estado','=', 0)->orderBy('nombre')->get();
         return view('categorias.index',compact('categoriasActivas','categoriasInactivas'));
     }

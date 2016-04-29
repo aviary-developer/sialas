@@ -20,7 +20,7 @@
       <h2>Categorias</h2>
       <h3 id="txt">|Nuevo</h3>
     </div>
-    {!!Form::open(['route'=>'categorias.store','methoh'=>'POST'])!!}
+    {!!Form::open(['route'=>'categorias.store','method'=>'POST'])!!}
     @include('Categorias.Formularios.formulario')
     {!! Form::submit('Guardar') !!}
     {!!Form::close()!!}

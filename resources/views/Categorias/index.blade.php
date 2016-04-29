@@ -41,6 +41,10 @@
   <div class="enc">
     <h2>Categorias</h2>
     <h3 id='txt'> |Activos</h3>
+    {!!Form::open(['route'=>'categorias.index','method'=>'GET','role'=>'search'])!!}
+    {!! Form::text('nombre',null,['placeholder'=>'Nombre de categoria']) !!}
+    {!! Form::submit('Buscar') !!}
+    {!! Form::close() !!}
   </div>
   <center>
     <table id="block">

@@ -7,13 +7,13 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href='#'>
-      <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
-    </a>
+    <a href={!! asset('/marcas') !!}>
+        <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
+      </a>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/categorias/create') !!}>
+    <a href={!! asset('/marcas/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
@@ -57,10 +57,28 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
           <td>{{$c->id}} </td>
           <td> {{$c->nombre}}</td>
           <td>
-            {!! link_to_route('marcas.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
+            <div class="up">
+              <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
+              <div class="image">
+                <div class="tooltip">
+                  <a href={!! asset('/marcas/'.$c->id.'/edit') !!}>
+                    <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Editar</span>
+                </div>
+                <div class="tooltip">
+                    @include('Marcas.Formularios.darDeBaja')
+                  <span class="tooltiptextup">Papelera</span>
+                </div>
+                <div class="tooltip">
+                  <a href={!! asset('/marcas/'.$c->id) !!}>
+                    <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Ver</span>
+                </div>
+              </div>
+            </div>
           </td>
-        <td>@include('Marcas.Formularios.darDeBaja')</td>
-        <td>{!! link_to_route("marcas.show", $title = "Ver más...", $parameters=$c->id, $attributes=[]) !!}
         </tr>
     <?php $a=$a+1; ?>
       @endforeach
@@ -77,10 +95,29 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
           <td>{{$c->id}} </td>
           <td> {{$c->nombre}}</td>
           <td>
-            {!! link_to_route('marcas.edit', $title = "Editar", $parameters=$c->id, $attributes=[]) !!}
+            <div class="up">
+              <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
+              <div class="image">
+                <div class="tooltip">
+                  <a href={!! asset('/marcas/'.$c->id.'/edit') !!}>
+                    <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Editar</span>
+                </div>
+                <div class="tooltip">
+                    @include('Marcas.Formularios.darDeAlta')
+                  <span class="tooltiptextup">Activar</span>
+                </div>
+                <div class="tooltip">
+                  <a href={!! asset('/marcas/create') !!}>
+                    <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Ver</span>
+                </div>
+              </div>
+            </div>
           </td>
-        <td>@include('Marcas.Formularios.darDeAlta')</td>
-        <td>{!! link_to_route("marcas.show", $title = "Ver más...", $parameters=$c->id, $attributes=[]) !!}
+          </td>
       </tr>
     <?php $a=$a+1; ?>
       @endforeach

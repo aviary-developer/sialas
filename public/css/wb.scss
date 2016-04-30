@@ -214,12 +214,6 @@ pre {
   margin: 10px;
 }
 //Tablas
-#block{
-  display: table;
-}
-#none{
-  display: none;
-}
 tr{
   //background: $cgris2;
   :first-child{
@@ -337,9 +331,65 @@ input[type=submit]:hover{
       margin-left: -75px;
     }
 }
-
+.search{
+  display: -webkit-inline-box;
+  input[type='text']{
+    height: 16px;
+    min-width: 200px;
+    margin-top: 15px;
+  }
+}
+.sep{
+  width: 45%;
+}
 .up:hover .image {
     visibility: visible;
+}
+@media only screen and (max-width : 900px) {
+  .search{
+    display: none;
+  }
+  .sep{
+    width: 30%;
+  }
+}
+@media only screen and (min-width : 900px) and (max-width : 1200px) {
+  .search{
+    input[type='submit']{
+      display: none;
+    }
+  }
+  .sep{
+    width: 30%;
+  }
+}
+#act{
+  display: inline-block;
+  margin-top: 20px;
+}
+.pagination{
+  display: inline-flex;
+  li{
+    list-style: none;
+    width: 25px;
+    padding: 3px;
+    background-color: $cgris2;
+    border: $cgris3 solid 1px;
+  }
+  :first-child{
+    border-radius: 20px 0px 0px 20px;
+  }
+  :last-child{
+    border-radius: 0px 20px 20px 0px;
+  }
+  .active{
+    background: $cazul1;
+    border: $cazul2 solid 1px;
+  }
+  .disabled{
+    background: $cgris1;
+    border: $cgris2 solid 1px;
+  }
 }
 /*
 @mixin border-radius($radius) {

@@ -22,9 +22,10 @@ class CategoriasController extends Controller
     public function index(Request $request)
     {
         //
-        $categoriasActivas= Categorias::nombre($request->get('nombre'))->where('estado','=', 1)->orderBy('nombre')->get();
-        $categoriasInactivas= Categorias::where('estado','=', 0)->orderBy('nombre')->get();
-        return view('categorias.index',compact('categoriasActivas','categoriasInactivas'));
+        $state = $request->get('estado');
+        $name = $request->get('nombre');
+        $categoriasActivas= Categorias::buscar($name,$state);
+        return view('categorias.index',compact('categoriasActivas','categoriasInactivas','state','name'));
     }
 
     /**

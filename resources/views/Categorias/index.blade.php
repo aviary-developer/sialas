@@ -4,6 +4,11 @@
   <?php $men=Session::get('mensaje');
   echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 @endif
+@if($state == 1 || $state == null)
+  <?php $cam = 0; ?>
+@else
+  <?php $cam = 1; ?>
+@endif
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
@@ -19,10 +24,18 @@
     <span class="tooltiptext">Nuevo</span>
   </div>
   <div class="tooltip">
-    <a href="#">
-      <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+    <a href={!! asset('/categorias?nombre='.$name.'&estado='.$cam) !!}>
+      @if(!$cam)
+        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+      @else
+        <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
+      @endif
     </a>
-    <span class="tooltiptext" id="tt">Papelera</span>
+    @if(!$cam)
+      <span class="tooltiptext" id="tt">Papelera</span>
+    @else
+      <span class="tooltiptext" id="tt">Activos</span>
+    @endif
   </div>
   <div class="tooltip">
     <a href="#">
@@ -40,34 +53,29 @@
 <div class="panel">
   <div class="enc">
     <h2>Categorias</h2>
-    <h3 id='txt'> |Activos</h3>
-    {!!Form::open(['route'=>'categorias.index','method'=>'GET','role'=>'search'])!!}
+    @if(!$cam)
+      <h3 id='txt'> |Activos</h3>
+    @else
+      <h3 id='txt'> |Papelera</h3>
+    @endif
+    <div class="sep"></div>
+    {!!Form::open(['route'=>'categorias.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
     {!! Form::text('nombre',null,['placeholder'=>'Nombre de categoria']) !!}
     {!! Form::submit('Buscar') !!}
     {!! Form::close() !!}
   </div>
   <center>
-    <table id="block">
+    <table>
       <tr>
-        <th>
-          Id
-        </th>
-        <th>
-          Nombre
-        </th>
-        <th>
-          Acciones
-        </th>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
       </tr>
       <?php $a = 1; ?>
       @foreach($categoriasActivas as $c)
         <tr>
-          <td>
-            {{$a}}
-          </td>
-          <td>
-            {{$c->nombre}}
-          </td>
+          <td>{{$a}}</td>
+          <td>{{$c->nombre}}</td>
           <td>
             <div class="up">
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
@@ -78,10 +86,17 @@
                   </a>
                   <span class="tooltiptextup">Editar</span>
                 </div>
-                <div class="tooltip">
-                    @include('Categorias.Formularios.darDeBaja')
-                  <span class="tooltiptextup">Papelera</span>
-                </div>
+                @if(!$cam)
+                  <div class="tooltip">
+                      @include('Categorias.Formularios.darDeBaja')
+                    <span class="tooltiptextup">Papelera</span>
+                  </div>
+                @else
+                  <div class="tooltip">
+                      @include('Categorias.Formularios.darDeAlta')
+                    <span class="tooltiptextup">Activar</span>
+                  </div>
+                @endif
                 <div class="tooltip">
                   <a href={!! asset('/categorias/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
@@ -95,54 +110,9 @@
         <?php $a++; ?>
       @endforeach
     </table>
-    <table id="none">
-      <tr>
-        <th>
-          Id
-        </th>
-        <th>
-          Nombre
-        </th>
-        <th>
-          Acciones
-        </th>
-      </tr>
-      <?php $a = 1; ?>
-      @foreach($categoriasInactivas as $c)
-        <tr>
-          <td>
-            {{$a}}
-          </td>
-          <td>
-            {{$c->nombre}}
-          </td>
-          <td>
-            <div class="up">
-              <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
-              <div class="image">
-                <div class="tooltip">
-                  <a href={!! asset('/categorias/'.$c->id.'/edit') !!}>
-                    <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
-                  </a>
-                  <span class="tooltiptextup">Editar</span>
-                </div>
-                <div class="tooltip">
-                    @include('Categorias.Formularios.darDeAlta')
-                  <span class="tooltiptextup">Activar</span>
-                </div>
-                <div class="tooltip">
-                  <a href={!! asset('/categorias/'.$c->id) !!}>
-                    <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-                  </a>
-                  <span class="tooltiptextup">Ver</span>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <?php $a++; ?>
-      @endforeach
-    </table>
+    <div id="act">
+      {!! str_replace ('/?', '?', $categoriasActivas->appends(Request::only(['nombre','estado']))->render ()) !!}
+    </div>
   </center>
 </div>
 @stop

@@ -22,13 +22,17 @@ class ServiciosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
 
-        $activos= Servicios::where('estado', 1)->get();
+        /*$activos= Servicios::where('estado', 1)->get();
         $inactivos= Servicios::where('estado', 0)->get();
 
-        return view('servicios.index',compact('activos','inactivos'));
+        return view('servicios.index',compact('activos','inactivos'));*/
+        $state = $request->get('estado');
+        $name = $request->get('nombre');
+        $serviciosActivos= Servicios::buscar($name,$state);
+        return view('servicios.index',compact('serviciosActivos','serviciosInactivos','state','name'));
     }
 
     /**
@@ -50,8 +54,7 @@ class ServiciosController extends Controller
     public function store(ServiciosRequest $request)
     {
       Servicios::create($request->all());
-      return redirect('/cajas')->with('mensaje','Registro Guardado');
-      return Redirect::to('/servicios');
+      return redirect('/servicios')->with('mensaje','Registro Guardado');
     }
 
     /**

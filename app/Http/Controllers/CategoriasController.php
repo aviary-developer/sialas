@@ -59,7 +59,6 @@ class CategoriasController extends Controller
      */
     public function show($id)
     {
-        //
         $c = Categorias::find($id);
         //return view('Categorias.show',compact('categorias'));
         return View::make('Categorias.show')->with('c', $c);

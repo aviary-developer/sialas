@@ -10,6 +10,8 @@ use sialas\clientes;
 use DB;
 use Redirect;
 use Session;
+use View;
+use Carbon\Carbon;
 
 class ClientesController extends Controller
 {
@@ -18,14 +20,11 @@ class ClientesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-   //$cliente=Clientes::All();
-   // return $cliente;
-    //return view('clientes.index',compact('cliente'));
-
-        $clientesActivos= Clientes::where('estado','=', 1)->orderBy('nombre')->get();
-        $clientesInactivos= Clientes::where('estado','=', 0)->orderBy('nombre')->get();
-        return view('clientes.index',compact('clientesActivos','clientesInactivos'));
+    public function index(Request $request){
+        $state = $request->get('estado');
+        $name = $request->get('nombre');
+        $clientesActivos= Clientes::buscar($name,$state);
+        return view('clientes.index',compact('clientesActivos','clientesInactivos','state','name'));
        
     }
 
@@ -67,6 +66,7 @@ class ClientesController extends Controller
         //return view('Categorias.show',compact('categorias'));
         return View::make('Clientes.show')->with('c', $c);
     }
+
 
     /**
      * Show the form for editing the specified resource.

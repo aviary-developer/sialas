@@ -47,7 +47,7 @@ class UsersController extends Controller
     {
         //
          User::create($request->All());
-        return redirect('/user')->with('mensaje','Registro Guardado');
+        return redirect('/users')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -59,8 +59,8 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        $usuario = User::where('id','=',$id)->get();
-        return view('User.show',compact('user'));
+        $us = User::find($id);
+        return View::make('User.show')->with('us',$us);
     }
 
     /**
@@ -73,7 +73,7 @@ class UsersController extends Controller
     {
         //
         $usuario=User::find($id);
-        return view('user.edit', compact('user'));
+        return view('User.edit', compact('user'));
     }
 
     /**
@@ -89,7 +89,7 @@ class UsersController extends Controller
         $usuario->fill($request->all());
         $usuario->save();
         Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/user');
+        return Redirect::to('/users');
     }
 
     /**
@@ -104,7 +104,7 @@ class UsersController extends Controller
         $usuario->estado=false;
         $usuario->save();
         Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/user');
+         return Redirect::to('/users');
     }
     public function darAlta($id)
     {
@@ -112,6 +112,6 @@ class UsersController extends Controller
         $usuario->estado=true;
         $usuario->save();
         Session::flash('mensaje','Registro dado de Alta');
-        return Redirect::to('/user');
+        return Redirect::to('/users');
     }
 }

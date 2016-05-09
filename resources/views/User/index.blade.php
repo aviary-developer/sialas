@@ -4,6 +4,11 @@
 <?php $men=Session::get('mensaje');
 echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 @endif
+@if($state == 1 || $state == null)
+  <?php $cam = 0; ?>
+@else
+  <?php $cam = 1; ?>
+@endif
 
 <div class="launcher">
   <div class="lfloat"></div>
@@ -14,13 +19,13 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/categorias/create') !!}>
+    <a href={!! asset('/users/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/user?name='.$name.'&estado='.$cam) !!}>
+    <a href={!! asset('/users?nombre='.$name.'&estado='.$cam) !!}>
       @if(!$cam)
         <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
       @else
@@ -49,9 +54,18 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 
 <div class="panel">
 	<div class="enc">
-		<h2>Usuarios</h2>
-		<h3 id='txt'> |Activos</h3>
-	</div>
+    <h2>Usuarios</h2>
+    @if(!$cam)
+      <h3 id='txt'> |Activos</h3>
+    @else
+      <h3 id='txt'> |Papelera</h3>
+    @endif
+    <div class="sep"></div>
+    {!!Form::open(['route'=>'users.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
+    {!! Form::text('nombre',null,['placeholder'=>'Nombre de usuario']) !!}
+    {!! Form::submit('Buscar') !!}
+    {!! Form::close() !!}
+  </div>
 	<center>
 		<table id="block">
 			<tr>
@@ -62,7 +76,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 				<th>Acciones</th>
 			</tr>
 			<?php $a=1; ?>
-			@foreach($usuarioAc as $usac)
+			@foreach($usuarioAc as $user)
 			<tr>
 				<td>{{$a}}</td>
 				<td>{{$user->name}}</td>
@@ -73,11 +87,12 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
 						<div class="image">
 							<div class="tooltip">
-								<a href={!! asset('/user/'.$user->id.'/edit') !!}>
+								<a href={!! asset('/users/'.$user->id.'/edit') !!}>
 									<img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
 								</a>
 								<span class="tooltiptextup">Editar</span>
 							</div>
+
 							<div class="tooltip">
 								@include('User.Formularios.darDeBaja')
 								<span class="tooltiptextup">Papelera</span>
@@ -95,8 +110,9 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			<?php $a=$a+1; ?>
 			@endforeach
 		</table>
-		{!! str_replace ('/?','?', $usuarioAc->render()) !!}
-		{!! str_replace ('/?','?', $usuarioInac->render()) !!}
+		 <div id="act">
+      {!! str_replace ('/?', '?', $usuarioAc->appends(Request::only(['nombre','estado']))->render ()) !!}
+    </div>
 	</center>
 </div>
 @stop

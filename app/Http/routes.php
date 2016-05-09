@@ -77,3 +77,8 @@ Route::match(['get','post'],'/darAltaCaja/{id}','CajasController@darAlta');
 
 
 Route::resource('cuentas', 'CuentasController');
+
+
+
+Route::resource ('proveedores', 'ProveedoresController');
+Route::match(['get','post'],'/darAltaProveedores/{id}','ProveedoresController@darAlta');

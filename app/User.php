@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email','password','nom_usuario','salario','fecha_de_nacimiento','telefono','fecha_inicio','direccion','estado'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -36,4 +36,21 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public static function buscar($nombre,$estado){
+      return User::nombre($nombre)->estado($estado)->orderBy('name')->paginate(8);
+    }
+
+    public function scopeNombre($query, $nombre){
+      if (trim($nombre)!="") {
+        $query->where('name','LIKE','%'.$nombre.'%');
+      }
+    }
+
+    public function scopeEstado($query, $estado){
+      if($estado == null){
+        $estado = 1;
+      }
+      $query->where('estado', $estado);
+    }
 }

@@ -3,12 +3,11 @@
 <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
-      <a href={!! asset('/users') !!}>
+      <a href="#">
         <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Atras</span>
     </div>
-
     <div class="tooltip">
       <a href="#">
         <img src={!! asset('/img/WB/ayu.svg') !!} alt="" class="circ"/>
@@ -18,11 +17,11 @@
   </div>
 <div class="panel">
 	<div class="enc">
-		<h2>Usuarios</h2>
+		<h2>Productos</h2>
     <h3 id="txt">|Nuevo</h3>
 	</div>
-	{!!Form::open(['route'=>'users.store','method'=>'POST'])!!}
-	@include('User.Formularios.Formulario')
+	{!!Form::open(['route'=>'productos.store','method'=>'POST'])!!}
+	@include('Productos.Formularios.formulario')
 	{!!Form::submit('Guardar')!!}
 	{!!Form::close()!!}
 </div>

@@ -3,27 +3,22 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-use sialas\User;
+
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use DB;
-use Redirect;
-use Session;
+use sialas\Categorias;
+use sialas\Marcas;
 
-class UsersController extends Controller
+class ProductosController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-        $state = $request->get('estado');
-        $name = $request->get('name');
-        $usuarioAc= User::buscar($name,$state);
-        return view('user.index',compact('usuarioAc','usuarioInac','state','name'));
     }
 
     /**
@@ -33,8 +28,9 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
-        return view('user.create');
+        $c= Categorias::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $m= Marcas::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        return view('productos.create',compact('c','m'));
     }
 
     /**
@@ -46,8 +42,6 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-         User::create($request->All());
-        return redirect('/users')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -59,8 +53,6 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        $us = User::find($id);
-        return View::make('User.show')->with('us',$us);
     }
 
     /**
@@ -72,8 +64,6 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $usuario=User::find($id);
-        return view('User.edit', compact('user'));
     }
 
     /**
@@ -85,11 +75,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $usuario=User::find($id);
-        $usuario->fill($request->all());
-        $usuario->save();
-        Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/users');
+        //
     }
 
     /**
@@ -100,18 +86,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $usuario=User::find($id);
-        $usuario->estado=false;
-        $usuario->save();
-        Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/users');
-    }
-    public function darAlta($id)
-    {
-        $usuario=User::find($id);
-        $usuario->estado=true;
-        $usuario->save();
-        Session::flash('mensaje','Registro dado de Alta');
-        return Redirect::to('/users');
+        //
     }
 }

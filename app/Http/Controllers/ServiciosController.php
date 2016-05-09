@@ -6,13 +6,12 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-
-
 use sialas\servicios;
 use sialas\Http\Requests\ServiciosRequest;
 use DB;
 use Redirect;
 use Session;
+use View;
 
 
 class ServiciosController extends Controller
@@ -65,7 +64,8 @@ class ServiciosController extends Controller
      */
     public function show($id)
     {
-        //
+        $s = Servicios::find($id);
+        return View::make('Servicios.show')->with('s', $s);
     }
 
     /**

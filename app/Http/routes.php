@@ -80,5 +80,15 @@ Route::resource('cuentas', 'CuentasController');
 
 
 
+<<<<<<< HEAD
 Route::resource ('proveedores', 'ProveedoresController');
 Route::match(['get','post'],'/darAltaProveedores/{id}','ProveedoresController@darAlta');
+=======
+
+
+
+
+
+
+Route::resource('productos','ProductosController');
+>>>>>>> origin/master

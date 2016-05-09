@@ -60,7 +60,7 @@
       <h3 id='txt'> |Papelera</h3>
     @endif
     <div class="sep"></div>
-    {!!Form::open(['route'=>'categorias.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
+    {!!Form::open(['route'=>'servicios.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
     {!! Form::text('nombre',null,['placeholder'=>'Nombre de servicio']) !!}
     {!! Form::submit('Buscar') !!}
     {!! Form::close() !!}

@@ -20,10 +20,14 @@ class MarcasController extends Controller
      */
     public function index()
     {
-        $marcasActivas= Marcas::where('estado','=', 1)->orderBy('nombre')->get();
+        /*$marcasActivas= Marcas::where('estado','=', 1)->orderBy('nombre')->get();
         $marcasInactivas= Marcas::where('estado','=', 0)->orderBy('nombre')->get();
        
-        return view('marcas.index',compact('marcasActivas','marcasInactivas'));
+        return view('marcas.index',compact('marcasActivas','marcasInactivas'));*/
+        $state = $request->get('estado');
+        $name = $request->get('nombre');
+        $marcasActivas= Marcas::buscar($name,$state);
+        return view('marcas.index',compact('marcasActivas','marcasInactivas','state','name'));
     }
 
     /**

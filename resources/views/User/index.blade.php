@@ -14,16 +14,24 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/user/create') !!} >
-      <img id= "im" src={!! asset('/img/WB/general/nue.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+    <a href={!! asset('/categorias/create') !!}>
+      <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
-    <span class="tooltiptext" id="tt">Nuevo</span>
+    <span class="tooltiptext">Nuevo</span>
   </div>
   <div class="tooltip">
-    <a href="#">
-      <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ" onclick="activo('block', 'none', 'tt', 'im')"/>
+    <a href={!! asset('/user?name='.$name.'&estado='.$cam) !!}>
+      @if(!$cam)
+        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+      @else
+        <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
+      @endif
     </a>
-    <span class="tooltiptext" id="tt">Papelera</span>
+    @if(!$cam)
+      <span class="tooltiptext" id="tt">Papelera</span>
+    @else
+      <span class="tooltiptext" id="tt">Activos</span>
+    @endif
   </div>
   <div class="tooltip">
     <a href="#">
@@ -73,48 +81,6 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 							<div class="tooltip">
 								@include('User.Formularios.darDeBaja')
 								<span class="tooltiptextup">Papelera</span>
-							</div>
-							<div class="tooltip">
-								<a href={!! asset("/user/".$user->id) !!}>
-									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-								</a>
-								<span class="tooltiptextup">Ver</span>
-							</div>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<?php $a=$a+1; ?>
-			@endforeach
-		</table>
-		<table id="none">
-			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Nombre usuario</th>
-				<th>Dirección</th>
-				<th>Acciones</th>
-			</tr>
-			<?php $a=$a+1; ?>
-			@foreach(usuarioInac as $usinac)
-			<tr>
-				<td>{{$a}}</td>
-				<td>{{$user->name}}</td>
-				<td>{{$user->nom_usuario}}</td>
-				<td>{{$user->direccion}}</td>
-				<td>
-					<div class="up">
-						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
-						<div class="image">
-							<div class="tooltip">
-								<a href={!! asset('/user/'.$user->id.'/edit') !!}>
-									<img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
-								</a>
-								<span class="tooltiptextup">Editar</span>
-							</div>
-							<div class="tooltip">
-								@include('User.Formularios.darDeAlta')
-								<span class="tooltiptextup">Activar</span>
 							</div>
 							<div class="tooltip">
 								<a href={!! asset("/user/".$user->id) !!}>

@@ -36,4 +36,21 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+
+    public static function buscar($nombre,$estado){
+      return User::name($nombre)->estado($estado)->orderBy('name')->paginate(8);
+    }
+
+    public function scopeNombre($query, $nombre){
+      if (trim($nombre)!="") {
+        $query->where('name','LIKE','%'.$nombre.'%');
+      }
+    }
+
+    public function scopeEstado($query, $estado){
+      if($estado == null){
+        $estado = 1;
+      }
+      $query->where('estado', $estado);
+    }
 }

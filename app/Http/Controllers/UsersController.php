@@ -17,12 +17,13 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $usuarioAc=User::where('estado','=', 1)->orderBy('name','asc')->paginate(10);//estamos guardando dentro de la var todo lo q tiene la taba usuarios
-        $usuarioInac=User::where('estado','=', 0)->orderBy('name','asc')->paginate(10);
-        return view('user.index',compact('usuarioAc', 'usuarioInac'));
+        $state = $request->get('estado');
+        $name = $request->get('name');
+        $usuarioAc= User::buscar($name,$state);
+        return view('user.index',compact('usuarioAc','usuarioInac','state','name'));
     }
 
     /**

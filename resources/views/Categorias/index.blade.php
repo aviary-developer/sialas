@@ -1,4 +1,4 @@
-s@extends ('welcome')
+@extends ('welcome')
 @section ('layout')
 @if(Session::has('mensaje'))
   <?php $men=Session::get('mensaje');

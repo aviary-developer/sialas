@@ -2,7 +2,7 @@
 
 
 
-s@extends ('welcome')
+@extends ('welcome')
 @section ('layout')
 @if(Session::has('mensaje'))
   <?php $men=Session::get('mensaje');
@@ -64,7 +64,7 @@ s@extends ('welcome')
     @endif
     <div class="sep"></div>
     {!!Form::open(['route'=>'marcas.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
-    {!! Form::text('nombre',null,['placeholder'=>'Nombre de categoria']) !!}
+    {!! Form::text('nombre',null,['placeholder'=>'Nombre de Marcas']) !!}
     {!! Form::submit('Buscar') !!}
     {!! Form::close() !!}
   </div>
@@ -102,7 +102,7 @@ s@extends ('welcome')
                   </div>
                 @endif
                 <div class="tooltip">
-                  <a href={!! asset('/Marcas/'.$c->id) !!}>
+                  <a href={!! asset('/marcas/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Ver</span>

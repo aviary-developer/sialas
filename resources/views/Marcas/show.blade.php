@@ -8,15 +8,32 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
   <div class="lfloat"></div>
   <div class="tooltip">
     <a href={!! asset('/marcas') !!}>
-        <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
-      </a>
+      <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
+    </a>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href="#">
-      <img id= "im" src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ" onclick="activo('block','none','tt','im')"/>
+    <a href={!! asset('/marcas/'.$c->id.'/edit') !!}>
+      <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
     </a>
-    <span class="tooltiptext" id="tt">Nuevo</span>
+    <span class="tooltiptext">Editar</span>
+  </div>
+  @if($c->estado == 1)
+    <div class="tooltip">
+        @include('Marcas.Formularios.darDeBaja')
+      <span class="tooltiptext">Papelera</span>
+    </div>
+  @else
+    <div class="tooltip">
+        @include('Marcas.Formularios.darDeAlta')
+      <span class="tooltiptext">Activar</span>
+    </div>
+  @endif
+  <div class="tooltip">
+    <a href="#">
+      <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Reporte</span>
   </div>
   <div class="tooltip">
     <a href="#">

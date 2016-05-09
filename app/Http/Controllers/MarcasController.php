@@ -18,7 +18,7 @@ class MarcasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         /*$marcasActivas= Marcas::where('estado','=', 1)->orderBy('nombre')->get();
         $marcasInactivas= Marcas::where('estado','=', 0)->orderBy('nombre')->get();

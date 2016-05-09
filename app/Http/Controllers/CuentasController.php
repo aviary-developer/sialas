@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Cuentas;
+use Redirect;
+use Session;
+use View;
 
 class CuentasController extends Controller
 {
@@ -101,7 +104,8 @@ class CuentasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $c = Cuentas::find($id);
+        return view('cuentas.edit',compact('c'));
     }
 
     /**
@@ -113,7 +117,13 @@ class CuentasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cuentas=Cuentas::find($id);
+
+        $cuentas->fill($request->All());
+
+        $cuentas->save();
+
+        return redirect('/cuentas')->with('mensaje','Registro Modificado');
     }
 
     /**

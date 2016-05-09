@@ -10,7 +10,7 @@ use DB;
 use Redirect;
 use Session;
 
-class UsersController extends Controller
+class MobiliariosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,9 +20,9 @@ class UsersController extends Controller
     public function index()
     {
         //
-        $usuarioAc=User::where('estado','=', 1)->orderBy('name','asc')->paginate(10);//estamos guardando dentro de la var todo lo q tiene la taba usuarios
-        $usuarioInac=User::where('estado','=', 0)->orderBy('name','asc')->paginate(10);
-        return view('user.index',compact('usuarioAc', 'usuarioInac'));
+        $mobiliarioAc=Mobiliarios::where('estado','=', 1)->orderBy('name','asc')->paginate(10);//estamos guardando dentro de la var todo lo q tiene la taba usuarios
+        $mobiliarioInac=Mobiliarios::where('estado','=', 0)->orderBy('name','asc')->paginate(10);
+        return view('mobiliarios.index',compact('mobiliarioAc', 'mobiliarioInac'));
     }
 
     /**
@@ -33,7 +33,7 @@ class UsersController extends Controller
     public function create()
     {
         //
-        return view('user.create');
+        return view('Mobiliarios.create');
     }
 
     /**
@@ -45,8 +45,8 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         //
-         User::create($request->All());
-        return redirect('/user')->with('mensaje','Registro Guardado');
+         Mobiliarios::create($request->All());
+        return redirect('/mobiliarios')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -58,8 +58,8 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        $usuario = User::where('id','=',$id)->get();
-        return view('User.show',compact('user'));
+        $mobiliarios = Mobiliarios::where('id','=',$id)->get();
+        return view('Mobiliarios.show',compact('mobiliarios'));
     }
 
     /**
@@ -71,8 +71,8 @@ class UsersController extends Controller
     public function edit($id)
     {
         //
-        $usuario=User::find($id);
-        return view('user.edit', compact('user'));
+        $mobiliarios=Mobiliarios::find($id);
+        return view('mobiliarios.edit', compact('mobiliarios'));
     }
 
     /**
@@ -84,11 +84,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $usuario=User::find($id);
-        $usuario->fill($request->all());
-        $usuario->save();
+        $mobiliarios=Mobiliarios::find($id);
+        $mobiliarios->fill($request->all());
+        $mobiliarios->save();
         Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/user');
+        return Redirect::to('/mobiliarios');
     }
 
     /**
@@ -99,18 +99,18 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $usuario=User::find($id);
-        $usuario->estado=false;
-        $usuario->save();
+        $mobiliarios=Mobiliarios::find($id);
+        $mobiliarios->estado=false;
+        $mobiliarios->save();
         Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/user');
+         return Redirect::to('/mobiliarios');
     }
     public function darAlta($id)
     {
-        $usuario=User::find($id);
-        $usuario->estado=true;
-        $usuario->save();
+        $mobiliarios=Mobiliarios::find($id);
+        $mobiliarios->estado=true;
+        $mobiliarios->save();
         Session::flash('mensaje','Registro dado de Alta');
-        return Redirect::to('/user');
+        return Redirect::to('/mobiliarios');
     }
 }

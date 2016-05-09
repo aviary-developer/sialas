@@ -96,7 +96,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 				<th>Acciones</th>
 			</tr>
 			<?php $a=$a+1; ?>
-			@foreach($usuarioInac as $usinac)
+			@foreach(usuarioInac as $usinac)
 			<tr>
 				<td>{{$a}}</td>
 				<td>{{$user->name}}</td>

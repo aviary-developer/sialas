@@ -33,36 +33,20 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 	<table clas="none">
     @foreach($user as $u)
 		<tr>
-      <td>
-        Identificador:
-      </td>
-      <td>
-        {{$u->id}}
-      </td>
+      <td>Identificador:</td>
+      <td>{{$u->id}}</td>
 		</tr>
     <tr>
-      <td>
-        Nombre:
-      </td>
-      <td>
-        {{$u->nombre}}
-      </td>
+      <td>Nombre:</td>
+      <td>{{$u->nombre}}</td>
 		</tr>
     <tr>
-      <td>
-        Nombre de usuario:
-      </td>
-      <td>
-        {{$u->nom_usuario}}
-      </td>
+      <td>Nombre de usuario:</td>
+      <td>{{$u->nom_usuario}}</td>
 		</tr>
     <tr>
-      <td>
-        Dirección:
-      </td>
-      <td>
-        {{$u->direccion}}
-      </td>
+      <td>Dirección:</td>
+      <td>{{$u->direccion}}</td>
     </tr>
   @endforeach
 	</table>

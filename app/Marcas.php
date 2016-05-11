@@ -24,4 +24,7 @@ class Marcas extends Model
       }
       $query->where('estado', $estado);
     }
+
+    
+
 }

@@ -2,10 +2,17 @@
 {!!Form::text('nombre',null,['placeholder'=>'Nombre del producto'])!!}
 
 {!!Form::label('lmarca','Marca:')!!}	
-{!!Form::select('marca_id')!!}	
+<select name="marca_id">
+	@foreach($m as $marcas)
+	<option value="{{$marcas->id}}">{{$marcas->nombre}}</option>
+	@endforeach
+</select>	
 
 {!!Form::label('lcategoria','Categoria:')!!}	
-{!!Form::select('categoria_id')!!}
-
+<select name="categoria_id">
+	@foreach($c as $cate)
+	<option value="{{$cate->id}}">{{$cate->nombre}}</option>
+	@endforeach
+</select>
 {!!Form::label('limagen','Imagen:')!!}	
 {!!Form::file('nombre_img')!!}

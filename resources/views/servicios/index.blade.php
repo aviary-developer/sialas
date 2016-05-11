@@ -38,7 +38,7 @@
     @endif
   </div>
   <div class="tooltip">
-    <a href="servicios/create">
+    <a href="#">
       <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext" id="tt">Reporte</span>

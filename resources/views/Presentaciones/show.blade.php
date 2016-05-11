@@ -1,5 +1,9 @@
 @extends('welcome')
 @section('layout')
+  @if(Session::has('mensaje'))
+    <?php $men=Session::get('mensaje');
+    echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
+  @endif
   <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
@@ -36,7 +40,7 @@
           <th>Acciones</th>
         </tr>
         <?php $a = 1; ?>
-        @foreach($presentaciones as $c)
+        @foreach($presentacion as $c)
           <tr>
             <td>{{$a}}</td>
             <td>{{$c->nombre}}</td>
@@ -55,12 +59,6 @@
                     @include('Categorias.Formularios.darDeBaja')
                     <span class="tooltiptextup">Papelera</span>
                   </div>
-                  <div class="tooltip">
-                    <a href={!! asset('/categorias/'.$c->id) !!}>
-                      <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-                    </a>
-                    <span class="tooltiptextup">Ver</span>
-                  </div>
                 </div>
               </div>
             </td>
@@ -69,9 +67,9 @@
         @endforeach
       </table>
       <div id="act">
-        {!! str_replace ('/?', '?', $categoriasActivas->appends(Request::only(['nombre','estado']))->render ()) !!}
+        {!! str_replace ('/?', '?', $presentacion) !!}
       </div>
     </center>
   </div>
 
-@endsection
+@stop

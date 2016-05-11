@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Presentaciones;
 use Redirect;
 use Session;
+use View;
 
 class PresentacionesController extends Controller
 {
@@ -16,11 +18,9 @@ class PresentacionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($producto)
+    public function index()
     {
-        //
-        $presentacion = Presentaciones::where('producto_id','=',$producto)->orderBy('equivale')->paginate(8);
-        $return view('presentaciones.index',compact('presentacion','producto'));
+
     }
 
     /**
@@ -50,9 +50,10 @@ class PresentacionesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($producto)
     {
-        //
+      $presentacion = Presentaciones::where('producto_id','=',$producto)->orderBy('equivale')->paginate(8);
+      return view('Presentaciones.show',compact('presentacion','producto'));
     }
 
     /**

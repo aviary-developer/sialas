@@ -81,7 +81,9 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        //
+         $c = Productos::find($id);
+        //return view('Categorias.show',compact('categorias'));
+        return View::make('Productos.show')->with('c', $c);
     }
 
     /**
@@ -93,6 +95,10 @@ class ProductosController extends Controller
     public function edit($id)
     {
         //
+        $productos = Productos::find($id);
+        $c= Categorias::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $m= Marcas::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        return view('Productos.edit',compact('productos','c','m'));
     }
 
     /**
@@ -104,7 +110,11 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $productos = Productos::find($id);
+        $productos->fill($request->All());
+        $productos->save();
+        Session::flash('mensaje','¡Registro Actualizado!');
+        return Redirect::to('/productos');
     }
 
     /**

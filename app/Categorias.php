@@ -26,5 +26,6 @@ class Categorias extends Model
       $query->where('estado', $estado);
     }
 
+    
    
 }

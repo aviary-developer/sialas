@@ -24,4 +24,12 @@ class Productos extends Model
       }
       $query->where('estado', $estado);
     }
+     public static function nombreMarcas($id){
+      $n= Marcas::find($id);
+      return $n->nombre; 
+    }
+     public static function nombreCategorias($id){
+      $n= Categorias::find($id);
+      return $n->nombre; 
+    }
 }

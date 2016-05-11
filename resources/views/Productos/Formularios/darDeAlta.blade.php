@@ -1,4 +1,4 @@
-{!!Form::open(['url'=>['darAltaProductos',$c->id],'method'=>'POST'])!!}
+{!!Form::open(['url'=>['darAltaProductos',$p->id],'method'=>'POST'])!!}
 <img src={!! asset('/img/WB/upp.svg') !!} alt="" class="circ" onclick="return swal({
 title: '¿Esta seguro que desea restaurar?',
 text: 'El registro volverá a estar disponible!',   type: 'warning',

@@ -1,0 +1,2 @@
+Modificar migraciones
+https://styde.net/modificando-migraciones-en-laravel/

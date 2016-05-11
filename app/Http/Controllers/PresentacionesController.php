@@ -20,7 +20,7 @@ class PresentacionesController extends Controller
     {
         //
         $presentacion = Presentaciones::where('producto_id','=',$producto)->orderBy('equivale')->paginate(8);
-        $return view('presentaciones.index',compact('presentacion'));
+        $return view('presentaciones.index',compact('presentacion','producto'));
     }
 
     /**

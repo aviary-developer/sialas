@@ -147,6 +147,7 @@ return [
         sialas\Providers\AuthServiceProvider::class,
         sialas\Providers\EventServiceProvider::class,
         sialas\Providers\RouteServiceProvider::class,
+       
 
     ],
 

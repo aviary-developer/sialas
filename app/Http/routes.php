@@ -80,10 +80,8 @@ Route::resource('cuentas', 'CuentasController');
 
 
 
-<<<<<<< HEAD
 Route::resource ('proveedores', 'ProveedoresController');
 Route::match(['get','post'],'/darAltaProveedores/{id}','ProveedoresController@darAlta');
-=======
 
 
 
@@ -91,4 +89,3 @@ Route::match(['get','post'],'/darAltaProveedores/{id}','ProveedoresController@da
 
 
 Route::resource('productos','ProductosController');
->>>>>>> origin/master

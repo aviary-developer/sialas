@@ -62,13 +62,12 @@ class ProductosController extends Controller
    // Cambiar de tamaño
    $image->resize(240,200);
    // Guardar
-   $image->save($path.'ProductoBahamas_'.$file->getClientOriginalName());
+   $image->save($path.'ProductoSialas_'.$file->getClientOriginalName());
    //Guardamos nombre y nombreOriginal en la BD
    $productos = new Productos();
    $productos->nombre = Input::get('nombre');
    $productos->marca_id = $request['marca_id'];
    $productos->categoria_id = $request['categoria_id'];
-   $productos->estado = $Request['estado'];
    $productos->nombre_img = $file->getClientOriginalName();
    $productos->save();
    return redirect::to('/productos');

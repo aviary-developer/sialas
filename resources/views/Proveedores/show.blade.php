@@ -13,12 +13,12 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/proveedores/'.$c->id.'/edit') !!}>
+    <a href={!! asset('/proveedores/'.$p->id.'/edit') !!}>
       <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Editar</span>
   </div>
-  @if($c->estado == 1)
+  @if($p->estado == 1)
     <div class="tooltip">
         @include('Proveedores.Formularios.darDeBaja')
       <span class="tooltiptext">Papelera</span>

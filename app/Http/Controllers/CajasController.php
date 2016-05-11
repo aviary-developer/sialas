@@ -9,6 +9,8 @@ use sialas\Http\Controllers\Controller;
 use DB;
 use Redirect;
 use Session;
+use View;
+use Carbon\Carbon;
 
 class CajasController extends Controller
 {
@@ -17,11 +19,12 @@ class CajasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cajasActivas= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->paginate(10);
-        $cajasInactivas= Cajas::where('estado','=', 0)->orderBy('nombre','asc')->paginate(10);
-        return view('cajas.index',compact('cajasActivas','cajasInactivas'));
+      $state = $request->get('estado');
+      $name = $request->get('nombre');
+      $cajasActivas= Cajas::buscar($name,$state);
+      return view('cajas.index',compact('cajasActivas','cajasInactivas','state','name'));
     }
 
     /**
@@ -54,8 +57,9 @@ class CajasController extends Controller
      */
     public function show($id)
     {
-        $cajas = Cajas::where('id','=',$id)->get();
-        return view('Cajas.show',compact('cajas'));
+      $caja = Cajas::find($id);
+      //return view('Categorias.show',compact('categorias'));
+      return View::make('Cajas.show')->with('caja', $caja);
     }
 
     /**

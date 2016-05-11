@@ -3,12 +3,14 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-use sialas\User;
+
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use DB;
+use sialas\Categorias;
 use Redirect;
 use Session;
+use View;
+use Carbon\Carbon;
 
 class MobiliariosController extends Controller
 {
@@ -17,12 +19,13 @@ class MobiliariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $mobiliarioAc=Mobiliarios::where('estado','=', 1)->orderBy('name','asc')->paginate(10);//estamos guardando dentro de la var todo lo q tiene la taba usuarios
-        $mobiliarioInac=Mobiliarios::where('estado','=', 0)->orderBy('name','asc')->paginate(10);
-        return view('mobiliarios.index',compact('mobiliarioAc', 'mobiliarioInac'));
+        $state = $request->get('estado');
+        $name = $request->get('nombre');
+        $mobiliariosAc= Categorias::buscar($name,$state);
+        return view('mobiliarios.index',compact('mobiliariosAc','mobiliariosInac','state','name'));
     }
 
     /**
@@ -44,9 +47,8 @@ class MobiliariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
-         Mobiliarios::create($request->All());
-        return redirect('/mobiliarios')->with('mensaje','Registro Guardado');
+        Mobiliarios::create($request->All());
+        return redirect('/mobiliarios');
     }
 
     /**
@@ -57,9 +59,9 @@ class MobiliariosController extends Controller
      */
     public function show($id)
     {
-        //
-        $mobiliarios = Mobiliarios::where('id','=',$id)->get();
-        return view('Mobiliarios.show',compact('mobiliarios'));
+        $mob = Mobiliarios::find($id);
+        //return view('Categorias.show',compact('categorias'));
+        return View::make('Mobiliarios.show')->with('mob', $mob);
     }
 
     /**
@@ -71,8 +73,8 @@ class MobiliariosController extends Controller
     public function edit($id)
     {
         //
-        $mobiliarios=Mobiliarios::find($id);
-        return view('mobiliarios.edit', compact('mobiliarios'));
+        $mobiliario = Mobiliarios::find($id);
+        return view('Mobiliarios.edit',compact('mobiliario'));
     }
 
     /**
@@ -84,10 +86,10 @@ class MobiliariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mobiliarios=Mobiliarios::find($id);
-        $mobiliarios->fill($request->all());
-        $mobiliarios->save();
-        Session::flash('mensaje','¡Registro Actualizado!');
+        //
+        $mobiliario = Mobiliarios::find($id);
+        $mobiliario->fill($request->All());
+        $mobiliario->save();
         return Redirect::to('/mobiliarios');
     }
 
@@ -99,18 +101,18 @@ class MobiliariosController extends Controller
      */
     public function destroy($id)
     {
-        $mobiliarios=Mobiliarios::find($id);
-        $mobiliarios->estado=false;
-        $mobiliarios->save();
-        Session::flash('mensaje','Registro dado de Baja');
+        //
+        $mobiliarios = Mobiliarios::find($id);
+         $mobiliarios->estado=false;
+         $mobiliarios->save();
+         Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/mobiliarios');
     }
-    public function darAlta($id)
-    {
-        $mobiliarios=Mobiliarios::find($id);
-        $mobiliarios->estado=true;
-        $mobiliarios->save();
-        Session::flash('mensaje','Registro dado de Alta');
-        return Redirect::to('/mobiliarios');
+    public function darAlta($id){
+      $mobiliarios = Mobiliarios::find($id);
+         $mobiliarios->estado=true;
+         $mobiliarios->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/mobiliarios');
     }
 }

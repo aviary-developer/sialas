@@ -88,6 +88,5 @@ Route::match(['get','post'],'/darAltaProveedores/{id}','ProveedoresController@da
 
 
 
-
 Route::resource('productos','ProductosController');
 Route::match(['get','post'],'/darAltaProductos/{id}','ProductosController@darAlta');

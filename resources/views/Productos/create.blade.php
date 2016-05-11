@@ -20,7 +20,7 @@
 		<h2>Productos</h2>
     <h3 id="txt">|Nuevo</h3>
 	</div>
-	{!!Form::open(['route'=>'productos.store','method'=>'POST'])!!}
+	{!!Form::open(['route'=>'productos.store','method'=>'POST','enctype'=>'multipart/form-data'])!!}
 	@include('Productos.Formularios.formulario')
 	{!!Form::submit('Guardar')!!}
 	{!!Form::close()!!}

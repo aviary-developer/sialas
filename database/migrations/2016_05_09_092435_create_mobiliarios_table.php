@@ -14,6 +14,17 @@ class CreateMobiliariosTable extends Migration
     {
         Schema::create('mobiliarios', function (Blueprint $table) {
             $table->increments('id');
+            $table->increments('idTipo');
+            $table->increments('idProveedor');
+            $table->string('codigo');
+            $table->string('nombre');
+            $table->string('fecha');
+            $table->double('precio');
+            $table->integer('depreciacion');
+            $table->integer('residuo');
+            $table->string('descripcion');
+            $table->tinyInteger('activo');
+            $table->string('razon');
         });
     }
 

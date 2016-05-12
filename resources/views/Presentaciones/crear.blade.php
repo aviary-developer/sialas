@@ -18,9 +18,9 @@
   <div class="panel">
     <div class="enc">
       <h2>Presentaciones</h2>
-      <h3 id="txt">|Nuevo</h3>
+      <h3 id="txt">|{{ $nombre }}</h3>
     </div>
-    {!! Form::model($producto,['route'=>['categorias.update',$producto],'method'=>'PUT']) !!}
+    {!! Form::open(['url'=>['guardarPresentaciones',$producto],'method'=>'POST']) !!}
     @include('Presentaciones.Formularios.formulario')
     {!! Form::submit('Guardar') !!}
     {!!Form::close()!!}

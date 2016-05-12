@@ -28,12 +28,11 @@ class PresentacionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function crear($producto)
+
+    public function create()
     {
         //
-        return view('Presentaciones.crear',compact('producto'));
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -53,8 +52,9 @@ class PresentacionesController extends Controller
      */
     public function show($producto)
     {
+      $nombre = Presentaciones::nombreProducto($producto);
       $presentacion = Presentaciones::where('producto_id','=',$producto)->orderBy('equivale')->paginate(8);
-      return view('Presentaciones.show',compact('presentacion','producto'));
+      return view('Presentaciones.show',compact('presentacion','producto','nombre'));
     }
 
     /**
@@ -89,5 +89,23 @@ class PresentacionesController extends Controller
     public function destroy($id)
     {
         //
+    }
+    //Nueva función
+    public function crear($producto)
+    {
+      $nombre = Presentaciones::nombreProducto($producto);
+        return view('Presentaciones.crear',compact('producto','nombre'));
+    }
+
+    public function guardar(Request $request, $producto)
+    {
+        $id = Presentaciones::all()->count();
+        $pres = new Presentaciones;
+        $pres->id = $id;
+        $pres->nombre = $request->nombre;
+        $pres->equivale = $request->equivale;
+        $pres->producto_id = $producto;
+        $pres->save();
+        return redirect('/presentaciones/'.$producto)->with('mensaje','Registro Guardado');
     }
 }

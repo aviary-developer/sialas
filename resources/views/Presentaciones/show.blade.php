@@ -13,7 +13,7 @@
       <span class="tooltiptext">Atras</span>
     </div>
     <div class="tooltip">
-      <a href={!! asset('/presentaciones/'.$producto.'/create') !!}>
+      <a href={!! asset('/presentaciones/crear/'.$producto) !!}>
         <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Nuevo</span>
@@ -28,7 +28,7 @@
   <div class="panel">
     <div class="enc">
       <h2>Presentaciones</h2>
-      <h3 id='txt'> |Activos</h3>
+      <h3 id='txt'> |{{ $nombre }}</h3>
       <div class="sep"></div>
     </div>
     <center>

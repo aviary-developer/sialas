@@ -10,6 +10,7 @@ $cazul2 : #0066cc;
 $cblanco : #fff;
 $cgris0 : #f9f9f9;
 $cgris1 : #ececec;
+$cgris6 : #ccc;
 $cgris2 : #acacac;
 $cgris3 : #8c8c8c;
 $cgris4 : #3c3c3c;
@@ -285,7 +286,8 @@ input[type=submit]{
 }
 input:focus{
   outline: none !important;
-  box-shadow: 0px 0px 10px $cnaranja1;
+  border: $cazul2 solid 1px;
+  background: $cgris6;
 }
 input[type=submit]:hover{
   background: $cgris5;

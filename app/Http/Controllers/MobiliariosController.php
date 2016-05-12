@@ -26,6 +26,8 @@ class MobiliariosController extends Controller
         $name = $request->get('nombre');
         $mobiliariosAc= Categorias::buscar($name,$state);
         return view('mobiliarios.index',compact('mobiliariosAc','mobiliariosInac','state','name'));
+        $data['activo'] = Mobiliarios::lists('activo','inactivo');
+        return view('mobiliarios.index',$data);
     }
 
     /**

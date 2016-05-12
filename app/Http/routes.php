@@ -43,7 +43,8 @@ Route::match(['get','post'],'/darAltaServicio/{id}','ServiciosController@darAlta
 
 
 
-
+Route::resource('mobiliarios', 'MobiliariosController');
+Route::match(['get','post'],'/darAltaMobiliarios/{id}','MobiliariosController@darAlta');
 
 
 Route::resource('users','UsersController');

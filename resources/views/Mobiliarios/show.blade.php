@@ -31,22 +31,26 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
   </div>
   <center>
 	<table clas="none">
-    @foreach($user as $u)
+    @foreach($mob as $m)
 		<tr>
       <td>Identificador:</td>
-      <td>{{$u->id}}</td>
+      <td>{{$m->id}}</td>
 		</tr>
     <tr>
-      <td>Nombre:</td>
-      <td>{{$u->nombre}}</td>
+      <td>Tipo:</td>
+      <td>{{$m->id_Tipo}}</td>
 		</tr>
     <tr>
-      <td>Nombre de usuario:</td>
-      <td>{{$u->nom_usuario}}</td>
+      <td>Distribuidor</td>
+      <td>{{$m->id_Distribuidor}}</td>
 		</tr>
     <tr>
-      <td>Dirección:</td>
-      <td>{{$u->direccion}}</td>
+      <td>Código:</td>
+      <td>{{$m->codigo}}</td>
+    </tr>
+    <tr>
+      <td>Descripción:</td>
+      <td>{{$m->descripcion}}</td>
     </tr>
   @endforeach
 	</table>

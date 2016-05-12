@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMobiliariosTable extends Migration
+class AddMobiliarios2Table extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,8 @@ class AddMobiliariosTable extends Migration
     public function up()
     {
         Schema::table('mobiliarios', function (Blueprint $table) {
-            $table->integer('idTipo');
-            $table->integer('idDistribuidor');
-            $table->string('codigo');
-            $table->string('nombre');
-            $table->string('fecha');
-            $table->double('precio');
-            $table->integer('depreciacion');
-            $table->string('descripcion');
-            $table->tinyInteger('activo');
-            $table->string('razon');
             //
+            $table->dropColumn('residuo');
         });
     }
 

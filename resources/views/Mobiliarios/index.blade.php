@@ -71,7 +71,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			<tr>
 				<th>Id</th>
 				<th>Tipo</th>
-				<th>Proveedor</th>
+				<th>Distribuidor</th>
 				<th>Código</th>
 				<th>Descripción</th>
 			</tr>
@@ -79,16 +79,16 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			@foreach($mobiliariosAc as $mob)
 			<tr>
 				<td>{{$a}}</td>
-				<td>{{$mobiliarios->idTipo}}</td>
-				<td>{{$mobiliarios->idProveedor}}</td>
-				<td>{{$mobiliarios->codigo}}</td>
-        <td>{{$mobiliarios->descripcion}}</td>
+				<td>{{$mob->idTipo}}</td>
+				<td>{{$mob->idDistribuidor}}</td>
+				<td>{{$mob->codigo}}</td>
+        <td>{{$mob->descripcion}}</td>
 				<td>
 					<div class="up">
 						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
 						<div class="image">
 							<div class="tooltip">
-								<a href={!! asset('/mobiliarios/'.$mobiliarios->id.'/edit') !!}>
+								<a href={!! asset('/mobiliarios/'.$mob->id.'/edit') !!}>
 									<img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
 								</a>
 								<span class="tooltiptextup">Editar</span>
@@ -99,7 +99,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 								<span class="tooltiptextup">Papelera</span>
 							</div>
 							<div class="tooltip">
-								<a href={!! asset("/mobiliarios/".$mobiliarios->id) !!}>
+								<a href={!! asset("/mobiliarios/".$mob->id) !!}>
 									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
 								</a>
 								<span class="tooltiptextup">Ver</span>

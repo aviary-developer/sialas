@@ -20,8 +20,8 @@
       <h2>Usuarios</h2>
       <h3 id="txt">|Editar</h3>
     </div>
-    {!! Form::model($usuario,['route'=>['users.update',$usuario->id],'method'=>'PUT']) !!}
-    @include('User.Formularios.Formulario')
+    {!! Form::model($mobiliario,['route'=>['mobiliarios.update',$mobiliario->id],'method'=>'PUT']) !!}
+    @include('Mobiliario.Formularios.Formulario')
     {!! Form::submit('Actualizar') !!}
     {!!Form::close()!!}
   </div>

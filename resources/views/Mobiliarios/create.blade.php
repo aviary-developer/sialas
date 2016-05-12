@@ -21,7 +21,7 @@
     <h3 id="txt">|Nuevo</h3>
 	</div>
 	{!!Form::open(['route'=>'mobiliarios.store','method'=>'POST'])!!}
-	@include('Mobiliarios.Formularios.Formulario')
+	@include('Mobiliarios.Formularios.formulario')
 	{!!Form::submit('Guardar')!!}
 	{!!Form::close()!!}
 </div>

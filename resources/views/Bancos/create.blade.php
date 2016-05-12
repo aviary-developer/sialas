@@ -3,7 +3,7 @@
   <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
-      <a href={!! asset('/cajas') !!}>
+      <a href={!! asset('/bancos') !!}>
         <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Atras</span>
@@ -17,10 +17,10 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Cajas</h2>
+      <h2>Bancos</h2>
     </div>
-{!! Form::open(['route'=>'cajas.store','method'=>'POST'])!!}
-@include('cajas.Formularios.formulario')
+{!! Form::open(['route'=>'bancos.store','method'=>'POST'])!!}
+@include('bancos.Formularios.formulario')
 {!!Form::submit('Guardar')!!}
 {!!Form::close()!!}
 </div>

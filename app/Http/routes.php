@@ -90,3 +90,9 @@ Route::match(['get','post'],'/darAltaProveedores/{id}','ProveedoresController@da
 
 Route::resource('productos','ProductosController');
 Route::match(['get','post'],'/darAltaProductos/{id}','ProductosController@darAlta');
+
+
+
+
+Route::resource('bancos', 'BancosController');
+Route::match(['get','post'],'/darAltaBanco/{id}','BancosController@darAlta');

@@ -1,6 +1,7 @@
 @if(count($errors)>0)
 <div class="row">
 <div class="col-xs-6">
+<div class="alerta-errores" style="
 padding: 15px;
   margin-bottom: 20px;
   border: 1px solid transparent;

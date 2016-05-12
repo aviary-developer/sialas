@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\clientes;
+use sialas\proveedores;
 use DB;
 use Redirect;
 use Session;
@@ -25,7 +25,7 @@ class ProveedoresController extends Controller
         //
         $state = $request->get('estado');
         $name = $request->get('nombre');
-        $proveedoresActivos= Proveedores::buscar($name,$state);
+        $proveedoresActivos= proveedores::buscar($name,$state);
         return view('proveedores.index',compact('proveedoresActivos','proveedoresInactivos','state','name'));
     }
 
@@ -90,7 +90,7 @@ class ProveedoresController extends Controller
          $proveedor=Proveedores::find($id);
         $proveedor->fill($request->all());
         $proveedor->save();
-        return Redirect::to('/proveedor');
+        return Redirect::to('/proveedores');
     }
 
     /**

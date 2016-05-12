@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Proveedores extends Model
 {
-    protected $fillable = ['nombre_empresa', 'nif', 'direccion','correo','telefono'];
+    protected $fillable = ['nombre', 'contacto', 'nif', 'direccion','correo','telefono'];
 
 
     public static function buscar($nombre,$estado){

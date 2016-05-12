@@ -49,7 +49,14 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
   </div>
   <div class="datos">
     <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$c->id !!}</span></pre>
+    <pre>Dui:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $c->dui }}</span></pre>
+    <pre>Nit:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nit }}</span></pre>
     <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nombre }}</span></pre>
+    <pre>Apellido:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->apellido }}</span></pre>
+    <pre>Direccion:&#09;&#09;&#09;&#09;<span>{{ $c->direccion }}</span></pre>
+    <pre>Correo:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->correo }}</span></pre>
+    <pre>Teléfono:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->telefono }}</span></pre>
+
     @if($c->estado == 1)
       <?php $var = 'Activo'?>
     @else

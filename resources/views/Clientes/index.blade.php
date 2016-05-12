@@ -67,7 +67,7 @@
   <center>
     <table>
       <tr>
-        <th>Id</th>
+        <th>Id  </th>
         <th>Nombre</th>
         <th>Acciones</th>
       </tr>
@@ -75,7 +75,8 @@
       @foreach($clientesActivos as $c)
         <tr>
           <td>{{$a}}</td>
-          <td>{{$c->nombre}}</td>
+          <td>{{$c->nombre}} {{$c->apellido}}</td>
+
           <td>
             <div class="up">
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

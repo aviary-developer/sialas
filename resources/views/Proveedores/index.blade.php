@@ -68,7 +68,8 @@
     <table>
       <tr>
         <th>Id</th>
-        <th>Nombre</th>
+        <th>Empresa</th>
+        <th>Contacto</th>
         <th>Acciones</th>
       </tr>
       <?php $a = 1; ?>
@@ -76,6 +77,7 @@
         <tr>
           <td>{{$a}}</td>
           <td>{{$p->nombre}}</td>
+          <td>{{$p->contacto}}</td>
           <td>
             <div class="up">
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

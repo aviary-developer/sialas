@@ -48,16 +48,22 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <h3 id="txt"> |{{$p->nombre}}</h3>
   </div>
   <div class="datos">
-    <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$p->id !!}</span></pre>
-    <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $p->nombre }}</span></pre>
+    <pre>Identificador:&#09;&#09;&#09;&#09;&#09;&#09;<span>{!!$p->id !!}</span></pre>
+    <pre>Nombre de la Empresa:&#09;&#09;&#09;&#09;<span>{{ $p->nombre }}</span></pre>
+    <pre>Nombre del Contacto:&#09;&#09;&#09;&#09;<span>{{ $p->contacto }}</span></pre>
+    <pre>Número de Identificación Tributaria:&#09;<span>{{ $p->nif }}</span></pre>
+    <pre>Dirección:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $p->direccion }}</span></pre>
+    <pre>Correo Electronico:&#09;&#09;&#09;&#09;&#09;<span>{{ $p->correo }}</span></pre>
+    <pre>Teléfono:&#09;&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $p->telefono }}</span></pre>
+
     @if($p->estado == 1)
       <?php $var = 'Activo'?>
     @else
       <?php $var = 'En papelera'?>
     @endif
-    <pre>Estado:&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
-    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$p->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <pre>Fecha de última edición:&#09;&#09;<span>{{$p->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
+    <pre>Estado:&#09;&#09;&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
+    <pre>Fecha de creación:&#09;&#09;&#09;&#09;&#09;<span>{{$p->created_at->format('d-m-Y g:i:s a')}} </span></pre>
+    <pre>Fecha de última edición:&#09;&#09;&#09;&#09;<span>{{$p->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
   </div>
 </div>
 @stop

@@ -1,6 +1,8 @@
 {!! Form::label('LNombre','Nombre de Empresa:') !!}
-{!! Form::text('nombre_empresa',null,['placeholder'=>'Ingresar Nombre De La Empresa']) !!}
+{!! Form::text('nombre',null,['placeholder'=>'Ingresar Nombre De La Empresa']) !!}
 
+{!! Form::label('Lcontacto','Nombre del Contacto:') !!}
+{!! Form::text('contacto',null,['placeholder'=>'Ingresar Nombre Del Contacto']) !!}
 
 {!! Form::label('LNif','NIF:') !!}
 {!! Form::text('nif',null,['placeholder'=>'Ingresar El Numero De Identificación Fiscal']) !!}

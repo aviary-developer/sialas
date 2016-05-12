@@ -4,7 +4,7 @@ namespace sialas\Http\Requests;
 
 use sialas\Http\Requests\Request;
 
-class ServiciosRequest extends Request
+class ClientesRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,15 @@ class ServiciosRequest extends Request
     public function rules()
     {
         return [
-            'nombre'=>'required ',
-            'proveedor'=>'required',
-            'n_recibo'=>'required',
+             'nombre'=>'required ',
+            'dui'=>'required | max:10',
+            'nit'=>'required | max:17',
+            'direccion'=>'required',
+            'correo'=>'required',
+            'telefono'=>'required | max:9',
+
+
+
         ];
     }
 }

@@ -21,6 +21,7 @@
 			<h2>Servicios</h2>
 			<h3 id='txt'> |Editar</h3>
 		</div>
+		@include('verErrores')
 	{!!Form::model($servicio,['route'=>['servicios.update',$servicio->id],'method'=>'PUT'])!!}
 
 		@include('servicios.formularios.formulario')

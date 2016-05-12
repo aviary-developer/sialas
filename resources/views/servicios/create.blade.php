@@ -20,6 +20,7 @@
       <h2>Servicios</h2>
       <h3 id='txt'> |Nuevo</h3>
     </div>
+    @include('verErrores')
 	{!!Form::open(['route'=>'servicios.store','method'=>'POST'])!!}
 
 		@include('servicios.formularios.formulario')

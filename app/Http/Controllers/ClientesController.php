@@ -46,10 +46,11 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientesRequest $request)
     {
+        
         Clientes::create($request->All());
-        return redirect('/clientes');
+        return redirect('/clientes')->with('mensaje','Registro Guardado');
 
     }
 

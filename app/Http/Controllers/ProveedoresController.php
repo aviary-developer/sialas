@@ -46,10 +46,11 @@ class ProveedoresController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProveedoresRequest $request)
     {
+
          Proveedores::create($request->All());
-        return redirect('/proveedores');
+        return redirect('/proveedores')->with('mensaje','Registro Guardado');
     }
 
     /**

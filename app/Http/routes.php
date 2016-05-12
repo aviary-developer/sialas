@@ -30,7 +30,7 @@ Route::resource('categorias', 'CategoriasController');
 Route::match(['get','post'],'/darAltaCategorias/{id}','CategoriasController@darAlta');
 
 Route::resource('presentaciones', 'PresentacionesController');
-
+Route::match(['get','post'],'/crear/{id}','PresentacionesController@create');
 
 
 

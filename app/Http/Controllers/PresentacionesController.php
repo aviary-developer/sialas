@@ -28,9 +28,10 @@ class PresentacionesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function crear($producto)
     {
         //
+        return view('Presentaciones.crear',compact('producto'));
     }
 
     /**

@@ -1,4 +1,4 @@
-{!!Form::open(['route'=>['cajas.destroy',$caja->id],'method'=>'DELETE'])!!}
+{!!Form::open(['route'=>['bancos.destroy',$banco->id],'method'=>'DELETE'])!!}
 <img src={!! asset('/img/WB/del.svg') !!} alt="" class="circ" onclick="return swal({
 title: '¿Esta seguro de enviar a papelera?',
 text: 'Ya no estara disponible!',   type: 'warning',

@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Bancos;
+use DB;
+use Redirect;
+use Session;
+use View;
+use Carbon\Carbon;
 
 class BancosController extends Controller
 {
@@ -14,9 +20,12 @@ class BancosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      $state = $request->get('estado');
+      $name = $request->get('nombre');
+      $bancosActivos= Bancos::buscar($name,$state);
+      return view('bancos.index',compact('bancosActivos','bancosInactivos','state','name'));
     }
 
     /**
@@ -26,7 +35,7 @@ class BancosController extends Controller
      */
     public function create()
     {
-        //
+        return view('Bancos.create');
     }
 
     /**
@@ -37,7 +46,8 @@ class BancosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Bancos::create($request->All());
+      return redirect('/bancos')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -48,7 +58,8 @@ class BancosController extends Controller
      */
     public function show($id)
     {
-        //
+      $banco = Bancos::find($id);
+      return View::make('Bancos.show')->with('banco', $banco);
     }
 
     /**
@@ -59,7 +70,8 @@ class BancosController extends Controller
      */
     public function edit($id)
     {
-        //
+      $bancos=Bancos::find($id);
+      return view('bancos.edit', compact('bancos'));
     }
 
     /**
@@ -71,7 +83,11 @@ class BancosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $bancos=Bancos::find($id);
+      $bancos->fill($request->all());
+      $bancos->save();
+      Session::flash('mensaje','¡Registro Actualizado!');
+      return Redirect::to('/bancos');
     }
 
     /**
@@ -82,6 +98,17 @@ class BancosController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $bancos = Bancos::find($id);
+       $bancos->estado=false;
+       $bancos->save();
+       Session::flash('mensaje','Registro dado de Baja');
+       return Redirect::to('/bancos');
+    }
+    public function darAlta($id){
+      $bancos = Bancos::find($id);
+         $bancos->estado=true;
+         $bancos->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/bancos');
     }
 }

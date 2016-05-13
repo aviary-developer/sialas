@@ -5,6 +5,7 @@ namespace sialas\Http\Controllers;
 use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
+use sialas\Http\Requests\ProveedoresRequest;
 use sialas\Http\Controllers\Controller;
 use sialas\proveedores;
 use DB;

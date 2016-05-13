@@ -25,6 +25,7 @@ class ClientesRequest extends Request
     {
         return [
              'nombre'=>'required ',
+            'apellido'=>'required ', 
             'dui'=>'required | max:10',
             'nit'=>'required | max:17',
             'direccion'=>'required',

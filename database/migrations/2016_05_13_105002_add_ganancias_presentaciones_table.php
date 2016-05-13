@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePreciosTable extends Migration
+class AddGananciasPresentacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,9 @@ class CreatePreciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('precios', function (Blueprint $table) {
-            $table->double('valor');
-            $table->integer('presentaciones_id');
-            $table->timestamps();
+        Schema::table('presentaciones', function (Blueprint $table) {
+            //
+            $table->double('ganancia')->nullable();
         });
     }
 
@@ -26,6 +25,8 @@ class CreatePreciosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('precios');
+        Schema::table('presentaciones', function (Blueprint $table) {
+            //
+        });
     }
 }

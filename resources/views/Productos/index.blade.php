@@ -74,18 +74,18 @@
         <th>Acciones</th>
       </tr>
       <?php $a = 1; ?>
-      @foreach($productosActivas as $p)
+      @foreach($productosActivas as $c)
         <tr>
           <td>{{$a}}</td>
-          <td>{{$p->nombre}}</td>
-          <td>{{$p->nombreMarcas($p->marca_id)}}</td>
-          <td>{{$p->nombreCategorias($p->categoria_id)}}</td>
+          <td>{{$c->nombre}}</td>
+          <td>{{$c->nombreMarcas($c->marca_id)}}</td>
+          <td>{{$c->nombreCategorias($c->categoria_id)}}</td>
           <td>
             <div class="up">
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
               <div class="image">
                 <div class="tooltip">
-                  <a href={!! asset('/productos/'.$p->id.'/edit') !!}>
+                  <a href={!! asset('/productos/'.$c->id.'/edit') !!}>
                     <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Editar</span>
@@ -102,7 +102,7 @@
                   </div>
                 @endif
                 <div class="tooltip">
-                  <a href={!! asset('/productos/'.$p->id) !!}>
+                  <a href={!! asset('/productos/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Ver</span>

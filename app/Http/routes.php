@@ -97,3 +97,15 @@ Route::match(['get','post'],'/darAltaProductos/{id}','ProductosController@darAlt
 
 Route::resource('bancos', 'BancosController');
 Route::match(['get','post'],'/darAltaBanco/{id}','BancosController@darAlta');
+
+
+
+
+Route::resource('ubicaciones', 'UbicacionesController');
+Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darAlta');
+
+
+
+Route::resource('compras', 'ComprasController');
+
+Route::resource('detallecompras', 'DetallecomprasController');

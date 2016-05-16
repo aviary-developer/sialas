@@ -48,6 +48,11 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <h3 id="txt"> |{{$c->nombre}}</h3>
   </div>
   <div class="datos">
+    <div >
+     
+        <img src={!! asset('/imagenesProductos/ProductoSialas_'.$c->nombre_img) !!} />
+      
+    </div>
     <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$c->id !!}</span></pre>
     <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nombre }}</span></pre>
     @if($c->estado == 1)

@@ -21,7 +21,7 @@
       <h2>Producto</h2>
       <h3 id="txt"> |{{$productos->nombre}}</h3>
     </div>
-    {!! Form::model($productos,['route'=>['productos.update',$productos->id],'method'=>'PUT']) !!}
+    {!! Form::model($productos,['route'=>['productos.update',$productos->id],'method'=>'PUT','enctype'=>'multipart/form-data','File'=>true]) !!}
   @include('Productos.Formularios.formulario')
   {!! Form::submit('Actualizar') !!}
   {!!Form::close()!!}

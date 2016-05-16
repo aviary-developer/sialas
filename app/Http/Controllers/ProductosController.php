@@ -110,6 +110,7 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $productos = Productos::find($id);
 
         $file = Input::file('nombre_img');
        //Creamos una instancia de la libreria instalada   
@@ -123,19 +124,14 @@ class ProductosController extends Controller
        // Guardar
        $image->save($path.'ProductoSialas_'.$file->getClientOriginalName());
        //Guardamos nombre y nombreOriginal en la BD
-       $productos = new Productos();
        $productos->nombre = Input::get('nombre');
        $productos->marca_id = $request['marca_id'];
        $productos->categoria_id = $request['categoria_id'];
        $productos->nombre_img = $file->getClientOriginalName();
        $productos->save();
+
+       Session::flash('mensaje','¡Registro Actualizado!');
        return redirect::to('/productos');
-   
-        $productos = Productos::find($id);
-        $productos->fill($request->All());
-        $productos->save();
-        Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/productos');
     }
 
     /**

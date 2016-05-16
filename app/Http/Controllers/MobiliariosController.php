@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\Categorias;
+use sialas\Mobiliarios;
 use Redirect;
 use Session;
 use View;
@@ -24,7 +24,7 @@ class MobiliariosController extends Controller
         //
         $state = $request->get('estado');
         $name = $request->get('nombre');
-        $mobiliariosAc= Categorias::buscar($name,$state);
+        $mobiliariosAc= Mobiliarios::buscar($name,$state);
         return view('mobiliarios.index',compact('mobiliariosAc','mobiliariosInac','state','name'));
         $data['activo'] = Mobiliarios::lists('activo','inactivo');
         return view('mobiliarios.index',$data);

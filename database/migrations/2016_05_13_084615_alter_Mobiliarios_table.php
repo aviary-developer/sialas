@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddMobiliarios2Table extends Migration
+class AlterMobiliariosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,10 @@ class AddMobiliarios2Table extends Migration
      */
     public function up()
     {
+        //
         Schema::table('mobiliarios', function (Blueprint $table) {
             //
-            $table->dropColumn('residuo');
+            $table->renameColumn('activo','estado');
         });
     }
 
@@ -25,8 +26,6 @@ class AddMobiliarios2Table extends Migration
      */
     public function down()
     {
-        Schema::table('mobiliarios', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

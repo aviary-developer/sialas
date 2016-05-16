@@ -37,6 +37,7 @@
           <th>#</th>
           <th>Nombre</th>
           <th>Equivalencia</th>
+          <th>Ganancia</th>
           <th>Acciones</th>
         </tr>
         <?php $a = 1; ?>
@@ -44,7 +45,8 @@
           <tr>
             <td>{{$a}}</td>
             <td>{{$c->nombre}}</td>
-            <td>{{$c->equivale}}</td>
+            <td><center>{{$c->equivale}}</center></td>
+            <td><center>{{'$ '.$c->ganancia}}</center></td>
             <td>
               <div class="up">
                 <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

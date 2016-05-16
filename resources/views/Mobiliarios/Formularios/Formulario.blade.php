@@ -1,6 +1,11 @@
 <table>
+	{!!Form::label('LTipo','Tipo:')!!}
+	<select name="idTipo" id="idTipo">
+		<option value=""> Seleccione el estado</option>
+	</select>
+
 	{!!Form::label('LDistribuidor','Distribuidor:')!!}
-	
+	{!!Form::text('idDistribuidor',null,['placeholder'=>'Ingrese distribuidor:'])!!}
 
 	{!!Form::label('LCodigo','Código:')!!}
 	{!!Form::text('codigo',null,['placeholder'=>'Ingrese código:'])!!}
@@ -18,10 +23,10 @@
 	{!!Form::text('depreciacion',null,['placeholder'=>'$0.00:'])!!}
 
 	{!!Form::label('Ldescripcion','Descripción:')!!}
-	{!!Form::text('descripcion',null,['placeholder'=>'$0.00:'])!!}
+	{!!Form::text('descripcion',null,['placeholder'=>'Ingrese descripción:'])!!}
 
-	{!!Form::label('LActivo','Activo:')!!}
-	<select name="activo" id="activo">
+	{!!Form::label('LEstado','Estado:')!!}
+	<select name="estado" id="estado">
 		<option value=""> Seleccione el estado</option>
 	</select>
 	

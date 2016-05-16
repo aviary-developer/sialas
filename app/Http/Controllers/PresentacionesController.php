@@ -104,6 +104,7 @@ class PresentacionesController extends Controller
         $pres->id = $id;
         $pres->nombre = $request->nombre;
         $pres->equivale = $request->equivale;
+        $pres->ganancia = $request->ganancia;
         $pres->producto_id = $producto;
         $pres->save();
         return redirect('/presentaciones/'.$producto)->with('mensaje','Registro Guardado');

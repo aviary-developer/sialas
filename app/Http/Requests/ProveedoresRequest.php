@@ -13,7 +13,7 @@ class ProveedoresRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,8 +28,8 @@ class ProveedoresRequest extends Request
             'contacto'=>'required',
             'nif'=>'required | max:9',
             'direccion'=>'required',
-            'correo'=>'required',
-            'telefono'=>'required | max:9'
+            'correo'=>'required|email|unique:users',
+            'telefono'=>'required | max:9',
         ];
     }
 }

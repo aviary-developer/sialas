@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('layout')
-  <div class="launcher">
+<div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
-      <a href={!! asset('/cajas') !!}>
+      <a href={!! asset('/clasificaciones') !!}>
         <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Atras</span>
@@ -15,14 +15,14 @@
       <span class="tooltiptext">Ayuda</span>
     </div>
   </div>
-  <div class="panel">
-    <div class="enc">
-      <h2>Cajas</h2>
-      <h3 id="txt">|Editar</h3>
-    </div>
-{!! Form::model($cajas, ['route'=> ['cajas.update', $cajas->id],'method'=>'PUT']) !!}
-@include('cajas.Formularios.formulario')
-{!! Form:: submit('Actualizar') !!}
-{!! Form::close() !!}
+<div class="panel">
+	<div class="enc">
+		<h2>Clasificaciones</h2>
+    <h3 id="txt">|Nuevo</h3>
+	</div>
+	{!!Form::open(['route'=>'clasificaciones.store','method'=>'POST'])!!}
+	@include('Clasificaciones.Formularios.formulario')
+	{!!Form::submit('Guardar')!!}
+	{!!Form::close()!!}
 </div>
 @stop

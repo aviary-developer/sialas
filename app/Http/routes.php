@@ -1,17 +1,17 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
 Route::get('/', function () {
-    return view('welcome');
+	$users=DB::select('select * from users');
+        $cuenta=0;
+        foreach ($users as $us) {
+          $cuenta=$cuenta+1;
+        }
+        if($cuenta==0){
+        	return view('primerUsuario');
+
+        }else{
+        	return view('ingresar');	
+        }
 });
 
 
@@ -101,5 +101,19 @@ Route::match(['get','post'],'/darAltaProductos/{id}','ProductosController@darAlt
 Route::resource('bancos', 'BancosController');
 Route::match(['get','post'],'/darAltaBanco/{id}','BancosController@darAlta');
 
+<<<<<<< HEAD
 Route::resource('tipos', 'TiposController');
 Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');
+=======
+
+
+
+Route::resource('ubicaciones', 'UbicacionesController');
+Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darAlta');
+
+
+
+Route::resource('compras', 'ComprasController');
+
+Route::resource('detallecompras', 'DetallecomprasController');
+>>>>>>> origin/master

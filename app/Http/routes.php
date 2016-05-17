@@ -10,7 +10,7 @@ Route::get('/', function () {
         	return view('primerUsuario');
 
         }else{
-        	return view('ingresar');	
+        	return view('auth/login');	
         }
 });
 
@@ -39,7 +39,7 @@ Route::match(['get','post'],'/guardarPresentaciones/{id}','PresentacionesControl
 Route::resource('servicios','ServiciosController');
 Route::match(['get','post'],'/darAltaServicio/{id}','ServiciosController@darAlta');
 
-
+Route::resource('login','LoginController');
 
 
 
@@ -109,3 +109,11 @@ Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darA
 Route::resource('compras', 'ComprasController');
 
 Route::resource('detallecompras', 'DetallecomprasController');
+
+
+
+
+
+
+
+

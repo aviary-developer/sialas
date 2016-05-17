@@ -5,6 +5,7 @@ namespace sialas\Http\Controllers;
 use Illuminate\Http\Request;
 use sialas\User;
 use sialas\Http\Requests;
+use sialas\Http\Requests\UsersRequest;
 use sialas\Http\Controllers\Controller;
 use DB;
 use Redirect;
@@ -43,9 +44,10 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UsersRequest $request)
     {
         //
+        $request['password']=bcrypt($request['password']);
          User::create($request->All());
         return redirect('/users')->with('mensaje','Registro Guardado');
     }

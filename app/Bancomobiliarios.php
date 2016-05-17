@@ -4,7 +4,7 @@ namespace sialas;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cajaservicios extends Model
+class Bancomobiliarios extends Model
 {
     //
 }

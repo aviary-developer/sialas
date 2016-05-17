@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBancoServiciosTable extends Migration
+class AlterPrductoCodigoBarra extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,8 @@ class CreateBancoServiciosTable extends Migration
      */
     public function up()
     {
-        Schema::create('banco_servicios', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-            $table->integer('idBanco');
-            $table->integer('idServicio');
-            
+        Schema::table('productos', function (Blueprint $table) {
+            $table->string('codigo_barra',20)->nullable();
         });
     }
 
@@ -28,6 +24,8 @@ class CreateBancoServiciosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('banco_servicios');
+        Schema::table('productos', function (Blueprint $table) {
+            //
+        });
     }
 }

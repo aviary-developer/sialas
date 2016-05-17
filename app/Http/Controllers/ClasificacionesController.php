@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\Tipos;
+use sialas\Clasificaciones;
 use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
 
-class TiposController extends Controller
+class ClasificacionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +24,10 @@ class TiposController extends Controller
         //
         $state = $request->get('estado');
         $name = $request->get('nombre');
-        $tiposAc= Tipos::buscar($name,$state);
-        return view('tipos.index',compact('tiposAc','tiposInac','state','name'));
-        $data['activo'] = Tipos::lists('activo','inactivo');
-        return view('tipos.index',$data);
+        $clasificacionesAc= Clasificaciones::buscar($name,$state);
+        return view('clasificaciones.index',compact('clasificacionesAc','clasificacionesInac','state','name'));
+        $data['activo'] = Clasificaciones::lists('activo','inactivo');
+        return view('clasificaciones.index',$data);
     }
 
     /**
@@ -38,7 +38,7 @@ class TiposController extends Controller
     public function create()
     {
         //
-        return view('Tipos.create');
+        return view('Clasificaciones.create');
     }
 
     /**
@@ -49,8 +49,8 @@ class TiposController extends Controller
      */
     public function store(Request $request)
     {
-        Tipos::create($request->All());
-        return redirect('/tipos');
+        Clasificaciones::create($request->All());
+        return redirect('/clasificaciones');
     }
 
     /**
@@ -61,9 +61,8 @@ class TiposController extends Controller
      */
     public function show($id)
     {
-        $tip = Tipos::find($id);
-        //return view('Categorias.show',compact('categorias'));
-        return View::make('Tipos.show')->with('tip', $tip);
+        $clas = Clasificaciones::find($id);
+        return View::make('Clasificaciones.show')->with('clas', $clas);
     }
 
     /**
@@ -75,8 +74,8 @@ class TiposController extends Controller
     public function edit($id)
     {
         //
-        $tipo = Tipos::find($id);
-        return view('Tipos.edit',compact('tipo'));
+        $clasificacion = Clasificaciones::find($id);
+        return view('Clasificaciones.edit',compact('tipo'));
     }
 
     /**
@@ -89,10 +88,10 @@ class TiposController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $tipo = Tipos::find($id);
-        $tipo->fill($request->All());
-        $tipo->save();
-        return Redirect::to('/tipos');
+        $clasificacion = Clasificaciones::find($id);
+        $clasificacion->fill($request->All());
+        $clasificacion->save();
+        return Redirect::to('/clasificaciones');
     }
 
     /**
@@ -104,17 +103,17 @@ class TiposController extends Controller
     public function destroy($id)
     {
         //
-        $tipos = Tipos::find($id);
-         $tipos->estado=false;
-         $tipos->save();
+        $clasificaciones = Clasificaciones::find($id);
+         $clasificaciones->estado=false;
+         $clasificaciones->save();
          Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/tipos');
+         return Redirect::to('/clasificaciones');
     }
     public function darAlta($id){
-      $tipos = Tipos::find($id);
-         $tipos->estado=true;
-         $tipos->save();
+      $clasificaciones = Clasificaciones::find($id);
+         $clasificaciones->estado=true;
+         $clasificaciones->save();
          Session::flash('mensaje','Registro dado de Alta');
-         return Redirect::to('/tipos');
+         return Redirect::to('/clasificaciones');
     }
 }

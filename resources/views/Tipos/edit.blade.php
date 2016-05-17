@@ -3,7 +3,7 @@
   <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
-      <a href={!! asset('/mobiliarios') !!}>
+      <a href={!! asset('/tipos') !!}>
         <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Atras</span>
@@ -17,11 +17,11 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Usuarios</h2>
+      <h2>Tipos</h2>
       <h3 id="txt">|Editar</h3>
     </div>
-    {!! Form::model($mobiliario,['route'=>['mobiliarios.update',$mobiliario->id],'method'=>'PUT']) !!}
-    @include('Mobiliario.Formularios.Formulario')
+    {!! Form::model($tipo,['route'=>['tipos.update',$tipo->id],'method'=>'PUT']) !!}
+    @include('Tipos.Formularios.formulario')
     {!! Form::submit('Actualizar') !!}
     {!!Form::close()!!}
   </div>

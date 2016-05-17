@@ -4,13 +4,13 @@ namespace sialas;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tipos extends Model
+class Distribuidores extends Model
 {
     //
     protected $fillable = ['nombre'];
 
-    public static function buscar($nombre){//FALTA ESTADO
-      return Tipos::nombre($nombre)->orderBy('nombre')->paginate(8);
+    public static function buscar($nombre,$estado){
+      return Distribuidores::nombre($nombre)->estado($estado)->orderBy('nombre')->paginate(8);
     }
 
     public function scopeNombre($query, $nombre){
@@ -25,4 +25,7 @@ class Tipos extends Model
       }
       $query->where('estado', $estado);
     }
+
+    
+   
 }

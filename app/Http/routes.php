@@ -62,7 +62,8 @@ Route::match(['get','post'],'/darAltaClientes/{id}','ClientesController@darAlta'
 
 
 
-
+Route::resource('clasificaciones', 'ClasificacionesController');
+Route::match(['get','post'],'/darAltaClasificaciones/{id}','ClasificacionesController@darAlta');
 
 
 
@@ -79,6 +80,8 @@ Route::match(['get','post'],'/darAltaCaja/{id}','CajasController@darAlta');
 
 Route::resource('cuentas', 'CuentasController');
 
+Route::resource('distribuidores', 'DistribuidoresController');
+Route::match(['get','post'],'/darAltaDistribuidores/{id}','DistribuidoresController@darAlta');
 
 
 Route::resource ('proveedores', 'ProveedoresController');
@@ -97,3 +100,6 @@ Route::match(['get','post'],'/darAltaProductos/{id}','ProductosController@darAlt
 
 Route::resource('bancos', 'BancosController');
 Route::match(['get','post'],'/darAltaBanco/{id}','BancosController@darAlta');
+
+Route::resource('tipos', 'TiposController');
+Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');

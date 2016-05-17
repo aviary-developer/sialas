@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\Tipos;
+use sialas\Distribuidores;
 use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
 
-class TiposController extends Controller
+class DistribuidoresController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,10 +24,10 @@ class TiposController extends Controller
         //
         $state = $request->get('estado');
         $name = $request->get('nombre');
-        $tiposAc= Tipos::buscar($name,$state);
-        return view('tipos.index',compact('tiposAc','tiposInac','state','name'));
-        $data['activo'] = Tipos::lists('activo','inactivo');
-        return view('tipos.index',$data);
+        $distribuidoresAc= Distribuidores::buscar($name,$state);
+        return view('distribuidores.index',compact('distribuidoresAc','distribuidoresInac','state','name'));
+        $data['activo'] = Distribuidores::lists('activo','inactivo');
+        return view('distribuidores.index',$data);
     }
 
     /**
@@ -38,7 +38,7 @@ class TiposController extends Controller
     public function create()
     {
         //
-        return view('Tipos.create');
+        return view('Distribuidores.create');
     }
 
     /**
@@ -49,8 +49,8 @@ class TiposController extends Controller
      */
     public function store(Request $request)
     {
-        Tipos::create($request->All());
-        return redirect('/tipos');
+        Distribuidores::create($request->All());
+        return redirect('/distribuidores');
     }
 
     /**
@@ -61,9 +61,9 @@ class TiposController extends Controller
      */
     public function show($id)
     {
-        $tip = Tipos::find($id);
+        $dis = Distribuidores::find($id);
         //return view('Categorias.show',compact('categorias'));
-        return View::make('Tipos.show')->with('tip', $tip);
+        return View::make('Distribuidores.show')->with('dis', $dis);
     }
 
     /**
@@ -75,8 +75,8 @@ class TiposController extends Controller
     public function edit($id)
     {
         //
-        $tipo = Tipos::find($id);
-        return view('Tipos.edit',compact('tipo'));
+        $distribuidor = Distribuidores::find($id);
+        return view('Distribuidores.edit',compact('distribuidor'));
     }
 
     /**
@@ -89,10 +89,10 @@ class TiposController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $tipo = Tipos::find($id);
-        $tipo->fill($request->All());
-        $tipo->save();
-        return Redirect::to('/tipos');
+        $distribuidor = Distribuidores::find($id);
+        $distribuidor->fill($request->All());
+        $distribuidor->save();
+        return Redirect::to('/distribuidores');
     }
 
     /**
@@ -104,17 +104,17 @@ class TiposController extends Controller
     public function destroy($id)
     {
         //
-        $tipos = Tipos::find($id);
-         $tipos->estado=false;
-         $tipos->save();
+        $distribuidores = Distribuidores::find($id);
+         $distribuidores->estado=false;
+         $distribuidores->save();
          Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/tipos');
+         return Redirect::to('/distribuidores');
     }
     public function darAlta($id){
-      $tipos = Tipos::find($id);
-         $tipos->estado=true;
-         $tipos->save();
+      $distribuidores = Distribuidores::find($id);
+         $distribuidores->estado=true;
+         $distribuidores->save();
          Session::flash('mensaje','Registro dado de Alta');
-         return Redirect::to('/tipos');
+         return Redirect::to('/distribuidores');
     }
 }

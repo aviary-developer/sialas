@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDistribuidorsTable extends Migration
+class CreateClasificacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,11 @@ class CreateDistribuidorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('distribuidors', function (Blueprint $table) {
+        Schema::create('clasificaciones', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->integer('bien');
             $table->string('nombre');
-            $table->integer('tipo');
-            $table->string('contacto');
-            $table->string('telefonoDistribuidor');
-            $table->string('email');
-            $table->string('direccionDistribuidor');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateDistribuidorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('distribuidors');
+        Schema::drop('clasificaciones');
     }
 }

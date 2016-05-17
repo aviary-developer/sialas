@@ -5,28 +5,29 @@ namespace sialas\Http\Controllers;
 use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
-use sialas\Http\Requests\ClientesRequest;
 use sialas\Http\Controllers\Controller;
-use sialas\clientes;
-use DB;
+use sialas\Distribuidores;
 use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
 
-class ClientesController extends Controller
+class DistribuidoresController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request){
+    public function index(Request $request)
+    {
+        //
         $state = $request->get('estado');
         $name = $request->get('nombre');
-        $clientesActivos= Clientes::buscar($name,$state);
-        return view('clientes.index',compact('clientesActivos','clientesInactivos','state','name'));
-       
+        $distribuidoresAc= Distribuidores::buscar($name,$state);
+        return view('distribuidores.index',compact('distribuidoresAc','distribuidoresInac','state','name'));
+        $data['activo'] = Distribuidores::lists('activo','inactivo');
+        return view('distribuidores.index',$data);
     }
 
     /**
@@ -37,9 +38,8 @@ class ClientesController extends Controller
     public function create()
     {
         //
-        return view('Clientes.create');
+        return view('Distribuidores.create');
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -47,12 +47,10 @@ class ClientesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ClientesRequest $request)
+    public function store(Request $request)
     {
-        
-        Clientes::create($request->All());
-        return redirect('/clientes')->with('mensaje','Registro Guardado');
-
+        Distribuidores::create($request->All());
+        return redirect('/distribuidores');
     }
 
     /**
@@ -63,12 +61,10 @@ class ClientesController extends Controller
      */
     public function show($id)
     {
-        //
-         $c = Clientes::find($id);
+        $dis = Distribuidores::find($id);
         //return view('Categorias.show',compact('categorias'));
-        return View::make('Clientes.show')->with('c', $c);
+        return View::make('Distribuidores.show')->with('dis', $dis);
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -79,9 +75,8 @@ class ClientesController extends Controller
     public function edit($id)
     {
         //
-        $cliente=Clientes::find($id);
-        return view('Clientes.edit', compact('cliente'));
-
+        $distribuidor = Distribuidores::find($id);
+        return view('Distribuidores.edit',compact('distribuidor'));
     }
 
     /**
@@ -91,15 +86,13 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientesRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //
-        $cliente=Clientes::find($id);
-        $cliente->fill($request->all());
-        $cliente->save();
-        return Redirect::to('/clientes');
-
-
+        $distribuidor = Distribuidores::find($id);
+        $distribuidor->fill($request->All());
+        $distribuidor->save();
+        return Redirect::to('/distribuidores');
     }
 
     /**
@@ -110,22 +103,18 @@ class ClientesController extends Controller
      */
     public function destroy($id)
     {
-         $clientes = Clientes::find($id);
-         $clientes->estado=false;
-         $clientes->save();
+        //
+        $distribuidores = Distribuidores::find($id);
+         $distribuidores->estado=false;
+         $distribuidores->save();
          Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/clientes');
-
+         return Redirect::to('/distribuidores');
     }
-     public function darAlta($id){
-
-        $clientes = Clientes::find($id);
-         $clientes->estado=true;
-         $clientes->save();
+    public function darAlta($id){
+      $distribuidores = Distribuidores::find($id);
+         $distribuidores->estado=true;
+         $distribuidores->save();
          Session::flash('mensaje','Registro dado de Alta');
-         return Redirect::to('/clientes');
-
-
+         return Redirect::to('/distribuidores');
     }
 }
-

@@ -48,7 +48,7 @@ class CategoriasController extends Controller
     public function store(Request $request)
     {
         Categorias::create($request->All());
-        return redirect('/categorias')->->with('mensaje', 'Registro Guardado');
+        return redirect('/categorias')->with('mensaje', 'Registro Guardado');
     }
 
     /**

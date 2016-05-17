@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClasificacionesTable extends Migration
+class AlterClasificacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateClasificacionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('clasificaciones', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('bien');
-            $table->string('nombre');
-            $table->timestamps();
+        Schema::table('clasificaciones', function (Blueprint $table) {
+            //
+            $table->boolean('estado')->default(true);
         });
     }
 
@@ -27,6 +25,8 @@ class CreateClasificacionesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('clasificaciones');
+        Schema::table('clasificaciones', function (Blueprint $table) {
+            //
+        });
     }
 }

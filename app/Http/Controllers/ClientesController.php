@@ -91,7 +91,7 @@ class ClientesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ClientesRequest $request, $id)
     {
         //
         $cliente=Clientes::find($id);

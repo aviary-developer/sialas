@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class MobiliarioEfectivoTable extends Migration
+class CreateBancoServiciosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,12 @@ class MobiliarioEfectivoTable extends Migration
      */
     public function up()
     {
-        Schema::table('mobiliarios', function (Blueprint $table) {
-            //
-            $table->dropColumn('idDistribuidor');
+        Schema::create('banco_servicios', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->integer('idBanco');
+            $table->integer('idServicio');
+            
         });
     }
 
@@ -25,8 +28,6 @@ class MobiliarioEfectivoTable extends Migration
      */
     public function down()
     {
-        Schema::table('mobiliarios', function (Blueprint $table) {
-            //
-        });
+        Schema::drop('banco_servicios');
     }
 }

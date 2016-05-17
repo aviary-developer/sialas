@@ -97,14 +97,11 @@ Route::match(['get','post'],'/darAltaProductos/{id}','ProductosController@darAlt
 
 
 
-
 Route::resource('bancos', 'BancosController');
 Route::match(['get','post'],'/darAltaBanco/{id}','BancosController@darAlta');
 
-<<<<<<< HEAD
 Route::resource('tipos', 'TiposController');
 Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');
-=======
 
 
 
@@ -116,4 +113,3 @@ Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darA
 Route::resource('compras', 'ComprasController');
 
 Route::resource('detallecompras', 'DetallecomprasController');
->>>>>>> origin/master

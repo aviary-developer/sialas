@@ -52,8 +52,11 @@ Route::resource('users','UsersController');
 
 
 
+Route::resource('bancoservicios', 'BancoserviciosController');
+Route::match(['get','post'],'/darAltaBancoservicios/{id}','BancoserviciosController@darAlta');
 
-
+Route::resource('bancomobiliarios', 'BancomobiliariosController');
+Route::match(['get','post'],'/darAltaBancomobiliarios/{id}','BancomobiliariosController@darAlta');
 
 
 

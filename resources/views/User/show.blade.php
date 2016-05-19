@@ -27,29 +27,39 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Detalles de Usuarios</h2>
+    <h2>Usuario</h2>
+    <h3 id="txt"> |{{$user->nom_usuario}}</h3>
   </div>
-  <center>
-	<table clas="none">
-    @foreach($user as $u)
-		<tr>
-      <td>Identificador:</td>
-      <td>{{$u->id}}</td>
-		</tr>
-    <tr>
-      <td>Nombre:</td>
-      <td>{{$u->nombre}}</td>
-		</tr>
-    <tr>
-      <td>Nombre de usuario:</td>
-      <td>{{$u->nom_usuario}}</td>
-		</tr>
-    <tr>
-      <td>Dirección:</td>
-      <td>{{$u->direccion}}</td>
-    </tr>
-  @endforeach
-	</table>
+  <div class="datos">
+    <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$user->id !!}</span></pre>
+    <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->nom_usuario }}</span></pre>
+    <pre>Correo:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->email }}</span></pre>
+    <pre>Nombre de usuario:&#09;&#09;&#09;<span>{{ $user->name }}</span></pre>
+    <pre>Salario:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->salario }}</span></pre>
+    <pre>Fecha de nacimiento:&#09;&#09;<span>{{ $user->fecha_de_nacimiento }}</span></pre>
+    <pre>Teléfono:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->telefono }}</span></pre>
+    <pre>Fecha de inicio:&#09;&#09;&#09;<span>{{ $user->fecha_inicio }}</span></pre>
+    <pre>Dirección:&#09;&#09;&#09;&#09;<span>{{ $user->direccion }}</span></pre>
+    @if($user->estado == 1)
+      <?php $var = 'Activo'?>
+    @else
+      <?php $var = 'En papelera'?>
+    @endif
+    <pre>Estado:&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
+    @if($user->tipo == 1)
+      <?php $tip = 'Administrador'?>
+    @elseif($user->tipo == 2)
+      <?php $tip = 'Gerente'?>
+    @elseif($user->tipo == 3)
+      <?php $tip = 'Vendedor'?>
+    @else
+      <?php $tip = 'Cajero'?>
+    @endif
+
+    <pre>Tipo de usuario:&#09;&#09;&#09;<span>{{ $tip }}</span></pre>
+    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$user->created_at->format('d-m-Y g:i:s a')}} </span></pre>
+    <pre>Fecha de última edición:&#09;&#09;<span>{{$user->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
+  </div>
   <div class="enc">
     <h2>Transacciones</h2>
   </div>
@@ -60,6 +70,5 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 			<th>Valor</th>
 		</tr>
 	</table>
-</center>
 </div>
 @stop

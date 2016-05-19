@@ -15,12 +15,12 @@ class Vendedor
     {
         switch ($this->auth->user()->tipo) {
             case '1':
-                //
+                return view('welcome');
                 break;
 
 
             case '2':
-                //
+                return view('welcome');
                 break;
 
             case '3':
@@ -28,7 +28,7 @@ class Vendedor
                 break;
 
             case '4':
-                //
+                return view('welcome');
                 break;
             
             default:

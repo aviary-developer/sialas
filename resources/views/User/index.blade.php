@@ -79,8 +79,8 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			@foreach($usuarioAc as $user)
 			<tr>
 				<td>{{$a}}</td>
-				<td>{{$user->name}}</td>
 				<td>{{$user->nom_usuario}}</td>
+				<td>{{$user->name}}</td>
 				<td>{{$user->direccion}}</td>
 				<td>
 					<div class="up">
@@ -98,7 +98,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 								<span class="tooltiptextup">Papelera</span>
 							</div>
 							<div class="tooltip">
-								<a href={!! asset("/user/".$user->id) !!}>
+								<a href={!! asset("/users/".$user->id) !!}>
 									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
 								</a>
 								<span class="tooltiptextup">Ver</span>

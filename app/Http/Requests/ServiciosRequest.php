@@ -36,7 +36,7 @@ class ServiciosRequest extends Request
             'nombre.required' => 'El campo tipo de servicio es obligatorio',
             'nombre.min' => 'Tipo de servicio debe contener al menos 3 caracteres',
 
-            'proveedor.min' => 'Proveedor debe contener al menos 4 caracteres',
+            'proveedor.min' => 'Proveedor debe contener al menos 5 caracteres',
 
             'n_recibo.required'  => 'El campo número de factura es obligatorio',
             'n_recibo.min' => 'Número de factura debe contener al menos 6 caracteres',

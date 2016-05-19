@@ -15,7 +15,7 @@ class Gerente
     {
         switch ($this->auth->user()->tipo) {
             case '1':
-                //
+                return view('welcome');
                 break;
 
             case '2':
@@ -23,11 +23,11 @@ class Gerente
                 break;
 
             case '3':
-                //
+                return view('welcome');
                 break;
 
             case '4':
-                //
+                return view('welcome');
                 break;
             
             default:

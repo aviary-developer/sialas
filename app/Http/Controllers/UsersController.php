@@ -61,8 +61,9 @@ class UsersController extends Controller
     public function show($id)
     {
         //
-        $us = User::find($id);
-        return View::make('User.show')->with('us',$us);
+        $user = User::find($id);
+        
+        return view('User.show',compact('user'));
     }
 
     /**
@@ -88,6 +89,11 @@ class UsersController extends Controller
     public function update(Request $request, $id)
     {
         $usuario=User::find($id);
+        if(!empty($request['password'])){
+            $request['password']=bcrypt($request['password']);  
+        }else{
+            $request['password']=$usuario['password'];
+        }
         $usuario->fill($request->all());
         $usuario->save();
         Session::flash('mensaje','¡Registro Actualizado!');

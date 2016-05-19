@@ -13,7 +13,7 @@
 	{!!Form::label('Lcontraseña','Contraseña:')!!}
 	{!!Form::password('password',null,['placeholder'=>'Ingrese su contraseña:'])!!}
 
-	{!!Form::label('Ccontraseña','Confirmar ontraseña:')!!}
+	{!!Form::label('Ccontraseña','Confirmar contraseña:')!!}
 	{!!Form::password('password_confirmation',null,['placeholder'=>'confirmar:'])!!}
 
 	{!!Form::label('LnombreUsuario','Nombre de Usuario:')!!}
@@ -29,7 +29,7 @@
 	{!!Form::text('telefono',null,['placeholder'=>'Ingrese teléfono:'])!!}
 
 	{!!Form::label('Lcomienzo','Fecha de inicio:')!!}
-	{!!Form::text('fecha_inicio',null,['placeholder'=>'Fecha de inicio:'])!!}
+	{!!Form::date('fecha_inicio',null,['placeholder'=>'Fecha de inicio:'])!!}
 
 	{!!Form::label('Ldireccion','Dirección:')!!}
 	{!!Form::text('direccion',null,['placeholder'=>'Ingrese dirección:'])!!}
@@ -40,5 +40,8 @@
 		<option value="2">Gerente</option>
 		<option value="3">Vendedor</option>
 		<option value="4">Cajero</option>
-	</select>	
+	</select>
+
+	{!!Form::label('Lcodigo','Asignar un código a usuario:')!!}
+	{!!Form::text('codigo',null,['placeholder'=>'Ingrese código:'])!!}	
 </table>

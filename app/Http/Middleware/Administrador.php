@@ -19,15 +19,15 @@ class Administrador
                 break;
 
             case '2':
-                //
+                return view('welcome');
                 break;
 
             case '3':
-                //
+                return view('welcome');
                 break;
 
             case '4':
-                //
+                return view('welcome');
                 break;
             
             default:

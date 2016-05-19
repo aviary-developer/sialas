@@ -1,44 +1,44 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <?php
+Route::group(['middleware'=>['auth','administrador']], function(){ //ADMINISTRADOR
+    
+    
+});
 
+Route::group(['middleware'=>['auth','gerente']], function(){ //GERENTE
+    
+    
+});
+
+Route::group(['middleware'=>['auth','vendedor']], function(){ //VENDEDOR
+    
+    
+});
+
+Route::group(['middleware'=>['auth','cajero']], function(){ //CAJERO
+    
+    
+});
+///////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+//RESERVADO PARA POSIBLES GROUP FUTUROS
+
+
+
+
+
+
+
+
+//////////////////////////////////////
 Route::get('/', function () {
 	$users=DB::select('select * from users');
         $cuenta=0;

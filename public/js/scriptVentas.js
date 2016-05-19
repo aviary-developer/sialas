@@ -1,3 +1,28 @@
+$('#boton').on('click',function(){
+  alert("Ola K ase?");
+  /*alert("Ola K ase?");
+  var listaDePresentaciones=$("#selectPresentaciones");
+  var nombreArticulo=$("#articulos").val();
+  var ruta="/sialas/public/compras/productosPresentaciones/"+nombreArticulo;
+  $.get(ruta,function(res){
+    listaDePresentaciones.empty();
+    $(res).each(function(key,value){
+      listaDePresentaciones.append("<option>"+value.nombre+"</option>");
+    });
+  });*/
+});
+function ff(){
+  var listaDePresentaciones=$("#selectPresentaciones");
+  var nombreArticulo=$("#articulos").val();
+  var ruta="/sialas/public/productospresentaciones/"+nombreArticulo;
+  alert(ruta);
+  $.get(ruta,function(res){
+    listaDePresentaciones.empty();
+    $(res).each(function(key,value){
+      listaDePresentaciones.append("<option>"+value.nombre+"</option>");
+    });
+  });
+}
     function addVenta(){
       var correlativo=$("#correlativoVenta").val();
       var total=$("#inputTotalVenta").val();

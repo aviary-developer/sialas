@@ -17,7 +17,7 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Compras</h2>
+      <h2>Pedido</h2>
     </div>
 {!! Form::open(['route'=>'compras.store','method'=>'POST'])!!}
 @include('compras.Forms.formulario')

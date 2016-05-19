@@ -49,7 +49,7 @@ Route::get('/', function () {
         	return view('primerUsuario');
 
         }else{
-        	return view('auth/login');	
+        	return view('auth/login');
         }
 });
 
@@ -154,6 +154,7 @@ Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darA
 
 
 Route::resource('compras', 'ComprasController');
+Route::match(['get','post'],'productospresentaciones/{cadena}','ComprasController@productospresentaciones');
 
 
 Route::resource('detallecompras', 'DetallecomprasController');
@@ -169,5 +170,3 @@ Route::resource('detallecompras', 'DetallecomprasController');
 Route::resource ('asistencias', 'AsistenciasController');
 
 Route::resource('detallecompras', 'DetallecomprasController');
-
-

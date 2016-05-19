@@ -3,11 +3,12 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Response;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Productos;
 use sialas\Proveedores;
+use sialas\Presentaciones;
 use sialas\Compras;
 
 class ComprasController extends Controller
@@ -91,5 +92,10 @@ class ComprasController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function productospresentaciones($nombreProducto){
+      $producto=Productos::where('nombre','=',$nombreProducto)->first();
+      $presentaciones=Presentaciones::where('produto_id', '=', $producto->id);
+      return Response::json($presentaciones);
     }
 }

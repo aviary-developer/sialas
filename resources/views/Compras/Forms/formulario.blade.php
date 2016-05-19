@@ -1,13 +1,14 @@
+{!!Form::label("Presentaciones","Proveedor:")!!}
+<select  id="proveedoresVenta" name="proveedorVenta">
+  @foreach($proveedores as $pro)
+    <option>
+      {{$pro->nombre}}
+    </option>
+  @endforeach
+</select>
 <div class="fila">
+  <input id="boton" type="button" value="ds" onclick="ff();"/>
   <div>
-    {!!Form::label("Presentaciones","Proveedor:")!!}
-    <select  id="proveedoresVenta" name="proveedorVenta">
-      @foreach($proveedores as $pro)
-        <option>
-          {{$pro->nombre}}
-        </option>
-      @endforeach
-    </select>
     {!!Form::label("Articulos","Productos:")!!}
     <input list="selectArticulosVenta" name="nombreArticulosVenta" id="articulos">
     <datalist id="selectArticulosVenta">
@@ -18,13 +19,11 @@
       @endforeach
     </datalist>
     {!!Form::label("Cantidad","Cantidad:")!!}
-    {!!Form::number('cantidadArticuloVenta',null,['required','min'=>'0','id'=>'cantidadArticuloVenta', 'placeholder'=>'Ingrese Cantidad...'])!!}
+    {!!Form::number('cantidadArticuloVenta',null,['required','min'=>'1','id'=>'cantidadArticuloVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
   </div>
   <div class="">
-    {!!Form::label("Cantidad","No. de Factura:")!!}
-    {!!Form::number('numeroFactura',null,['required','min'=>'1','max'=>'6','id'=>'numeroFactura', 'placeholder'=>'Número Factura','required'])!!}
     {!!Form::label("Presentaciones","Presentación:")!!}
-    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta">
+    <select  id="selectPresentaciones" name="nombrePresentacionesVenta">
       <option>Unidad</option>
       <option>Caja</option>
     </select>
@@ -49,10 +48,10 @@
 <div class="fila">
   <div>
     <label for="ex1">Número de productos:</label>
-    <input  name="inputArticulosVenta" id="inputArticulosVenta" type="input" value="0"/>
+    <input  name="inputArticulosVenta" id="inputArticulosVenta" type="input" value="0" disabled/>
   </div>
   <div>
     <label for="ex1">Costo Total ($):</label>
-    <input  name="inputTotalVenta" id="inputTotalVenta" value="0" type="input"/>
+    <input  name="inputTotalVenta" id="inputTotalVenta" value="0" type="input" disabled/>
   </div>
 </div>

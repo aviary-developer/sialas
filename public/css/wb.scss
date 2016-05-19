@@ -277,14 +277,21 @@ input, select, textarea{
   font-size: 16px;
   margin: 3px;
 }
-input[type=submit]{
+input[type=submit],input[type=button]{
   background-color: $cgris4;
   color: $cblanco;
   min-width: 120px;
   border: $cnegro;
   margin: 15px;
 }
-input:focus{
+.fila{
+  display: inline-flex;
+
+  :first-child{
+    margin-right: 30px;
+  }
+}
+input:focus, select:focus{
   outline: none !important;
   border: $cazul2 solid 1px;
   background: $cgris6;

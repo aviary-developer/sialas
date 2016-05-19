@@ -30,7 +30,7 @@ class ComprasController extends Controller
      */
     public function create()
     {
-      $productos=Productos::where('estado',true);
+      $productos=Productos::where('estado',true)->orderBy('nombre')->get();
       return view('Compras.create',compact('productos'));
     }
 

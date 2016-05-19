@@ -1,7 +1,7 @@
     function addVenta(){
       var correlativo=$("#correlativoVenta").val();
       var total=$("#inputTotalVenta").val();
-      var articulo=$("#selectArticulosVenta").find('option:selected');
+      var articulo=$("#articulos").val();
       if(articulo.val()==0){
         $("#cantidadArticuloVenta").val("");
         $("#existenciasActualesArticulos").val("");
@@ -14,8 +14,15 @@
         swal({   title: 'La cantidad no es un numero\n o No es permitido',type:'error',  text: 'Se Cerrará en 2 Segundos',   timer: 2700,   showConfirmButton: false });
       }else{
         correlativo=parseInt(correlativo)+1;
-        total=parseFloat(total)+parseFloat(articulo.val()*cantidad);
-        tablaDatos.append("<tr><td><input type='hidden' name='articulosVenta[]' value='"+articulo.text().trim()+"'/>"+articulo.text()+"</td><td>"+parseInt(cantidad)+"</td><td>"+parseFloat(articulo.val())+"</td><td>"+parseFloat(articulo.val()*cantidad).toFixed(2)+"</td><td class='eliminarVenta' style='cursor:pointer;'>Eliminar</td><td><input type='hidden' name='preciosVenta[]' value='"+parseFloat(articulo.val())+"'/><input type='hidden' name='cantidadesVenta[]' value='"+parseInt(cantidad)+"'/><input type='hidden' name='precioPorArticulosVentas[]' value='"+parseFloat(articulo.val()*cantidad)+"'/></td></tr>");
+        total=parseFloat(total)*parseFloat(cantidad);
+        tablaDatos.append("<tr><td><input type='hidden' name='articulosVenta[]' value='"+
+        articulo.text().trim()+"'/>"+articulo.text()+"</td><td>"+
+        parseInt(cantidad)+
+        "</td><td>"+articulo.val()+
+        "</td><td>"+parseFloat(cantidad).toFixed(2)+
+        "</td><td class='eliminarVenta' style='cursor:pointer;'>Eliminar</td><td><input type='hidden' name='preciosVenta[]' value='"+
+        parseFloat(articulo.val())+
+        "'/><input type='hidden' name='cantidadesVenta[]' value='"+parseInt(cantidad)+"'/><input type='hidden' name='precioPorArticulosVentas[]' value='"+parseFloat(articulo.val()*cantidad)+"'/></td></tr>");
         document.getElementById("correlativoVenta").value=correlativo;
         document.getElementById("inputArticulosVenta").value=correlativo;
         document.getElementById("inputTotalVenta").value=total.toFixed(2);

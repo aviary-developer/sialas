@@ -55,6 +55,13 @@ class ClientesRequest extends Request
 
             'direccion.required' => 'El campo direccion de cliente es obligatorio',
 
+            'correo.required' => 'El campo correo de cliente es obligatorio',
+            'correo.email' => 'El correo no es valido',
+            'correo.unique' => 'El correo ya existe',
+
+            'telefono.required' => 'El campo telefono de cliente es obligatorio',
+            'telefono.max' => 'El telefono de cliente debe contener maximo 9 caracteres',
+
             
         ];
     }

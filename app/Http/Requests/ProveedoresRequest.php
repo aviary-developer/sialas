@@ -28,7 +28,7 @@ class ProveedoresRequest extends Request
             'contacto'=>'required',
             'nif'=>'required | max:9',
             'direccion'=>'required',
-            'correo'=>'required|email|unique:users',
+            'correo'=>'required|email|unique:proveedores',
             'telefono'=>'required | max:9',
         ];
     }

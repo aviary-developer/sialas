@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Productos;
+use sialas\Proveedores;
 use sialas\Compras;
 
 class ComprasController extends Controller
@@ -30,9 +31,11 @@ class ComprasController extends Controller
      */
     public function create()
     {
+      $proveedores=Proveedores::where('estado',true)->orderBy('nombre')->get();
       $productos=Productos::where('estado',true)->orderBy('nombre')->get();
-      return view('Compras.create',compact('productos'));
-    }
+      //return $productos;
+      return view('Compras.create',compact('productos','proveedores'));
+      }
 
     /**
      * Store a newly created resource in storage.

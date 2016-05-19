@@ -1,13 +1,19 @@
 <div class="fila">
   <div>
-    {!!Form::label("Cantidad","Cliente:")!!}
-    {!!Form::text('nombreCliente',null,['id'=>'nombreClienteVenta', 'placeholder'=>'Nombre de Cliente','required'])!!}
+    {!!Form::label("Presentaciones","Proveedor:")!!}
+    <select  id="proveedoresVenta" name="proveedorVenta">
+      @foreach($proveedores as $pro)
+        <option>
+          {{$pro->nombre}}
+        </option>
+      @endforeach
+    </select>
     {!!Form::label("Articulos","Productos:")!!}
     <input list="selectArticulosVenta" name="nombreArticulosVenta" id="articulos">
     <datalist id="selectArticulosVenta">
       @foreach($productos as $pro)
-        <option value={{$pro->nombre}}>
-          {{$pro->id}}
+        <option>
+          {{$pro->nombre}}
         </option>
       @endforeach
     </datalist>
@@ -22,6 +28,8 @@
       <option>Unidad</option>
       <option>Caja</option>
     </select>
+    {!!Form::label("Cantidad","Precio Unitario:")!!}
+    {!!Form::number('precioUnitario',null,['required','id'=>'precioUnitario', 'placeholder'=>'Precio Unitario'])!!}
   </div>
 </div>
 <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Insertar producto" onClick="addVenta()"/>
@@ -40,7 +48,7 @@
 <br>
 <div class="fila">
   <div>
-    <label for="ex1">Total de productos:</label>
+    <label for="ex1">Número de productos:</label>
     <input  name="inputArticulosVenta" id="inputArticulosVenta" type="input" value="0"/>
   </div>
   <div>

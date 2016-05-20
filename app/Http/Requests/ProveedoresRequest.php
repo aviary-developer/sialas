@@ -56,7 +56,7 @@ class ProveedoresRequest extends Request
 
             'telefono.required' => 'El campo telefono de cliente es obligatorio',
             'telefono.max' => 'El telefono de cliente debe contener maximo 9 caracteres',
-            'telefono.regex' => 'No es formato de telefono',
+            //'telefono.regex' => 'No es formato de telefono',
             
         ];
     }

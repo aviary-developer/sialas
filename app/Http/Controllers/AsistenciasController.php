@@ -3,10 +3,10 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\User;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\asistencias;
+use sialas\Asistencia;
 
 
 class AsistenciasController extends Controller
@@ -39,7 +39,11 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
-        Asistencias::create($request->All());
+        $id=User::codigo($request['users_id']);
+       
+       $request ['users_id']=$id->id;
+        Asistencia::create($request->All());
+
         return redirect('/asistencias')->with('mensaje','Registro Guardado');
 
     }

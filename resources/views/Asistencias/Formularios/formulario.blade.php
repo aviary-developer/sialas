@@ -1,2 +1,2 @@
 {!! Form::label('LCodigo','Codigo:') !!}
-{!! Form::text('codigo',null,['placeholder'=>'Ingresar Codigo']) !!}
+{!! Form::text('users_id',null,['placeholder'=>'Ingresar Codigo']) !!}

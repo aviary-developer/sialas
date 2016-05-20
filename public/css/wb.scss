@@ -265,7 +265,19 @@ $class-slug: td !default;
 table{
   min-width: 50%;
 }
-input, select, textarea{
+input, textarea{
+  display: block;
+  border-radius: 20px 20px 20px 20px;
+  padding: 5px 15px 5px 15px;
+  border-width: 1px;
+  border-style: solid;
+  min-width: 368px;
+  background-color: $cgris2;
+  border-color: $cgris3;
+  font-size: 16px;
+  margin: 3px;
+}
+select{
   display: block;
   border-radius: 20px 20px 20px 20px;
   padding: 5px 15px 5px 15px;
@@ -276,6 +288,9 @@ input, select, textarea{
   border-color: $cgris3;
   font-size: 16px;
   margin: 3px;
+}
+input[type=number]{
+  min-width: 118px;
 }
 input[type=submit],input[type=button]{
   background-color: $cgris4;

@@ -1,22 +1,22 @@
 <?php
 Route::group(['middleware'=>['auth','administrador']], function(){ //ADMINISTRADOR
-    
-    
+
+
 });
 
 Route::group(['middleware'=>['auth','gerente']], function(){ //GERENTE
-    
-    
+
+
 });
 
 Route::group(['middleware'=>['auth','vendedor']], function(){ //VENDEDOR
-    
-    
+
+
 });
 
 Route::group(['middleware'=>['auth','cajero']], function(){ //CAJERO
-    
-    
+
+
 });
 ///////////////////////////////////////
 
@@ -154,7 +154,7 @@ Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darA
 
 
 Route::resource('compras', 'ComprasController');
-Route::match(['get','post'],'productospresentaciones/{cadena}','ComprasController@productospresentaciones');
+Route::match(['get','post'],'/productospresentaciones/{cadena}','ComprasController@productospresentaciones');
 
 
 Route::resource('detallecompras', 'DetallecomprasController');

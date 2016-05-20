@@ -1,34 +1,22 @@
-$('#boton').on('click',function(){
-  alert("Ola K ase?");
-  /*alert("Ola K ase?");
-  var listaDePresentaciones=$("#selectPresentaciones");
-  var nombreArticulo=$("#articulos").val();
-  var ruta="/sialas/public/compras/productosPresentaciones/"+nombreArticulo;
-  $.get(ruta,function(res){
-    listaDePresentaciones.empty();
-    $(res).each(function(key,value){
-      listaDePresentaciones.append("<option>"+value.nombre+"</option>");
-    });
-  });*/
-});
 function ff(){
   var listaDePresentaciones=$("#selectPresentaciones");
   var nombreArticulo=$("#articulos").val();
-  var ruta="/sialas/public/productospresentaciones/"+nombreArticulo;
-  alert(ruta);
-  $.get(ruta,function(res){
-    listaDePresentaciones.empty();
-    $(res).each(function(key,value){
-      listaDePresentaciones.append("<option>"+value.nombre+"</option>");
+  if (nombreArticulo!=0) {
+    var ruta="/sialas/public/productospresentaciones/"+nombreArticulo;
+    $.get(ruta,function(res){
+      listaDePresentaciones.empty();
+      $(res).each(function(key,value){
+        listaDePresentaciones.append("<option>"+value.nombre+"</option>");
+      });
     });
-  });
+  }
 }
     function addVenta(){
       var correlativo=$("#correlativoVenta").val();
       var total=$("#inputTotalVenta").val();
       var articulo=$("#articulos").val();
       var precioUnitario=$("#precioUnitario").val();
-      var presentacion=$("#selectPresentacionesVenta").find('option:selected').val();
+      var presentacion=$("#selectPresentaciones").find('option:selected').val();
       if(articulo==0){
         $("#cantidadArticuloVenta").val("");
         $("#existenciasActualesArticulos").val("");
@@ -65,6 +53,7 @@ function ff(){
 function reset_camposVenta(){
  $("#cantidadArticuloVenta").val("");
  $("#precioUnitario").val("");
+ $("#articulos").val("");
 }
 $(document).on("click",".eliminarVenta",function(){
   var totalFila=parseFloat($(this).parents('tr').find('td:eq(4)').html());

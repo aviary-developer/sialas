@@ -94,8 +94,9 @@ class ComprasController extends Controller
         //
     }
     public function productospresentaciones($nombreProducto){
-      $producto=Productos::where('nombre','=',$nombreProducto)->first();
-      $presentaciones=Presentaciones::where('produto_id', '=', $producto->id);
+      $nombreP = str_replace('%20',' ',$nombreProducto);
+      $producto=Productos::where('nombre','LIKE',$nombreP.'%')->first();
+      $presentaciones=Presentaciones::where('producto_id', '=', $producto->id)->orderBy('equivale')->get();
       return Response::json($presentaciones);
     }
 }

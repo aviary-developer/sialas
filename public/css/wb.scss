@@ -271,7 +271,7 @@ input, textarea{
   padding: 5px 15px 5px 15px;
   border-width: 1px;
   border-style: solid;
-  min-width: 368px;
+  width: 368px;
   background-color: $cgris2;
   border-color: $cgris3;
   font-size: 16px;
@@ -283,19 +283,19 @@ select{
   padding: 5px 15px 5px 15px;
   border-width: 1px;
   border-style: solid;
-  min-width: 400px;
+  width: 400px;
   background-color: $cgris2;
   border-color: $cgris3;
   font-size: 16px;
   margin: 3px;
 }
 input[type=number]{
-  min-width: 118px;
+  width: 150px;
 }
 input[type=submit],input[type=button]{
   background-color: $cgris4;
   color: $cblanco;
-  min-width: 120px;
+  width: 120px;
   border: $cnegro;
   margin: 15px;
 }

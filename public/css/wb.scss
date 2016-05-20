@@ -20,6 +20,7 @@ $cnaranja2 : #fcd4a5;
 $cnegro : #000000;
 $cverde1 : #2bb673;
 $cverde2 : #00a14b;
+$crojo : #a31414;
 //Medidas
 
 //Tipografía
@@ -292,11 +293,39 @@ select{
 input[type=number]{
   width: 150px;
 }
+input[type=file]{
+  padding: 5px 5px 5px 5px;
+  width: 388px;
+}
+input[type=file]::-webkit-file-upload-button{
+  border-radius: 20px 20px 20px 20px;
+  background: $cgris4;
+  color: $cblanco;
+  border: $cnegro solid 1px;
+  padding: 3px 7px 3px 7px;
+}
+input[type=file]::-ms-browse{
+  border-radius: 20px 20px 20px 20px;
+  background: $cgris4;
+  color: $cblanco;
+  border: $cnegro solid 1px;
+  padding: 3px 7px 3px 7px;
+}
+input[type=file]::-ms-value{
+  border-width: 0px;
+  background: inherit;
+}
+input[type=file]::-webkit-file-upload-button:focus{
+  outline: none !important;
+}
+input[type=file]::-webkit-file-upload-button:hover{
+  background: $cgris5;
+}
 input[type=submit],input[type=button]{
   background-color: $cgris4;
   color: $cblanco;
   width: 120px;
-  border: $cnegro;
+  border: $cnegro solid 1px;
   margin: 15px;
 }
 .fila{
@@ -360,7 +389,7 @@ input[type=submit]:hover{
   display: -webkit-inline-box;
   input[type='text']{
     height: 16px;
-    min-width: 200px;
+    width: 200px;
     margin-top: 15px;
   }
 }
@@ -416,13 +445,6 @@ input[type=submit]:hover{
     border: $cgris2 solid 1px;
   }
 }
-/*
-@mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+.alerta-errores{
+  color: $crojo;
 }
-
-.box { @include border-radius(10px); }
-*/

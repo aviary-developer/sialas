@@ -10,6 +10,7 @@ use sialas\Cuentas;
 use Redirect;
 use Session;
 use View;
+use sialas\Http\Requests\CuentasRequest;
 
 class CuentasController extends Controller
 {
@@ -115,7 +116,7 @@ class CuentasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CuentasRequest $request, $id)
     {
         $cuentas=Cuentas::find($id);
 

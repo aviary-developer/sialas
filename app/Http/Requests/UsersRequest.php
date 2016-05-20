@@ -33,7 +33,7 @@ class UsersRequest extends Request
             'fecha_de_nacimiento'=>'required',
             'telefono'=>'required',
             'fecha_inicio'=>'required',
-            'direccion'=>'required',
+            'direccion'=>'required | min:10',
             'tipo'=>'required',
             'codigo'=>'required | min:4',
 
@@ -59,9 +59,10 @@ class UsersRequest extends Request
 
             'fecha_inicio.required'=>'El campo fecha de inicio es obligatorio.',
 
-            'telefono.required'=>'El campo teléfono es obligatorio.',
+            'direccion.required'=>'El campo dirección es obligatorio.',
+            'direccion.min' => 'Dirección debe contener al menos 5 caracteres.',
 
-            'telefono.required'=>'El campo teléfono es obligatorio.',
+            'codigo.required'=>'El campo código es obligatorio.',
         ];
     }
 }

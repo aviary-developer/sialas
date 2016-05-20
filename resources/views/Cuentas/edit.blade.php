@@ -3,7 +3,7 @@
 	<div class="launcher">
 	    <div class="lfloat"></div>
 	    <div class="tooltip">
-	      <a href="#">
+	      <a href={!! asset('/cuentas') !!}>
 	        <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
 	      </a>
 	      <span class="tooltiptext">Atras</span>
@@ -22,9 +22,11 @@
 			<h3 id='txt'> |Editar</h3>
 		</div>
 	{!!Form::model($c,['route'=>['cuentas.update',$c->id],'method'=>'PUT'])!!}
-
-
-		
+		<div class="alerta-errores">
+			@foreach ($errors->get('cuenta') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('LNombre','Nombre de la cuenta:')!!}
 		{!!Form::text('cuenta',null,['placeholder'=>'Ingrese el nombre','focusable'])!!}
 	{!!Form::submit('Guardar')!!}

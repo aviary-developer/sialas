@@ -1,7 +1,8 @@
 <?php
 
 namespace sialas\Http\Middleware;
-
+use Illuminate\Contracts\Auth\Guard;
+use Session;
 use Closure;
 
 class Vendedor
@@ -15,20 +16,20 @@ class Vendedor
     {
         switch ($this->auth->user()->tipo) {
             case '1':
-                return view('welcome');
+                //Acceso administrador
                 break;
 
 
             case '2':
-                return view('welcome');
+                //Acceso gerente
                 break;
 
             case '3':
-                //
+                //Acceso vendedor
                 break;
 
             case '4':
-                return view('welcome');
+                //Acceso cajero
                 break;
             
             default:

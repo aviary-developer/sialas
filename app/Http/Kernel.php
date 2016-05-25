@@ -31,9 +31,9 @@ class Kernel extends HttpKernel
         'guest' => \sialas\Http\Middleware\RedirectIfAuthenticated::class,
 
         //middleware para validacion
-        'administrador' => \sialas\Http\Middleware\Administrador::class,
-        'gerente' => \sialas\Http\Middleware\Gerente::class,
-        'vendedor' => \sialas\Http\Middleware\Vendedor::class,
-        'cajero' => \sialas\Http\Middleware\Cajero::class,
+        'admingerente' => \sialas\Http\Middleware\Administrador::class,
+        'admingerentevendedor' => \sialas\Http\Middleware\Gerente::class,
+        'todos' => \sialas\Http\Middleware\Vendedor::class,
+      
     ];
 }

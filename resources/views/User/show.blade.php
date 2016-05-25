@@ -53,9 +53,9 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <pre>Correo:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->email }}</span></pre>
     <pre>Nombre de usuario:&#09;&#09;&#09;<span>{{ $user->name }}</span></pre>
     <pre>Salario:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->salario }}</span></pre>
-    <pre>Fecha de nacimiento:&#09;&#09;<span>{{ $user->fecha_de_nacimiento }}</span></pre>
+    <pre>Fecha de nacimiento:&#09;&#09;<span>{{ date("d-m-Y",strtotime($user->fecha_de_nacimiento))}}</span></pre>
     <pre>Teléfono:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->telefono }}</span></pre>
-    <pre>Fecha de inicio:&#09;&#09;&#09;<span>{{ $user->fecha_inicio }}</span></pre>
+    <pre>Fecha de inicio:&#09;&#09;&#09;<span>{{ date("d-m-Y",strtotime($user->fecha_inicio)) }}</span></pre>
     <pre>Dirección:&#09;&#09;&#09;&#09;<span>{{ $user->direccion }}</span></pre>
     @if($user->estado == 1)
       <?php $var = 'Activo'?>

@@ -1,7 +1,8 @@
 <?php
 
 namespace sialas\Http\Middleware;
-
+use Illuminate\Contracts\Auth\Guard;
+use Session;
 use Closure;
 
 class Cajero

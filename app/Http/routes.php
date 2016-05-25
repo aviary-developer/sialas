@@ -170,3 +170,10 @@ Route::resource('detallecompras', 'DetallecomprasController');
 Route::resource ('asistencias', 'AsistenciasController');
 
 Route::resource('detallecompras', 'DetallecomprasController');
+
+
+
+
+
+
+Route::resource('cajaservicios', 'CajaserviciosController');

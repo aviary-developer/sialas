@@ -119,3 +119,13 @@ Route::get('/', function () {
 
 
 
+
+Route::resource('detallecompras', 'DetallecomprasController');
+
+
+
+
+
+
+Route::resource('cajaservicios', 'CajaserviciosController');
+

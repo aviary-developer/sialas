@@ -88,17 +88,6 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
           </a>
           <span class="tooltiptextup">Editar</span>
         </div>
-        @if(!$cam)
-        <div class="tooltip">
-            @include('Compras.Formularios.darDeBaja')
-          <span class="tooltiptextup">Papelera</span>
-        </div>
-        @else
-          <div class="tooltip">
-              @include('Compras.Formularios.darDeAlta')
-            <span class="tooltiptextup">Activar</span>
-          </div>
-        @endif
         <div class="tooltip">
           <a href={!! asset("/compras/".$compra->id) !!}>
             <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>

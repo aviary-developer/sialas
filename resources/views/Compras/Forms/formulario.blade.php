@@ -1,7 +1,7 @@
 {!!Form::label("Presentaciones","Proveedor:")!!}
 <select  id="proveedoresVenta" name="proveedorVenta">
   @foreach($proveedores as $pro)
-    <option>
+    <option value="{{$pro->id}}">
       {{$pro->nombre}}
     </option>
   @endforeach
@@ -24,9 +24,9 @@
   </div>
   <div class="">
     {!!Form::label("Cantidad","Cantidad:")!!}
-    {!!Form::number('cantidadArticuloVenta',null,['required','min'=>'1','id'=>'cantidadArticuloVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
+    {!!Form::number('cantidadArticuloVenta',null,['min'=>'1','id'=>'cantidadArticuloVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
     {!!Form::label("Cantidad","Precio Unitario:")!!}
-    {!!Form::number('precioUnitario',null,['required','id'=>'precioUnitario', 'placeholder'=>'Precio Unitario'])!!}
+    {!!Form::number('precioUnitario',null,['id'=>'precioUnitario', 'placeholder'=>'Precio Unitario'])!!}
   </div>
 </div>
 <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Agregar" onClick="addVenta()"/>

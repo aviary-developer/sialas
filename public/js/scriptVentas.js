@@ -37,6 +37,7 @@ function ff(){
         "</td><td><input type='hidden' name='productos[]' value='"+
         articulo+"'/><input type='hidden' name='preciosUnitarios[]' value='"+
         parseFloat(precioUnitario).toFixed(2)+
+        "'/><input type='hidden' name='presentaciones[]' value='"+presentacion+
         "'/><input type='hidden' name='cantidades[]' value='"+parseInt(cantidad)+"'/>"
         +articulo+
         "</td><td>"+parseFloat(precioUnitario).toFixed(2)+

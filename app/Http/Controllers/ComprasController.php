@@ -10,6 +10,7 @@ use sialas\Productos;
 use sialas\Proveedores;
 use sialas\Presentaciones;
 use sialas\Compras;
+use sialas\Detallecompras;
 
 class ComprasController extends Controller
 {
@@ -46,7 +47,22 @@ class ComprasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $compra = new Compras;
+        $compra->proveedor_id = $request->proveedorVenta;
+        $compra->usuario_id = 1;
+        $compra->save();
+        foreach ($request->productos as $k => $art) {
+          $detalle = new Detallecompras;
+          $prod = Productos::where('nombre', $art[$k])->first();
+          $detalle->producto_id = $prod->id;
+          $pres = Presentaciones::where([['nombre',$request->presentaciones[$k]],['producto_id',$prod]])->first();
+          $detalle->presentacion_id = $pres->id;
+          $detalle->compra_id = $compra->id;
+          $detalle->cantidad = $request->cantidades[$k];
+          $detalle->precio = $request->preciosUnitarios[$k];
+          $detalle->save();
+        }
+        return redirect('/compras')->with('mensaje','Registro Guardado');
     }
 
     /**

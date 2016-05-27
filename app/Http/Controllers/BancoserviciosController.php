@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Bancoservicios;
+use sialas\Bancos;
+use sialas\Servicios;
 use Redirect;
 use Session;
 use View;
@@ -34,9 +36,9 @@ class BancoserviciosController extends Controller
     public function create()
     {
         //
-        $servicios=Servicios::where('estado',true)->orderBy('nombre')->get();
-        $bancos=Bancos::where('estado',true)->orderBy('nombre')->get();
-        return view('Bancoservicios.create',compact('bancos','servicios'));
+        $s=Servicios::where('estado','=',1)->orderBy('nombre','asc')->get();
+        $b=Bancos::where('estado','=',1)->orderBy('nombre','asc')->get();
+        return view('Bancoservicios.create',compact('b','s'));
     }
 
     /**

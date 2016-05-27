@@ -33,8 +33,7 @@
 
 <div class="panel">
 	<div class="enc">
-    <h2>Bancos</h2>
-    <h3 id='txt'> |Servicios</h3>
+    <h2>Pago de servicios en cheque</h2>
   </div>
 	<center>
 		<table id="block">
@@ -67,7 +66,7 @@
 								<span class="tooltiptextup">Papelera</span>
 							</div>
 							<div class="tooltip">
-								<a href={!! asset("/tipos/".$ban->id) !!}>
+								<a href={!! asset("/bancos/".$ban->id) !!}>
 									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
 								</a>
 								<span class="tooltiptextup">Ver</span>

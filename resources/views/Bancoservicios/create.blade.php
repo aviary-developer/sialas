@@ -1,3 +1,4 @@
+<?php $bandera=1; ?>
 @extends('welcome')
 @section('layout')
 <div class="launcher">
@@ -17,7 +18,7 @@
   </div>
 <div class="panel">
 	<div class="enc">
-		<h2>Tipos</h2>
+		<h2>Pagos con cheque</h2>
     <h3 id="txt">|Nuevo</h3>
 	</div>
 	{!!Form::open(['route'=>'bancoservicios.store','method'=>'POST'])!!}

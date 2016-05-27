@@ -55,7 +55,7 @@
           <td>{{$c->nombreServicios($c->servicio_id)}}</td>
           <td>{{$c->nombreCajas($c->caja_id)}}</td>
           <td>{{$c->monto}}</td>
-          <td>{{$c->created_at}}</td>
+          <td>{{$c->created_at->format('d-m-Y g:i:s a')}}</td>
           <td>
             <div class="up">
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

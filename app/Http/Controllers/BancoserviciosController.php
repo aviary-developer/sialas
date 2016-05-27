@@ -22,12 +22,8 @@ class BancoserviciosController extends Controller
     public function index(Request $request)
     {
         //
-        $state = $request->get('estado');
-        $name = $request->get('nombre');
-        $bancAc= Bancoservicios::buscar($name,$state);
-        return view('bancoservicios.index',compact('bancAc','bancInac','state','name'));
-        $data['activo'] = Bancoservicios::lists('activo','inactivo');
-        return view('bancoservicios.index',$data);
+        $bancAc= Bancoservicios::orderBy('cheque')->get();
+        return view('bancoservicios.index',compact('bancAc','bancInac'));
     }
 
     /**
@@ -38,7 +34,9 @@ class BancoserviciosController extends Controller
     public function create()
     {
         //
-        return view('Bancoservicios.create');
+        $servicios=Servicios::where('estado',true)->orderBy('nombre')->get();
+        $bancos=Bancos::where('estado',true)->orderBy('nombre')->get();
+        return view('Bancoservicios.create',compact('bancos','servicios'));
     }
 
     /**
@@ -49,10 +47,8 @@ class BancoserviciosController extends Controller
      */
     public function store(Request $request)
     {
-        Bancoservicios::create($request->All());
-        return redirect('/bancoservicios');
+       
     }
-
     /**
      * Display the specified resource.
      *
@@ -61,8 +57,7 @@ class BancoserviciosController extends Controller
      */
     public function show($id)
     {
-        $ban = Bancoservicios::find($id);
-        return View::make('Bancoservicios.show')->with('ban', $ban);
+        
     }
 
     /**
@@ -74,8 +69,6 @@ class BancoserviciosController extends Controller
     public function edit($id)
     {
         //
-        $bancoservicio = Bancoservicios::find($id);
-        return view('Bancoservicios.edit',compact('bancoservicio'));
     }
 
     /**
@@ -87,11 +80,7 @@ class BancoserviciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $bancoservicio = Bancoservicios::find($id);
-        $bancoservicio->fill($request->All());
-        $bancoservicio->save();
-        return Redirect::to('/bancoservicios');
+        
     }
 
     /**
@@ -103,11 +92,6 @@ class BancoserviciosController extends Controller
     public function destroy($id)
     {
         //
-        $bancoservicios = Bancoservicios::find($id);
-         $bancoservicios->estado=false;
-         $bancoservicios->save();
-         Session::flash('mensaje','Registro dado de Baja');
-         return Redirect::to('/bancoservicios');
     }
     public function darAlta($id){
       $bancoservicios = Bancoservicios::find($id);

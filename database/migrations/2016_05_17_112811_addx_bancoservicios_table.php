@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBancoserviciosTable extends Migration
+class AddxBancoserviciosTable extends Migration
 {
     /**
      * Run the migrations.

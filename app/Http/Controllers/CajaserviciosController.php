@@ -9,7 +9,7 @@ use Input;
 use Response;
 use sialas\Http\Controllers\Controller;
 use sialas\Cajas;
-use sialas\Bancos;
+use sialas\Servicios;
 use sialas\Cajaservicios;
 
 use Redirect;
@@ -25,7 +25,8 @@ class CajaserviciosController extends Controller
      */
     public function index()
     {
-        return view('Cajaservicios.index');
+        $cajaservicios=Cajaservicios::orderBy('created_at','asc')->paginate(8);
+        return view('Cajaservicios.index',compact('cajaservicios'));
     }
 
     /**
@@ -36,7 +37,7 @@ class CajaserviciosController extends Controller
     public function create()
     {
         $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        $m= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $m= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
         return view('cajaservicios.create',compact('c','m'));
     }
 
@@ -75,7 +76,7 @@ class CajaserviciosController extends Controller
     {
         $cajaservicios =Cajaservicios::find($id);
         $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        $m= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $m= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
         return view('Cajaservicios.edit',compact('cajaservicios','c','m'));
     }
     

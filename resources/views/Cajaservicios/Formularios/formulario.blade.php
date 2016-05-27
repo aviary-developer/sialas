@@ -1,6 +1,11 @@
-<?php 
-	$valorc = $cajaservicios->banco_id;
+<?php
+if($bandera==1){
+	$valorc=null;
+	$valorm=null;
+}else{ 
+	$valorc = $cajaservicios->servicio_id;
 	$valorm = $cajaservicios->caja_id;
+}
  ?>
 <div >
  	<div>
@@ -18,19 +23,19 @@
 		
  	</div>
 	<div>
-		{!!Form::label('lbanco','Bancos:')!!}
-		<select name="banco_id">
-			@foreach($m as $bancos)
-				@if($valorc==$bancos->id && $valorc!=null)
-					<option value="{{$bancos->id}}" selected="selected">{{$bancos->nombre}}</option>
+		{!!Form::label('lservicio','Servicio:')!!}
+		<select name="servicio_id">
+			@foreach($m as $servicio)
+				@if($valorc==$servicio->id && $valorc!=null)
+					<option value="{{$servicio->id}}" selected="selected">{{$servicio->nombre}}</option>
 				@else
-					<option value="{{$bancos->id}}">{{$bancos->nombre}}</option>
+					<option value="{{$servicio->id}}">{{$servicio->nombre}}</option>
 				@endif
 			@endforeach
 		</select>
 		
 	</div>
-	{!!Form::label('lmonto','Monto:')!!}
+	{!!Form::label('lmonto','Monto $ :')!!}
 	{!!Form::text('monto',null,['placeholder'=>'Monto a cancelar'])!!}
 	{!!Form::label('ldetalle','Detalle:')!!}
 	{!!Form::text('detalle',null,['placeholder'=>'Describa el detalle de esta salida'])!!}

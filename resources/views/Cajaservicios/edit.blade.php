@@ -1,10 +1,10 @@
-<?php $bandera=1; ?>
 @extends('welcome')
+<?php $bandera=0; ?>
 @section('layout')
-<div class="launcher">
+  <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
-      <a href="#">
+      <a href={!! asset('/cajaservicios') !!}>
         <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Atras</span>
@@ -16,14 +16,14 @@
       <span class="tooltiptext">Ayuda</span>
     </div>
   </div>
-<div class="panel">
-	<div class="enc">
-		<h2>Pago</h2>
-    <h3 id="txt">|Nuevo</h3>
-	</div>
-	{!!Form::open(['route'=>'cajaservicios.store','method'=>'POST'])!!}
-	@include('Cajaservicios.Formularios.formulario')
-	{!!Form::submit('Guardar')!!}
-	{!!Form::close()!!}
+  <div class="panel">
+    <div class="enc">
+      <h2>Pagos Servicios</h2>
+      <h3 id="txt">|Editar</h3>
+    </div>
+{!! Form::model($cajaservicios, ['route'=> ['cajaservicios.update', $cajaservicios->id],'method'=>'PUT']) !!}
+@include('cajaservicios.Formularios.formulario')
+{!! Form:: submit('Actualizar') !!}
+{!! Form::close() !!}
 </div>
 @stop

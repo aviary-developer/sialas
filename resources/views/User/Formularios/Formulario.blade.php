@@ -29,9 +29,11 @@
 		{!!Form::label('Ltipo','Tipo de usuario:')!!}
 		<select name="tipo">
 			<option value="1">Administrador</option>
+			@if($a!=1)
 			<option value="2">Gerente</option>
 			<option value="3">Vendedor</option>
 			<option value="4">Cajero</option>
+			@endif
 		</select>
 		<div class="alerta-errores">
 			@foreach ($errors->get('fecha_de_nacimiento') as $error)

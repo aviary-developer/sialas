@@ -1,7 +1,8 @@
 <?php
 
 namespace sialas\Http\Middleware;
-
+use Illuminate\Contracts\Auth\Guard;
+use Session;
 use Closure;
 
 class Administrador
@@ -15,11 +16,11 @@ class Administrador
     {
         switch ($this->auth->user()->tipo) {
             case '1':
-                //
+                //Acceso administrador
                 break;
 
             case '2':
-                return view('welcome');
+                //Acceso gerente
                 break;
 
             case '3':

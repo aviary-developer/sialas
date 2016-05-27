@@ -1,3 +1,4 @@
+<?php  $a=0;?>
 @extends('welcome')
 @section('layout')
   <div class="launcher">

@@ -4,7 +4,7 @@ namespace sialas\Http\Requests;
 
 use sialas\Http\Requests\Request;
 
-class UsersRequest extends Request
+class UsersUpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UsersRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -21,13 +21,11 @@ class UsersRequest extends Request
      *
      * @return array
      */
-    public function rules()
-    {
-        return [
+    return [
             //
             'name'=>'required | min:5 | unique:users',
             'email'=>'required | email',
-            'password'=>'required | confirmed | min:6',
+            'password'=>'confirmed',
             'nom_usuario'=>'required | min:10 ',
             'salario'=>'required',
             'fecha_de_nacimiento'=>'required',
@@ -49,9 +47,7 @@ class UsersRequest extends Request
             'email.required'=>'El campo correo electrónico es obligatorio.',
             'email.email'=>'No es un correo electrónico válido.',
 
-            'password.required'=>'El campo contraseña es obligatorio.',
             'password.confirmed'=>'La confirmación de contraseña no coincide.',
-            'password.min' => 'Contraseña debe contener al menos 6 caracteres.',
 
             'nom_usuario.required' => 'El campo nombre de usuario es obligatorio.',
             'nom_usuario.min'=>'Nombre de usuario debe contener al menos 10 caracteres.',

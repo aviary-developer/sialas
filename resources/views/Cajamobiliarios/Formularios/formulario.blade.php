@@ -3,8 +3,8 @@ if($bandera==1){
 	$valorc=null;
 	$valorm=null;
 }else{ 
-	$valorc = $cajaservicios->servicio_id;
-	$valorm = $cajaservicios->caja_id;
+	$valorc = $cajamobiliarios->mobiliario_id;
+	$valorm = $cajamobiliarios->caja_id;
 }
  ?>
 <div >
@@ -23,20 +23,20 @@ if($bandera==1){
 		
  	</div>
 	<div>
-		{!!Form::label('lservicio','Servicio:')!!}
-		<select name="servicio_id">
-			@foreach($m as $servicio)
-				@if($valorc==$servicio->id && $valorc!=null)
-					<option value="{{$servicio->id}}" selected="selected">{{$servicio->nombre}}</option>
+		{!!Form::label('lmobiliario','Mobiliario:')!!}
+		<select name="mobiliario_id">
+			@foreach($m as $mobiliarios)
+				@if($valorc==$mobiliarios->id && $valorc!=null)
+					<option value="{{$mobiliarios->id}}" selected="selected">{{$mobiliarios->nombre}}</option>
 				@else
-					<option value="{{$servicio->id}}">{{$servicio->nombre}}</option>
+					<option value="{{$mobiliarios->id}}">{{$mobiliarios->nombre}}</option>
 				@endif
 			@endforeach
 		</select>
 		
 	</div>
 	{!!Form::label('lmonto','Monto $ :')!!}
-	{!!Form::text('monto',null,['placeholder'=>'Monto a cancelar'])!!}
+	{!!Form::text('cantidad',null,['placeholder'=>'Monto a cancelar'])!!}
 	{!!Form::label('ldetalle','Detalle:')!!}
 	{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida'])!!}
  </div>

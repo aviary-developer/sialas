@@ -14,7 +14,7 @@
     <span class="tooltiptext">Atras</span>
   </div>
   <div class="tooltip">
-    <a href={!! asset('/bancomobiliarios/create') !!}>
+    <a href={!! asset('/cajamobiliarios/create') !!}>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
@@ -35,42 +35,40 @@
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Pago de Mobiliarios</h2>
+    <h2>Pago de Mobiliarios en Efectivo</h2>
   </div>
   <center>
     <table>
       <tr>
         <th>N</th>
         <th>Mobiliario</th>
-        <th>Banco</th>
+        <th>Caja</th>
         <th>monto $</th>
-        <th>Cheque</th>
         <th>Fecha de Pago</th>
          <th>Acciones</th>
         
       </tr>
       <?php $a = 1; ?>
-      @foreach($bancomobiliarios as $c)
+      @foreach($cajamobiliarios as $c)
         <tr>
           <td>{{$a}}</td>
           <td>{{$c->nombreMobiliarios($c->mobiliario_id)}}</td>
-          <td>{{$c->nombreBancos($c->banco_id)}}</td>
+          <td>{{$c->nombreCajas($c->caja_id)}}</td>
           <td>{{$c->cantidad}}</td>
-          td>{{$c->cheque}}</td>
           <td>{{$c->created_at->format('d-m-Y g:i:s a')}}</td>
           <td>
             <div class="up">
               <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
               <div class="image">
                 <div class="tooltip">
-                  <a href={!! asset('/bancomobiliarios/'.$c->id.'/edit') !!}>
+                  <a href={!! asset('/cajamobiliarios/'.$c->id.'/edit') !!}>
                     <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Editar</span>
                 </div>
                
                 <div class="tooltip">
-                  <a href={!! asset('/bancomobiliarios/'.$c->id) !!}>
+                  <a href={!! asset('/cajamobiliarios/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
                   </a>
                   <span class="tooltiptextup">Ver</span>
@@ -83,7 +81,7 @@
       @endforeach
     </table>
     <div id="act">
-        {!! str_replace ('/?', '?', $bancomobiliarios) !!}
+        {!! str_replace ('/?', '?', $cajamobiliarios) !!}
       </div>
   </center>
 </div>

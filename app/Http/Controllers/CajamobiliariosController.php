@@ -6,26 +6,25 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\Bancomobiliarios;
-use sialas\Bancos;
+use sialas\Cajamobiliarios;
+use sialas\Cajas;
 use sialas\Mobiliarios;
-use Redirect;
-use Session;
-use View;
-use Carbon\Carbon;
+use sialas\Redirect;
+use sialas\Session;
+use sialas\View;
 
-class BancomobiliariosController extends Controller
+class CajamobiliariosController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //
-         $bancomobiliarios=Bancomobiliarios::orderBy('created_at','asc')->paginate(8);
-        return view('Bancomobiliarios.index',compact('bancomobiliarios'));
+        $cajamobiliarios=Cajamobiliarios::orderBy('created_at','asc')->paginate(8);
+        return view('Cajamobiliarios.index',compact('cajamobiliarios'));
     }
 
     /**
@@ -36,9 +35,9 @@ class BancomobiliariosController extends Controller
     public function create()
     {
         //
-        $c= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
         $m= Mobiliarios::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        return view('Bancomobiliarios.create',compact('c','m'));
+        return view('cajamobiliarios.create',compact('c','m'));
     }
 
     /**
@@ -49,8 +48,9 @@ class BancomobiliariosController extends Controller
      */
     public function store(Request $request)
     {
-        Bancomobiliarios::create($request->All());
-        return redirect('/bancomobiliarios')->with('mensaje','Registro Guardado');
+        //
+         Cajamobiliarios::create($request->All());
+        return redirect('/cajamobiliarios')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -61,9 +61,10 @@ class BancomobiliariosController extends Controller
      */
     public function show($id)
     {
-        $c = Bancomobiliarios::find($id);
+        //
+        $c = Cajamobiliarios::find($id);
         
-        return View::make('Bancomobiliarios.show')->with('c', $c);
+        return View::make('Cajamobiliarios.show')->with('c', $c);
     }
 
     /**
@@ -75,10 +76,10 @@ class BancomobiliariosController extends Controller
     public function edit($id)
     {
         //
-        $bancomobiliarios =Bancomobiliarios::find($id);
-        $c= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $cajamobiliarios =Cajamobiliarios::find($id);
+        $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
         $m= Mobiliarios::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        return view('Bancomobiliarios.edit',compact('bancomobiliarios','c','m'));
+        return view('Cajamobiliarios.edit',compact('cajamobiliarios','c','m'));
     }
 
     /**
@@ -91,11 +92,11 @@ class BancomobiliariosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $bancomobiliarios = Bancomobiliarios::find($id);
-        $bancomobiliarios->fill($request->All());
-        $bancomobiliarios->save();
+        $cajamobiliarios = Cajamobiliarios::find($id);
+        $cajamobiliarios->fill($request->All());
+        $cajamobiliarios->save();
         Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/bancomobiliarios');
+        return Redirect::to('/cajamobiliarios');
     }
 
     /**
@@ -107,7 +108,5 @@ class BancomobiliariosController extends Controller
     public function destroy($id)
     {
         //
-      
     }
-    
 }

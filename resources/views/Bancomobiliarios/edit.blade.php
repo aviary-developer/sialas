@@ -1,7 +1,7 @@
-<?php $bandera=1?>
 @extends('welcome')
+<?php $bandera=0; ?>
 @section('layout')
-<div class="launcher">
+  <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
       <a href={!! asset('/bancomobiliarios') !!}>
@@ -16,14 +16,14 @@
       <span class="tooltiptext">Ayuda</span>
     </div>
   </div>
-<div class="panel">
-  <div class="enc">
-    <h2>Pago de Mobiliario</h2>
-    <h3 id="txt">|Nuevo</h3>
-  </div>
-  {!!Form::open(['route'=>'bancomobiliarios.store','method'=>'POST'])!!}
-  @include('Bancomobiliarios.Formularios.formulario')
-  {!!Form::submit('Guardar')!!}
-  {!!Form::close()!!}
+  <div class="panel">
+    <div class="enc">
+      <h2>Pagos Mobiliarios</h2>
+      <h3 id="txt">|Editar</h3>
+    </div>
+{!! Form::model($bancomobiliarios, ['route'=> ['bancomobiliarios.update', $bancomobiliarios->id],'method'=>'PUT']) !!}
+@include('bancomobiliarios.Formularios.formulario')
+{!! Form:: submit('Actualizar') !!}
+{!! Form::close() !!}
 </div>
 @stop

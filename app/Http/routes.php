@@ -128,4 +128,5 @@ Route::resource('detallecompras', 'DetallecomprasController');
 
 
 Route::resource('cajaservicios', 'CajaserviciosController');
+Route::resource('cajamobiliarios', 'CajamobiliariosController');
 

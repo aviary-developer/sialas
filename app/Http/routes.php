@@ -34,7 +34,7 @@
     Route::resource('tipos', 'TiposController');
     Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');
 
-
+    Route::resource('remesas', 'RemesasController');
 
 //});
 

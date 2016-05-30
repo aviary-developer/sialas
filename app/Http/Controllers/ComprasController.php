@@ -53,9 +53,11 @@ class ComprasController extends Controller
         $compra->save();
         foreach ($request->productos as $k => $art) {
           $detalle = new Detallecompras;
-          $prod = Productos::where('nombre', $art[$k])->first();
+          $prod = Productos::where('nombre','=', $art)->first();
           $detalle->producto_id = $prod->id;
-          $pres = Presentaciones::where([['nombre',$request->presentaciones[$k]],['producto_id',$prod]])->first();
+          $pres = Presentaciones::where('nombre',$request->presentaciones[$k])
+                                  ->where('producto_id',$prod->id)
+                                  ->first();
           $detalle->presentacion_id = $pres->id;
           $detalle->compra_id = $compra->id;
           $detalle->cantidad = $request->cantidades[$k];
@@ -73,7 +75,8 @@ class ComprasController extends Controller
      */
     public function show($id)
     {
-        //
+      $detallesCompras=Detallecompras::where('compra_id',$id)->get();
+      return view('Compras.show',compact('detallesCompras'));
     }
 
     /**

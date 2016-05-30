@@ -24,4 +24,16 @@ class Compras extends Model
     }
     $query->where('entrega', $entrega);
   }
+  public static function nombreProveedor($id){
+      $n= Proveedores::find($id);
+      return $n->nombre;
+    }
+  public static function nombreProducto($id){
+        $n= Productos::find($id);
+        return $n->nombre;
+      }
+  public static function nombrePresentacion($id){
+          $n= Presentaciones::find($id);
+          return $n->nombre;
+        }
 }

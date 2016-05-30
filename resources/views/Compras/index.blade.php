@@ -68,16 +68,16 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 	<table>
 		<tr>
 			<th>N°</th>
-			<th>Nombre</th>
-			<th>Ubicación</th>
+			<th>Proveedor</th>
+			<th>Fecha de Orden</th>
 			<th>Acciones</th>
 		</tr>
 	<?php $a=1; ?>
 	@foreach($cajasActivas as $compra)
 	<tr>
 	<td>{{$a}}</td>
-	<td>{{$compra->nombre}}</td>
-	<td>{{$compra->ubicacion}}</td>
+  <td>{{$compra->nombreProveedor($compra->proveedor_id)}}</td>
+	<td>{{$compra->created_at->format('d-m-Y g:i:s a')}}</td>
   <td>
     <div class="up">
       <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

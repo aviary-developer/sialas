@@ -19,12 +19,6 @@
 
     Route::resource('users','UsersController');
 
-    Route::resource('bancoservicios', 'BancoserviciosController');
-    Route::match(['get','post'],'/darAltaBancoservicios/{id}','BancoserviciosController@darAlta');
-
-    Route::resource('bancomobiliarios', 'BancomobiliariosController');
-    Route::match(['get','post'],'/darAltaBancomobiliarios/{id}','BancomobiliariosController@darAlta');
-
     Route::resource('clasificaciones', 'ClasificacionesController');
     Route::match(['get','post'],'/darAltaClasificaciones/{id}','ClasificacionesController@darAlta');
 
@@ -130,3 +124,5 @@ Route::resource('detallecompras', 'DetallecomprasController');
 Route::resource('cajaservicios', 'CajaserviciosController');
 Route::resource('cajamobiliarios', 'CajamobiliariosController');
 
+Route::resource('bancomobiliarios', 'BancomobiliariosController');
+Route::resource('bancoservicios', 'BancoserviciosController');

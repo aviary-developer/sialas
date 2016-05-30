@@ -1,11 +1,14 @@
-@extends('welcome')
-@section('layout')
 
-
+@extends ('welcome')
+@section ('layout')
+@if(Session::has('mensaje'))
+  <?php $men=Session::get('mensaje');
+  echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
+@endif
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href="#">
+    <a href='#'>
       <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
@@ -16,7 +19,7 @@
     </a>
     <span class="tooltiptext">Nuevo</span>
   </div>
- 
+  
   <div class="tooltip">
     <a href="#">
       <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
@@ -30,55 +33,56 @@
     <span class="tooltiptext">Ayuda</span>
   </div>
 </div>
-
 <div class="panel">
-	<div class="enc">
-    <h2>Pago de servicios en cheque</h2>
+  <div class="enc">
+    <h2>Pago de Servicios en cheque</h2>
   </div>
-	<center>
-		<table id="block">
-			<tr>
-				<th>Id</th>
-				<th>Servicio</th>
-				<th>Banco</th>
-				<th>Cheque</th>
-			</tr>
-			<?php $a=1; ?>
-			@foreach($bancAc as $ban)
-			<tr>
-				<td>{{$a}}</td>
-				<td>{{$ban->servicio_id}}</td>
-				<td>{{$ban->banco_id}}</td>
-				<td>{{$ban->cheque}}</td>
-				<td>
-					<div class="up">
-						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
-						<div class="image">
-							<!--<div class="tooltip">
-								<a href={!! asset('/bancoservicios/'.$ban->id.'/edit') !!}>
-									<img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
-								</a>
-								<span class="tooltiptextup">Editar</span>
-							</div>-->
-
-							<div class="tooltip"><
-								@include('Bancoservicios.Formularios.darDeBaja')
-								<span class="tooltiptextup">Papelera</span>
-							</div>
-							<div class="tooltip">
-								<a href={!! asset("/bancos/".$ban->id) !!}>
-									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-								</a>
-								<span class="tooltiptextup">Ver</span>
-							</div>
-						</div>
-					</div>
-				</td>
-			</tr>
-			<?php $a=$a+1; ?>
-			@endforeach
-		</table>
-		 
-	</center>
+  <center>
+    <table>
+      <tr>
+        <th>N</th>
+        <th>Servicio</th>
+        <th>Banco</th>
+        <th>Monto $</th>
+        <th>Fecha de Pago</th>
+         <th>Acciones</th>
+        
+      </tr>
+      <?php $a = 1; ?>
+      @foreach($bancAc as $c)
+        <tr>
+          <td>{{$a}}</td>
+          <td>{{$c->nombreBancos($c->banco_id)}}</td>
+          <td>{{$c->nombreServicios($c->servicio_id)}}</td>
+          <td>{{$c->monto($c->cantidad)}}</td>
+          <td>{{$c->created_at->format('d-m-Y g:i:s a')}}</td>
+          <td>
+            <div class="up">
+              <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
+              <div class="image">
+                <div class="tooltip">
+                  <a href={!! asset('/bancoservicios/'.$c->id.'/edit') !!}>
+                    <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Editar</span>
+                </div>
+               
+                <div class="tooltip">
+                  <a href={!! asset('/bancoservicios/'.$c->id) !!}>
+                    <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
+                  </a>
+                  <span class="tooltiptextup">Ver</span>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <?php $a++; ?>
+      @endforeach
+    </table>
+    <div id="act">
+        {!! str_replace ('/?', '?', $bancAc) !!}
+      </div>
+  </center>
 </div>
 @stop

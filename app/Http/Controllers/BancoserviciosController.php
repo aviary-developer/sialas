@@ -24,8 +24,8 @@ class BancoserviciosController extends Controller
     public function index(Request $request)
     {
         //
-        $bancAc= Bancoservicios::orderBy('cheque')->get();
-        return view('bancoservicios.index',compact('bancAc','bancInac'));
+        $bancAc= Bancoservicios::orderBy('created_at','asc')->paginate(8);
+        return view('Bancoservicios.index',compact('bancAc'));
     }
 
     /**
@@ -36,8 +36,8 @@ class BancoserviciosController extends Controller
     public function create()
     {
         //
-        $s=Servicios::where('estado','=',1)->orderBy('nombre','asc')->get();
         $b=Bancos::where('estado','=',1)->orderBy('nombre','asc')->get();
+        $s=Servicios::where('estado','=',1)->orderBy('nombre','asc')->get();
         return view('Bancoservicios.create',compact('b','s'));
     }
 
@@ -47,10 +47,28 @@ class BancoserviciosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         Bancoservicios::create($request->All());
         return redirect('/bancoservicios')->with('mensaje','Registro Guardado');
+    }*/
+
+    public function store(Request $request)
+    {
+        //
+        if($request->vradio == 'Cheque'){
+            $banco = new Bancoservicios;
+            $banco->cantidad = $request->cantidad;
+            $banco->banco_id = $request->banco_id;
+            $banco->save();
+            return redirect('/bancoservicios')->with('mensaje','Registro Guardado');
+        }else{
+            $caja = new Cajaservicios;
+            $caja->monto = $request->monto;
+            $caja->save();
+            return redirect('/cajaservicios')->with('mensaje','Registro Guardado');
+        }
+        
     }
 
     /**
@@ -73,8 +91,8 @@ class BancoserviciosController extends Controller
     public function edit($id)
     {
         $bancoservicios =Bancoservicios::find($id);
-        $s= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
         $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $s= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
         return view('Bancoservicios.edit',compact('bancoservicios','s','b'));
     }
     

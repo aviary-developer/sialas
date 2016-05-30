@@ -49,8 +49,10 @@ class BancoserviciosController extends Controller
      */
     public function store(Request $request)
     {
-       
+        Bancoservicios::create($request->All());
+        return redirect('/bancoservicios')->with('mensaje','Registro Guardado');
     }
+
     /**
      * Display the specified resource.
      *
@@ -59,9 +61,9 @@ class BancoserviciosController extends Controller
      */
     public function show($id)
     {
-        
+        $c = Bancoservicios::find($id);
+        return View::make('Bancoservicios.show')->with('c', $c);
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -70,8 +72,12 @@ class BancoserviciosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bancoservicios =Bancoservicios::find($id);
+        $s= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+        return view('Bancoservicios.edit',compact('bancoservicios','s','b'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -82,7 +88,11 @@ class BancoserviciosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $bancoservicios = Bancoservicios::find($id);
+        $bancoservicios->fill($request->All());
+        $bancoservicios->save();
+        Session::flash('mensaje','¡Registro Actualizado!');
+        return Redirect::to('/bancoservicios');
     }
 
     /**
@@ -94,12 +104,5 @@ class BancoserviciosController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function darAlta($id){
-      $bancoservicios = Bancoservicios::find($id);
-         $bancoservicios->estado=true;
-         $bancoservicios->save();
-         Session::flash('mensaje','Registro dado de Alta');
-         return Redirect::to('/bancoservicios');
     }
 }

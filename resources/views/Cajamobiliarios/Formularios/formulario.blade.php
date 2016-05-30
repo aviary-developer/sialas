@@ -8,6 +8,11 @@ if($bandera==1){
 }
  ?>
 <div >
+	{!!Form::label('llabel','Como Realizara el Pago:')!!}<br>
+	<div class="fila">
+		{!!Form :: radio ( "vradio", "Efectivo",true,['onclick'=>'ver'])!!}Efectivo
+		{!!Form :: radio ( "vradio", "Cheque",false,['onclick'=>'ver'])!!}Cheque
+	</div>
  	<div>
 		
 		{!!Form::label('lcaja','Caja:')!!}

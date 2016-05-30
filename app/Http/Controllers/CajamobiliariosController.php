@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Cajamobiliarios;
+use sialas\Bancomobiliarios;
 use sialas\Cajas;
 use sialas\Mobiliarios;
 use Redirect;
@@ -49,8 +50,19 @@ class CajamobiliariosController extends Controller
     public function store(Request $request)
     {
         //
-         Cajamobiliarios::create($request->All());
-        return redirect('/cajamobiliarios')->with('mensaje','Registro Guardado');
+        if($request->vradio == 'Efectivo'){
+            $caja = new Cajamobiliarios;
+            $caja->monto = $request->monto;
+            $caja->caja_id = $request->caja_id;
+            $caja->save();
+            return redirect('/cajamobiliarios')->with('mensaje','Registro Guardado');
+        }else{
+            $banco = new Bancosmobiliarios;
+            $banco->cantidad = $request->monto;
+            $banco->save();
+            return redirect('/bancomobiliarios')->with('mensaje','Registro Guardado');
+        }
+        
     }
 
     /**

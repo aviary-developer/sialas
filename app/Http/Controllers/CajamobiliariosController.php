@@ -9,9 +9,9 @@ use sialas\Http\Controllers\Controller;
 use sialas\Cajamobiliarios;
 use sialas\Cajas;
 use sialas\Mobiliarios;
-use sialas\Redirect;
-use sialas\Session;
-use sialas\View;
+use Redirect;
+use Session;
+use View;
 
 class CajamobiliariosController extends Controller
 {
@@ -37,7 +37,7 @@ class CajamobiliariosController extends Controller
         //
         $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
         $m= Mobiliarios::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        return view('cajamobiliarios.create',compact('c','m'));
+        return view('Cajamobiliarios.create',compact('c','m'));
     }
 
     /**

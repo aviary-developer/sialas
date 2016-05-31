@@ -7,13 +7,14 @@ if($bandera==1){
 	$valors=$bancoservicios->servicio_id;
 }
  ?>
+ {!!Form::label('llabel','Como Realizara el Pago:')!!}<br>
+ 		<div class="fila">
+ 			{!!Form :: radio ( "vradio", "Efectivo",false,['onclick'=>'ver'])!!}Efectivo
+ 			{!!Form :: radio ( "vradio", "Cheque",true,['onclick'=>'ver'])!!}Cheque
+ 		</div>
  <div class="fila">
  	<div>
- 		{!!Form::label('llabel','Como Realizara el Pago:')!!}<br>
- 		<div class="fila">
- 			{!!Form :: radio ( "vradio", "Efectivo",true,['onclick'=>'ver'])!!}Efectivo
- 			{!!Form :: radio ( "vradio", "Cheque",false,['onclick'=>'ver'])!!}Cheque
- 		</div>
+ 		
 		{!!Form::label('lbanco','Seleccione Banco:')!!}
 		<select name="banco_id">
 			@foreach($b as $bancos)
@@ -25,9 +26,9 @@ if($bandera==1){
 			@endforeach
 		</select>
 		{!!Form::label('lmonto','Monto $ :')!!}
-	{!!Form::text('cantidad',null,['placeholder'=>'Monto a cancelar'])!!}
+	{!!Form::text('cantidad',null,['placeholder'=>'Ingrese monto','focusable'])!!}
 		{!!Form::label('ldetalle','Detalle:')!!}
-		{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida'])!!}
+		{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida','focusable'])!!}
  	</div>
 	<div>
 		
@@ -42,6 +43,6 @@ if($bandera==1){
 			@endforeach
 		</select>
 		{!!Form::label('lcheque','Número de cheque:')!!}
-		{!!Form::text('cheque',null,['placeholder'=>'Ingrese Cheque'])!!}
+		{!!Form::text('cheque',null,['placeholder'=>'Ingrese serie de cheque','focusable'])!!}
 	</div>
  </div>

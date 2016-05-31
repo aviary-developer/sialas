@@ -1,4 +1,3 @@
-
 @extends ('welcome')
 @section ('layout')
 @if(Session::has('mensaje'))

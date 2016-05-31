@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\remesas;
+use sialas\bancos;
+use sialas\cajas;
 use DB;
 use Redirect;
 use Session;
@@ -36,7 +38,9 @@ class RemesasController extends Controller
     
       //return $productos;
       //return view('Compras.create',compact('productos','proveedores'));
-        return view('Remesas.create');
+        $TipoCaja=Cajas::Lists('nombre');
+        $TipoBanco=Bancos::Lists('nombre');
+        return view('Remesas.create',compact('TipoCaja','TipoBanco'));
     }
 
     /**
@@ -73,7 +77,8 @@ class RemesasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $remesa=Remesas::find($id);
+        return view('Remesas.edit', compact('remesa'));
     }
 
     /**
@@ -85,7 +90,10 @@ class RemesasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $remesa=Remesas::find($id);
+        $remesa->fill($request->all());
+        $remesa->save();
+        return Redirect::to('/remesas');
     }
 
     /**

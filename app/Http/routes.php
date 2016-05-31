@@ -34,7 +34,7 @@
     Route::resource('tipos', 'TiposController');
     Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');
 
-    Route::resource('remesas', 'RemesasController');
+    
 
 //});
 
@@ -126,3 +126,5 @@ Route::resource('cajamobiliarios', 'CajamobiliariosController');
 
 Route::resource('bancomobiliarios', 'BancomobiliariosController');
 Route::resource('bancoservicios', 'BancoserviciosController');
+
+Route::resource('remesas', 'RemesasController');

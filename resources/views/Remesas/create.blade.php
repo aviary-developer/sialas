@@ -18,7 +18,7 @@
   <div class="panel">
     <div class="enc">
       <h2>Movimientos</h2>
-      <h3 id="txt">|Nuevo</h3>
+      
     </div>
     {!! Form::open(['route'=>'remesas.store','methoh'=>'POST'])!!}
     @include('Remesas.Formularios.formulario')

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Bancoservicios;
+use sialas\Cajaservicios;
 use sialas\Bancos;
 use sialas\Servicios;
 use Redirect;

@@ -14,10 +14,10 @@ class CreateTiposTable extends Migration
     {
         Schema::create('tipos', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->integer('idClasificacion');
+            $table->integer('codigo');
             $table->string('nombre');
-            $table->integer('cuenta');
+            $table->text('descripcion');
+            $table->timestamps();
         });
     }
 

@@ -21,6 +21,8 @@ class DeleteCamposMobiliarioTable extends Migration
             $table->string('factura',20);
             $table->integer('proveedor_id');
             $table->foreign('proveedor_id')->references('id')->on('proveedores');
+            $table->integer('tipo_id');
+            $table->foreign('tipo_id')->references('id')->on('tipos');
         });
     }
 

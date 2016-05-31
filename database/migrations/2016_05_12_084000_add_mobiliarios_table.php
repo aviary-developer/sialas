@@ -19,8 +19,7 @@ class AddMobiliariosTable extends Migration
             $table->string('nombre');
             $table->string('fecha');
             $table->double('precio');
-            $table->integer('depreciacion');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->tinyInteger('activo');
             $table->string('razon');
             //

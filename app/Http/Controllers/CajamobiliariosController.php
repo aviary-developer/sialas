@@ -54,10 +54,16 @@ class CajamobiliariosController extends Controller
             $caja = new Cajamobiliarios;
             $caja->monto = $request->monto;
             $caja->caja_id = $request->caja_id;
+            $caja->mobiliario_id = $request->mobiliario_id;
+            $caja->detalle = $request->detalle;
             $caja->save();
             return redirect('/cajamobiliarios')->with('mensaje','Registro Guardado');
         }else{
             $banco = new Bancosmobiliarios;
+            $banco->banco_id = $request->banco_id;
+            $banco->mobiliario_id = $request->mobiliario_id;
+            $banco->cheque = $request->cheque;
+            $banco->detalle = $request->detalle;
             $banco->cantidad = $request->monto;
             $banco->save();
             return redirect('/bancomobiliarios')->with('mensaje','Registro Guardado');

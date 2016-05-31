@@ -22,34 +22,21 @@ function activo (vis,ocu,bot,img){
 
 function ver ()
 {
-  
-  if(document.getElementsByName('vradio').value == 'Efectivo')
+  if(document.getElementById('efe1').checked == true)
   {
-    document.getElementsByName('caja_id').style.display='block';
-    document.getElementById('lmobiliario').style.display='block';
-    document.getElementById('lmonto').style.display='block';
-    document.getElementById('ldetalle').style.display='block';
+    document.getElementById('banco').style.display='none';
+    document.getElementById('cheque').style.display='none';
 
-    document.getElementById('lbanco').style.display='none';
-    document.getElementById('lmobiliarios').style.display='none';
-    document.getElementById('lmontos').style.display='none';
-    document.getElementById('ldetalles').style.display='none';
-
-
+    document.getElementById('caja').style.display='block';
+    
   }
-  else
+  else if(document.getElementById('efe0').checked == true)
   {
-    document.getElementsByName('caja_id').style.display='none';
-    document.getElementById('lmobiliario').style.display='none';
-    document.getElementById('lmonto').style.display='none';
-    document.getElementById('ldetalle').style.display='none';
+    document.getElementById('caja').style.display='none';
 
-
-    document.getElementById('lbanco').style.display='block';
-    document.getElementById('lmobiliarios').style.display='block';
-    document.getElementById('lmontos').style.display='block';
-    document.getElementById('ldetalles').style.display='block';
-
+    document.getElementById('banco').style.display='block';
+    document.getElementById('cheque').style.display='block';
+   
   }
 
 }

@@ -15,7 +15,7 @@ class CreateBancomobiliariosTable extends Migration
         Schema::create('bancomobiliarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('id_Banco');
+            $table->integer('banco_id');
             $table->double('cantidad');
             $table->string('detalle');
         });

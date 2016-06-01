@@ -128,3 +128,7 @@ Route::resource('bancomobiliarios', 'BancomobiliariosController');
 Route::resource('bancoservicios', 'BancoserviciosController');
 
 Route::resource('remesas', 'RemesasController');
+
+
+
+Route::resource('rentas','RentasController');

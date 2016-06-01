@@ -4,11 +4,6 @@
 <?php $men=Session::get('mensaje');
 echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 @endif
-@if($state == 1 || $state == null)
-  <?php $cam = 0; ?>
-@else
-  <?php $cam = 1; ?>
-@endif
 
 <div class="launcher">
   <div class="lfloat"></div>
@@ -23,20 +18,6 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
       <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Nuevo</span>
-  </div>
-  <div class="tooltip">
-    <a href={!! asset('/tipos?nombre='.$name.'&estado='.$cam) !!}>
-      @if(!$cam)
-        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
-      @else
-        <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
-      @endif
-    </a>
-    @if(!$cam)
-      <span class="tooltiptext" id="tt">Papelera</span>
-    @else
-      <span class="tooltiptext" id="tt">Activos</span>
-    @endif
   </div>
   <div class="tooltip">
     <a href="#">
@@ -55,11 +36,6 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 <div class="panel">
 	<div class="enc">
     <h2>Tipos</h2>
-    @if(!$cam)
-      <h3 id='txt'> |Activos</h3>
-    @else
-      <h3 id='txt'> |Papelera</h3>
-    @endif
     <div class="sep"></div>
     {!!Form::open(['route'=>'tipos.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
     {!! Form::text('nombre',null,['placeholder'=>'Tipo de mobiliario']) !!}
@@ -69,18 +45,26 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 	<center>
 		<table id="block">
 			<tr>
-				<th>Id</th>
-				<th>Clasificación</th>
+				<th>#</th>
+				<th>Codigo</th>
 				<th>Nombre</th>
-				<th>Cuenta</th>
+				<th>Tipo de Depreciacion</th>
+        <th>Acciones</th>
 			</tr>
 			<?php $a=1; ?>
-			@foreach($tiposAc as $tip)
+			@foreach($tipos as $tip)
 			<tr>
 				<td>{{$a}}</td>
-				<td>{{$tip->idClasificacion}}</td>
+				<td>{{$tip->codigo}}</td>
 				<td>{{$tip->nombre}}</td>
-				<td>{{$tip->cuenta}}</td>
+				
+        <center><td>
+          @if($tip->descripcion==0)<?php echo 'Edificaciones' ?>@endif
+          @if($tip->descripcion==1)<?php echo 'Maquinaria'?>@endif
+          @if($tip->descripcion==2)<?php echo 'Vehiculo'?>@endif
+          @if($tip->descripcion==3)<?php echo 'Otros bienes muebles'?>@endif
+
+      </td></center>
 				<td>
 					<div class="up">
 						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
@@ -90,11 +74,6 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 									<img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
 								</a>
 								<span class="tooltiptextup">Editar</span>
-							</div>
-
-							<div class="tooltip">
-								@include('Tipos.Formularios.darDeBaja')
-								<span class="tooltiptextup">Papelera</span>
 							</div>
 							<div class="tooltip">
 								<a href={!! asset("/tipos/".$tip->id) !!}>
@@ -109,9 +88,9 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			<?php $a=$a+1; ?>
 			@endforeach
 		</table>
-		 <div id="act">
-      {!! str_replace ('/?', '?', $tiposAc->appends(Request::only(['nombre','estado']))->render ()) !!}
-    </div>
+		     <div id="act">
+        {!! str_replace ('/?', '?', $tipos) !!}
+      </div>
 	</center>
 </div>
 @stop

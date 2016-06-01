@@ -1,5 +1,7 @@
+<?php $bandera=0;?>
 @extends('welcome')
 @section('layout')
+
   <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
@@ -20,7 +22,7 @@
       <h2>Tipos</h2>
       <h3 id="txt">|Editar</h3>
     </div>
-    {!! Form::model($tipo,['route'=>['tipos.update',$tipo->id],'method'=>'PUT']) !!}
+    {!! Form::model($tipos,['route'=>['tipos.update',$tipos->id],'method'=>'PUT']) !!}
     @include('Tipos.Formularios.formulario')
     {!! Form::submit('Actualizar') !!}
     {!!Form::close()!!}

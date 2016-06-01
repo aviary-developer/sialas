@@ -1,3 +1,4 @@
+<?php $bandera=1;?>
 @extends('welcome')
 @section('layout')
 <div class="launcher">

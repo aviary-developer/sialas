@@ -16,7 +16,7 @@ class CreateTiposTable extends Migration
             $table->increments('id');
             $table->integer('codigo');
             $table->string('nombre');
-            $table->text('descripcion');
+            $table->text('descripcion');//en realidad es depresiacion
             $table->timestamps();
         });
     }

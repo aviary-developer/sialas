@@ -134,3 +134,4 @@ Route::resource('remesas', 'RemesasController');
 Route::resource('rentas','RentasController');
 
 
+Route::resource('cajausuarios','CajausuariosController');

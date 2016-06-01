@@ -2,7 +2,7 @@
 if($bandera==1){
 	$valorc=null;
 	$valorm=null;
-}else{ 
+}else{
 	$valorc = $cajamobiliarios->mobiliario_id;
 	$valorm = $cajamobiliarios->caja_id;
 }
@@ -14,7 +14,7 @@ if($bandera==1){
 		{!!Form :: radio ( "vradio", 0,false,['onclick'=>'ver()','id'=>'efe0'])!!}Cheque
 	</div>
  	<div id="caja">
-		
+
 		{!!Form::label('lcaja','Caja:')!!}
 		<select name="caja_id">
 			@foreach($c as $cajas)
@@ -25,10 +25,10 @@ if($bandera==1){
 				@endif
 			@endforeach
 		</select>
-		
+
  	</div>
  	<div id="banco" style='display:none'>
-		
+
 		{!!Form::label('lbanco','Banco:')!!}
 		<select name="banco_id">
 			@foreach($c as $banco)
@@ -39,7 +39,7 @@ if($bandera==1){
 				@endif
 			@endforeach
 		</select>
-		
+
  	</div>
 	<div>
 		{!!Form::label('lmobiliario','Mobiliario:')!!}
@@ -52,7 +52,7 @@ if($bandera==1){
 				@endif
 			@endforeach
 		</select>
-		
+
 	</div>
 	{!!Form::label('lmonto','Monto $ :')!!}
 	{!!Form::text('cantidad',null,['placeholder'=>'Monto a cancelar'])!!}
@@ -62,5 +62,5 @@ if($bandera==1){
 </div>
 
 	{!!Form::label('ldetalle','Detalle:')!!}
-	{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida'])!!}
+	{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida','rows'=>'4'])!!}
  </div>

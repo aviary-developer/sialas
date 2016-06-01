@@ -14,8 +14,7 @@ class CreateRentasTable extends Migration
     {
         Schema::create('rentas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('pago'10);
-            $table->string('pago',3);
+            $table->string('pago',10);
             $table->double('desde');
             $table->double('hasta');
             $table->double('porcentaje');

@@ -372,17 +372,20 @@ input[type=submit],input[type=button]{
 .fila{
   display: inline-flex;
 
-  :first-child{
+  div:first-child{
     margin-right: 30px;
   }
 }
-input:focus, select:focus{
+input:focus, select:focus, textarea:focus{
   outline: none !important;
   border: $cazul2 solid 1px;
   background: $cgris6;
 }
 input[type=submit]:hover{
   background: $cgris5;
+}
+input[type=radio], input[type=checkbox]{
+  width: 30px;
 }
 *::-webkit-input-placeholder{
   color: $cgris4;

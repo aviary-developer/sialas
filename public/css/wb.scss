@@ -376,6 +376,12 @@ input[type=submit],input[type=button]{
     margin-right: 30px;
   }
 }
+.der{
+  margin-left: 30px;
+}
+.der table{
+  min-width: 40vw;
+}
 input:focus, select:focus, textarea:focus{
   outline: none !important;
   border: $cazul2 solid 1px;
@@ -389,6 +395,25 @@ input[type=radio], input[type=checkbox]{
 }
 *::-webkit-input-placeholder{
   color: $cgris4;
+}
+//radio y checkbox
+input[type=radio]{
+  display: none;
+}
+input[type=radio] + label span{
+  width: 19px;
+  height: 19px;
+  display: inline-block;
+  background: url("../css/imgform/radio_ina.svg") left top no-repeat;
+  margin: -1px 4px 4px 4px;
+  vertical-align: middle;
+  cursor:pointer;
+}
+input[type=radio]:hover + label span{
+  background: url("../css/imgform/radio_hov.svg") left top no-repeat;
+}
+input[type=radio]:checked + label span{
+  background: url("../css/imgform/radio_act.svg") left top no-repeat;
 }
 #txt{
   margin-top: 20px;

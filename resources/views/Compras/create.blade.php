@@ -18,10 +18,11 @@
   <div class="panel">
     <div class="enc">
       <h2>Pedido</h2>
+      <h3 id="txt">|Nuevo</h3>
     </div>
 {!! Form::open(['route'=>'compras.store','method'=>'POST'])!!}
 @include('compras.Forms.formulario')
-{!!Form::submit('Guardar')!!}
+
 {!!Form::close()!!}
 </div>
 @stop

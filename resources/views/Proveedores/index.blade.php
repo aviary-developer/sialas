@@ -67,7 +67,7 @@
   <center>
     <table>
       <tr>
-        <th>Id</th>
+        <th>#</th>
         <th>Empresa</th>
         <th>Contacto</th>
         <th>Acciones</th>

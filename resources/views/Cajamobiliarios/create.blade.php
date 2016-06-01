@@ -18,7 +18,7 @@
   </div>
 <div class="panel">
 	<div class="enc">
-		<h2>Pago Mobiliarios</h2>
+		<h2>Pago de mobiliario</h2>
     <h3 id="txt">|Nuevo</h3>
 	</div>
 	{!!Form::open(['route'=>'cajamobiliarios.store','method'=>'POST'])!!}

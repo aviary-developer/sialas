@@ -68,7 +68,7 @@
   <center>
     <table>
       <tr>
-        <th>Id</th>
+        <th>#</th>
         <th>N° de recibo</th>
         <th>Servicio</th>
         <th>Acciones</th>

@@ -67,7 +67,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
   <center>
 	<table>
 		<tr>
-			<th>N°</th>
+			<th>#</th>
 			<th>Nombre de Banco</th>
 			<th>Número de Cuenta</th>
       <th>Representante</th>

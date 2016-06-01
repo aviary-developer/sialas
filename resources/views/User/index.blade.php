@@ -69,7 +69,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 	<center>
 		<table id="block">
 			<tr>
-				<th>Id</th>
+				<th>#</th>
 				<th>Nombre</th>
 				<th>Nombre de usuario</th>
 				<th>Dirección</th>

@@ -19,7 +19,7 @@
     </a>
     <span class="tooltiptext">Nuevo</span>
   </div>
-  
+
   <div class="tooltip">
     <a href="#">
       <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
@@ -40,13 +40,13 @@
   <center>
     <table>
       <tr>
-        <th>N</th>
+        <th>#</th>
         <th>Servicio</th>
         <th>Caja</th>
         <th>monto $</th>
         <th>Fecha de Pago</th>
          <th>Acciones</th>
-        
+
       </tr>
       <?php $a = 1; ?>
       @foreach($cajaservicios as $c)
@@ -66,7 +66,7 @@
                   </a>
                   <span class="tooltiptextup">Editar</span>
                 </div>
-               
+
                 <div class="tooltip">
                   <a href={!! asset('/cajaservicios/'.$c->id) !!}>
                     <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
@@ -86,5 +86,3 @@
   </center>
 </div>
 @stop
-
-

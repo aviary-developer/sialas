@@ -67,7 +67,7 @@
   <center>
     <table>
       <tr>
-        <th>Id  </th>
+        <th>#</th>
         <th>Nombre</th>
         <th>Acciones</th>
       </tr>

@@ -34,7 +34,7 @@
     Route::resource('tipos', 'TiposController');
     Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');
 
-    
+
 
 //});
 
@@ -132,3 +132,6 @@ Route::resource('remesas', 'RemesasController');
 
 
 Route::resource('rentas','RentasController');
+
+
+Route::resource('cajausuarios','CajausuariosController');

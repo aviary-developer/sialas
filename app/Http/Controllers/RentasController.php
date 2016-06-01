@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Rentas;
 
 class RentasController extends Controller
 {
@@ -20,26 +21,26 @@ class RentasController extends Controller
         $pago=array("Mensual","Quincenal","Semanal");
         $tramo_m=array("I","II","III","IV");
         $desde_m=array("0.01","472.01","895.25","2038.11");
-        $hasta_m=array("472.00","895.24","2038.10","");
-        $porcentaje_m=array("","10","20","30");
-        $exceso_m=array("","472.00","895.24","2038.10");
-        $cuota_m=array("","17.67","60.00","288.57");
+        $hasta_m=array("472.00","895.24","2038.10","0");
+        $porcentaje_m=array("0","10","20","30");
+        $exceso_m=array("0","472.00","895.24","2038.10");
+        $cuota_m=array("0","17.67","60.00","288.57");
 
         $tramo_q=array("I","II","III","IV");
         $desde_q=array("0.01","236.01","447.63","1019.06");
-        $hasta_q=array("236.00","447.62","1019.05","");
-        $porcentaje_q=array("","10","20","30");
-        $exceso_q=array("","236.00","447.62","1019.05");
-        $cuota_q=array("","8.83","30.00","144.28");
+        $hasta_q=array("236.00","447.62","1019.05","0");
+        $porcentaje_q=array("0","10","20","30");
+        $exceso_q=array("0","236.00","447.62","1019.05");
+        $cuota_q=array("0","8.83","30.00","144.28");
 
         $tramo_s=array("I","II","III","IV");
         $desde_s=array("0.01","118.01","223.82","509.53");
-        $hasta_m=array("118.00","223.81","509.52","");
-        $porcentaje_s=array("","10","20","30");
-        $exceso_s=array("","118.00","223.81","509.52");
-        $cuota_s=array("","4.42","15.00","72.14");
+        $hasta_s=array("118.00","223.81","509.52","0");
+        $porcentaje_s=array("0","10","20","30");
+        $exceso_s=array("0","118.00","223.81","509.52");
+        $cuota_s=array("0","4.42","15.00","72.14");
 
-          /*  $contador=Rentas::count();
+        $contador=Rentas::count();
         if($contador<1){
           for($i=0;$i<4;$i++){
             Rentas::create([
@@ -49,7 +50,7 @@ class RentasController extends Controller
               'hasta' => $hasta_m[$i],
               'porcentaje' => $porcentaje_m[$i],
               'exceso' => $exceso_m[$i],
-              'cuota' => $cuota_q[$i]
+              'cuota' => $cuota_m[$i]
             ]);
             Rentas::create([
               'pago' => $pago[1],
@@ -70,8 +71,9 @@ class RentasController extends Controller
               'cuota' => $cuota_s[$i]
             ]);
           }
-        }*/
-        return view('rentas.index');
+        }
+        $renta=Rentas::orderBy('id')->get();
+        return view('rentas.index',compact('renta'));
 
     }
 

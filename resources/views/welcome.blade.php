@@ -12,6 +12,8 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
         {!!Html::style('libreriaSweetAlert/sweet-alert.css')!!}
         {!!Html::script('libreriaSweetAlert/sweet-alert.min.js')!!}
+        {!!Html::style('jqueryModal/jquery.modal.css')!!}
+        {!!Html::script('jqueryModal/jquery.modal.js')!!}
     </head>
     <body><header>
       <nav>

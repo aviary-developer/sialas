@@ -37,24 +37,45 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 
     <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$c->created_at->format('d-m-Y g:i:s a')}} </span></pre>
     <pre>Fecha de última edición:&#09;&#09;<span>{{$c->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <table class="">
-<thead>
+<input id="venta_id" type="hidden" value="{{$c->id}}">
+    <table>
+<tr>
+  <th>Id</th>
 	<th>Producto</th>
 	<th>Presentación</th>
 	<th>Cantidad</th>
 	<th>Precio</th>
-  <th>Estado Entrega</th>
-</thead>
+  <th colspan="2">Estado Entrega</th>
+</tr>
 @foreach($detallesCompras as $dc)
-<tbody>
+  <tr>
+    <td>{{$dc->producto_id}}</td>
 	<td>{{$dc->nombreProducto($dc->producto_id)}}</td>
 	<td>{{$dc->nombrePresentacion($dc->presentacion_id)}}</td>
 	<td>{{$dc->cantidad}}</td>
 	<td>${{$dc->precio}}</td>
-  <td>{!!Form::checkbox('detalle', $dc->id)!!}</td>
-</tbody>
+  <?php if($dc->entrega==0){?>
+  <td>No entregado</td><td class="agrUbi" style="cursor:pointer;">Agregar Ubicación</td>
+<?php }else{?>
+<td>Entregado</td><td>{{$dc->nombreUbicacion($dc->ubicacion_id)}}</td>
+<?php }?>
+</tr>
 @endforeach
 </table>
+<a id="modalUbi" href="#ex1" rel="modal:open"></a>
 </div>
 </div>
+<!-- Modal HTML embedded directly into document -->
+ <div id="ex1" style="display:none;">
+   <p>Ingrese Ubicación:
+     <select id="selectUbicaciones" name="selectUbicaciones" onchange="ubi(this)">
+					<option value="0">[Seleccione una ubicación]</option>
+					@foreach($u as $ub)
+					<option value='{{$ub->id}}'>
+						{{$ub->nombre}}
+					</option>
+					@endforeach
+				</select></p>
+          {!!Form::button('Agregar Ubicación')!!}
+ </div>
 @stop

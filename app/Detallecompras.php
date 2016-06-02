@@ -17,4 +17,8 @@ class Detallecompras extends Model
     $n= Presentaciones::find($id);
     return $n->nombre;
   }
+  public static function nombreUbicacion($id){
+    $n= Ubicaciones::find($id);
+    return $n->nombre;
+  }
 }

@@ -28,12 +28,8 @@ class Compras extends Model
       $n= Proveedores::find($id);
       return $n->nombre;
     }
-  public static function nombreProducto($id){
-        $n= Productos::find($id);
-        return $n->nombre;
+  public static function nombreUsuario($id){
+        $n= User::find($id);
+        return $n->name;
       }
-  public static function nombrePresentacion($id){
-          $n= Presentaciones::find($id);
-          return $n->nombre;
-        }
 }

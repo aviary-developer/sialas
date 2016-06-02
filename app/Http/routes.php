@@ -63,6 +63,8 @@
 
     Route::resource ('asistencias', 'AsistenciasController');
 
+    Route::resource ('pagos', 'PagosController');
+
 
 //});
 

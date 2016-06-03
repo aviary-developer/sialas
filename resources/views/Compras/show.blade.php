@@ -76,6 +76,8 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 					</option>
 					@endforeach
 				</select></p>
-          {!!Form::button('Agregar Ubicación')!!}
+        <!--{!!Form::button('Agregar Ubicación')!!}-->
+        <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Agregar" onClick="addVenta()"/>
+        </div>
  </div>
 @stop

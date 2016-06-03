@@ -38,8 +38,9 @@ class RemesasController extends Controller
     
       //return $productos;
       //return view('Compras.create',compact('productos','proveedores'));
-        $TipoCaja=Cajas::Lists('nombre');
-        $TipoBanco=Bancos::Lists('nombre');
+
+         $TipoCaja=Cajas::where('estado',true)->orderBy('nombre')->get();
+         $TipoBanco=Bancos::where('estado',true)->orderBy('nombre')->get();
         return view('Remesas.create',compact('TipoCaja','TipoBanco'));
     }
 
@@ -52,6 +53,7 @@ class RemesasController extends Controller
     public function store(Request $request)
     {
                // Remesas::create($request->All());
+
         $remesa = new Remesas;
         $remesa->caja_id = $request->cajaTipo;
         $remesa->save();

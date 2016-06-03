@@ -37,7 +37,6 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 
     <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$c->created_at->format('d-m-Y g:i:s a')}} </span></pre>
     <pre>Fecha de última edición:&#09;&#09;<span>{{$c->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
-<input id="venta_id" type="hidden" value="{{$c->id}}">
     <table>
 <tr>
   <th>Id</th>
@@ -77,7 +76,10 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 					@endforeach
 				</select></p>
         <!--{!!Form::button('Agregar Ubicación')!!}-->
-        <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Agregar" onClick="addVenta()"/>
+        <input name="ubicacion" id="ubicacion" type="button" value="Agregar Ubicación" onClick="addUbicacion()"/>
         </div>
  </div>
+ <input id="temporalProducto" type="input" value=0>
+ <input id="venta_id" type="hidden" value="{{$c->id}}">
+ <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 @stop

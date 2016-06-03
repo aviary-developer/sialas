@@ -64,6 +64,8 @@
     Route::resource ('asistencias', 'AsistenciasController');
 
     Route::resource ('pagos', 'PagosController');
+    Route::get('pagos/crear/{id}','PagosController@crear');
+    Route::match(['get','post'],'/guardarPagos/{id}','PagosController@guardar');
 
 
 //});

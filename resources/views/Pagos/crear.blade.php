@@ -1,4 +1,17 @@
 <?php $bandera=1; ?>
+@if($m->credito == 1)
+  @if($m->num_cuotas==$f || $m->precio <= $p)
+    <?php $se_pago = true; ?>
+  @else
+    <?php $se_pago = false; ?>
+  @endif
+@else
+  @if($f==1)
+    <?php $se_pago = true; ?>
+  @else
+    <?php $se_pago = false; ?>
+  @endif
+@endif
 @extends('welcome')
 @section('layout')
   <div class="launcher">
@@ -19,9 +32,9 @@
   <div class="panel">
     <div class="enc">
       <h2>Pago de mobiliario</h2>
-      <h3 id="txt">|Nuevo</h3>
+      <h3 id="txt">|{{ $m->nombre }}</h3>
     </div>
-{!! Form::open(['route'=>'pagos.store','method'=>'POST'])!!}
+{!! Form::open(['url'=>['guardarPagos',$mobiliario],'method'=>'POST']) !!}
 @include('pagos.Formularios.formulario')
 {!! Form::submit('Guardar') !!}
 {!!Form::close()!!}

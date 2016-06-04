@@ -14,8 +14,18 @@
 		</div>
 		{!!Form::label('ltipo','Tipo:')!!}
 		<select  name="tipo">
+		@if($bandera==0)
+			@if($valor->tipo=="Descuento")
+				<option value="Descuento" selected="selected">Descuento  empleado</option>
+			  <option value="Aportación">Aportación patrono</option>
+			@else
+				<option value="Descuento">Descuento  empleado</option>
+			  <option value="Aportación" selected="selected">Aportación patrono</option>
+			@endif
+		@else
       <option value="Descuento">Descuento  empleado</option>
 		  <option value="Aportación">Aportación patrono</option>
+		@endif
 		</select>
 	</div>
 	<div>

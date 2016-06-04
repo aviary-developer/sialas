@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Descuentoaportes;
+use Redirect;
+use Session;
+use View;
 
 class DescuentoaportesController extends Controller
 {
@@ -67,7 +70,9 @@ class DescuentoaportesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $valor=Descuentoaportes::find($id);
+
+        return view('descuentoaportes.edit',compact('valor'));
     }
 
     /**
@@ -79,7 +84,16 @@ class DescuentoaportesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $valor=Descuentoaportes::find($id);
+
+      if($request['techo']==""){
+        $request['techo']=0;
+      }
+      $valor->fill($request->All());
+
+      $valor->save();
+
+      return Redirect::to('/descuentoaportes');
     }
 
     /**
@@ -90,6 +104,21 @@ class DescuentoaportesController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $valor = Descuentoaportes::find($id);
+       $valor->estado=false;
+       $valor->save();
+       Session::flash('mensaje','Registro enviado a papelera');
+       return Redirect::to('/descuentoaportes');
     }
+
+    public function darAlta($id){
+
+        $valor = Descuentoaportes::find($id);
+         $valor->estado=true;
+         $valor->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/descuentoaportes');
+
+    }
+
 }

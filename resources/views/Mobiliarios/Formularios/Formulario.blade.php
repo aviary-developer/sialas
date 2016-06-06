@@ -24,6 +24,8 @@ if($bandera==1){
 		{!!Form::text('nombre',null,['placeholder'=>'Ingrese nombre'])!!}
 		{!!Form::label('lfecha','Fecha de Compra:')!!}
 		{!!Form::date('fecha_compra',null,['placeholder'=>'Ingrese fecha'])!!}
+		{!!Form::label('lprecio','Precio:')!!}
+		{!!Form::text('precio',null,['placeholder'=>'$00.00'])!!}
 		
 		
 @if($b!=1)
@@ -105,7 +107,7 @@ if($bandera==1){
 	 </div>
 	</div>
 
-<div id='nuevo'>
+<div id='nuevo' style='display:none'>
 		{!!Form::label('Lanios','Años de Servicio:')!!}
 		{!!Form::text('anios',null,['placeholder'=>'Ingrese años'])!!}
 	</div>

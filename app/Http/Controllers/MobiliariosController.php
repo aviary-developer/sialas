@@ -52,6 +52,9 @@ class MobiliariosController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->anios == ''){
+            $request->anios = null;
+        }
         Mobiliarios::create($request->All());
         return redirect('/mobiliarios')->with('mensaje','Registro Guardado');
     }

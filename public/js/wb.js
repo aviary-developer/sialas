@@ -47,7 +47,7 @@ function verEstado ()
 
   }
   else if(document.getElementById('est0').checked == true)
-  {
+  {                                                           
     document.getElementById('nuevo').style.display='block';
 
 

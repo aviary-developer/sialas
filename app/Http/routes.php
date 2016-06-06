@@ -63,6 +63,10 @@
 
     Route::resource ('asistencias', 'AsistenciasController');
 
+    Route::resource ('pagos', 'PagosController');
+    Route::get('pagos/crear/{id}','PagosController@crear');
+    Route::match(['get','post'],'/guardarPagos/{id}','PagosController@guardar');
+
 
 //});
 
@@ -135,3 +139,5 @@ Route::resource('rentas','RentasController');
 
 
 Route::resource('cajausuarios','CajausuariosController');
+Route::resource('descuentoaportes','DescuentoaportesController');
+Route::match(['get','post'],'/darAltaDescuentoaportes/{id}','DescuentoaportesController@darAlta');

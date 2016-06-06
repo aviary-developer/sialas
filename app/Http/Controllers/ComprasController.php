@@ -10,6 +10,7 @@ use sialas\Productos;
 use sialas\Proveedores;
 use sialas\Presentaciones;
 use sialas\Compras;
+use sialas\Ubicaciones;
 use sialas\Detallecompras;
 use sialas\Users;
 
@@ -77,8 +78,9 @@ class ComprasController extends Controller
     public function show($id)
     {
       $c=Compras::find($id);
+      $u=Ubicaciones::where('estado',true)->get();
       $detallesCompras=Detallecompras::where('compra_id',$id)->get();
-      return view('Compras.show',compact('detallesCompras','c'));
+      return view('Compras.show',compact('detallesCompras','c','u'));
     }
 
     /**

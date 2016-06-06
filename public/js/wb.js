@@ -26,18 +26,15 @@ function ver ()
   {
     document.getElementById('banco').style.display='none';
     document.getElementById('cheque').style.display='none';
-
     document.getElementById('caja').style.display='block';
-    
   }
   else if(document.getElementById('efe0').checked == true)
   {
     document.getElementById('caja').style.display='none';
-
     document.getElementById('banco').style.display='block';
     document.getElementById('cheque').style.display='block';
-   
   }
+
 
 }
 
@@ -76,3 +73,19 @@ function vercredito ()
   }
 
 }
+
+}
+function credit ()
+{
+  if(document.getElementById('cre1').checked == true)
+  {
+    document.getElementById('interes').style.display='block';
+    document.getElementById('mora').style.display='block';
+  }
+  else if(document.getElementById('cre0').checked == true)
+  {
+    document.getElementById('interes').style.display='none';
+    document.getElementById('mora').style.display='none';
+  }
+}
+

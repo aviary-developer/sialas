@@ -6,25 +6,24 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\remesas;
-use sialas\bancos;
-use sialas\cajas;
-use DB;
+use sialas\Descuentoaportes;
 use Redirect;
 use Session;
 use View;
-use Carbon\Carbon;
 
-class RemesasController extends Controller
+class DescuentoaportesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+      $state = $request->get('estado');
+      $name = $request->get('nombre');
+      $activos= Descuentoaportes::buscar($name,$state);
+      return view('descuentoaportes.index',compact('activos','state','name'));
     }
 
     /**
@@ -34,14 +33,7 @@ class RemesasController extends Controller
      */
     public function create()
     {
-     // $remesas=Remesas::where('transaccion',true)->orderBy('nombre')->get();
-    
-      //return $productos;
-      //return view('Compras.create',compact('productos','proveedores'));
-
-         $TipoCaja=Cajas::where('estado',true)->orderBy('nombre')->get();
-         $TipoBanco=Bancos::where('estado',true)->orderBy('nombre')->get();
-        return view('Remesas.create',compact('TipoCaja','TipoBanco'));
+        return view('descuentoaportes.create');
     }
 
     /**
@@ -52,12 +44,11 @@ class RemesasController extends Controller
      */
     public function store(Request $request)
     {
-               // Remesas::create($request->All());
-
-        $remesa = new Remesas;
-        $remesa->caja_id = $request->cajaTipo;
-        $remesa->save();
-        return redirect('/remesas')->with('mensaje','Registro Guardado');
+      if($request['techo']==""){
+        $request['techo']=0;
+      }
+      descuentoaportes::create($request->all());
+      return redirect('/descuentoaportes')->with('mensaje','Registro Guardado');
     }
 
     /**
@@ -79,8 +70,9 @@ class RemesasController extends Controller
      */
     public function edit($id)
     {
-        $remesa=Remesas::find($id);
-        return view('Remesas.edit', compact('remesa'));
+        $valor=Descuentoaportes::find($id);
+
+        return view('descuentoaportes.edit',compact('valor'));
     }
 
     /**
@@ -92,10 +84,16 @@ class RemesasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $remesa=Remesas::find($id);
-        $remesa->fill($request->all());
-        $remesa->save();
-        return Redirect::to('/remesas');
+      $valor=Descuentoaportes::find($id);
+
+      if($request['techo']==""){
+        $request['techo']=0;
+      }
+      $valor->fill($request->All());
+
+      $valor->save();
+
+      return Redirect::to('/descuentoaportes');
     }
 
     /**
@@ -106,6 +104,21 @@ class RemesasController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $valor = Descuentoaportes::find($id);
+       $valor->estado=false;
+       $valor->save();
+       Session::flash('mensaje','Registro enviado a papelera');
+       return Redirect::to('/descuentoaportes');
     }
+
+    public function darAlta($id){
+
+        $valor = Descuentoaportes::find($id);
+         $valor->estado=true;
+         $valor->save();
+         Session::flash('mensaje','Registro dado de Alta');
+         return Redirect::to('/descuentoaportes');
+
+    }
+
 }

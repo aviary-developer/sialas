@@ -60,6 +60,7 @@ $(document).on("click",".eliminarVenta",function(){
   var totalFila=parseFloat($(this).parents('tr').find('td:eq(4)').html());
   var cantidadEliminar=$(this).parents('tr').find('td:eq(0)').html();
   var parent = $(this).parents().get(0);
+  alert(cantidadEliminar);
   $(parent).remove();
   var correlativo=$("#correlativoVenta").val();
   var total=parseFloat($("#inputTotalVenta").val());
@@ -75,3 +76,26 @@ function submitar(){
   $("#inputArticulosVenta").val("0");
   $("#inputTotalVenta").val("0");
 }
+
+$(document).on("click",".agrUbi",function(){
+  var idProducto2=$(this).parents('tr').find('td:eq(0)').html();
+  var idVenta=$('#venta_id').val();
+  document.getElementById("temporalProducto").value=idVenta;
+  document.getElementById('modalUbi').click();/*alert("ID PRoducto: "+idProducto2+" ID VEnta:"+idVenta);*/
+});
+
+function addUbicacion(e){
+  var ubicacion = $("#selectUbicaciones").val();
+  var idProducto = $("#temporalProducto").val();
+  var idVenta = $("#venta_id").val();
+    alert("Ubi:"+ubicacion+" idProducto:"+idProducto+" idVenta:"+idVenta);
+    var ruta="/sialas/compra/"+idVenta+"";
+  	var token=$('#token').val();
+  	$.ajax({
+  		url:ruta,
+  		headers:{'X-CSRF-TOKEN':token},
+  		type:'PUT',
+  		dataType:'json',
+  		data:{nombreCategoriaArticulo:nombreCategoria}
+  	});
+};

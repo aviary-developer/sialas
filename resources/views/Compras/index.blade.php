@@ -82,12 +82,12 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <div class="up">
       <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
       <div class="image">
-        <div class="tooltip">
+        <!--<div class="tooltip">
           <a href={!! asset('/compras/'.$compra->id.'/edit') !!}>
             <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
           </a>
           <span class="tooltiptextup">Editar</span>
-        </div>
+        </div>-->
         <div class="tooltip">
           <a href={!! asset("/compras/".$compra->id) !!}>
             <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>

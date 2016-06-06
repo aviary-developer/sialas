@@ -40,3 +40,39 @@ function ver ()
   }
 
 }
+
+function verEstado ()
+{
+  if(document.getElementById('est1').checked == true)
+  {
+    document.getElementById('nuevo').style.display='none';
+    
+    
+  }
+  else if(document.getElementById('est0').checked == true)
+  {
+    document.getElementById('nuevo').style.display='block';
+
+    
+   
+  }
+
+}
+
+function vercredito ()
+{
+  if(document.getElementById('cred1').checked == true)
+  {
+    document.getElementById('credit').style.display='block';
+    
+    
+  }
+  else if(document.getElementById('cred0').checked == true)
+  {
+    document.getElementById('credit').style.display='none';
+
+    
+   
+  }
+
+}

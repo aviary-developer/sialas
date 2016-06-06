@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class mobiliarios extends Model
 {
     //
-    protected $fillable= ['nombre'];
+    protected $fillable= ['nombre','codigo','fecha','precio','descripcion','estado','nuevo','anios','proveedor_id','tipo_id','credito','intereses','num_cuotas','val_cuotas','tiempo_pago','cuenta','dia_pago'];
+    
+
     public static function buscar($nombre,$estado)
     {
     	return Mobiliarios::nombre($nombre)->estado($estado)->orderBy('nombre')->paginate(8);

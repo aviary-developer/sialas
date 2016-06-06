@@ -78,24 +78,27 @@ function submitar(){
 }
 
 $(document).on("click",".agrUbi",function(){
-  var idProducto2=$(this).parents('tr').find('td:eq(0)').html();
+  var idProducto=$(this).parents('tr').find('td:eq(0)').html();
+  var presentacion=$(this).parents('tr').find('td:eq(2)').html();
   var idVenta=$('#venta_id').val();
-  document.getElementById("temporalProducto").value=idVenta;
+  document.getElementById("temporalProducto").value=idProducto;
+  document.getElementById("temporalPresentacion").value=presentacion;
   document.getElementById('modalUbi').click();/*alert("ID PRoducto: "+idProducto2+" ID VEnta:"+idVenta);*/
 });
 
 function addUbicacion(e){
   var ubicacion = $("#selectUbicaciones").val();
   var idProducto = $("#temporalProducto").val();
-  var idVenta = $("#venta_id").val();
-    alert("Ubi:"+ubicacion+" idProducto:"+idProducto+" idVenta:"+idVenta);
-    var ruta="/sialas/compra/"+idVenta+"";
+  var presentacion = $("#temporalPresentacion").val();
+  var idCompra = $("#compra_id").val();
+    var ruta="/sialas/public/ingresoUbicacion";
   	var token=$('#token').val();
   	$.ajax({
   		url:ruta,
   		headers:{'X-CSRF-TOKEN':token},
-  		type:'PUT',
+  		type:'POST',
   		dataType:'json',
-  		data:{nombreCategoriaArticulo:nombreCategoria}
+  		data:{producto_id:idProducto,compra_id:idCompra,ubicacion_id:ubicacion,presentacion:presentacion}
   	});
+    //location.reload();
 };

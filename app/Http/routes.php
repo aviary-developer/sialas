@@ -57,6 +57,7 @@
     Route::match(['get','post'],'/darAltaUbicacion/{id}','UbicacionesController@darAlta');
 
     Route::resource('compras', 'ComprasController');
+    Route::post('ingresoUbicacion','ComprasController@ingresoUbicacion');
     Route::match(['get','post'],'/productospresentaciones/{cadena}','ComprasController@productospresentaciones');
 
     Route::resource('detallecompras', 'DetallecomprasController');

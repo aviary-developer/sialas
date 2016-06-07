@@ -1,5 +1,19 @@
 <div class="fila">
   <div>
+    <div class=""></div>
+    <div id='rbtnCredito' class="radiosg">
+		 {!!Form::label('lcredito','Compra al Crédito:')!!}<br>
+		 <div class="fila">
+			 <div>
+				 {!!Form :: radio ( "credito", 1,true,['id'=>'cred1'])!!}
+				 <label for="cred1"><span></span>Si</label>
+			 </div>
+			 <div>
+				 {!!Form :: radio ( "credito", 0,false,['id'=>'cred0'])!!}
+				 <label for="cred0"><span></span>No</label>
+			 </div>
+		 </div>
+	 </div>
     {!!Form::label("Presentaciones","Proveedor:")!!}
     <select  id="proveedoresVenta" name="proveedorVenta">
       @foreach($proveedores as $pro)

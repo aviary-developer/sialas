@@ -71,6 +71,10 @@
     Route::resource ('pagoservicios', 'PagoserviciosController');
     Route::get('pagoservicios/crear/{id}','PagoserviciosController@crear');
     Route::match(['get','post'],'/guardarPagoss/{id}','PagoserviciosController@guardar');
+
+    Route::resource ('pagocompras', 'PagocomprasController');
+    Route::get('pagocompras/crear/{id}','PagocomprasController@crear');
+    Route::match(['get','post'],'/guardarPagosc/{id}','PagocomprasController@guardar');
 //});
 
 //Route::group(['middleware'=>['auth','todos']], function(){ //ADMINISTRADOR-GERENTE-VENDEDOR-CAJERO

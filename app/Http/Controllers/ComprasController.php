@@ -79,7 +79,7 @@ class ComprasController extends Controller
     {
       $c=Compras::find($id);
       $u=Ubicaciones::where('estado',true)->get();
-      $detallesCompras=Detallecompras::where('compra_id',$id)->get();
+      $detallesCompras=Detallecompras::where('compra_id',$id)->orderBy('producto_id', 'asc')->get();
       return view('Compras.show',compact('detallesCompras','c','u'));
     }
 
@@ -124,7 +124,7 @@ class ComprasController extends Controller
     }
     public function ingresoUbicacion(Request $request){
       $idProducto=$request['producto_id'];
-      $ubicacion=$request['ubicacion'];
+      $ubicacion=$request['ubicacion_id'];
       $idCompra=$request['compra_id'];
       $presentacion=$request['presentacion'];
       $presentaciones=Presentaciones::where('producto_id',$idProducto)->where('nombre',$presentacion)->get();

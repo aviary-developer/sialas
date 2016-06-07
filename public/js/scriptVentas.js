@@ -100,5 +100,5 @@ function addUbicacion(e){
   		dataType:'json',
   		data:{producto_id:idProducto,compra_id:idCompra,ubicacion_id:ubicacion,presentacion:presentacion}
   	});
-    //location.reload();
+    window.setTimeout('location.reload()', 500);
 };

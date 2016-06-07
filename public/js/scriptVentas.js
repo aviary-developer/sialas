@@ -91,6 +91,7 @@ function addUbicacion(e){
   var idProducto = $("#temporalProducto").val();
   var presentacion = $("#temporalPresentacion").val();
   var idCompra = $("#compra_id").val();
+  var caducidad= $('#dateCaducidad').val()
     var ruta="/sialas/public/ingresoUbicacion";
   	var token=$('#token').val();
   	$.ajax({
@@ -98,7 +99,15 @@ function addUbicacion(e){
   		headers:{'X-CSRF-TOKEN':token},
   		type:'POST',
   		dataType:'json',
-  		data:{producto_id:idProducto,compra_id:idCompra,ubicacion_id:ubicacion,presentacion:presentacion}
+  		data:{producto_id:idProducto,compra_id:idCompra,ubicacion_id:ubicacion,presentacion:presentacion,fechaCaducidad:caducidad}
   	});
     window.setTimeout('location.reload()', 500);
 };
+function habilitarCaducidad(e){
+  if($('#checkCaducidad:checked').val()==1){
+  $('#dateCaducidad').removeAttr("disabled");
+}else{
+  $('#checkCaducidad').value=0;
+  $('#dateCaducidad').attr('disabled','disabled');
+}
+}

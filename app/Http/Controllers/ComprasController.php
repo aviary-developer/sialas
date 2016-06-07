@@ -79,7 +79,7 @@ class ComprasController extends Controller
     {
       $c=Compras::find($id);
       $u=Ubicaciones::where('estado',true)->get();
-      $detallesCompras=Detallecompras::where('compra_id',$id)->get();
+      $detallesCompras=Detallecompras::where('compra_id',$id)->orderBy('producto_id', 'asc')->get();
       return view('Compras.show',compact('detallesCompras','c','u'));
     }
 
@@ -91,7 +91,7 @@ class ComprasController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -121,5 +121,17 @@ class ComprasController extends Controller
       $producto=Productos::where('nombre','LIKE',$nombreP.'%')->first();
       $presentaciones=Presentaciones::where('producto_id', '=', $producto->id)->orderBy('equivale')->get();
       return Response::json($presentaciones);
+    }
+    public function ingresoUbicacion(Request $request){
+      $idProducto=$request['producto_id'];
+      $ubicacion=$request['ubicacion_id'];
+      $idCompra=$request['compra_id'];
+      $presentacion=$request['presentacion'];
+      $presentaciones=Presentaciones::where('producto_id',$idProducto)->where('nombre',$presentacion)->get();
+      foreach ($presentaciones as $p) {
+        $presentacion=$p->id;
+      }
+      $detalleCompra=Detallecompras::where('compra_id',$idCompra)->where('producto_id',$idProducto)->where('presentacion_id',$presentacion)->update(array('entrega' => true,'ubicacion_id'=>$ubicacion));
+      return Response::json($detalleCompra);
     }
 }

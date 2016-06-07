@@ -59,7 +59,8 @@ class DescuentoaportesController extends Controller
      */
     public function show($id)
     {
-        //
+      $s = Descuentoaportes::find($id);
+      return View::make('descuentoaportes.show')->with('s', $s);
     }
 
     /**

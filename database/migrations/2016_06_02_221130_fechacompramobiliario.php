@@ -14,7 +14,7 @@ class Fechacompramobiliario extends Migration
     {
         Schema::table('mobiliarios', function (Blueprint $table) {
             //
-            $table->dropColumn('fechacompra');
+            $table->dropColumn('fecha');
         });
     }
 

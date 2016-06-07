@@ -8,6 +8,7 @@ Versión Alfa.
 $cazul1 : #0099ff;
 $cazul2 : #0066cc;
 $cazul3 : #0052a4;
+$cceleste : #81c9fa;
 $cblanco : #fff;
 $cgris0 : #f9f9f9;
 $cgris1 : #ececec;
@@ -377,9 +378,14 @@ input[type=submit],input[type=button]{
   }
 }
 .radiosg{
+  width: 33%;
   text-align: center;
-  background: $cazul3;
+  background: $cceleste;
   border-radius: 20px 20px 20px 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .der{
   margin-left: 30px;

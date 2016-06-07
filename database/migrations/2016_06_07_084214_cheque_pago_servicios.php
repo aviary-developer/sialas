@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Fechamobiliario extends Migration
+class ChequePagoServicios extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class Fechamobiliario extends Migration
      */
     public function up()
     {
-        Schema::table('mobiliarios', function (Blueprint $table) {
-            //
-            $table->date('fecha_compra')->nullable();
-             $table->string('fecha')->nullable()->change();
-
+        Schema::table('pagoservicios', function (Blueprint $table) {
+            $table->string('cheque',20);
         });
     }
 
@@ -27,7 +24,7 @@ class Fechamobiliario extends Migration
      */
     public function down()
     {
-        Schema::table('mobiliarios', function (Blueprint $table) {
+        Schema::table('pagoservicios', function (Blueprint $table) {
             //
         });
     }

@@ -31,4 +31,13 @@ class mobiliarios extends Model
     	}
     	$query->where('estado',$estado);
     }
+
+    public static function nombreProveedor($id){
+      $n= Proveedores::find($id);
+      return $n->nombre; 
+    }
+     public static function nombreTipos($id){
+      $n= Tipos::find($id);
+      return $n->nombre; 
+    }
 }

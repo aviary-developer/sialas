@@ -4,11 +4,39 @@
 <?php $men=Session::get('mensaje');
 echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 @endif
-@if($state == 1 || $state == null)
-  <?php $cam = 0; ?>
-@else
-  <?php $cam = 1; ?>
-@endif
+  @if($state == 1 || $state == null)
+  <?php $vendido= 0; ?>
+  <?php $desechado = 2; ?>
+  <?php $reparacion = 3; ?>
+  <?php $donado= 4; ?>
+  @else 
+      @if($state == 0)
+      <?php $vendido= 1; ?>
+      <?php $desechado = 2; ?>
+      <?php $reparacion = 3; ?>
+      <?php $donado= 4; ?>
+      @endif
+      @if($state == 2)
+      <?php $vendido= 0; ?>
+      <?php $desechado = 1; ?>
+      <?php $reparacion = 3; ?>
+      <?php $donado= 4; ?>
+      @endif
+      @if($state == 3)
+      <?php $vendido= 0; ?>
+      <?php $desechado = 2; ?>
+      <?php $reparacion = 1; ?>
+      <?php $donado= 4; ?>
+      @endif
+      @if($state == 4)
+      <?php $vendido= 0; ?>
+      <?php $desechado = 2; ?>
+      <?php $reparacion = 3; ?>
+      <?php $donado= 1; ?>
+      @endif
+  @endif
+  
+
 
 <div class="launcher">
   <div class="lfloat"></div>
@@ -24,20 +52,68 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
     </a>
     <span class="tooltiptext">Nuevo</span>
   </div>
+  <?php // iconos de estado *******************************************************************?>
   <div class="tooltip">
-    <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$cam) !!}>
-      @if(!$cam)
+    <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$vendido) !!}>
+      @if($vendido==0)
         <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
       @else
         <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
       @endif
     </a>
-    @if(!$cam)
-      <span class="tooltiptext" id="tt">Papelera</span>
+    @if($vendido==0)
+     
+      <span class="tooltiptext" id="tt">Vendidos</span>
+    
     @else
-      <span class="tooltiptext" id="tt">Activos</span>
+      <span class="tooltiptext" id="tt">En Uso</span>
     @endif
   </div>
+  <div class="tooltip">
+    <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$desechado) !!}>
+      @if($desechado==2)
+        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+      @else
+        <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
+      @endif
+    </a>
+    @if($desechado==2)
+      <span class="tooltiptext" id="tt">Desechado</span>
+    @else
+      <span class="tooltiptext" id="tt">En Uso</span>
+    @endif
+  </div>
+  <div class="tooltip">
+    <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$reparacion) !!}>
+      @if($reparacion==3)
+        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+      @else
+        <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
+      @endif
+    </a>
+    @if($reparacion==3)
+      <span class="tooltiptext" id="tt">Reparacion</span>
+    @else
+      <span class="tooltiptext" id="tt">En Uso</span>
+    @endif
+  </div>
+  <div class="tooltip">
+    <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$donado) !!}>
+      @if($donado==4)
+        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+      @else
+        <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
+      @endif
+    </a>
+    @if($donado==4)
+      <span class="tooltiptext" id="tt">Donacion</span>
+    @else
+      <span class="tooltiptext" id="tt">En Uso</span>
+    @endif
+  </div>
+  
+ <?php // iconos de estado *******************************************************************?>
+
   <div class="tooltip">
     <a href="#">
       <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
@@ -55,10 +131,21 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 <div class="panel">
 	<div class="enc">
     <h2>Mobiliarios</h2>
-    @if(!$cam)
-      <h3 id='txt'> |Activos</h3>
-    @else
-      <h3 id='txt'> |Papelera</h3>
+     @if($state==1 || $state == null)
+      <h3 id='txt'> |En Uso</h3>
+    
+      @elseif($state==0)
+      <h3 id='txt'> |Vendidos</h3>
+    @endif
+   
+    @if($state==2)
+      <h3 id='txt'> |Desechados</h3>
+    @endif
+    @if($state==3)
+      <h3 id='txt'> |Reparacion</h3>
+    @endif
+    @if($state==4)
+      <h3 id='txt'> |Donados</h3>
     @endif
     <div class="sep"></div>
     {!!Form::open(['route'=>'mobiliarios.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
@@ -70,19 +157,20 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 		<table id="block">
 			<tr>
 				<th>#</th>
-				<th>Tipo</th>
-				<th>Distribuidor</th>
-				<th>Código</th>
-				<th>Descripción</th>
+				<th>Nombre</th>
+				<th>Proveedor</th>
+				<th>Precio $</th>
+				<th>Fecha de Adquisicion</th>
+        <th>Acciones</th>
 			</tr>
 			<?php $a=1; ?>
-			@foreach($mobiliariosAc as $mob)
+			@foreach($mobiliarios as $mob)
 			<tr>
 				<td>{{$a}}</td>
-				<td>{{$mob->idTipo}}</td>
-				<td>{{$mob->idDistribuidor}}</td>
-				<td>{{$mob->codigo}}</td>
-        <td>{{$mob->descripcion}}</td>
+				<td>{{$mob->nombre}}</td>
+				<td>{{$mob->nombreProveedor($mob->proveedor_id)}}</td>
+				<td>{{$mob->precio}}</td>
+        <td>{{$mob->fecha_compra}}</td>
 				<td>
 					<div class="up">
 						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
@@ -112,7 +200,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			@endforeach
 		</table>
 		 <div id="act">
-      {!! str_replace ('/?', '?', $mobiliariosAc->appends(Request::only(['nombre','estado']))->render ()) !!}
+      {!! str_replace ('/?', '?', $mobiliarios->appends(Request::only(['nombre','estado']))->render ()) !!}
     </div>
 	</center>
 </div>

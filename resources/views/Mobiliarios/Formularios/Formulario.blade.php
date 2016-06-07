@@ -26,6 +26,18 @@ if($bandera==1){
 		{!!Form::date('fecha_compra',null,['placeholder'=>'Ingrese fecha'])!!}
 		{!!Form::label('lprecio','Precio:')!!}
 		{!!Form::text('precio',null,['placeholder'=>'$00.00'])!!}
+
+		<div>
+		{!!Form::label('lestado','Estado del Bien:')!!}
+		<select name="estado">
+				@if( $v==0 && $v!=null)
+					<option value="1" selected="selected">En Uso</option>	
+				@else
+					<option value="1">En Uso</option>	
+				@endif
+		</select>
+ 	</div>
+
 		
 		
 @if($b!=1)
@@ -101,7 +113,7 @@ if($bandera==1){
 			 <label for="est1"><span></span>Nuevo</label>
 		 </div>
 		 <div>
-			 {!!Form :: radio ( "nuevo", 0,false,['onclick'=>'verEstado()','id'=>'est0'])!!}
+			 {!!Form :: radio ( "nuevo",0,false,['onclick'=>'verEstado()','id'=>'est0'])!!}
 			 <label for="est0"><span></span>Usado</label>
 		 </div>
 	 </div>

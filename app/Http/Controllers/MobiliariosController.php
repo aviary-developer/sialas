@@ -52,10 +52,44 @@ class MobiliariosController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->anios == ''){
-            $request->anios = null;
+        
+        $mobiliario = new Mobiliarios;
+        $mobiliario->codigo = $request->codigo;
+        $mobiliario->nombre= $request->nombre;
+        $mobiliario->fecha_compra= $request->fecha_compra;
+        $mobiliario->precio= $request->precio;
+        $mobiliario->descripcion =$request->descripcion;
+        $mobiliario->estado = $request->estado;
+        $mobiliario->nuevo = $request->nuevo;
+        if($request->anios == '' || $request->nuevo == 1){
+            $mobiliario->anios=null;
+        }else
+        {
+            $mobiliario->anios = $request->anios;
         }
-        Mobiliarios::create($request->All());
+        $mobiliario->proveedor_id = $request->proveedor_id;
+        $mobiliario->tipo_id = $request->tipo_id;
+        if($request->credito == 0 )
+        {
+            $mobiliario->interes=null;
+            $mobiliario->num_cuotas=null;
+            $mobiliario->val_cuotas=null;
+            $mobiliario->tiempo_pago=null;
+            $mobiliario->cuenta=null;
+            $mobiliario->dia_pago=null;
+        }else
+        {
+            $mobiliario->interes= $request->interes;
+            $mobiliario->num_cuotas= $request->num_cuotas;
+            $mobiliario->val_cuotas= $request->val_cuotas;
+            $mobiliario->tiempo_pago= $request->tiempo_pago;
+            $mobiliario->cuenta= $request->cuenta;
+            $mobiliario->dia_pago= $request->dia_pago;
+
+        }
+        
+
+        $mobiliario->save();
         return redirect('/mobiliarios')->with('mensaje','Registro Guardado');
     }
 

@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\Pagos;
-use sialas\Mobiliarios;
+use sialas\Pagoservicios;
+use sialas\Servicios;
 use sialas\Cajas;
 use sialas\Bancos;
 use Redirect;
 use Session;
 use View;
 
-class PagosController extends Controller
+class PagoserviciosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,10 +33,7 @@ class PagosController extends Controller
      */
     public function create()
     {
-      $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      $m= Mobiliarios::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      return view('pagos.create',compact('c','m','b'));
+        //
     }
 
     /**
@@ -47,27 +44,7 @@ class PagosController extends Controller
      */
     public function store(Request $request)
     {
-      $pago = new Pagos;
-      if($request->vradio){
-        $pago->banco_id = null;
-        $pago->caja_id = $request->caja_id;
-        $pago->cheque = null;
-        $pago->interes = null;
-        $pago->mora = null;
-      }else{
-        $pago->caja_id = null;
-        $pago->banco_id = $request->banco_id;
-        $pago->cheque = $request->cheque;
-        $pago->interes = $request->interes;
-        $pago->mora = $request->mora;
-      }
-      $pago->factura = $request->factura;
-      $pago->mobiliario_id = $request->mobiliario_id;
-      $pago->monto = $request->monto;
-      $pago->iva = $request->iva;
-      $pago->detalle = $request->detalle;
-      $pago->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago Guardado');
+        //
     }
 
     /**
@@ -115,19 +92,17 @@ class PagosController extends Controller
         //
     }
 
-    public function crear($mobiliario)
+    public function crear($servicio)
     {
       $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      $m= Mobiliarios::find($mobiliario);
+      $s= Servicios::find($servicio);
       $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      $f= Pagos::where('mobiliario_id',$mobiliario)->count();
-      $p= Pagos::where('mobiliario_id',$mobiliario)->sum('monto');
-      return view('pagos.crear',compact('c','m','b','f','p','mobiliario'));
+      return view('pagoservicios.crear',compact('c','s','b','servicio'));
     }
 
-    public function guardar(Request $request, $mobiliario)
+    public function guardar(Request $request, $servicio)
     {
-      $pago = new Pagos;
+      $pago = new Pagoservicios;
       if($request->vradio){
         $pago->banco_id = null;
         $pago->caja_id = $request->caja_id;
@@ -137,14 +112,13 @@ class PagosController extends Controller
         $pago->banco_id = $request->banco_id;
         $pago->cheque = $request->cheque;
       }
-      $pago->interes = $request->interes;
-      $pago->mora = $request->mora;
+      $pago->renta = $request->renta;
       $pago->factura = $request->factura;
-      $pago->mobiliario_id = $mobiliario;
+      $pago->servicio_id = $servicio;
       $pago->monto = $request->monto;
       $pago->iva = $request->iva;
       $pago->detalle = $request->detalle;
       $pago->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago Guardado');
+      return redirect('/servicios')->with('mensaje','Pago Guardado');
     }
 }

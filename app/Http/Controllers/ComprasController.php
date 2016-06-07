@@ -126,12 +126,13 @@ class ComprasController extends Controller
       $idProducto=$request['producto_id'];
       $ubicacion=$request['ubicacion_id'];
       $idCompra=$request['compra_id'];
+      $fechaCaducidad=$request['fechaCaducidad'];
       $presentacion=$request['presentacion'];
       $presentaciones=Presentaciones::where('producto_id',$idProducto)->where('nombre',$presentacion)->get();
       foreach ($presentaciones as $p) {
         $presentacion=$p->id;
       }
-      $detalleCompra=Detallecompras::where('compra_id',$idCompra)->where('producto_id',$idProducto)->where('presentacion_id',$presentacion)->update(array('entrega' => true,'ubicacion_id'=>$ubicacion));
-      return Response::json($detalleCompra);
+      $detalleCompra=Detallecompras::where('compra_id',$idCompra)->where('producto_id',$idProducto)->where('presentacion_id',$presentacion)->update(array('entrega' => true,'ubicacion_id'=>$ubicacion,'fecha_caducidad'=>$fechaCaducidad));
+      return Response::json($fechaCaducidad);
     }
 }

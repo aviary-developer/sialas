@@ -40,17 +40,19 @@
       <div class="">
         {!!Form::label("Cantidad","Cantidad:")!!}
         {!!Form::number('cantidadArticuloVenta',null,['min'=>'1','id'=>'cantidadArticuloVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
+        {!!Form::label("Iva","IVA:")!!}
+        {!!Form::number('iva',null,['min'=>'0','id'=>'ivavalor', 'placeholder'=>'IVA del producto'])!!}
         <center>
-          <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Agregar" onClick="addVenta()"/>
-          <input name="correlativoVenta" id="correlativoVenta" type="hidden" value="0" />
-          <input name="totalVenta" id="totalVenta" type="hidden" value="0" />
+          {!!Form::submit('Guardar')!!}
         </center>
       </div>
       <div class="">
         {!!Form::label("Cantidad","Precio Unitario:")!!}
         {!!Form::number('precioUnitario',null,['id'=>'precioUnitario', 'placeholder'=>'Precio Unitario'])!!}
         <center>
-          {!!Form::submit('Guardar')!!}
+          <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Agregar" onClick="addVenta()"/>
+          <input name="correlativoVenta" id="correlativoVenta" type="hidden" value="0" />
+          <input name="totalVenta" id="totalVenta" type="hidden" value="0" />
         </center>
       </div>
     </div>
@@ -63,6 +65,7 @@
           <th colspan="2">Cantidad</th>
           <th>Producto</th>
           <th>P/U ($)</th>
+          <th>IVA ($)</th>
           <th>Total ($)</th>
           <th>Opción</th>
         </tr>

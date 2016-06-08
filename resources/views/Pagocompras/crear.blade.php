@@ -1,6 +1,6 @@
 <?php $bandera=1; ?>
 @if($m->credito == 1)
-  @if($m->num_cuotas==$f || $m->precio <= $p)
+  @if($pc <= $p)
     <?php $se_pago = true; ?>
   @else
     <?php $se_pago = false; ?>
@@ -32,10 +32,10 @@
   <div class="panel">
     <div class="enc">
       <h2>Pago de mobiliario</h2>
-      <h3 id="txt">|{{ $m->nombre }}</h3>
+      <h3 id="txt">|{{ $m->create_at }}</h3>
     </div>
-{!! Form::open(['url'=>['guardarPagos',$mobiliario],'method'=>'POST']) !!}
-@include('pagos.Formularios.formulario')
+{!! Form::open(['url'=>['guardarPagosc',$compra],'method'=>'POST']) !!}
+@include('pagocompras.Formularios.formulario')
 {!! Form::submit('Guardar') !!}
 {!!Form::close()!!}
 </div>

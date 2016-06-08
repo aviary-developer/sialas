@@ -16,11 +16,13 @@ function ff(){
       var total=$("#inputTotalVenta").val();
       var articulo=$("#articulos").val();
       var precioUnitario=$("#precioUnitario").val();
+      var iva=$("#ivavalor").val();
       var presentacion=$("#selectPresentaciones").find('option:selected').val();
       if(articulo==0){
         $("#cantidadArticuloVenta").val("");
         $("#existenciasActualesArticulos").val("");
         $("#precioUnitario").val("");
+        $("#ivavalor").val("");
         return swal("Debe seleccionar un artículo", "No Procesado!", "info");
       }
       else{
@@ -30,7 +32,8 @@ function ff(){
         swal({   title: 'La cantidad no es un numero\n o No es permitido',type:'error',  text: 'Se Cerrará en 2 Segundos',   timer: 2700,   showConfirmButton: false });
       }else{
         correlativo=parseInt(correlativo)+1;
-        total=parseFloat(total)+parseFloat(cantidad*precioUnitario);
+        total=parseFloat(total)+parseFloat(cantidad*precioUnitario)+parseFloat(iva);
+        subtotal = parseFloat(cantidad*precioUnitario)+parseFloat(iva);
         tablaDatos.append("<tr><td>"+
         parseInt(cantidad)+
         "</td><td>"+presentacion+
@@ -38,10 +41,12 @@ function ff(){
         articulo+"'/><input type='hidden' name='preciosUnitarios[]' value='"+
         parseFloat(precioUnitario).toFixed(2)+
         "'/><input type='hidden' name='presentaciones[]' value='"+presentacion+
-        "'/><input type='hidden' name='cantidades[]' value='"+parseInt(cantidad)+"'/>"
+        "'/><input type='hidden' name='cantidades[]' value='"+parseInt(cantidad)+
+        "'/><input type='hidden' name='ivas[]' value='"+parseFloat(iva).toFixed(2)+"'/>"
         +articulo+
         "</td><td>"+parseFloat(precioUnitario).toFixed(2)+
-        "</td><td>"+parseFloat(precioUnitario*cantidad).toFixed(2)+
+        "</td><td>"+parseFloat(iva).toFixed(2)+
+        "</td><td>"+parseFloat(subtotal).toFixed(2)+
         "</td><td class='eliminarVenta' style='cursor:pointer;'>Eliminar</td></tr>");
         document.getElementById("correlativoVenta").value=correlativo;
         document.getElementById("inputArticulosVenta").value=correlativo;
@@ -55,9 +60,10 @@ function reset_camposVenta(){
  $("#cantidadArticuloVenta").val("");
  $("#precioUnitario").val("");
  $("#articulos").val("");
+ $("#ivavalor").val("");
 }
 $(document).on("click",".eliminarVenta",function(){
-  var totalFila=parseFloat($(this).parents('tr').find('td:eq(4)').html());
+  var totalFila=parseFloat($(this).parents('tr').find('td:eq(5)').html());
   var cantidadEliminar=$(this).parents('tr').find('td:eq(0)').html();
   var parent = $(this).parents().get(0);
   alert(cantidadEliminar);

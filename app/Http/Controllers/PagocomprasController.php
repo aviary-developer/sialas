@@ -8,6 +8,7 @@ use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Pagocompras;
 use sialas\Compras;
+use sialas\Detallecompras;
 use sialas\Cajas;
 use sialas\Bancos;
 use Redirect;
@@ -96,15 +97,18 @@ class PagocomprasController extends Controller
       $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
       $m= Compras::find($compra);
       $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      $f= Pagos::where('compra_id',$compra)->count();
-      $p= Pagos::where('compra_id',$compra)->sum('monto');
+      $f= Pagocompras::where('compra_id',$compra)->count();
+      $p= Pagocompras::where('compra_id',$compra)->sum('monto');
+      $i= Pagocompras::where('compra_id',$compra)->sum('iva');
       //Obtener el total del monto y el IVA
-      return view('pagos.crear',compact('c','m','b','f','p','compra'));
+      $pc = Detallecompras::where('compra_id',$compra)->sum('precio');
+      $ic = Detallecompras::where('compra_id',$compra)->sum('iva');
+      return view('pagocompras.crear',compact('c','m','b','i','f','pc','ic','p','compra'));
     }
 
-    public function guardar(Request $request, $mobiliario)
+    public function guardar(Request $request, $compra)
     {
-      $pago = new Pagos;
+      $pago = new Pagocompras;
       if($request->vradio){
         $pago->banco_id = null;
         $pago->caja_id = $request->caja_id;
@@ -116,12 +120,12 @@ class PagocomprasController extends Controller
       }
       $pago->interes = $request->interes;
       $pago->mora = $request->mora;
-      $pago->factura = $request->factura;
-      $pago->mobiliario_id = $mobiliario;
+      $pago->recibo = $request->recibo;
+      $pago->compra_id = $compra;
       $pago->monto = $request->monto;
       $pago->iva = $request->iva;
       $pago->detalle = $request->detalle;
       $pago->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago Guardado');
+      return redirect('/compras')->with('mensaje','Pago Guardado');
     }
 }

@@ -4,18 +4,18 @@ if($bandera==1){
 	$valorm=null;
 	$valorb=null;
 }else{
-	$valorc = $pagos->mobiliario_id;
+	$valorc = $pagos->compra_id;
 	$valorm = $pagos->caja_id;
 	$valorb = $pagos->banco_id;
 }
 ?>
 @if($se_pago)
 	<p>
-		Ya se pago todo el valor del bien
+		Ya se pago todo el valor de la mercadería
 	</p>
 @else
 	@if($m->credito)
-		Cuotas: <b>{{$f}}</b>/{{$m->num_cuotas}}    |    Capital: <b>{{$p}}</b>/{{$m->precio}}
+		Cuotas: <b>{{$f}}</b>   |    Capital: <b>{{$p}}</b>/{{$pc}}   |    IVA: <b>{{$i}}</b>/{{$ic}}
 	@endif
 	<div class = "radiosg">
 		{!!Form::label('llabel','Forma de pago:')!!}<br>
@@ -72,7 +72,7 @@ if($bandera==1){
 		</div>
 		<div>
 			{!!Form::label('lfactura','Número de factura:')!!}
-			{!!Form::text('factura',null,['placeholder'=>'Número de factura o ticket de pago'])!!}
+			{!!Form::text('recibo',null,['placeholder'=>'Número de factura o ticket de pago'])!!}
 			@if($m->credito == 1)
 					{!!Form::label('lmora','Mora ($):')!!}
 					{!!Form::text('mora',null,['placeholder'=>'Mora cancelada'])!!}

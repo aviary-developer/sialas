@@ -63,6 +63,7 @@ class ComprasController extends Controller
           $detalle->presentacion_id = $pres->id;
           $detalle->compra_id = $compra->id;
           $detalle->cantidad = $request->cantidades[$k];
+          $detalle->iva = $request->ivas[$k];
           $detalle->precio = $request->preciosUnitarios[$k];
           $detalle->save();
         }

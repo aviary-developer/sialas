@@ -75,10 +75,11 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 		</tr>
 	<?php $a=1; ?>
 	@foreach($cajasActivas as $ven)
+
+  <td>{{$a}}</td>
 	<tr>
 	<td>{{$a}}</td>
-  <!--<td>{{$ven->nombre_Cliente($ven->cliente_id)}}</td>-->
-  <td>{{$ven->nombre_Cliente}}</td>
+  <td>{{$ven->nombre_Cliente($ven->cliente_id)}}</td>
 	<td>{{$ven->producto_id}}</td>
   <td>{{$ven->precio}}</td>
 

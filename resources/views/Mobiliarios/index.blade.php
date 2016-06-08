@@ -9,7 +9,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
   <?php $desechado = 2; ?>
   <?php $reparacion = 3; ?>
   <?php $donado= 4; ?>
-  @else 
+  @else
       @if($state == 0)
       <?php $vendido= 1; ?>
       <?php $desechado = 2; ?>
@@ -35,7 +35,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
       <?php $donado= 1; ?>
       @endif
   @endif
-  
+
 
 
 <div class="launcher">
@@ -56,15 +56,15 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
   <div class="tooltip">
     <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$vendido) !!}>
       @if($vendido==0)
-        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+        <img id= "im" src={!! asset('/img/WB/vend.svg') !!} alt="" class="circ"/>
       @else
         <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
       @endif
     </a>
     @if($vendido==0)
-     
+
       <span class="tooltiptext" id="tt">Vendidos</span>
-    
+
     @else
       <span class="tooltiptext" id="tt">En Uso</span>
     @endif
@@ -86,13 +86,13 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
   <div class="tooltip">
     <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$reparacion) !!}>
       @if($reparacion==3)
-        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+        <img id= "im" src={!! asset('/img/WB/repa.svg') !!} alt="" class="circ"/>
       @else
         <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
       @endif
     </a>
     @if($reparacion==3)
-      <span class="tooltiptext" id="tt">Reparacion</span>
+      <span class="tooltiptext" id="tt">Reparación</span>
     @else
       <span class="tooltiptext" id="tt">En Uso</span>
     @endif
@@ -100,18 +100,18 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
   <div class="tooltip">
     <a href={!! asset('/mobiliarios?nombre='.$name.'&estado='.$donado) !!}>
       @if($donado==4)
-        <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
+        <img id= "im" src={!! asset('/img/WB/dona.svg') !!} alt="" class="circ"/>
       @else
         <img id= "im" src={!! asset('/img/WB/dat.svg') !!} alt="" class="circ"/>
       @endif
     </a>
     @if($donado==4)
-      <span class="tooltiptext" id="tt">Donacion</span>
+      <span class="tooltiptext" id="tt">Donación</span>
     @else
       <span class="tooltiptext" id="tt">En Uso</span>
     @endif
   </div>
-  
+
  <?php // iconos de estado *******************************************************************?>
 
   <div class="tooltip">
@@ -133,11 +133,11 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
     <h2>Mobiliarios</h2>
      @if($state==1 || $state == null)
       <h3 id='txt'> |En Uso</h3>
-    
+
       @elseif($state==0)
       <h3 id='txt'> |Vendidos</h3>
     @endif
-   
+
     @if($state==2)
       <h3 id='txt'> |Desechados</h3>
     @endif
@@ -159,8 +159,8 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 				<th>#</th>
 				<th>Nombre</th>
 				<th>Proveedor</th>
-				<th>Precio $</th>
-				<th>Fecha de Adquisicion</th>
+				<th>Precio ($)</th>
+				<th>Fecha de Adquisición</th>
         <th>Acciones</th>
 			</tr>
 			<?php $a=1; ?>
@@ -192,6 +192,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 								</a>
 								<span class="tooltiptextup">Ver</span>
 							</div>
+
 						</div>
 					</div>
 				</td>

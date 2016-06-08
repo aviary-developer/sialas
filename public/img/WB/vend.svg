@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="70px" height="70px" viewBox="0 0 70 70" enable-background="new 0 0 70 70" xml:space="preserve">
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="60.1709" y1="534.5713" x2="109.6691" y2="584.0694" gradientTransform="matrix(1 0 0 1 -49.9199 -524.3203)">
+	<stop  offset="0.5" style="stop-color:#FFFF66"/>
+	<stop  offset="0.5" style="stop-color:#FFFF00"/>
+</linearGradient>
+<path fill="url(#SVGID_1_)" d="M35,0C15.67,0,0,15.67,0,35s15.67,35,35,35s35-15.67,35-35S54.33,0,35,0z M35,67
+	C17.327,67,3,52.674,3,35C3,17.327,17.327,3,35,3c17.674,0,32,14.327,32,32C67,52.674,52.674,67,35,67z"/>
+<rect x="4186.821" y="1667.834" fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" width="395.737" height="677.716"/>
+<g>
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="730.5869" y1="-983.0874" x2="773.0131" y2="-1025.5137" gradientTransform="matrix(1 0 0 -1 -716.7998 -969.3008)">
+		<stop  offset="0.5" style="stop-color:#FFFF66"/>
+		<stop  offset="0.5" style="stop-color:#FFFF00"/>
+	</linearGradient>
+	<circle fill="url(#SVGID_2_)" cx="35" cy="35" r="30"/>
+</g>
+<g>
+	<text transform="matrix(1 0 0 1 25.2231 45.4707)" fill="#009245" font-family="'Masque'" font-size="26.3783">S</text>
+	<line fill="none" stroke="#009245" stroke-width="2" stroke-miterlimit="10" x1="37.998" y1="16.315" x2="27.817" y2="53.686"/>
+	<line fill="none" stroke="#009245" stroke-width="2" stroke-miterlimit="10" x1="43.088" y1="16.315" x2="32.908" y2="53.686"/>
+</g>
+</svg>

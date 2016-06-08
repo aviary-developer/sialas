@@ -183,10 +183,6 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 							</div>
 
 							<div class="tooltip">
-								@include('Mobiliarios.Formularios.darDeBaja')
-								<span class="tooltiptextup">Papelera</span>
-							</div>
-							<div class="tooltip">
 								<a href={!! asset("/mobiliarios/".$mob->id) !!}>
 									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
 								</a>

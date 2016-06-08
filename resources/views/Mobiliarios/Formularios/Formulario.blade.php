@@ -10,8 +10,7 @@ if($bandera==1){
 	$t = $mobiliarios->tiempo_pago;
 	$valorm=$mobiliarios->proveedor_id;
 	$valorc=$mobiliarios->tipo_id;
-	$b=0;
-	
+	$b=0;	
 }
 ?>
 
@@ -22,31 +21,24 @@ if($bandera==1){
 		{!!Form::text('codigo',null,['placeholder'=>'Ingrese código'])!!}
 		{!!Form::label('LNombre','Nombre del Mobiliario:')!!}
 		{!!Form::text('nombre',null,['placeholder'=>'Ingrese nombre'])!!}
+		@if($bandera)
 		{!!Form::label('lfecha','Fecha de Compra:')!!}
 		{!!Form::date('fecha_compra',null,['placeholder'=>'Ingrese fecha'])!!}
 		{!!Form::label('lprecio','Precio:')!!}
 		{!!Form::text('precio',null,['placeholder'=>'$00.00'])!!}
+		@endif
 
-		<div>
-		{!!Form::label('lestado','Estado del Bien:')!!}
-		<select name="estado">
-				@if( $v==0 && $v!=null)
-					<option value="1" selected="selected">En Uso</option>	
-				@else
-					<option value="1">En Uso</option>	
-				@endif
-		</select>
- 	</div>
+		
 
 		
 		
-@if($b!=1)
+@if($b==0)
 
 	<div>
 		{!!Form::label('lestado','Estado del Bien:')!!}
-		<select name="estado">
+		<select name="estado" onclick='verprecio()'  id='pre1'>
 				@if( $v==0 && $v!=null)
-					<option value="0" selected="selected">Vendido</option>	
+					<option value="0" selected="selected" >Vendido</option>	
 				@else
 					<option value="0">Vendido</option>	
 				@endif
@@ -70,14 +62,36 @@ if($bandera==1){
 				@endif
 
 				@if($v==4 && $v!=null)
-				<option value="4" selected="selected">Donado</option>
+				<option value="4" selected="selected" >Donado</option>
 				@else
 				<option value="4">Donado</option>
 				@endif
 		</select>
  	</div>
+ 	@else
+
+	 	<div>
+			{!!Form::label('lestado','Estado del Bien:')!!}
+			<select name="estado">
+					@if( $v==0 && $v!=null)
+						<option value="1" selected="selected">En Uso</option>	
+					@else
+						<option value="1">En Uso</option>	
+					@endif
+			</select>
+	 	</div>
  	@endif
 
+<div id='precio' style='display:none'>
+ 	{!!Form::label('lprecioventa','Precio de Venta $:')!!}
+	{!!Form::text('precioventa',null,['placeholder'=>'$00.00'])!!}
+</div>
+
+<div id='institu' style='display:none'>
+ 	{!!Form::label('linstitucion','Institucion o persona a la que Fue Donado:')!!}
+	{!!Form::text('institucion',null,['placeholder'=>'Escriba el nombre'])!!}
+</div>
+@if($bandera)
  	<div id="proveedor">
 			{!!Form::label('lproveedor','Proveedor:')!!}
 			<select name="proveedor_id">
@@ -123,11 +137,14 @@ if($bandera==1){
 		{!!Form::label('Lanios','Años de Servicio:')!!}
 		{!!Form::text('anios',null,['placeholder'=>'Ingrese años'])!!}
 	</div>
-		
+
+	@endif	
 		
 		{!!Form::label('ldescripcion','Descripcion de Bien:')!!}
 		{!!Form::textarea('descripcion',null,['placeholder'=>'detalle del bien:'])!!}
 	</div>
+
+	@if($bandera)
 	<div>
 
 		<div id='rbtnCredito'>
@@ -144,6 +161,7 @@ if($bandera==1){
 		 </div>
 	 </div>
 	
+
 <div id='credit'>
 	 	{!!Form::label('Linteres','Interes %:')!!}
 		{!!Form::text('interes',null,['placeholder'=>'Ingrese interes'])!!}
@@ -187,7 +205,9 @@ if($bandera==1){
 		{!!Form::label('ldiapago','Día de Pago: ')!!}
 		{!!Form::text('dia_pago',null,['placeholder'=>'Ingrese numero de día'])!!}
 	</div>
+	
 
 	</div>
+	@endif
 
 </div>

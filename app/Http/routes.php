@@ -60,6 +60,9 @@
     Route::post('ingresoUbicacion','ComprasController@ingresoUbicacion');
     Route::match(['get','post'],'/productospresentaciones/{cadena}','ComprasController@productospresentaciones');
 
+    Route::resource('ventas', 'VentasController');
+    Route::match(['get','post'],'/productos/{id}','VentasController@guardar');
+
     Route::resource('detallecompras', 'DetallecomprasController');
 
     Route::resource ('asistencias', 'AsistenciasController');

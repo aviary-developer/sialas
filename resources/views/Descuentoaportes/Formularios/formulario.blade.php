@@ -34,14 +34,14 @@
 				<br>{{$error}}
 			@endforeach
 		</div>
-		{!!Form::label('lvalor','Valor:')!!}
+		{!!Form::label('lvalor','Porcentaje:')!!}
 		{!!Form::text('valor',null,['placeholder'=>'Valor'])!!}
     <div class="alerta-errores">
 			@foreach ($errors->get('techo') as $error)
 				<br>{{$error}}
 			@endforeach
 		</div>
-		{!!Form::label('ltecho','Techo:')!!}
+		{!!Form::label('ltecho','Techo (si no posee dejar vacío):')!!}
 		{!!Form::text('techo',null,['placeholder'=>'Techo'])!!}
 	</div>
 </div>

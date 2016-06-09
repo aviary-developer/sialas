@@ -7,7 +7,7 @@
         <h3 id='txt'> |Empleados</h3>
     </div>
 <center>
-    @foreach($usuarios as $u)
+
       <table>
         <tr>
           <th>Empleado</th>
@@ -18,6 +18,7 @@
           <th>AFP</th>
           <th>ISSS</th>
         </tr>
+          @foreach($usuarios as $u)
         <tr>
           <td>{{$u->nom_usuario}}</td>
           <td>{{number_format($u->salario, 2, '.', '')}}</td>
@@ -27,8 +28,8 @@
           <td></td>
           <td></td>
         </tr>
+        @endforeach
       </table>
-    @endforeach
 </center>
 </div>
 @stop

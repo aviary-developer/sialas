@@ -50,7 +50,12 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
   <div class="datos">
     <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$s->id !!}</span></pre>
     <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $s->nombre }}</span></pre>
-    <pre>Tipo:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $s->tipo }}</span></pre>
+    @if($s->tipo=="Aportación")
+      <?php  $variable="Aportación patrono";?>
+    @else
+      <?php  $variable="Descuento empleado";?>
+    @endif
+    <pre>Tipo:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{$variable}}</span></pre>
     <pre>Valor:&#09;&#09;&#09;&#09;&#09;<span>{{ $s->valor."%" }}</span></pre>
     @if($s->techo==0)
       <pre>Techo:&#09;&#09;&#09;&#09;&#09;<span>No posee</span></pre>

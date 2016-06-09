@@ -87,3 +87,31 @@ function credit ()
     document.getElementById('mora').style.display='none';
   }
 }
+
+  function verprecio ()
+{
+  
+  if(document.getElementById('pre1').value == 0)
+  {
+    document.getElementById('precio').style.display='block';
+    
+  }
+  else if(document.getElementById('pre1').value !=0)
+   {
+    document.getElementById('precio').style.display='none';
+   }
+
+   if(document.getElementById('pre1').value == 4)
+  {
+    document.getElementById('institu').style.display='block';
+    
+  }
+  else if(document.getElementById('pre1').value !=4)
+   {
+    document.getElementById('institu').style.display='none';
+   }
+}
+
+  
+
+

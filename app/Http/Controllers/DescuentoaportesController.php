@@ -10,6 +10,7 @@ use sialas\Descuentoaportes;
 use Redirect;
 use Session;
 use View;
+use sialas\Http\Requests\DescuentoaportesRequest;
 
 class DescuentoaportesController extends Controller
 {
@@ -20,6 +21,24 @@ class DescuentoaportesController extends Controller
      */
     public function index(Request $request)
     {
+      $nombre=array("AFP (Empleado)","ISSS (Empleado)","AFP (Patrono)","ISSS (Patrono)");
+      $tipo=array("Descuento","Descuento","Aportación","Aportacón");
+      $valor=array("6.25","3","6.75","7.5");
+      $techo=array("6377.15","1000","6377.15","1000");
+
+      $contador=Descuentoaportes::count();
+
+      if($contador<1){
+        for($i=0;$i<4;$i++){
+          Descuentoaportes::create([
+            'nombre' => $nombre[$i],
+            'tipo' => $tipo[$i],
+            'valor'=> $valor[$i],
+            'techo' => $techo[$i],
+          ]);
+        }
+      }
+
       $state = $request->get('estado');
       $name = $request->get('nombre');
       $activos= Descuentoaportes::buscar($name,$state);
@@ -42,12 +61,12 @@ class DescuentoaportesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DescuentoaportesRequest $request)
     {
       if($request['techo']==""){
         $request['techo']=0;
       }
-      descuentoaportes::create($request->all());
+      Descuentoaportes::create($request->all());
       return redirect('/descuentoaportes')->with('mensaje','Registro Guardado');
     }
 
@@ -83,7 +102,7 @@ class DescuentoaportesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(descuentoaportesRequest $request, $id)
     {
       $valor=Descuentoaportes::find($id);
 

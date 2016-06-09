@@ -185,11 +185,5 @@ class MobiliariosController extends Controller
          Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/mobiliarios');
     }
-    public function darAlta($id){
-         $mobiliarios = Mobiliarios::find($id);
-         $mobiliarios->estado=true;
-         $mobiliarios->save();
-         Session::flash('mensaje','Registro dado de Alta');
-         return Redirect::to('/mobiliarios');
-    }
+    
 }

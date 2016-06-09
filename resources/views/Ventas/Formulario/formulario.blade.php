@@ -1,28 +1,17 @@
 <div class="fila">
   <div>
+    
+
     {!!Form::label("LCliente","Cliente:")!!}
-    <select  id="clientesVenta" name="clienteVenta">
-      @foreach($clientes as $cli)
-        <option value="{{$cli->id}}">
-          {{$cli->nombre_Cliente}}
-        </option>
-      @endforeach
+    <select  id="selectClientes" name="nombreClientesVenta" onmouseover="ff();">
+      <option disabled>Seleccione un cliente</option>
     </select>
 
-
-    {!!Form::label("Product","Productos:")!!}
-    <input list="selectArticulosVenta" name="nombreArticulosVenta" id="articulos" onkeypress="ff();" onfocus="ff();">
-    <datalist id="selectArticulosVenta">
-      @foreach($productos as $prod)
-        <option>
-          {{$prod->producto_id}}
-        </option>
-      @endforeach
-    </datalist>
-    <!--{!!Form::label("Presentaciones","Presentación:")!!}
-    <select  id="selectPresentaciones" name="nombrePresentacionesVenta" onmouseover="ff();">
-      <option disabled>Seleccione un producto</option>
-    </select>-->
+    {!!Form::label("LProducto","Producto:")!!}
+    <select  id="selectProductos" name="nombreArticulosVenta" onmouseover="ff();">
+      <option disabled>Seleccione un Producto</option>
+    </select>
+    
     <div></div>
     <div class = "fila">
       <div class="">

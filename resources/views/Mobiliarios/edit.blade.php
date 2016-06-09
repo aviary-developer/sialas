@@ -1,3 +1,4 @@
+<?php $bandera=0;?>
 @extends('welcome')
 @section('layout')
   <div class="launcher">
@@ -20,8 +21,8 @@
       <h2>Usuarios</h2>
       <h3 id="txt">|Editar</h3>
     </div>
-    {!! Form::model($mobiliario,['route'=>['mobiliarios.update',$mobiliario->id],'method'=>'PUT']) !!}
-    @include('Mobiliario.Formularios.Formulario')
+    {!! Form::model($mobiliarios,['route'=>['mobiliarios.update',$mobiliarios->id],'method'=>'PUT']) !!}
+    @include('Mobiliarios.Formularios.Formulario')
     {!! Form::submit('Actualizar') !!}
     {!!Form::close()!!}
   </div>

@@ -69,7 +69,7 @@
     <table>
       <tr>
         <th>#</th>
-        <th>N° de recibo</th>
+        <th>Número de cuenta</th>
         <th>Servicio</th>
         <th>Acciones</th>
       </tr>
@@ -77,7 +77,7 @@
       @foreach($serviciosActivos as $s)
         <tr>
           <td>{{$a}}</td>
-          <td>{{$s->n_recibo}}</td>
+          <td><center>{{$s->n_recibo}}</center></td>
           <td>{{$s->nombre}}</td>
           <td>
             <div class="up">

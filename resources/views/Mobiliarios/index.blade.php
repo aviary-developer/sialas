@@ -36,8 +36,6 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
       @endif
   @endif
 
-
-
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
@@ -169,8 +167,8 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 				<td>{{$a}}</td>
 				<td>{{$mob->nombre}}</td>
 				<td>{{$mob->nombreProveedor($mob->proveedor_id)}}</td>
-				<td>{{$mob->precio}}</td>
-        <td>{{$mob->fecha_compra}}</td>
+				<td><center>{{$mob->precio}}</center></td>
+        <td><center>{{$mob->fecha_compra}}</center></td>
 				<td>
 					<div class="up">
 						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

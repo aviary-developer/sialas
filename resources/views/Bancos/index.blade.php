@@ -78,7 +78,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 	<tr>
 	<td>{{$a}}</td>
 	<td>{{$banco->nombre}}</td>
-	<td>{{$banco->numero}}</td>
+	<td><center>{{$banco->numero}}</center></td>
   <td>{{$banco->representante}}</td>
   <td>
     <div class="up">

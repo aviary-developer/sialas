@@ -3,24 +3,44 @@
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="70px" height="70px" viewBox="0 0 70 70" enable-background="new 0 0 70 70" xml:space="preserve">
-<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="60.1709" y1="534.5713" x2="109.6691" y2="584.0694" gradientTransform="matrix(1 0 0 1 -49.9199 -524.3203)">
-	<stop  offset="0.5" style="stop-color:#FFFF66"/>
-	<stop  offset="0.5" style="stop-color:#FFFF00"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="85.1318" y1="-455.231" x2="134.6295" y2="-504.7285" gradientTransform="matrix(1 0 0 -1 -74.8799 -444.9805)">
+	<stop  offset="0.5" style="stop-color:#2BB673"/>
+	<stop  offset="0.5" style="stop-color:#009444"/>
 </linearGradient>
 <path fill="url(#SVGID_1_)" d="M35,0C15.67,0,0,15.67,0,35s15.67,35,35,35s35-15.67,35-35S54.33,0,35,0z M35,67
 	C17.327,67,3,52.674,3,35C3,17.327,17.327,3,35,3c17.674,0,32,14.327,32,32C67,52.674,52.674,67,35,67z"/>
-<rect x="4186.821" y="1667.834" fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" width="395.737" height="677.716"/>
+<rect x="4186.821" y="1667.834" fill="#FFFFFF" stroke="#231F20" stroke-miterlimit="10" width="395.736" height="677.716"/>
 <g>
 	
-		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="730.5869" y1="-983.0874" x2="773.0131" y2="-1025.5137" gradientTransform="matrix(1 0 0 -1 -716.7998 -969.3008)">
-		<stop  offset="0.5" style="stop-color:#FFFF66"/>
-		<stop  offset="0.5" style="stop-color:#FFFF00"/>
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="755.5469" y1="1586.748" x2="797.9733" y2="1629.1744" gradientTransform="matrix(1 0 0 1 -741.7598 -1572.9609)">
+		<stop  offset="0.5" style="stop-color:#2BB673"/>
+		<stop  offset="0.5" style="stop-color:#009444"/>
 	</linearGradient>
 	<circle fill="url(#SVGID_2_)" cx="35" cy="35" r="30"/>
 </g>
 <g>
-	<text transform="matrix(1 0 0 1 25.2231 45.4707)" fill="#009245" font-family="'Masque'" font-size="26.3783">S</text>
-	<line fill="none" stroke="#009245" stroke-width="2" stroke-miterlimit="10" x1="37.998" y1="16.315" x2="27.817" y2="53.686"/>
-	<line fill="none" stroke="#009245" stroke-width="2" stroke-miterlimit="10" x1="43.088" y1="16.315" x2="32.908" y2="53.686"/>
+	<g enable-background="new    ">
+		<path fill="#E5EA87" d="M26.463,40.854h6.251c0.475,0,0.976,0,1.504,0c0.527,0,1.029-0.03,1.503-0.093
+			c0.475-0.061,0.888-0.18,1.239-0.355s0.59-0.448,0.713-0.818c0.141-0.457,0.154-0.773,0.039-0.949
+			c-0.114-0.176-0.355-0.36-0.725-0.554c-0.316,0.018-0.704,0.026-1.161,0.026c-0.458,0-0.945-0.014-1.464-0.04
+			c-0.519-0.026-1.046-0.069-1.583-0.132c-0.537-0.062-1.029-0.158-1.478-0.29c-0.448-0.132-0.84-0.294-1.174-0.488
+			c-0.334-0.193-0.563-0.438-0.686-0.738c-0.141-0.316-0.282-0.668-0.422-1.055s-0.25-0.801-0.33-1.24s-0.105-0.905-0.079-1.397
+			s0.127-0.994,0.303-1.504c-0.493,0.193-0.937,0.418-1.332,0.673s-0.726,0.55-0.989,0.884c-0.053,0.053-0.097,0.079-0.132,0.079
+			c-0.088,0.053-0.185,0.057-0.29,0.013s-0.141-0.118-0.105-0.225c0.58-1.107,1.161-2.092,1.741-2.954
+			c0.581-0.861,1.249-1.587,2.005-2.176c0.756-0.589,1.653-1.038,2.69-1.346s2.321-0.452,3.852-0.436h9.654l-1.135,4.723
+			l-8.467,0.026c-0.616,0.07-1.148,0.193-1.597,0.369c-0.448,0.176-0.761,0.466-0.937,0.87c-0.193,0.439-0.233,0.805-0.119,1.095
+			s0.338,0.515,0.673,0.673c0.141,0.07,0.281,0.118,0.422,0.145s0.308,0.045,0.501,0.053c0.193,0.01,0.422,0.014,0.686,0.014
+			c0.265,0,0.581,0,0.95,0c1.564,0,2.77,0.123,3.613,0.369s1.478,0.669,1.899,1.267c0.334,0.457,0.519,1.077,0.554,1.859
+			s-0.097,1.596-0.396,2.439c-0.353,1.073-0.822,2.063-1.411,2.968c-0.59,0.906-1.385,1.596-2.387,2.071
+			c-0.616,0.299-1.425,0.506-2.428,0.619c-1.002,0.115-2.294,0.172-3.877,0.172h-7.228L26.463,40.854z"/>
+	</g>
+	<g>
+		
+			<rect x="31.908" y="15.634" transform="matrix(0.9649 0.2627 -0.2627 0.9649 10.3505 -7.4156)" fill="#E5EA87" width="2" height="38.733"/>
+	</g>
+	<g>
+		
+			<rect x="36.998" y="15.634" transform="matrix(0.9649 0.2627 -0.2627 0.9649 10.5293 -8.7529)" fill="#E5EA87" width="2" height="38.732"/>
+	</g>
 </g>
 </svg>

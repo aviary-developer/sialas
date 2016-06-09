@@ -24,6 +24,18 @@
     <span class="tooltiptext">Nuevo</span>
   </div>
   <div class="tooltip">
+    <a href={!! asset('/marcas') !!}>
+      <img src={!! asset('/img/WB/mar.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Marcas</span>
+  </div>
+  <div class="tooltip">
+    <a href={!! asset('/categorias') !!}>
+      <img src={!! asset('/img/WB/cat.svg') !!} alt="" class="circ"/>
+    </a>
+    <span class="tooltiptext">Categorías</span>
+  </div>
+  <div class="tooltip">
     <a href={!! asset('/productos?nombre='.$name.'&estado='.$cam) !!}>
       @if(!$cam)
         <img id= "im" src={!! asset('/img/WB/pre.svg') !!} alt="" class="circ"/>
@@ -60,7 +72,7 @@
     @endif
     <div class="sep"></div>
     {!!Form::open(['route'=>'productos.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
-    {!! Form::text('nombre',null,['placeholder'=>'Nombre de Productos']) !!}
+    {!! Form::text('nombre',null,['placeholder'=>'Nombre de productos']) !!}
     {!! Form::submit('Buscar') !!}
     {!! Form::close() !!}
   </div>
@@ -70,7 +82,7 @@
         <th>#</th>
         <th>Nombre</th>
         <th>Marca</th>
-        <th>Categoria</th>
+        <th>Categoría</th>
         <th>Acciones</th>
       </tr>
       <?php $a = 1; ?>

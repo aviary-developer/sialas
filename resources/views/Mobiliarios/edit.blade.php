@@ -18,7 +18,7 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Usuarios</h2>
+      <h2>Mobiliarios</h2>
       <h3 id="txt">|Editar</h3>
     </div>
     {!! Form::model($mobiliarios,['route'=>['mobiliarios.update',$mobiliarios->id],'method'=>'PUT']) !!}

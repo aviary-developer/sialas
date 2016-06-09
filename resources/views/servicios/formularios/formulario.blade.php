@@ -5,15 +5,15 @@
 				<br>{{$error}}
 			@endforeach
 		</div>
-		{!!Form::label('lnombre','Tipo de servicio:')!!}
-		{!!Form::text('nombre',null,['placeholder'=>'Servicio'])!!}
+		{!!Form::label('lnombre','Nombre del servicio:')!!}
+		{!!Form::text('nombre',null,['placeholder'=>'Nombre'])!!}
 		<div class="alerta-errores">
 			@foreach ($errors->get('n_recibo') as $error)
 				<br>{{$error}}
 			@endforeach
 		</div>
-		{!!Form::label('lrecibo','Número de factura:')!!}
-		{!!Form::text('n_recibo',null,['placeholder'=>'Recibo'])!!}
+		{!!Form::label('lrecibo','Número de cuenta:')!!}
+		{!!Form::text('n_recibo',null,['placeholder'=>'Cuenta'])!!}
 	</div>
 	<div>
 		<div class="alerta-errores">

@@ -12,7 +12,7 @@
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href='#'>
+    <a href={!! asset('/productos') !!}>
       <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
@@ -52,7 +52,7 @@
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Categorias</h2>
+    <h2>Categorías</h2>
     @if(!$cam)
       <h3 id='txt'> |Activos</h3>
     @else

@@ -17,7 +17,7 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Categorias</h2>
+      <h2>Categorías</h2>
       <h3 id="txt">|Editar</h3>
     </div>
     {!! Form::model($categoria,['route'=>['categorias.update',$categoria->id],'method'=>'PUT']) !!}

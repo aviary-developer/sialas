@@ -44,7 +44,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Categorias</h2>
+    <h2>Categorías</h2>
     <h3 id="txt"> |{{$c->nombre}}</h3>
   </div>
   <div class="datos">

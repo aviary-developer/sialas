@@ -17,7 +17,7 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Categorias</h2>
+      <h2>Categorías</h2>
       <h3 id="txt">|Nuevo</h3>
     </div>
     {!!Form::open(['route'=>'categorias.store','method'=>'POST'])!!}

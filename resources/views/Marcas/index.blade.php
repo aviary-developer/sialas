@@ -16,7 +16,7 @@
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href='#'>
+    <a href={!! asset('/productos') !!}>
       <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
@@ -64,7 +64,7 @@
     @endif
     <div class="sep"></div>
     {!!Form::open(['route'=>'marcas.index','method'=>'GET','role'=>'search','class'=>'search'])!!}
-    {!! Form::text('nombre',null,['placeholder'=>'Nombre de Marcas']) !!}
+    {!! Form::text('nombre',null,['placeholder'=>'Nombre de marcas']) !!}
     {!! Form::submit('Buscar') !!}
     {!! Form::close() !!}
   </div>

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\User;
+use sialas\Descuentoaportes;
 
 class CajausuariosController extends Controller
 {
@@ -28,8 +29,8 @@ class CajausuariosController extends Controller
     public function create()
     {
         $usuarios=User::buscar("",1);
-
-        return view('cajausuarios.create',compact('usuarios'));
+        $activos= Descuentoaportes::buscar("",null);
+        return view('cajausuarios.create',compact('usuarios','activos'));
     }
 
     /**

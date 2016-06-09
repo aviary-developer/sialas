@@ -34,7 +34,7 @@
 				<br>{{$error}}
 			@endforeach
 		</div>
-		{!!Form::label('lvalor','Porcentaje:')!!}
+		{!!Form::label('lvalor','Porcentaje (%):')!!}
 		{!!Form::text('valor',null,['placeholder'=>'Valor'])!!}
     <div class="alerta-errores">
 			@foreach ($errors->get('techo') as $error)

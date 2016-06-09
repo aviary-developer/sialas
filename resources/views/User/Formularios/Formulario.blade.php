@@ -22,6 +22,13 @@
 		{!!Form::label('Lcontraseña','Contraseña:')!!}
 		{!!Form::password('password',null,['placeholder'=>'Ingrese su contraseña:'])!!}
 		<div class="alerta-errores">
+			@foreach ($errors->get('salario') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
+		{!!Form::label('Lsalario','Monto de salario:')!!}
+		{!!Form::text('salario',null,['placeholder'=>'Ingrese salario:'])!!}
+		<div class="alerta-errores">
 			@foreach ($errors->get('tipo') as $error)
 				<br>{{$error}}
 			@endforeach
@@ -68,12 +75,16 @@
 		{!!Form::label('Ccontraseña','Confirmar contraseña:')!!}
 		{!!Form::password('password_confirmation',null,['placeholder'=>'confirmar:'])!!}
 		<div class="alerta-errores">
-			@foreach ($errors->get('salario') as $error)
+			@foreach ($errors->get('tipo_salario') as $error)
 				<br>{{$error}}
 			@endforeach
 		</div>
-		{!!Form::label('Lsalario','Monto de salario:')!!}
-		{!!Form::text('salario',null,['placeholder'=>'Ingrese salario:'])!!}
+		{!!Form::label('Ltipo_salario','Tipo de salario:')!!}
+		<select name="tipo_salario">
+			<option value="1">Mensual</option>
+			<option value="2">Quincenal</option>
+			<option value="3">Semanal</option>
+		</select>
 		<div class="alerta-errores">
 			@foreach ($errors->get('telefono') as $error)
 				<br>{{$error}}

@@ -70,7 +70,7 @@
       <tr>
         <th>#</th>
         <th>nombre</th>
-        <th>Valor</th>
+        <th>Valor (%)</th>
         <th>Techo</th>
         <th>Acciones</th>
       </tr>

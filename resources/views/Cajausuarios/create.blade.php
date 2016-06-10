@@ -39,6 +39,7 @@
           <tr>
             <td>{{$u->nom_usuario}}</td>
             <td>{{number_format($u->salario, 2, '.', '')}}</td>
+            <td>{{number_format($renta->renta($u->tipo_salario,$u->salario), 2, '.', '')}}</td>
             @for($i=0;$i<$cont;$i++)
               @if($techo[$i]!=0 && $u->salario>$techo[$i])
                 <?php $u->salario=$techo[$i]; ?>

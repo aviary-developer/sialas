@@ -1,7 +1,5 @@
 <div class="fila">
   <div>
-
-
     {!!Form::label("LCliente","Cliente:")!!}
     <input list="selectClienteVenta" name="clienteVenta" id="cliente" onkeypress="clienteVenta();" onfocus="clienteVenta();">
     <datalist id="selectClienteVenta">
@@ -17,7 +15,7 @@
       </option>
     @endforeach-->
     {!!Form::label("LProducto","Productos:")!!}
-    <input list="selectProductosVenta" name="nombreProductosVenta" id="articulos" onkeypress="ff();" onfocus="ff();">
+    <input list="selectProductosVenta" name="nombreProductosVenta" id="productos" onkeypress="ff();" onfocus="ff();">
     <datalist id="selectProductosVenta">
       @foreach($productos as $pro)
         <option>
@@ -27,7 +25,7 @@
     </datalist>
 
     {!!Form::label("LPresentacion","Presentación:")!!}
-    <select  id="selectPresentaciones" name="nombrePresentacionesVenta" onmouseover="ff();">
+    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta" onmouseover="ff();">
       <option disabled>Seleccione presentación</option>
     </select>
 
@@ -35,11 +33,13 @@
     <div class = "fila">
       <div class="">
         {!!Form::label("Cantidad","Cantidad:")!!}
-        {!!Form::number('cantidad',null,['min'=>'1','id'=>'cantidad', 'placeholder'=>'Ingrese Cantidad'])!!}
+        {!!Form::number('cantidadProductoVenta',null,['min'=>'1','id'=>'cantidadProductoVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
+        {!!Form::label("Cantidad","Precio de Producto")!!}
+        {!!Form::number('precioProductoVenta',null,['id'=>'precioProductoVenta', 'placeholder'=>'$0.00'])!!}
         <center>
-          <input name="btnInsertarVenta" id="btnInsertarVenta" type="button" value="Agregar" onClick="addVenta()"/>
-          <input name="correlativoVenta" id="correlativoVenta" type="hidden" value="0" />
-          <input name="totalVenta" id="totalVenta" type="hidden" value="0" />
+          <input name="agregarVenta" id="agregarVenta" type="button" value="Agregar" onClick="agregarProductoVenta()"/>
+          <input name="correlativoHiddenVenta" id="correlativoHiddenVenta" type="hidden" value="0" />
+          <input name="totalHiddenVenta" id="totalHiddenVenta" type="hidden" value="0" />
         </center>
       </div>
       <div class="">
@@ -52,7 +52,7 @@
   <div class="der">
     <center>
       {!! Form::label('tab','Articulos') !!}
-      <table name="tablaArticulosVenta" id="tblDatosVenta">
+      <table name="tablaProductosVenta" id="tblProductosVenta">
         <tr>
           <th colspan="2">Cantidad</th>
           <th>Producto</th>
@@ -65,11 +65,11 @@
       <div class="fila">
         <div>
           <label for="ex1">Número de productos:</label>
-          <input  name="inputArticulosVenta" id="inputArticulosVenta" type="number" value="0" disabled/>
+          <input  name="inputProductosVenta" id="inputProductosVenta" type="number" value="0" disabled/>
         </div>
         <div>
           <label for="ex1">Costo Total ($):</label>
-          <input  name="inputTotalVenta" id="inputTotalVenta" value="0" type="number" disabled/>
+          <input  name="inputTotalProductosVenta" id="inputTotalProductosVenta" value="0" type="number" disabled/>
         </div>
       </div>
     </center>

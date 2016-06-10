@@ -27,7 +27,7 @@ if($bandera==1){
 	<div>
 		{!!Form::label('lcodigo','Código de barra:')!!}
 		{!!Form::text('codigo_barra',null,['placeholder'=>'Código de barra'])!!}
-		{!!Form::label('lcategoria','Categoria:')!!}
+		{!!Form::label('lcategoria','Categoría:')!!}
 		<select name="categoria_id">
 			@foreach($c as $cate)
 				@if($valorc==$cate->id && $valorc!=null)

@@ -106,11 +106,11 @@ if($bandera==1){
 		@endif
 	</div>
 	<div id='precio' style='display:none'>
-		{!!Form::label('lprecioventa','Precio de Venta $:')!!}
+		{!!Form::label('lprecioventa','Precio de Venta ($):')!!}
 		{!!Form::text('precioventa',null,['placeholder'=>'$00.00'])!!}
 	</div>
 	<div id='institu' style='display:none'>
-		{!!Form::label('linstitucion','Institucion o persona a la que Fue Donado:')!!}
+		{!!Form::label('linstitucion','Institución a que fue Donado:')!!}
 		{!!Form::text('institucion',null,['placeholder'=>'Escriba el nombre'])!!}
 	</div>
 </div>
@@ -150,29 +150,33 @@ if($bandera==1){
 	<div class="fila">
 		<div class="fila">
 			<div class="">
-				{!!Form::label('lprecio','Precio:')!!}
+				{!!Form::label('lprecio','Precio ($):')!!}
 				{!!Form::number('precio',null,['placeholder'=>'$00.00','min'=>'0','step'=>'0.01'])!!}
 			</div>
-			<div id='credit'>
-				{!!Form::label('Linteres','Interes %:')!!}
-				{!!Form::number('interes',null,['placeholder'=>'Ingrese interes','min'=>'0','step'=>'0.01'])!!}
+			<div class="credit2">
+				{!!Form::label('Linteres','Interés (%):')!!}
+				{!!Form::number('interes',null,['placeholder'=>'Ingrese interés','min'=>'0','step'=>'0.01'])!!}
+			</div>
+			<div id="anio" style="display:none">
+				{!!Form::label('Lanios','Años de Servicio:')!!}
+				{!!Form::number('anios2',null,['placeholder'=>'Ingrese años','min'=>'0','step'=>'1'])!!}
 			</div>
 		</div>
-		<div class="">
+		<div class="credit">
 			<div class="fila">
-				<div id = 'credit'>
+				<div>
 					{!!Form::label('Lnumcuotas','Número de Cuotas:')!!}
 					{!!Form::number('num_cuotas',null,['placeholder'=>'Número de cuotas','min'=>'0','step'=>'1'])!!}
 				</div>
-				<div id='credit'>
-					{!!Form::label('Lvalcuotas','Valor de Cuota $ :')!!}
+				<div>
+					{!!Form::label('Lvalcuotas','Valor de Cuota ($):')!!}
 					{!!Form::number('val_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01'])!!}
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="fila">
-		<div class="">
+	<div class="fila" id='credit'>
+		<div>
 			{!!Form::label('ltiempo','Tiempo de Pago:')!!}
 			<select name="tiempo_pago">
 				@if( $t==0 && $t!=null)
@@ -200,30 +204,30 @@ if($bandera==1){
 				@endif
 			</select>
 		</div>
-		<div class="">
+		<div>
 			<div class="fila">
-				<div class="">
-					{!!Form::label('cuenta','Número de cuenta:')!!}
-					{!!Form::number('cuenta',null,['placeholder'=>'Ingrese número de cuenta','min'=>'1','step'=>'1'])!!}
+				<div>
+					{!!Form::label('cuenta','Número de Cuenta:')!!}
+					{!!Form::number('cuenta',null,['placeholder'=>'Número de cuenta','min'=>'1','step'=>'1'])!!}
 				</div>
-				<div class="">
+				<div>
 					{!!Form::label('ldiapago','Día de Pago: ')!!}
-					{!!Form::number('dia_pago',null,['placeholder'=>'Ingrese número de día','min'=>'1','step'=>'1'])!!}
+					{!!Form::number('dia_pago',null,['placeholder'=>'Día de compra','min'=>'1','step'=>'1'])!!}
 				</div>
 			</div>
 		</div>
 	</div>
 @endif
 <div class="fila">
-	<div class="">
-		{!!Form::label('ldescripcion','Descripcion de Bien:')!!}
-		{!!Form::textarea('descripcion',null,['placeholder'=>'detalle del bien:','rows'=>'4'])!!}
+	<div class="delta">
+		{!!Form::label('ldescripcion','Descripción de Bien:')!!}
+		{!!Form::textarea('descripcion',null,['placeholder'=>'Descripción del bien:','rows'=>'4'])!!}
 	</div>
 	<div>
 		@if($bandera)
 			<div id='nuevo' style='display:none'>
 				{!!Form::label('Lanios','Años de Servicio:')!!}
-				{!!Form::text('anios',null,['placeholder'=>'Ingrese años'])!!}
+				{!!Form::number('anios',null,['placeholder'=>'Ingrese años','min'=>'0','step'=>'1'])!!}
 			</div>
 		@endif
 	</div>

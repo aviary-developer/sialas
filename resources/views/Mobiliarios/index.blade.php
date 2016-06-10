@@ -61,7 +61,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
     </a>
     @if($vendido==0)
 
-      <span class="tooltiptext" id="tt">Vendidos</span>
+      <span class="tooltiptext" id="tt">Vendido</span>
 
     @else
       <span class="tooltiptext" id="tt">En Uso</span>

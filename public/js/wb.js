@@ -40,38 +40,67 @@ function ver ()
 
 function verEstado ()
 {
+  var y = document.getElementsByClassName('credit2');
   if(document.getElementById('est1').checked == true)
   {
     document.getElementById('nuevo').style.display='none';
-
-
+    document.getElementById('anio').style.display='none';
+    if(document.getElementById('cred1').checked == true){
+      y[0].style.display = 'block';
+      y[0].style.visibility = 'visible';
+    }else if(document.getElementById('cred0').checked == true){
+      y[0].style.display = 'block';
+      y[0].style.visibility = 'hidden';
+    }
   }
   else if(document.getElementById('est0').checked == true)
-  {                                                           
-    document.getElementById('nuevo').style.display='block';
-
-
-
+  {
+    if(document.getElementById('cred1').checked == true){
+      document.getElementById('nuevo').style.display='block';
+    }else if(document.getElementById('cred0').checked == true){
+      y[0].style.display = 'none';
+      document.getElementById('anio').style.display = 'block';
+    }
   }
-
 }
 
 function vercredito ()
 {
+  var x = document.getElementsByClassName('credit');
+  var y = document.getElementsByClassName('credit2');
+  var z = document.getElementsByClassName('delta');
+  var i;
   if(document.getElementById('cred1').checked == true)
   {
-    document.getElementById('credit').style.display='block';
-
-
+    for(i=0;i<x.length;i++){
+      x[i].style.display = 'block';
+    }
+    if(document.getElementById('est0').checked == true){
+      document.getElementById('nuevo').style.display = 'block';
+      document.getElementById('anio').style.display = 'none';
+      y[0].style.display = 'block';
+    }else if (document.getElementById('est1').checked == true){
+      document.getElementById('nuevo').style.display = 'none';
+      document.getElementById('anio').style.display = 'none';
+    }
+    y[0].style.visibility = "visible";
+    z[0].style.marginLeft = 0;
+    document.getElementById('credit').style.display = 'inline-flex';
   }
   else if(document.getElementById('cred0').checked == true)
   {
-    document.getElementById('credit').style.display='none';
-
-
-
+    for(i=0;i<x.length;i++){
+      x[i].style.display = 'none';
+    }
+    if(document.getElementById('est0').checked == true){
+      document.getElementById('nuevo').style.display = 'none';
+      document.getElementById('anio').style.display = 'block';
+      y[0].style.display = 'none';
+    }
+    y[0].style.visibility = 'hidden';
+    z[0].style.marginLeft = -6;
+    document.getElementById('credit').style.display = 'none';
   }
-
 }
 
 function credit ()
@@ -90,11 +119,11 @@ function credit ()
 
   function verprecio ()
 {
-  
+
   if(document.getElementById('pre1').value == 0)
   {
     document.getElementById('precio').style.display='block';
-    
+
   }
   else if(document.getElementById('pre1').value !=0)
    {
@@ -104,14 +133,10 @@ function credit ()
    if(document.getElementById('pre1').value == 4)
   {
     document.getElementById('institu').style.display='block';
-    
+
   }
   else if(document.getElementById('pre1').value !=4)
    {
     document.getElementById('institu').style.display='none';
    }
 }
-
-  
-
-

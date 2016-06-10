@@ -11,23 +11,24 @@
         </option>
       @endforeach
     </datalist>
-    @foreach($productos as $pro)
+    <!--@foreach($productos as $pro)
       <option>
         {{$pro->nombre}}
       </option>
-    @endforeach
-    {!!Form::label("LProducto","Producto:")!!}
-    <input list="selectProductosVenta" name="productosVenta" id="productosVenta" onkeypress="productosVenta();" onfocus="productosVenta();">
-    <datalist id="productosVenta">
+    @endforeach-->
+    {!!Form::label("LProducto","Productos:")!!}
+    <input list="selectProductosVenta" name="nombreProductosVenta" id="articulos" onkeypress="ff();" onfocus="ff();">
+    <datalist id="selectProductosVenta">
       @foreach($productos as $pro)
         <option>
           {{$pro->nombre}}
         </option>
       @endforeach
     </datalist>
-    {!!Form::label("Presentaciones","Presentación:")!!}
-    <select  id="selectPresentaciones" name="selectPresentacionVenta" onmouseover="agregarPresentacion();">
-      <option disabled>Seleccione una presentación</option>
+
+    {!!Form::label("LPresentacion","Presentación:")!!}
+    <select  id="selectPresentaciones" name="nombrePresentacionesVenta" onmouseover="ff();">
+      <option disabled>Seleccione presentación</option>
     </select>
 
     <div></div>

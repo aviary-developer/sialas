@@ -13,4 +13,9 @@ class Remesas extends Model
       $n= Cajas::find($id);
       return $n->nombre;
     }
+
+      public static function nombreBancos($id){
+      $n= Bancos::find($id);
+      return $n->nombre;
+    }
 }

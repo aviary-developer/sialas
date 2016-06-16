@@ -62,6 +62,7 @@
 
     Route::resource('ventas', 'VentasController');
     Route::match(['get','post'],'/llenadoPresentacionesVenta/{nombre}','VentasController@llenadoPresentacionesVenta');
+    Route::match(['get','post'],'/precioProductoVenta/{producto}/{presentacion}','VentasController@precioProductoVenta');
 
     Route::resource('detallecompras', 'DetallecomprasController');
 

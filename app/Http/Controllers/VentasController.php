@@ -106,4 +106,11 @@ class VentasController extends Controller
       $presentaciones=Presentaciones::where('producto_id',$idProducto)->get();
       return Response::json($presentaciones);
     }
+    public function precioProductoVenta($nombreProducto,$idPresentacion){
+      $producto=Productos::where('nombre',$nombreProducto)->get();
+      foreach ($producto as $p) {
+        $idProducto=$p->id;
+      }
+      return Response::json($nombreProducto);
+    }
 }

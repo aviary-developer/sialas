@@ -65,8 +65,6 @@ class User extends Model implements AuthenticatableContract,
         return $c;
 
     }
-    public static function renta($tipo_saldo,$salario){
-      return "Funcion de la renta";
-    }
+    
 
 }

@@ -1,3 +1,4 @@
+/* INICIO JAVASCRIPT DE COMPRAS*/
 function ff(){
   var listaDePresentaciones=$("#selectPresentaciones");
   var nombreArticulo=$("#articulos").val();
@@ -117,3 +118,12 @@ function habilitarCaducidad(e){
   $('#dateCaducidad').attr('disabled','disabled');
 }
 }
+/* FIN  JAVASCRIPT DE COMPRAS*/
+
+
+
+
+/* INICIO JAVASCRIPT DE VENTAS*/
+
+
+/* FIN JAVASCRIPT DE VENTAS*/

@@ -1,17 +1,36 @@
 <div class="fila">
   <div>
-    
+
 
     {!!Form::label("LCliente","Cliente:")!!}
-    <select  id="selectClientes" name="nombreClientesVenta" onmouseover="ff();">
-      <option disabled>Seleccione un cliente</option>
+    <input list="selectClienteVenta" name="clienteVenta" id="cliente" onkeypress="clienteVenta();" onfocus="clienteVenta();">
+    <datalist id="selectClienteVenta">
+      @foreach($clientes as $cli)
+        <option>
+          {{$cli->nombre}}
+        </option>
+      @endforeach
+    </datalist>
+    <!--@foreach($productos as $pro)
+      <option>
+        {{$pro->nombre}}
+      </option>
+    @endforeach-->
+    {!!Form::label("LProducto","Productos:")!!}
+    <input list="selectProductosVenta" name="nombreProductosVenta" id="articulos" onkeypress="ff();" onfocus="ff();">
+    <datalist id="selectProductosVenta">
+      @foreach($productos as $pro)
+        <option>
+          {{$pro->nombre}}
+        </option>
+      @endforeach
+    </datalist>
+
+    {!!Form::label("LPresentacion","Presentación:")!!}
+    <select  id="selectPresentaciones" name="nombrePresentacionesVenta" onmouseover="ff();">
+      <option disabled>Seleccione presentación</option>
     </select>
 
-    {!!Form::label("LProducto","Producto:")!!}
-    <select  id="selectProductos" name="nombreArticulosVenta" onmouseover="ff();">
-      <option disabled>Seleccione un Producto</option>
-    </select>
-    
     <div></div>
     <div class = "fila">
       <div class="">
@@ -24,9 +43,7 @@
         </center>
       </div>
       <div class="">
-        {!!Form::label("LPrecio","Precio Unitario:")!!}
-        {!!Form::number('precio',null,['id'=>'precio', 'placeholder'=>'Precio Unitario'])!!}
-        <center>
+          <center>
           {!!Form::submit('Guardar')!!}
         </center>
       </div>

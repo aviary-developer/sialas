@@ -24,7 +24,7 @@ class RemesasController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
@@ -49,9 +49,26 @@ class RemesasController extends Controller
      */
     public function store(Request $request)
     {
-        Remesas::create($request->All());
-        return redirect('/remesas')->with('mensaje','Registro Guardado');
+        //Remesas::create($request->All());
+       // return redirect('/remesas')->with('mensaje','Registro Guardado');
+
+       if($request->vradio == 'Remesa'){
+            $caja = new Remesas;
+            $caja->monto = $request->monto;
+            $caja->caja_id = $request->caja_id;
+            $caja->banco_id = $request->banco_id;
+            $caja->save();
+            return redirect('/remesas')->with('mensaje','Registro Guardado');
+        } else{
+           /* $banco = new Remesas;
+            $banco->banco_id = $request->banco_id;
+            $banco->monto = $request->monto;
+            $banco->save();*/
+            return redirect('/remesas')->with('mensaje','Registro Guardado');
+        }
     }
+
+
 
     /**
      * Display the specified resource.

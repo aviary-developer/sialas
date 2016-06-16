@@ -1,3 +1,4 @@
+
 <div class="fila">
 	<div>
 		<div class="alerta-errores">
@@ -47,11 +48,11 @@
 	 {!!Form::label('llabel','Transacción:')!!}<br>
 	 <div class="fila">
 		 <div>
-			 {!!Form :: radio ( "vradio", 1,true,['onclick'=>'ver()','id'=>'efe1'])!!}
+			 {!!Form :: radio ( "vradio", 1,true,['id'=>'efe1'])!!}
 			 <label for="efe1"><span></span>Remesa</label>
 		 </div>
 		 <div>
-			 {!!Form :: radio ( "vradio", 0,false,['onclick'=>'ver()','id'=>'efe0'])!!}
+			 {!!Form :: radio ( "vradio", 0,false,['id'=>'efe0'])!!}
 			 <label for="efe0"><span></span>Retiro</label>
 		 </div>
 	 </div>

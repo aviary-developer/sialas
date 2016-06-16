@@ -57,6 +57,15 @@
           <?php  $cantidad=$cantidad+1;?>
         @endforeach
       </table>
+      {!!Form::open(['route'=>'cajausuarios.store','method'=>'POST'])!!}
+
+        
+    	{!!Form::submit('Guardar')!!}
+
+    	{!!Form::close()!!}
+      <!--
+
+    -->
     </center>
   </div>
 @stop

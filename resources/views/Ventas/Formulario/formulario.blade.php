@@ -25,7 +25,7 @@
     </datalist>
 
     {!!Form::label("LPresentacion","Presentación:")!!}
-    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta">
+    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta" onChange="obtenerPrecioProducto();">
       <option disabled>Seleccione presentación</option>
     </select>
 
@@ -35,7 +35,7 @@
         {!!Form::label("Cantidad","Cantidad:")!!}
         {!!Form::number('cantidadProductoVenta',null,['min'=>'1','id'=>'cantidadProductoVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
         {!!Form::label("Cantidad","Precio de Producto")!!}
-        {!!Form::number('precioProductoVenta',null,['id'=>'precioProductoVenta', 'placeholder'=>'$0.00'])!!}
+        {!!Form::number('precioProductoUnitario',null,['id'=>'precioProductoUnitario', 'placeholder'=>'$0.00'])!!}
         <center>
           <input name="agregarVenta" id="agregarVenta" type="button" value="Agregar" onClick="agregarProductoVenta()"/>
           <input name="correlativoHiddenVenta" id="correlativoHiddenVenta" type="hidden" value="0" />

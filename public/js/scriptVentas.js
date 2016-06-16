@@ -119,21 +119,32 @@
   }
   }
   /* FIN  JAVASCRIPT DE COMPRAS*/
-function enter(event){
-  var char= event.which || event.keyCode;
-  var producto=$("#productos").val();
-  if(char==13){
-  var presentaciones=$("#selectPresentacionesVenta");
-	var ruta="/sialas/public/llenadoPresentacionesVenta/"+producto;
-	$.get(ruta,function(res){
-		presentaciones.empty();
-		$(res).each(function(key,value){
-			presentaciones.append("<option>"+value.nombre+"</option>");
-		});
-	});
-  }
-}
+
   /* INICIO JAVASCRIPT DE VENTAS*/
+  function enter(event){
+    var char= event.which || event.keyCode;
+    var producto=$("#productos").val();
+    if(char==13){
+    var presentaciones=$("#selectPresentacionesVenta");
+  	var ruta="/sialas/public/llenadoPresentacionesVenta/"+producto;
+  	$.get(ruta,function(res){
+  		presentaciones.empty();
+  		$(res).each(function(key,value){
+  			presentaciones.append("<option value='"+value.id+"'>"+value.nombre+"</option>");
+  		});
+  	});
+    }
+  }
+  function obtenerPrecioProducto(){
+    var producto=$("#productos").val();
+    var presentacion=$("#selectPresentacionesVenta").val();
+    var ruta="/sialas/public/precioProductoVenta/"+producto+"/"+presentacion;
+    var precio=$("#precioProductoUnitario").val();
+    $.get(ruta,function(res){
+      precio.empty();
+        precio.val(res);
+    });
+  }
   function agregarProductoVenta(){
     var correlativo=$("#correlativoHiddenVenta").val();
     var total=$("#inputTotalProductosVenta").val();

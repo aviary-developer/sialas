@@ -15,7 +15,7 @@
       </option>
     @endforeach-->
     {!!Form::label("LProducto","Productos:")!!}
-    <input list="selectProductosVenta" name="nombreProductosVenta" id="productos" onkeypress="ff();" onfocus="ff();">
+    <input list="selectProductosVenta" name="nombreProductosVenta" id="productos" onkeypress="enter(event);">
     <datalist id="selectProductosVenta">
       @foreach($productos as $pro)
         <option>
@@ -25,7 +25,7 @@
     </datalist>
 
     {!!Form::label("LPresentacion","Presentación:")!!}
-    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta" onmouseover="ff();">
+    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta">
       <option disabled>Seleccione presentación</option>
     </select>
 
@@ -44,7 +44,7 @@
       </div>
       <div class="">
           <center>
-          {!!Form::submit('Guardar')!!}
+          {!!Form::button('Guardar')!!}
         </center>
       </div>
     </div>

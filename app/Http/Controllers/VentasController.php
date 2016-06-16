@@ -10,6 +10,7 @@ use sialas\Productos;
 use sialas\Ventas;
 use sialas\Users;
 use sialas\Clientes;
+use sialas\Presentaciones;
 
 class VentasController extends Controller
 {
@@ -96,5 +97,13 @@ class VentasController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function llenadoPresentacionesVenta($nombre){
+      $producto=Productos::where('nombre',$nombre)->get();
+      foreach ($producto as $p) {
+        $idProducto=$p->id;
+      }
+      $presentaciones=Presentaciones::where('producto_id',$idProducto)->get();
+      return Response::json($presentaciones);
     }
 }

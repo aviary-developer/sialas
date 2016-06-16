@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Marcas;
+use sialas\Productos;
 use sialas\Http\Controllers\Controller;
 use Redirect;
 use View;
@@ -22,7 +23,7 @@ class MarcasController extends Controller
     {
         /*$marcasActivas= Marcas::where('estado','=', 1)->orderBy('nombre')->get();
         $marcasInactivas= Marcas::where('estado','=', 0)->orderBy('nombre')->get();
-       
+
         return view('marcas.index',compact('marcasActivas','marcasInactivas'));*/
         $state = $request->get('estado');
         $name = $request->get('nombre');
@@ -63,10 +64,11 @@ class MarcasController extends Controller
     public function show($id)
     {
         $c = Marcas::find($id);
-        //return view('Categorias.show',compact('categorias'));
-        return View::make('Marcas.show')->with('c', $c);
+        $p = Productos::where('marca_id',$id)->paginate(8);
+        $w = Productos::where('marca_id',$id)->count();
+        return view('Marcas.show',compact('c','p','w'));
     }
-    
+
 
     /**
      * Show the form for editing the specified resource.

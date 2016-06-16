@@ -47,17 +47,69 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <h2>Marcas</h2>
     <h3 id="txt"> |{{$c->nombre}}</h3>
   </div>
-  <div class="datos">
-    <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$c->id !!}</span></pre>
-    <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nombre }}</span></pre>
-    @if($c->estado == 1)
-      <?php $var = 'Activo'?>
-    @else
-      <?php $var = 'En papelera'?>
-    @endif
-    <pre>Estado:&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
-    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$c->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <pre>Fecha de última edición:&#09;&#09;<span>{{$c->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
-  </div>
+  <?php
+  $id = $c->id;
+  $xy = str_pad($id,10,"0",STR_PAD_LEFT);
+  ?>
+  <center>
+    <div class="enc">
+      <h3 id="txt">Datos</h3>
+    </div>
+    <div class="srow">
+      <span>Identificador</span>
+      <span>{!! $xy !!}</span>
+    </div>
+    <div class="srow">
+      <span>Nombre</span>
+      <span>{!! $c->nombre !!}</span>
+    </div>
+    <div class="srow">
+      <span>Estado</span>
+      @if($c->estado == 1)
+        <?php $var = 'Activo'?>
+      @else
+        <?php $var = 'En papelera'?>
+      @endif
+      <span>{!! $var !!}</span>
+    </div>
+    <div class="srow">
+      <span>Fecha de creación</span>
+      <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
+    </div>
+    <div class="srow">
+      <span>Fecha de última edición</span>
+      <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
+    </div>
+
+    <!-------->
+    <div class="enc">
+      <h3 id="txt">Relaciones</h3>
+    </div>
+
+    <div class="srow">
+      <span>Productos relacionados</span>
+      <span>{!! $w !!}</span>
+    </div>
+    <br>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Nombre</th>
+        <th>Categoría</th>
+      </tr>
+      <?php $a = 1; ?>
+      @foreach($p as $k)
+        <tr>
+          <td>{{$a}}</td>
+          <td>{{$k->nombre}}</td>
+          <td>{{$k->nombreCategorias($k->categoria_id)}}</td>
+        </tr>
+        <?php $a++; ?>
+      @endforeach
+    </table>
+    <div id="act">
+      {!! str_replace ('/?', '?', $p) !!}
+    </div>
+  </center>
 </div>
 @stop

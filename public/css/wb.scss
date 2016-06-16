@@ -22,6 +22,7 @@ $cnaranja2 : #fcd4a5;
 $cnegro : #000000;
 $cverde1 : #2bb673;
 $cverde2 : #00a14b;
+$cverde3 : #a9f4d0;
 $crojo : #a31414;
 //Medidas
 
@@ -253,7 +254,7 @@ pre {
 }
 .enc{
   width: inherit;
-  height: 15%;
+  height: 50px;
   display: -webkit-inline-box;
   color: $cazul2;
   margin: 10px;
@@ -527,4 +528,68 @@ input[type=radio]:checked + label span{
 }
 .alerta-errores{
   color: $crojo;
+}
+//Show diseño
+.show{
+  background: $cverde2;
+  display: block;
+  width: 300px;
+  border-radius: 20px 20px 20px 20px;
+  text-align: center;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  padding: 2px;
+  color: $cgris1;
+  font-weight: bold;
+  font-size: 13pt;
+
+  :first-child{
+    width: 300px;
+    display: block;
+  }
+
+  :last-child{
+    background: $cgris1;
+    color: $cnegro;
+    width: 300px;
+    border-radius: 0px 0px 20px 20px;
+    font-size: 14pt;
+  }
+}
+
+.sm{
+  width: 150px;
+
+  :first-child{
+    width: 150px;
+  }
+}
+
+.srow{
+  display: flex;
+  width: 700px;
+  padding: 2px;
+  height: 30px;
+  :first-child{
+    padding-top: 5px;
+    text-align: center;
+    background: $cceleste;
+    width: 300px;
+    border-radius: 20px 0px 0px 20px;
+    font-size: 13pt;
+  }
+  :last-child{
+    padding-left: 50px;
+    padding-top: 5px;
+    text-align: left;
+    width: 400px;
+    border-radius: 0px 20px 20px 0px;
+    background: $cgris6;
+    font-size: 13pt;
+    font-weight: bold;
+  }
+}
+.icirc{
+  border-radius: 100px 100px 100px 100px;
+  width: 200px;
 }

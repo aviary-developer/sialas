@@ -8,6 +8,7 @@ use Response;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
+use sialas\Presentaciones;
 use sialas\Marcas;
 use sialas\Productos;
 
@@ -82,8 +83,9 @@ class ProductosController extends Controller
     public function show($id)
     {
          $c = Productos::find($id);
-        //return view('Categorias.show',compact('categorias'));
-        return View::make('Productos.show')->with('c', $c);
+         $p = Presentaciones::where('producto_id',$id)->paginate(8);
+         $w = Presentaciones::where('producto_id',$id)->count();
+         return view('Productos.show',compact('c','p','w'));
     }
 
     /**
@@ -113,7 +115,7 @@ class ProductosController extends Controller
         $productos = Productos::find($id);
 
         $file = Input::file('nombre_img');
-       //Creamos una instancia de la libreria instalada   
+       //Creamos una instancia de la libreria instalada
        $image = \Image::make(\Input::file('nombre_img'));
        //Ruta donde queremos guardar las imagenes
        $path = public_path().'/imagenesProductos/';

@@ -26,6 +26,8 @@ class Categorias extends Model
       $query->where('estado', $estado);
     }
 
-    
-   
+    public static function nombreMarcas($id){
+     $n= Marcas::find($id);
+     return $n->nombre;
+   }
 }

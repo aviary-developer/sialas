@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
+use sialas\Productos;
 use Redirect;
 use Session;
 use View;
@@ -60,8 +61,9 @@ class CategoriasController extends Controller
     public function show($id)
     {
         $c = Categorias::find($id);
-        //return view('Categorias.show',compact('categorias'));
-        return View::make('Categorias.show')->with('c', $c);
+        $p = Productos::where('categoria_id',$id)->paginate(8);
+        $w = Productos::where('categoria_id',$id)->count();
+        return view('Categorias.show',compact('c','p','w'));
     }
 
     /**

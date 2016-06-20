@@ -22,6 +22,8 @@
         <h3 id='txt'> |Empleados</h3>
       </div>
       <center>
+
+        {!!Form::open(['route'=>'cajausuarios.store','method'=>'POST'])!!}
       <table>
         <tr>
           <th>Empleado</th>
@@ -54,18 +56,15 @@
             <?php   $arreglo[$cantidad][]=number_format(($vtecho*$des[$i]/100), 2, '.', '');?>
             @endfor
           </tr>
+          <input type="hidden" name="arreglo[]" value='<?php echo serialize($arreglo[$cantidad]) ?>)'>
           <?php  $cantidad=$cantidad+1;?>
         @endforeach
       </table>
-      {!!Form::open(['route'=>'cajausuarios.store','method'=>'POST'])!!}
 
-        
     	{!!Form::submit('Guardar')!!}
 
     	{!!Form::close()!!}
-      <!--
 
-    -->
     </center>
   </div>
 @stop

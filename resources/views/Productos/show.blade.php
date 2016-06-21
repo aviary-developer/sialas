@@ -30,6 +30,12 @@
       </div>
     @endif
     <div class="tooltip">
+      <a href={!! asset('/presentaciones/'.$c->id) !!}>
+        <img src={!! asset('/img/WB/mar.svg') !!} alt="" class="circ"/>
+      </a>
+      <span class="tooltiptext">Presentación</span>
+    </div>
+    <div class="tooltip">
       <a href="#">
         <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
       </a>
@@ -75,22 +81,20 @@
         <span>{!! $c->nombreCategorias($c->categoria_id) !!}</span>
       </div>
       <div class="srow">
-        <span>Estado</span>
-        @if($c->estado == 1)
-          <?php $var = 'Activo'?>
-        @else
-          <?php $var = 'En papelera'?>
-        @endif
-        <span>{!! $var !!}</span>
+        <span>Costo por unidad</span>
+        <span>{!! '$ '.number_format($precu,2) !!}</span>
       </div>
       <div class="srow">
-        <span>Fecha de creación</span>
-        <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
+        <span>En existencia</span>
+        <span>
+          <?php $ayu = $cant; ?>
+          @foreach($pp as $l)
+            {{intval($ayu / $l->equivale).' '.$l->nombre.' '}}
+            <?php $ayu = $ayu % $l->equivale; ?>
+          @endforeach
+        </span>
       </div>
-      <div class="srow">
-        <span>Fecha de última edición</span>
-        <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
-      </div>
+
 
       <!-------->
       <div class="enc">
@@ -107,21 +111,45 @@
           <th>#</th>
           <th>Nombre</th>
           <th>Equivalencia</th>
-          <th>Ganancia</th>
+          <th>Precio</th>
         </tr>
         <?php $a = 1; ?>
         @foreach($p as $k)
           <tr>
             <td>{{$a}}</td>
             <td>{{$k->nombre}}</td>
-            <td><center>{{$k->equivale}}</center></td>
-            <td>{{$k->ganancia}}</td>
+            <td><center>{{$k->equivale.' unidad(es)'}}</center></td>
+            <?php $precio = $precu*$k->equivale+$k->ganancia ?>
+            <td>{{'$ '.number_format($precio,2)}}</td>
           </tr>
           <?php $a++; ?>
         @endforeach
       </table>
       <div id="act">
         {!! str_replace ('/?', '?', $p) !!}
+      </div>
+
+      <!---->
+
+      <div class="enc">
+        <h3 id="txt">Estado</h3>
+      </div>
+      <div class="srow">
+        <span>Estado</span>
+        @if($c->estado == 1)
+          <?php $var = 'Activo'?>
+        @else
+          <?php $var = 'En papelera'?>
+        @endif
+        <span>{!! $var !!}</span>
+      </div>
+      <div class="srow">
+        <span>Fecha de creación</span>
+        <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
+      </div>
+      <div class="srow">
+        <span>Fecha de última edición</span>
+        <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
       </div>
     </center>
   </div>

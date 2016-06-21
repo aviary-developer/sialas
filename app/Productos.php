@@ -32,4 +32,8 @@ class Productos extends Model
     $n= Categorias::find($id);
     return $n->nombre;
   }
+  public static function unidades($presentacion,$cantidad){
+    $pres = Presentaciones::find($presentacion);
+    return $pres->equivale * $cantidad;
+  }
 }

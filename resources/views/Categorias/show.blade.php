@@ -63,23 +63,6 @@
         <span>Nombre</span>
         <span>{!! $c->nombre !!}</span>
       </div>
-      <div class="srow">
-        <span>Estado</span>
-        @if($c->estado == 1)
-          <?php $var = 'Activo'?>
-        @else
-          <?php $var = 'En papelera'?>
-        @endif
-        <span>{!! $var !!}</span>
-      </div>
-      <div class="srow">
-        <span>Fecha de creación</span>
-        <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
-      </div>
-      <div class="srow">
-        <span>Fecha de última edición</span>
-        <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
-      </div>
 
       <!-------->
       <div class="enc">
@@ -109,6 +92,27 @@
       </table>
       <div id="act">
         {!! str_replace ('/?', '?', $p) !!}
+      </div>
+      <!-------->
+      <div class="enc">
+        <h3 id="txt">Estado</h3>
+      </div>
+      <div class="srow">
+        <span>Estado</span>
+        @if($c->estado == 1)
+          <?php $var = 'Activo'?>
+        @else
+          <?php $var = 'En papelera'?>
+        @endif
+        <span>{!! $var !!}</span>
+      </div>
+      <div class="srow">
+        <span>Fecha de creación</span>
+        <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
+      </div>
+      <div class="srow">
+        <span>Fecha de última edición</span>
+        <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
       </div>
     </center>
   </div>

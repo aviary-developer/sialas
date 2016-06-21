@@ -9,6 +9,7 @@ use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
 use sialas\Presentaciones;
+use sialas\Detallecompras;
 use sialas\Marcas;
 use sialas\Productos;
 
@@ -83,9 +84,21 @@ class ProductosController extends Controller
     public function show($id)
     {
          $c = Productos::find($id);
-         $p = Presentaciones::where('producto_id',$id)->paginate(8);
+         $p = Presentaciones::where('producto_id',$id)->orderBy('equivale','asc')->paginate(8);
+         $pp = Presentaciones::where('producto_id',$id)->orderBy('equivale','desc')->get();
          $w = Presentaciones::where('producto_id',$id)->count();
-         return view('Productos.show',compact('c','p','w'));
+         $dc = Detallecompras::where('producto_id',$id)->where('entrega',false)->get();
+         $cant = $prec = 0;
+         foreach ($dc as $xdc) {
+           $cant += Productos::unidades($xdc->presentacion_id,$xdc->cantidad);
+           $prec += $xdc->precio;
+         }
+         if($cant == 0){
+           $precu = 0;
+         }else{
+           $precu = $prec / $cant;
+         }
+         return view('Productos.show',compact('c','p','w','precu','cant','pp'));
     }
 
     /**
@@ -122,7 +135,7 @@ class ProductosController extends Controller
        // Guardar Original
        $image->save($path.$file->getClientOriginalName());
        // Cambiar de tamaño
-       $image->resize(240,200);
+       $image->resize(200,200);
        // Guardar
        $image->save($path.'ProductoSialas_'.$file->getClientOriginalName());
        //Guardamos nombre y nombreOriginal en la BD

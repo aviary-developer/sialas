@@ -165,6 +165,7 @@ nav div div li{
 //Paneles de diseño
 .launcher{
   display: block;
+  position: fixed;
   width: 75px;
   background: $cgris1;
   border-radius: 35px;
@@ -251,6 +252,7 @@ pre {
 .panel{
   width: 90%;
   padding: 30px;
+  margin-left: 74px;
 }
 .enc{
   width: inherit;
@@ -277,7 +279,7 @@ tr{
   }
   td:last-child{
     padding: 0px;
-    width: 100px;
+    width: 150px;
   }
   th{
     //background: $cverde2;
@@ -307,7 +309,7 @@ $class-slug: td !default;
   }
 }
 table{
-  min-width: 50%;
+  min-width: 700px;
 }
 input, textarea{
   display: block;

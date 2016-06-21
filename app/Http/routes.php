@@ -107,7 +107,9 @@ Route::get('/', function () {
 
 
 
-
+ Route::resource ('reparaciones', 'ReparacionesController');
+    Route::get('reparaciones/crear/{id}','ReparacionesController@crear');
+    Route::match(['get','post'],'/guardarReparaciones/{id}','ReparacionesController@guardar');
 
 
 

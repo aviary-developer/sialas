@@ -137,40 +137,19 @@ class MobiliariosController extends Controller
     $mobiliarios = Mobiliarios::find($id);
     $mobiliarios->codigo = $request->codigo;
     $mobiliarios->nombre= $request->nombre;
-    $mobiliarios->fecha_compra= $request->fecha_compra;
-    $mobiliarios->precio= $request->precio;
     $mobiliarios->descripcion =$request->descripcion;
     $mobiliarios->estado = $request->estado;
-    $mobiliarios->nuevo = $request->nuevo;
-    if($request->anios == '' || $request->nuevo == 1){
-      $mobiliarios->anios=null;
-    }else
-    {
-      $mobiliarios->anios = $request->anios;
-    }
-    $mobiliarios->proveedor_id = $request->proveedor_id;
-    $mobiliarios->tipo_id = $request->tipo_id;
-    if($request->credito == 0 )
-    {
-      $mobiliarios->interes=null;
-      $mobiliarios->num_cuotas=null;
-      $mobiliarios->val_cuotas=null;
-      $mobiliarios->tiempo_pago=null;
-      $mobiliarios->cuenta=null;
-      $mobiliarios->dia_pago=null;
-    }else
-    {
-      $mobiliarios->interes= $request->interes;
-      $mobiliarios->num_cuotas= $request->num_cuotas;
-      $mobiliarios->val_cuotas= $request->val_cuotas;
-      $mobiliarios->tiempo_pago= $request->tiempo_pago;
-      $mobiliarios->cuenta= $request->cuenta;
-      $mobiliarios->dia_pago= $request->dia_pago;
-
-    }
     $mobiliarios->save();
-    Session::flash('mensaje','¡Registro Actualizado!');
-    return Redirect::to('/mobiliarios');
+    $p= Proveedores::All();
+    if($mobiliarios->estado == 3){
+        Session::flash('mensaje','¡Registro Actualizado!');
+        return view('reparaciones.crear',compact('id','p',$id));
+    }
+    else{
+    
+        Session::flash('mensaje','¡Registro Actualizado!');
+        return Redirect::to('/mobiliarios');
+        }
   }
 
   /**

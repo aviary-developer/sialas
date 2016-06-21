@@ -14,7 +14,7 @@ use Session;
 use View;
 use Carbon\Carbon;
 
-class ReparacionesControllers extends Controller
+class ReparacionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +24,7 @@ class ReparacionesControllers extends Controller
     public function index()
     {
         //
-        $reparaciones=Reparaciones::find()->All();
+        $reparaciones=Reparaciones::All();
         return view('reparaciones.index',compact('reparaciones'));
 
     }
@@ -98,34 +98,43 @@ class ReparacionesControllers extends Controller
 
      public function crear($mobiliario)
     {
-      $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
+      
       $m= Mobiliarios::find($mobiliario);
-      $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
-      $f= Pagos::where('mobiliario_id',$mobiliario)->count();
-      $p= Pagos::where('mobiliario_id',$mobiliario)->sum('monto');
-      return view('pagos.crear',compact('c','m','b','f','p','mobiliario'));
+      $p= Proveedores::All();
+      return view('reparaciones.crear',compact('m','p','mobiliario'));
     }
 
     public function guardar(Request $request, $mobiliario)
     {
-      $pago = new Pagos;
-      if($request->vradio){
-        $pago->banco_id = null;
-        $pago->caja_id = $request->caja_id;
-        $pago->cheque = null;
-      }else{
-        $pago->caja_id = null;
-        $pago->banco_id = $request->banco_id;
-        $pago->cheque = $request->cheque;
-      }
-      $pago->interes = $request->interes;
-      $pago->mora = $request->mora;
-      $pago->factura = $request->factura;
-      $pago->mobiliario_id = $mobiliario;
-      $pago->monto = $request->monto;
-      $pago->iva = $request->iva;
-      $pago->detalle = $request->detalle;
-      $pago->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago Guardado');
+      $reparacion = new Reparaciones;
+      $reparacion->precio = $request->precio;
+      $reparacion->fecha_deposito = $request->fecha_deposito;
+      $reparacion->diagnostico= $request->diagnostico;
+      $reparacion->proveedor_id= $request->proveedor_id;
+      if($request->fecha_entrega == "")
+      { $reparacion->fecha_entrega = null;}
+      else {$reparacion->fecha_entrega = $request->fecha_entrega;}
+      $reparacion->mobiliario_id = $mobiliario;
+      $reparacion->credito = $request->credito;
+      if($request->credito == 0 )
+    {
+      $reparacion->interes=null;
+      $reparacion->num_cuotas=null;
+      $reparacion->val_cuotas=null;
+      $reparacion->tiempo_pago=null;
+      $reparacion->cuenta=null;
+      $reparacion->dia_pago=null;
+    }else
+    {
+      $reparacion->interes= $request->interes;
+      $reparacion->num_cuotas= $request->num_cuotas;
+      $reparacion->val_cuotas= $request->val_cuotas;
+      $reparacion->tiempo_pago= $request->tiempo_pago;
+      $reparacion->cuenta= $request->cuenta;
+      $reparacion->dia_pago= $request->dia_pago;
+    }
+      
+      $reparacion->save();
+      return redirect('/mobiliarios')->with('mensaje','Reparacion guardada');
     }
 }

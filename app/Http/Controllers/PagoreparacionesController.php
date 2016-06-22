@@ -6,6 +6,13 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Pagoreparaciones;
+use sialas\Reparaciones;
+use sialas\Cajas;
+use sialas\Bancos;
+use Redirect;
+use Session;
+use View;
 
 class PagoreparacionesController extends Controller
 {
@@ -25,7 +32,7 @@ class PagoreparacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  
+    {
       $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
       $m= Reparaciones::orderBy('nombre','asc')->get();
       $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
@@ -106,5 +113,38 @@ class PagoreparacionesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function crear($reparacion)
+    {
+      $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
+      $m= Reparaciones::find($reparacion);
+      $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
+      $f= Pagoreparaciones::where('reparacion_id',$reparacion)->count();
+      $p= Pagoreparaciones::where('reparacion_id',$reparacion)->sum('monto');
+      return view('pagoreparaciones.crear',compact('c','m','b','f','p','reparacion'));
+    }
+
+    public function guardar(Request $request, $reparacion)
+    {
+      $pagoreparaciones = new Pagoreparaciones;
+      if($request->vradio){
+        $pagoreparaciones->banco_id = null;
+        $pagoreparaciones->caja_id = $request->caja_id;
+        $pagoreparaciones->cheque = null;
+      }else{
+        $pagoreparaciones->caja_id = null;
+        $pagoreparaciones->banco_id = $request->banco_id;
+        $pago->cheque = $request->cheque;
+      }
+      $pagoreparaciones->interes = $request->interes;
+      $pagoreparaciones->mora = $request->mora;
+      $pagoreparaciones->factura = $request->factura;
+      $pagoreparaciones->reparacion_id = $reparacion;
+      $pagoreparaciones->monto = $request->monto;
+      $pagoreparaciones->iva = $request->iva;
+      $pagoreparaciones->detalle = $request->detalle;
+      $pagoreparaciones->save();
+      return redirect('/mobiliarios')->with('mensaje','Pago de Reparacion Guardado');
     }
 }

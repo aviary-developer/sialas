@@ -4,9 +4,9 @@ if($bandera==1){
 	$valorm=null;
 	$valorb=null;
 }else{
-	$valorc = $pagos->reparacion_id;
-	$valorm = $pagos->caja_id;
-	$valorb = $pagos->banco_id;
+	$valorc = $pagoreparaciones->reparacion_id;
+	$valorm = $pagoreparaciones->caja_id;
+	$valorb = $pagoreparaciones->banco_id;
 }
 ?>
 @if($se_pago)

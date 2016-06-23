@@ -22,7 +22,7 @@ class CajausuariosController extends Controller
      */
     public function index()
     {
-        //
+        return view('cajausuarios.index',compact(''));
     }
 
     /**
@@ -78,6 +78,7 @@ class CajausuariosController extends Controller
             }
           }
         }
+        return redirect('/cajausuarios')->with('mensaje','Registro Guardado');
     }
 
     /**

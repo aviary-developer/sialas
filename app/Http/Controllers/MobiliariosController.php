@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Mobiliarios;
+use sialas\Reparaciones;
 use sialas\Tipos;
 use sialas\Proveedores;
 use Redirect;
@@ -145,8 +146,15 @@ class MobiliariosController extends Controller
         Session::flash('mensaje','¡Registro Actualizado!');
         return view('reparaciones.crear',compact('id','p',$id));
     }
+    if($mobiliarios->estado == 1){
+        $reparacion = Reparaciones::where('mobiliario_id','=', $id)->orderBy('fecha_deposito','desc')->first();
+        $date = Carbon::now();
+        $date = $date->format('d-m-Y');
+        $reparacion->fecha_entrega = $date;
+        $reparacion->save();
+    }
     else{
-    
+
         Session::flash('mensaje','¡Registro Actualizado!');
         return Redirect::to('/mobiliarios');
         }

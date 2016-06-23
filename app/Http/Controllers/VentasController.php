@@ -111,6 +111,10 @@ class VentasController extends Controller
       foreach ($producto as $p) {
         $idProducto=$p->id;
       }
-      return Response::json($nombreProducto);
+      $presentacion=Presentaciones::where('id',$idPresentacion)->where('producto_id',$idProducto)->get();
+      foreach ($presentacion as $p) {
+        $ganancia=$p->ganancia;
+      }
+      return Response::json($ganancia);
     }
 }

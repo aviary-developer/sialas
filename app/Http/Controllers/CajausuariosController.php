@@ -20,9 +20,11 @@ class CajausuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('cajausuarios.index',compact(''));
+        $fecha = $request->get('fecha');
+        $planillas=Planillas::buscar($fecha);
+        return view('cajausuarios.index',compact('planillas'));
     }
 
     /**

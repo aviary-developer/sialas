@@ -10,6 +10,16 @@ class Planillas extends Model
 
   protected $fillable = ['id','fecha'];
 
+  public static function buscar($fecha){
+    return Planillas::fecha($fecha)->orderBy('fecha')->paginate(8);
+  }
+
+  public static function scopeFecha($query,$fecha){
+    if (trim($fecha)!="") {
+      $query->where('fecha',$fecha);
+    }
+  }
+
   public static function valorneto($descuentos,$valores){
     $sn=$valores[1];
     $sn=$sn-$valores[2];

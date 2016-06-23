@@ -30,12 +30,15 @@
           <th>Salario</th>
           <th>Renta</th>
             @foreach($activos as $a)
-            <?php $des[]=$a->valor;
+            <?php
+                  $otro[0][]=$a->id;
+                  $des[]=$a->valor;
                   $techo[]=$a->techo;
                   $cont=$cont+1;
             ?>
             <th>{{$a->nombre}}</th>
             @endforeach
+            <input type="hidden" name="arreglo[]" value='<?php echo serialize($otro[0]) ?>)'>
         </tr>
         <?php $cantidad=0; ?>
         @foreach($usuarios as $u)

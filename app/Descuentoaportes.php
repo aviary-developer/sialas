@@ -13,7 +13,9 @@ class Descuentoaportes extends Model
   public static function buscar($nombre,$estado){
     return Descuentoaportes::nombre($nombre)->estado($estado)->orderBy('nombre')->paginate(8);
   }
-
+  public static function buscarv($nombre,$estado){
+    return Descuentoaportes::nombre($nombre)->estado($estado)->orderBy('tipo','dsc')->get();
+  }
   public function scopeNombre($query, $nombre){
     if (trim($nombre)!="") {
       $query->where('nombre','LIKE','%'.$nombre.'%');

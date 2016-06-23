@@ -10,6 +10,8 @@ use sialas\User;
 use sialas\Descuentoaportes;
 use sialas\Rentas;
 use sialas\Planillas;
+use sialas\Datosplanillas;
+use sialas\Valoresplanillas;
 
 class CajausuariosController extends Controller
 {
@@ -31,7 +33,7 @@ class CajausuariosController extends Controller
     public function create()
     {
         $usuarios=User::buscar("",1);
-        $activos= Descuentoaportes::buscar("",null);
+        $activos= Descuentoaportes::buscarv("",null);
         $renta= new Rentas();
         return view('cajausuarios.create',compact('usuarios','activos','renta'));
     }
@@ -49,18 +51,31 @@ class CajausuariosController extends Controller
           $cp=Planillas::count();
           $date = Carbon::now();
           $date = $date->format('d-m-Y');
-          /*Planillas::create([
+          Planillas::create([
             'id'=>$cp+1,
             'fecha'=>$date,
-          ]);*/
+          ]);
+          $descap[0]=unserialize($arreglo[0]);
           $cdp=Datosplanillas::count();
-          for ($i=0; $i < count($arreglo); $i++) {
-            $arreglou[$i]=unserialize($arreglo[$i]));
-            /*Datosplanillas::create([
+          for ($i=1; $i < count($arreglo); $i++) {
+            echo "<br>";
+            $arreglou[$i]=unserialize($arreglo[$i]);
+            Datosplanillas::create([
               'id'=>$cdp+$i+1,
               'planilla_id'=>$cp+1,
               'user_id'=>$arreglou[$i][0],
-            ]);*/
+              'salario_neto'=>Planillas::valorneto($descap[0],$arreglou[$i]),
+              'valor_renta'=>$arreglou[$i][2],
+            ]);
+            $cvp=Valoresplanillas::count();
+            for ($b=3; $b < count($arreglou[$i]); $b++) {
+              Valoresplanillas::create([
+                'id'=>$cvp+$b-1,
+                'dato_id'=>$cdp+$i+1,
+                'desp_id'=>$descap[0][$b-3],
+                'monto'=>$arreglou[$i][$b],
+              ]);
+            }
           }
         }
     }

@@ -58,29 +58,29 @@
           $id = $mob->id;
           $xy = str_pad($id,10,"0",STR_PAD_LEFT);
           ?>
-            <div class="enc">
-              <h3 id="txt">Datos</h3>
-            </div>
-            <div class="srow">
-              <span>Identificador</span>
-              <span>{!! $xy !!}</span>
-            </div>
-            <div class="srow">
-              <span>Código</span>
-              <span>{!! $mob->codigoTipos($mob->tipo_id).'-'.$mob->codigo !!}</span>
-            </div>
-            <div class="srow">
-              <span>Nombre</span>
-              <span>{!! $mob->nombre !!}</span>
-            </div>
-            <div class="srow">
-              <span>Tipo</span>
-              <span>{!! $mob->nombreTipos($mob->tipo_id) !!}</span>
-            </div>
-            <div class="srow">
-              <span>Descripción</span>
-              <span>{!! $mob->descripcion !!}</span>
-            </div>
+          <div class="enc">
+            <h3 id="txt">Datos</h3>
+          </div>
+          <div class="srow">
+            <span>Identificador</span>
+            <span>{!! $xy !!}</span>
+          </div>
+          <div class="srow">
+            <span>Código</span>
+            <span>{!! $mob->codigoTipos($mob->tipo_id).'-'.$mob->codigo !!}</span>
+          </div>
+          <div class="srow">
+            <span>Nombre</span>
+            <span>{!! $mob->nombre !!}</span>
+          </div>
+          <div class="srow">
+            <span>Tipo</span>
+            <span>{!! $mob->nombreTipos($mob->tipo_id) !!}</span>
+          </div>
+          <div class="srow">
+            <span>Descripción</span>
+            <span>{!! $mob->descripcion !!}</span>
+          </div>
         </div>
         <!---->
         <div class="tabs oc" id="dos">
@@ -164,17 +164,25 @@
           <div class="enc">
             <h3 id="txt">Pagos</h3>
           </div>
+          <div id="graphs"></div>
+          <br>
           <div class="srow">
             <span>Capital abonado</span>
             <span>{!! '$ '.number_format($montoTotal,2) !!}</span>
           </div>
+          @if($mob->credito)
+            <div class="srow">
+              <span>Interés abonado</span>
+              <span>{!! '$ '.number_format($interTotal,2) !!}</span>
+            </div>
+            <div class="srow">
+              <span>Interés moratorio abonado</span>
+              <span>{!! '$ '.number_format($moraTotal,2) !!}</span>
+            </div>
+          @endif
           <div class="srow">
-            <span>Interés abonado</span>
-            <span>{!! '$ '.number_format($interTotal,2) !!}</span>
-          </div>
-          <div class="srow">
-            <span>Interés moratorio abonado</span>
-            <span>{!! '$ '.number_format($moraTotal,2) !!}</span>
+            <span>Total abonado</span>
+            <span>{!! '$ '.number_format($moraTotal+$interTotal+$montoTotal,2) !!}</span>
           </div>
           <div class="srow">
             @if($mob->num_cuotas <= 0)
@@ -184,6 +192,78 @@
             @endif
             <span>Cuotas pagadas</span>
             <span>{!! $cuotas.' de '.$nc!!}</span>
+          </div>
+          <br><br>
+          <div class="srow">
+            <span>Cuotas pagada en efectivo</span>
+            <span>{!! $cuotasc !!}</span>
+          </div>
+          <br>
+          <table>
+            <tr>
+              <th>#</th>
+              <th>Fecha</th>
+              <th>Caja</th>
+              <th>Capital</th>
+              @if($mob->credito)
+                <th>Interés</th>
+                <th>Mora</th>
+              @endif
+            </tr>
+            <?php $a = 1; ?>
+            @foreach($listac as $k)
+              <tr>
+                <td>{{$a}}</td>
+                <td>{{$k->created_at->format('d-m-Y')}}</td>
+                <td>{{$mob->nombreCaja($k->caja_id)}}</td>
+                <td>{{'$ '.number_format($k->monto,2)}}</td>
+                @if($mob->credito)
+                  <td>{{'$ '.number_format($k->interes,2)}}</td>
+                  <td>{{'$ '.number_format($k->mora,2)}}</td>
+                @endif
+              </tr>
+              <?php $a++; ?>
+            @endforeach
+          </table>
+          <div id="act">
+            {!! str_replace ('/?', '?', $listac) !!}
+          </div>
+          <br><br>
+          <div class="srow">
+            <span>Cuotas pagada con cheque</span>
+            <span>{!! $cuotasb !!}</span>
+          </div>
+          <br>
+          <table>
+            <tr>
+              <th>#</th>
+              <th>Fecha</th>
+              <th>Banco</th>
+              <th>Cheque</th>
+              <th>Capital</th>
+              @if($mob->credito)
+                <th>Interés</th>
+                <th>Mora</th>
+              @endif
+            </tr>
+            <?php $a = 1; ?>
+            @foreach($listab as $k)
+              <tr>
+                <td>{{$a}}</td>
+                <td>{{$k->created_at->format('d-m-Y')}}</td>
+                <td>{{$mob->nombreBanco($k->banco_id)}}</td>
+                <td>{{$k->cheque}}</td>
+                <td>{{'$ '.number_format($k->monto,2)}}</td>
+                @if($mob->credito)
+                  <td>{{'$ '.number_format($k->interes,2)}}</td>
+                  <td>{{'$ '.number_format($k->mora,2)}}</td>
+                @endif
+              </tr>
+              <?php $a++; ?>
+            @endforeach
+          </table>
+          <div id="act">
+            {!! str_replace ('/?', '?', $listac) !!}
           </div>
         </div>
         <!----->
@@ -218,4 +298,30 @@
       </div>
     </center>
   </div>
+  @if($cuotas > 0 && $mob->credito)
+    <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Fecha', 'Capital','Interés','Mora','Total'],
+        @foreach($pagoss as $px)
+          [
+            '{{ $px->created_at->format('d-m-Y') }}',
+            {{ $px->monto }},
+            {{ $px->interes }},
+            {{ $px->mora }},
+            {{ $px->monto + $px->mora + $px->interes }}
+          ],
+        @endforeach
+      ]);
+      var options = {'title': 'Pagos de realizados',
+      'width':700,
+      'height':300
+    };
+    var visualization = new google.visualization.LineChart(document.getElementById('graphs'));
+    visualization.draw(data, options);
+  }
+  </script>
+@endif
 @stop

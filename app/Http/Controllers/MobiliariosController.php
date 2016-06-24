@@ -10,6 +10,8 @@ use sialas\Mobiliarios;
 use sialas\Reparaciones;
 use sialas\Tipos;
 use sialas\Pagos;
+use sialas\Cajas;
+use sialas\Bancos;
 use sialas\Proveedores;
 use Redirect;
 use Session;
@@ -110,7 +112,12 @@ class MobiliariosController extends Controller
     $interTotal = Pagos::where('mobiliario_id',$id)->sum('interes');
     $moraTotal = Pagos::where('mobiliario_id',$id)->sum('mora');
     $cuotas = Pagos::where('mobiliario_id',$id)->count();
-    return view('Mobiliarios.show',compact('mob','montoTotal','interTotal','cuotas','moraTotal'));
+    $cuotasc = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->count();
+    $cuotasb = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->count();
+    $pagoss = Pagos::where('mobiliario_id',$id)->orderBy('created_at','asc')->get();
+    $listac = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->paginate(8);
+    $listab = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->paginate(8);
+    return view('Mobiliarios.show',compact('mob','montoTotal','interTotal','cuotas','moraTotal','pagoss','cuotasc','cuotasb','listac','listab'));
   }
 
   /**

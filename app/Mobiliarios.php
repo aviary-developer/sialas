@@ -42,6 +42,14 @@ class mobiliarios extends Model
     }
     public static function codigoTipos($id){
      $n= Tipos::find($id);
-     return $n->codigo; 
+     return $n->codigo;
    }
+   public static function nombreCaja($id){
+    $n= Cajas::find($id);
+    return $n->nombre;
+  }
+  public static function nombreBanco($id){
+   $n= Bancos::find($id);
+   return $n->nombre;
+ }
 }

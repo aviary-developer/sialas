@@ -7,7 +7,7 @@
   <div class="launcher">
     <div class="lfloat"></div>
     <div class="tooltip">
-      <a href={!! asset('/productos') !!}>
+      <a href={!! asset('/productos/'.$producto) !!}>
         <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext">Atras</span>

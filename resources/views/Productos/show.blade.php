@@ -53,11 +53,21 @@
       <h2>Producto</h2>
       <h3 id="txt"> |{{$c->nombre}}</h3>
     </div>
+
+<center>
+    <div class="tpcontenido">
+      <ul class="supernav">
+        <li id ="luno" class="activ" onclick="cambio('uno','luno')">Datos</li>
+        <li id="ldos" onclick="cambio('dos','ldos')">Relaciones</li>
+        <li id="ltres" onclick="cambio('tres','ltres')">Estado</li>
+      </ul>
+
+  <div class="tabs ve" id="uno">
     <?php
     $id = $c->id;
     $xy = str_pad($id,10,"0",STR_PAD_LEFT);
     ?>
-    <center>
+
       <div class="enc">
         <h3 id="txt">Datos</h3>
       </div>
@@ -94,8 +104,9 @@
           @endforeach
         </span>
       </div>
+</div>
 
-
+<div class="tabs oc" id="dos">
       <!-------->
       <div class="enc">
         <h3 id="txt">Relaciones</h3>
@@ -128,7 +139,8 @@
       <div id="act">
         {!! str_replace ('/?', '?', $p) !!}
       </div>
-
+</div>
+<div class="tabs oc" id="tres">
       <!---->
 
       <div class="enc">
@@ -151,6 +163,8 @@
         <span>Fecha de última edición</span>
         <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
       </div>
-    </center>
   </div>
+</div>
+</center>
+</div>
 @stop

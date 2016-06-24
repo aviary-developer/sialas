@@ -468,6 +468,30 @@ input[type=radio]:checked + label span{
       margin-left: -75px;
     }
 }
+.subtool {
+    position: relative;
+    display: -webkit-inline-box;
+
+    .subimg {
+      display: block;;
+      visibility: hidden;
+      width: 75px;
+      background-color: $cgris1;
+      text-align: center;
+      border-radius: 50px;
+      padding: 5px 5px;
+      -webkit-user-select: none;
+      cursor: default;
+      box-shadow: 0px 0px 10px $cgris3;
+
+      /* Position the tooltip */
+      position: absolute;
+      z-index: 1;
+      bottom: -150%;
+      right: -150%;
+      margin-left: -75px;
+    }
+}
 .search{
   display: -webkit-inline-box;
   input[type='text']{
@@ -480,6 +504,9 @@ input[type=radio]:checked + label span{
   width: 45%;
 }
 .up:hover .image {
+    visibility: visible;
+}
+.subtool:hover .subimg {
     visibility: visible;
 }
 @media only screen and (max-width : 900px) {
@@ -571,7 +598,7 @@ input[type=radio]:checked + label span{
   display: flex;
   width: 700px;
   padding: 2px;
-  height: 30px;
+  height: inherit;
   :first-child{
     padding-top: 5px;
     text-align: center;
@@ -583,7 +610,9 @@ input[type=radio]:checked + label span{
   :last-child{
     padding-left: 50px;
     padding-top: 5px;
-    text-align: left;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    text-align: justify;
     width: 400px;
     border-radius: 0px 20px 20px 0px;
     background: $cgris6;
@@ -594,4 +623,35 @@ input[type=radio]:checked + label span{
 .icirc{
   border-radius: 100px 100px 100px 100px;
   width: 200px;
+}
+.supernav{
+  text-align: left;
+  border-bottom: $cgris3 solid 1px;
+  li{
+    display: table-cell;
+    width: inherit;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+  }
+  li:hover{
+    background: $cgris6;
+    border-radius: 10px 10px 0px 0px;
+  }
+}
+.tpcontenido{
+  width: 800px;
+}
+.activ{
+  background: $cceleste;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: none;
+  border-top: $cgris3 solid 1px;
+  border-left: $cgris3 solid 1px;
+  border-right: $cgris3 solid 1px;
+}
+.oc{
+  display: none;
+}
+.ve{
+  display: block;
 }

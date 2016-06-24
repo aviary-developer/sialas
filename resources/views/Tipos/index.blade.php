@@ -8,7 +8,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 <div class="launcher">
   <div class="lfloat"></div>
   <div class="tooltip">
-    <a href="#">
+    <a href={!! asset('/mobiliarios') !!}>
       <img src={!! asset('/img/WB/atr.svg') !!} alt="" class="circ"/>
     </a>
     <span class="tooltiptext">Atras</span>
@@ -46,7 +46,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 		<table id="block">
 			<tr>
 				<th>#</th>
-				<th>Codigo</th>
+				<th>Código</th>
 				<th>Nombre</th>
 				<th>Tipo de Depreciacion</th>
         <th>Acciones</th>
@@ -57,7 +57,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 				<td>{{$a}}</td>
 				<td>{{$tip->codigo}}</td>
 				<td>{{$tip->nombre}}</td>
-				
+
         <center><td>
           @if($tip->descripcion==0)<?php echo 'Edificaciones' ?>@endif
           @if($tip->descripcion==1)<?php echo 'Maquinaria'?>@endif

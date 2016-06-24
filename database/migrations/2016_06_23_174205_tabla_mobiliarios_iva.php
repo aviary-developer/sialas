@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserstsalarioTable extends Migration
+class TablaMobiliariosIva extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,9 @@ class AddUserstsalarioTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('tipo_salario')->nullable();
+        Schema::table('mobiliarios', function (Blueprint $table) {
+            $table->dropColumn('dia_pago');
+            $table->double('iva')->nullable();
         });
     }
 
@@ -24,7 +25,7 @@ class AddUserstsalarioTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('mobiliarios', function (Blueprint $table) {
             //
         });
     }

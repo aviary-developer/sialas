@@ -8,7 +8,7 @@ class mobiliarios extends Model
 {
     //
     protected $fillable= ['nombre','codigo','fecha','precio','descripcion','estado','nuevo','anios','proveedor_id','tipo_id','credito','intereses','num_cuotas','val_cuotas','tiempo_pago','cuenta','dia_pago'];
-    
+
 
     public static function buscar($nombre,$estado)
     {
@@ -34,10 +34,14 @@ class mobiliarios extends Model
 
     public static function nombreProveedor($id){
       $n= Proveedores::find($id);
-      return $n->nombre; 
+      return $n->nombre;
     }
      public static function nombreTipos($id){
       $n= Tipos::find($id);
-      return $n->nombre; 
+      return $n->nombre;
     }
+    public static function codigoTipos($id){
+     $n= Tipos::find($id);
+     return $n->codigo; 
+   }
 }

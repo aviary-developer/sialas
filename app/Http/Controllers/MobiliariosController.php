@@ -8,6 +8,7 @@ use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Mobiliarios;
 use sialas\Tipos;
+use sialas\Pagos;
 use sialas\Proveedores;
 use Redirect;
 use Session;
@@ -74,6 +75,7 @@ class MobiliariosController extends Controller
     $mobiliario->proveedor_id = $request->proveedor_id;
     $mobiliario->tipo_id = $request->tipo_id;
     $mobiliario->credito = $request->credito;
+    $mobiliario->iva=$request->iva;
     if($request->credito == 0 )
     {
       $mobiliario->interes=null;
@@ -81,7 +83,6 @@ class MobiliariosController extends Controller
       $mobiliario->val_cuotas=null;
       $mobiliario->tiempo_pago=null;
       $mobiliario->cuenta=null;
-      $mobiliario->dia_pago=null;
     }else
     {
       $mobiliario->interes= $request->interes;
@@ -89,7 +90,6 @@ class MobiliariosController extends Controller
       $mobiliario->val_cuotas= $request->val_cuotas;
       $mobiliario->tiempo_pago= $request->tiempo_pago;
       $mobiliario->cuenta= $request->cuenta;
-      $mobiliario->dia_pago= $request->dia_pago;
     }
 
     $mobiliario->save();
@@ -104,9 +104,12 @@ class MobiliariosController extends Controller
   */
   public function show($id)
   {
-    $c = Mobiliarios::find($id);
-    //return view('Categorias.show',compact('categorias'));
-    return View::make('Mobiliarios.show')->with('c', $c);
+    $mob = Mobiliarios::find($id);
+    $montoTotal = Pagos::where('mobiliario_id',$id)->sum('monto');
+    $interTotal = Pagos::where('mobiliario_id',$id)->sum('interes');
+    $moraTotal = Pagos::where('mobiliario_id',$id)->sum('mora');
+    $cuotas = Pagos::where('mobiliario_id',$id)->count();
+    return view('Mobiliarios.show',compact('mob','montoTotal','interTotal','cuotas','moraTotal'));
   }
 
   /**
@@ -146,7 +149,7 @@ class MobiliariosController extends Controller
         return view('reparaciones.crear',compact('id','p',$id));
     }
     else{
-    
+
         Session::flash('mensaje','¡Registro Actualizado!');
         return Redirect::to('/mobiliarios');
         }

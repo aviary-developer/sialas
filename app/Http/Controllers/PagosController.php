@@ -44,7 +44,7 @@ class PagosController extends Controller
      */
     public function store(Request $request)
     {
-      
+
     }
 
     /**
@@ -119,9 +119,8 @@ class PagosController extends Controller
       $pago->factura = $request->factura;
       $pago->mobiliario_id = $mobiliario;
       $pago->monto = $request->monto;
-      $pago->iva = $request->iva;
       $pago->detalle = $request->detalle;
       $pago->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago Guardado');
+      return redirect('/mobiliarios/'.$mobiliario)->with('mensaje','Pago Guardado');
     }
 }

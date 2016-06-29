@@ -68,10 +68,7 @@
           <input  name="inputTotalProductosVenta" id="inputTotalProductosVenta" value="0" type="number" disabled/>
         </div>
 
-        <div>
-          <label for="ex1">Precio promedio</label>
-          Cantidad*precioProductoUnitario)+(Productos*precioProductoUnitario))/Productos;
-        </div>
+        
 
       </div>
       <input name="registrarVenta" id="registrarVenta" type="button" value="Registrar" onClick="registrarVenta()"/>

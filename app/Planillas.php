@@ -8,7 +8,7 @@ class Planillas extends Model
 {
   protected $table ='planillas';
 
-  protected $fillable = ['id','fecha'];
+  protected $fillable = ['id','fecha','estado_pagado'];
 
   public static function buscar($fecha){
     return Planillas::fecha($fecha)->orderBy('fecha')->paginate(8);
@@ -32,7 +32,6 @@ class Planillas extends Model
     }
 return $total;
   }
-
   public static function valorneto($descuentos,$valores){
     $sn=$valores[1];
     $sn=$sn-$valores[2];
@@ -44,7 +43,6 @@ return $total;
     }
     return $sn;
   }
-
   public static function tipo($id){
     $tipo=Descuentoaportes::find($id);
     if($tipo->tipo=='Descuento')

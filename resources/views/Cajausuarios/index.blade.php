@@ -72,7 +72,24 @@
           <td>{{$c}}</td>
           <td>{{date("d-m-Y",strtotime($p->fecha))}}</td>
           <td>{{number_format($p->totalplanilla($p->id), 2,'.','')}}</td>
-          <td></td>
+        @if($p->estado_pagado)
+          <td>Pagado</td>
+        @else
+          <td>Pagar</td>
+        @endif
+        <td>
+          <div class="up">
+            <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
+            <div class="image">
+              <div class="tooltip">
+                <a href={!! asset('/cajausuarios/'.$p->id) !!}>
+                  <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
+                </a>
+                <span class="tooltiptextup">Ver</span>
+              </div>
+            </div>
+          </div>
+        </td>
         </tr>
         @endforeach
       </table>

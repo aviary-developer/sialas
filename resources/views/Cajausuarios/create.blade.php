@@ -33,31 +33,49 @@
             <?php
                   $otro[0][]=$a->id;
                   $des[]=$a->valor;
+                  $tipo[]=$a->tipo;
                   $techo[]=$a->techo;
                   $cont=$cont+1;
             ?>
             <th>{{$a->nombre}}</th>
             @endforeach
+            <th>Descuento</th>
+            <th>Aportación</th>
             <input type="hidden" name="arreglo[]" value='<?php echo serialize($otro[0]) ?>)'>
         </tr>
-        <?php $cantidad=0; ?>
+        <?php $cantidad=0;
+         ?>
         @foreach($usuarios as $u)
+          <?php $descuento=0;
+                $aporte=0; ?>
           <tr>
             <td>{{$u->nom_usuario}}</td>
-            <?php  $arreglo[$cantidad][]=$u->id;?>
-            <td>{{number_format($u->salario, 2, '.', '')}}</td>
-            <?php   $arreglo[$cantidad][]=number_format($u->salario, 2, '.', '');?>
-            <td>{{number_format($renta->renta($u->tipo_salario,$u->salario), 2, '.', '')}}</td>
-            <?php  $arreglo[$cantidad][]=number_format($renta->renta($u->tipo_salario,$u->salario), 2, '.', '');?>
+            <?php  $arreglo[$cantidad][]=$u->id;
+                   $salario=number_format($u->salario, 2, '.', '');?>
+            <td>{{$salario}}</td>
+            <?php   $arreglo[$cantidad][]=$salario;
+                    $vrenta=number_format($renta->renta($u->tipo_salario,$u->salario), 2, '.', '');?>
+            <td>{{$vrenta}}</td>
+            <?php  $arreglo[$cantidad][]=$vrenta;
+                    $descuento=$vrenta;?>
             @for($i=0;$i<$cont;$i++)
               @if($techo[$i]!=0 && $u->salario>$techo[$i])
                 <?php $vtecho=$techo[$i]; ?>
               @else
                 <?php $vtecho=$u->salario; ?>
               @endif
-            <td>{{number_format(($vtecho*$des[$i]/100), 2, '.', '')}}</td>
-            <?php   $arreglo[$cantidad][]=number_format(($vtecho*$des[$i]/100), 2, '.', '');?>
+                <?php $desp=number_format(($vtecho*$des[$i]/100), 2, '.', ''); ?>
+            <td>{{$desp}}</td>
+            <?php   $arreglo[$cantidad][]=$desp;
+                    if($tipo[$i]==trim('Descuento')){
+                      $descuento=$descuento+$desp;
+                    }else{
+                      $aporte=$aporte+$desp;
+                    }
+            ?>
             @endfor
+            <td>{{number_format($descuento, 2, '.', '')}}</td>
+            <td>{{number_format($aporte, 2, '.', '')}}</td>
           </tr>
           <input type="hidden" name="arreglo[]" value='<?php echo serialize($arreglo[$cantidad]) ?>)'>
           <?php  $cantidad=$cantidad+1;?>

@@ -64,13 +64,14 @@
           <th>Fecha</th>
           <th>Total</th>
           <th>Estado</th>
+          <th>Acciones</th>
         </tr>
         <?php $c=1; ?>
         @foreach($planillas as $p)
         <tr>
           <td>{{$c}}</td>
           <td>{{date("d-m-Y",strtotime($p->fecha))}}</td>
-          <td></td>
+          <td>{{number_format($p->totalplanilla($p->id), 2,'.','')}}</td>
           <td></td>
         </tr>
         @endforeach

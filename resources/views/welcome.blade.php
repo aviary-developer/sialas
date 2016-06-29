@@ -66,7 +66,7 @@
           <div class = "doption">
             <li class="moption">
               <a href="#">
-                Configuración
+                Mantenimiento
               </a>
             </li>
             <div class="lista">

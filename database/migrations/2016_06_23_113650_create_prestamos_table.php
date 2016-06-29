@@ -19,7 +19,7 @@ class CreatePrestamosTable extends Migration
             $table->foreign('caja_id')->references('id')->on('cajas');
             $table->integer('banco_id')->unsigned()->nullable();
             $table->foreign('banco_id')->references('id')->on('bancos');
-            $table->integer('cuenta',15);
+            $table->string('cuenta',15);
             $table->double('monto');
             $table->double('interes');
             $table->integer('num_cuotas');

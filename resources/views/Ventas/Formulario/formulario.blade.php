@@ -1,7 +1,7 @@
 <div class="fila">
   <div>
     {!!Form::label("LCliente","Cliente:")!!}
-    <input list="selectClienteVenta" name="clienteVenta" id="cliente" onkeypress="clienteVenta();" onfocus="clienteVenta();">
+    <input list="selectClienteVenta" name="clienteVenta" id="cliente" onkeypress="clienteVenta();">
     <datalist id="selectClienteVenta">
       @foreach($clientes as $cli)
         <option>
@@ -9,10 +9,10 @@
         </option>
       @endforeach
     </datalist>
-    
- 
+
+
     {!!Form::label("Articulos","Productos:")!!}
-    <input list="selectArticulosVenta" name="nombreArticulosVenta" id="articulos" onkeypress="ff();" onfocus="ff();">
+    <input list="selectArticulosVenta" name="nombreArticulosVenta" id="productos" onkeypress="enter(this);">
     <datalist id="selectArticulosVenta">
       @foreach($productos as $pro)
         <option>
@@ -22,7 +22,7 @@
     </datalist>
 
     {!!Form::label("Presentaciones","Presentación:")!!}
-    <select  id="selectPresentaciones" name="nombrePresentacionesVenta" onmouseover="ff();">
+    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta" onchange="obtenerPrecioProducto()">
       <option disabled>Seleccione un producto</option>
     </select>
 
@@ -68,7 +68,7 @@
           <input  name="inputTotalProductosVenta" id="inputTotalProductosVenta" value="0" type="number" disabled/>
         </div>
 
-        
+
 
       </div>
       <input name="registrarVenta" id="registrarVenta" type="button" value="Registrar" onClick="registrarVenta()"/>

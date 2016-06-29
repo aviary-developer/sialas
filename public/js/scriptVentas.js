@@ -138,6 +138,7 @@
   function obtenerPrecioProducto(){
     var producto=$("#productos").val();
     var presentacion=$("#selectPresentacionesVenta").val();
+    alert(producto+"<-Producto"+"presentacion->"+presentacion);
     var ruta="/sialas/public/precioProductoVenta/"+producto+"/"+presentacion;
     var precio=$("#precioProductoUnitario").val();
     $.get(ruta,function(res){

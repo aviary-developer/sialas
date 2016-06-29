@@ -20,6 +20,19 @@ class Planillas extends Model
     }
   }
 
+  public static function totalplanilla($id){
+    $total=0;
+    $datosp=Datosplanillas::where('planilla_id',$id)->get();
+    foreach ($datosp as $dp) {
+      $total=$total+$dp->salario_neto+$dp->valor_renta;
+      $valor=Valoresplanillas::where('dato_id',$dp->id)->get();
+      foreach ($valor as $v) {
+        $total=$total+$v->monto;
+      }
+    }
+return $total;
+  }
+
   public static function valorneto($descuentos,$valores){
     $sn=$valores[1];
     $sn=$sn-$valores[2];

@@ -159,10 +159,11 @@ class MobiliariosController extends Controller
     $mobiliarios->descripcion =$request->descripcion;
     $mobiliarios->estado = $request->estado;
     $mobiliarios->save();
+    $mobiliario=$id;
     $p= Proveedores::All();
     if($mobiliarios->estado == 3){
         Session::flash('mensaje','¡Registro Actualizado!');
-        return view('reparaciones.crear',compact('id','p',$id));
+        return view('reparaciones.crear',compact('id','p','mobiliario'));
     }
     if($mobiliarios->estado == 1){
         $reparacion = Reparaciones::where('mobiliario_id','=', $id)->orderBy('fecha_deposito','desc')->first();

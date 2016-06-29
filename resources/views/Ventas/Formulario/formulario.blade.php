@@ -9,14 +9,11 @@
         </option>
       @endforeach
     </datalist>
-    <!--@foreach($productos as $pro)
-      <option>
-        {{$pro->nombre}}
-      </option>
-    @endforeach-->
-    {!!Form::label("LProducto","Productos:")!!}
-    <input list="selectProductosVenta" name="nombreProductosVenta" id="productos" onkeypress="enter(event);">
-    <datalist id="selectProductosVenta">
+    
+ 
+    {!!Form::label("Articulos","Productos:")!!}
+    <input list="selectArticulosVenta" name="nombreArticulosVenta" id="articulos" onkeypress="ff();" onfocus="ff();">
+    <datalist id="selectArticulosVenta">
       @foreach($productos as $pro)
         <option>
           {{$pro->nombre}}
@@ -24,9 +21,9 @@
       @endforeach
     </datalist>
 
-    {!!Form::label("LPresentacion","Presentación:")!!}
-    <select  id="selectPresentacionesVenta" name="nombrePresentacionesVenta" onChange="obtenerPrecioProducto();">
-      <option disabled>Seleccione presentación</option>
+    {!!Form::label("Presentaciones","Presentación:")!!}
+    <select  id="selectPresentaciones" name="nombrePresentacionesVenta" onmouseover="ff();">
+      <option disabled>Seleccione un producto</option>
     </select>
 
     <div></div>
@@ -70,6 +67,12 @@
           <label for="ex1">Costo Total ($):</label>
           <input  name="inputTotalProductosVenta" id="inputTotalProductosVenta" value="0" type="number" disabled/>
         </div>
+
+        <div>
+          <label for="ex1">Precio promedio</label>
+          Cantidad*precioProductoUnitario)+(Productos*precioProductoUnitario))/Productos;
+        </div>
+
       </div>
       <input name="registrarVenta" id="registrarVenta" type="button" value="Registrar" onClick="registrarVenta()"/>
     </center>

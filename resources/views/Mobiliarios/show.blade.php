@@ -164,8 +164,10 @@
           <div class="enc">
             <h3 id="txt">Pagos</h3>
           </div>
-          <div id="graphs"></div>
-          <br>
+          @if($mob->credito)
+            <div id="graphs"></div>
+            <br>
+          @endif
           <div class="srow">
             <span>Capital abonado</span>
             <span>{!! '$ '.number_format($montoTotal,2) !!}</span>
@@ -195,7 +197,25 @@
           </div>
           <br><br>
           <div class="srow">
-            <span>Cuotas pagada en efectivo</span>
+            <span>Capital abonado en efectivo</span>
+            <span>{!! '$ '.number_format($cc,2) !!}</span>
+          </div>
+          @if($mob->credito)
+            <div class="srow">
+              <span>Interés abonado en efectivo</span>
+              <span>{!! '$ '.number_format($ic,2) !!}</span>
+            </div>
+            <div class="srow">
+              <span>Interés moratorio (efectivo)</span>
+              <span>{!! '$ '.number_format($mc,2) !!}</span>
+            </div>
+          @endif
+          <div class="srow">
+            <span>Total abonado en efectivo</span>
+            <span>{!! '$ '.number_format($totalc,2) !!}</span>
+          </div>
+          <div class="srow">
+            <span>Cuotas abonadas en efectivo</span>
             <span>{!! $cuotasc !!}</span>
           </div>
           <br>
@@ -213,13 +233,13 @@
             <?php $a = 1; ?>
             @foreach($listac as $k)
               <tr>
-                <td>{{$a}}</td>
-                <td>{{$k->created_at->format('d-m-Y')}}</td>
-                <td>{{$mob->nombreCaja($k->caja_id)}}</td>
-                <td>{{'$ '.number_format($k->monto,2)}}</td>
+                <td><center>{{$a}}</center></td>
+                <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
+                <td><center>{{$mob->nombreCaja($k->caja_id)}}</center></td>
+                <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
                 @if($mob->credito)
-                  <td>{{'$ '.number_format($k->interes,2)}}</td>
-                  <td>{{'$ '.number_format($k->mora,2)}}</td>
+                  <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
+                  <td><center>{{'$ '.number_format($k->mora,2)}}</center></td>
                 @endif
               </tr>
               <?php $a++; ?>
@@ -230,7 +250,25 @@
           </div>
           <br><br>
           <div class="srow">
-            <span>Cuotas pagada con cheque</span>
+            <span>Capital abonado con cheque</span>
+            <span>{!! '$ '.number_format($cb,2) !!}</span>
+          </div>
+          @if($mob->credito)
+            <div class="srow">
+              <span>Interés abonado con cheque</span>
+              <span>{!! '$ '.number_format($ib,2) !!}</span>
+            </div>
+            <div class="srow">
+              <span>Interés moratorio (cheque)</span>
+              <span>{!! '$ '.number_format($mb,2) !!}</span>
+            </div>
+          @endif
+          <div class="srow">
+            <span>Total abonado con cheque</span>
+            <span>{!! '$ '.number_format($totalb,2) !!}</span>
+          </div>
+          <div class="srow">
+            <span>Cuotas abonadas con cheque</span>
             <span>{!! $cuotasb !!}</span>
           </div>
           <br>
@@ -249,14 +287,14 @@
             <?php $a = 1; ?>
             @foreach($listab as $k)
               <tr>
-                <td>{{$a}}</td>
-                <td>{{$k->created_at->format('d-m-Y')}}</td>
-                <td>{{$mob->nombreBanco($k->banco_id)}}</td>
-                <td>{{$k->cheque}}</td>
-                <td>{{'$ '.number_format($k->monto,2)}}</td>
+                <td><center>{{$a}}</center></td>
+                <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
+                <td><center>{{$mob->nombreBanco($k->banco_id)}}</center></td>
+                <td><center>{{$k->cheque}}</td>
+                <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
                 @if($mob->credito)
-                  <td>{{'$ '.number_format($k->interes,2)}}</td>
-                  <td>{{'$ '.number_format($k->mora,2)}}</td>
+                  <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
+                  <td><center>{{'$ '.number_format($k->mora,2)}}</center></td>
                 @endif
               </tr>
               <?php $a++; ?>

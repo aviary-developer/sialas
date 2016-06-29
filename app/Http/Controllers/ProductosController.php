@@ -61,7 +61,7 @@ class ProductosController extends Controller
        // Guardar Original
        $image->save($path.$file->getClientOriginalName());
        // Cambiar de tamaño
-       $image->resize(240,200);
+       $image->resize(200,200);
        // Guardar
        $image->save($path.'ProductoSialas_'.$file->getClientOriginalName());
        //Guardamos nombre y nombreOriginal en la BD

@@ -36,7 +36,6 @@
     </div>
 {!! Form::open(['url'=>['guardarPagos',$mobiliario],'method'=>'POST']) !!}
 @include('pagos.Formularios.formulario')
-{!! Form::submit('Guardar') !!}
 {!!Form::close()!!}
 </div>
 @stop

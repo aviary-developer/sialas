@@ -32,9 +32,9 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
       @endif
     </a>
     @if(!$cam)
-      <span class="tooltiptext" id="tt">Papelera</span>
+      <span class="tooltiptext" id="tt">Pendientes</span>
     @else
-      <span class="tooltiptext" id="tt">Activos</span>
+      <span class="tooltiptext" id="tt">Entregados</span>
     @endif
   </div>
   <div class="tooltip">
@@ -52,11 +52,11 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Compras</h2>
+    <h2>Pedidos</h2>
     @if(!$cam)
-      <h3 id='txt'> |Activos</h3>
+      <h3 id='txt'> |Entregados</h3>
     @else
-      <h3 id='txt'> |Papelera</h3>
+      <h3 id='txt'> |Pendientes</h3>
     @endif
     <div class="sep"></div>
     {!!Form::open(['route'=>'compras.index','method'=>'GET','role'=>'search','class'=>'search'])!!}

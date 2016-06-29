@@ -48,7 +48,7 @@
       <h3 id="txt"> |{{$c->nombre}}</h3>
     </div>
 
-<center>
+    <center>
       <div class="tpcontenido">
         <ul class="supernav">
           <li id ="luno" class="activ" onclick="cambio('uno','luno')">Datos</li>
@@ -60,77 +60,77 @@
         $id = $c->id;
         $xy = str_pad($id,10,"0",STR_PAD_LEFT);
         ?>
-    <div class="tabs ve" id="uno">
+        <div class="tabs ve" id="uno">
 
-      <div class="enc">
-        <h3 id="txt">Datos</h3>
-      </div>
-      <div class="srow">
-        <span>Identificador</span>
-        <span>{!! $xy !!}</span>
-      </div>
-      <div class="srow">
-        <span>Nombre</span>
-        <span>{!! $c->nombre !!}</span>
-      </div>
-    </div>
+          <div class="enc">
+            <h3 id="txt">Datos</h3>
+          </div>
+          <div class="srow">
+            <span>Identificador</span>
+            <span>{!! $xy !!}</span>
+          </div>
+          <div class="srow">
+            <span>Nombre</span>
+            <span>{!! $c->nombre !!}</span>
+          </div>
+        </div>
 
-<div class="tabs oc" id="dos">
-      <!-------->
-      <div class="enc">
-        <h3 id="txt">Relaciones</h3>
-      </div>
+        <div class="tabs oc" id="dos">
+          <!-------->
+          <div class="enc">
+            <h3 id="txt">Relaciones</h3>
+          </div>
 
-      <div class="srow">
-        <span>Productos relacionados</span>
-        <span>{!! $w !!}</span>
+          <div class="srow">
+            <span>Productos relacionados</span>
+            <span>{!! $w !!}</span>
+          </div>
+          <br>
+          <table>
+            <tr>
+              <th>#</th>
+              <th>Nombre</th>
+              <th>Marca</th>
+            </tr>
+            <?php $a = 1; ?>
+            @foreach($p as $k)
+              <tr>
+                <td>{{$a}}</td>
+                <td>{{$k->nombre}}</td>
+                <td>{{$k->nombreMarcas($k->marca_id)}}</td>
+              </tr>
+              <?php $a++; ?>
+            @endforeach
+          </table>
+          <div id="act">
+            {!! str_replace ('/?', '?', $p) !!}
+          </div>
+        </div>
+        <!-------->
+        <div class="tabs oc" id="tres">
+          <div class="enc">
+            <h3 id="txt">Estado</h3>
+          </div>
+          <div class="srow">
+            <span>Estado</span>
+            @if($c->estado == 1)
+              <?php $var = 'Activo'?>
+            @else
+              <?php $var = 'En papelera'?>
+            @endif
+            <span>{!! $var !!}</span>
+          </div>
+          <div class="srow">
+            <span>Fecha de creación</span>
+            <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+          <div class="srow">
+            <span>Fecha de última edición</span>
+            <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+        </div>
+
       </div>
-      <br>
-      <table>
-        <tr>
-          <th>#</th>
-          <th>Nombre</th>
-          <th>Marca</th>
-        </tr>
-        <?php $a = 1; ?>
-        @foreach($p as $k)
-          <tr>
-            <td>{{$a}}</td>
-            <td>{{$k->nombre}}</td>
-            <td>{{$k->nombreMarcas($k->marca_id)}}</td>
-          </tr>
-          <?php $a++; ?>
-        @endforeach
-      </table>
-      <div id="act">
-        {!! str_replace ('/?', '?', $p) !!}
-      </div>
-</div>
-      <!-------->
-  <div class="tabs oc" id="tres">
-      <div class="enc">
-        <h3 id="txt">Estado</h3>
-      </div>
-      <div class="srow">
-        <span>Estado</span>
-        @if($c->estado == 1)
-          <?php $var = 'Activo'?>
-        @else
-          <?php $var = 'En papelera'?>
-        @endif
-        <span>{!! $var !!}</span>
-      </div>
-      <div class="srow">
-        <span>Fecha de creación</span>
-        <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
-      </div>
-      <div class="srow">
-        <span>Fecha de última edición</span>
-        <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
-      </div>
+    </center>
   </div>
-
-  </div>
-</center>
-</div>
 @stop

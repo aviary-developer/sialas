@@ -6,7 +6,7 @@
         <!--<link rel="stylesheet" href="{{{ asset('/css/wb.min.css') }}}" type="text/css">-->
         {!!Html::script('js/jquery-2.2.3.min.js')!!}
         {!! Html::script('https://www.gstatic.com/charts/loader.js') !!}
-        
+
         {!!Html::script('js/scriptVentas.js')!!}
         {!!Html::style('css/wb.min.css')!!}
         {!!Html::script('js/wb.js')!!}
@@ -41,7 +41,7 @@
               </a>
             </li>
             <div class="lista">
-              <a href={!! asset('/compras/create') !!}>Nuevo Pedido</a>
+              <a href={!! asset('/compras') !!}>Pedidos</a>
               <a href={!! asset('/proveedores') !!}>Proveedores</a>
             </div>
           </div>

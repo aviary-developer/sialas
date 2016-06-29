@@ -115,9 +115,17 @@ class MobiliariosController extends Controller
     $cuotasc = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->count();
     $cuotasb = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->count();
     $pagoss = Pagos::where('mobiliario_id',$id)->orderBy('created_at','asc')->get();
-    $listac = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->paginate(8);
-    $listab = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->paginate(8);
-    return view('Mobiliarios.show',compact('mob','montoTotal','interTotal','cuotas','moraTotal','pagoss','cuotasc','cuotasb','listac','listab'));
+    $listac = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->orderBy('created_at','asc')->paginate(8);
+    $listab = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->orderBy('created_at','asc')->paginate(8);
+    $cc = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->sum('monto');
+    $cb = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->sum('monto');
+    $ic = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->sum('interes');
+    $ib = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->sum('interes');
+    $mc = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->sum('mora');
+    $mb = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->sum('mora');
+    $totalc = $cc + $ic + $mc;
+    $totalb = $cb + $ib + $mb;
+    return view('Mobiliarios.show',compact('mob','montoTotal','interTotal','cuotas','moraTotal','pagoss','cuotasc','cuotasb','listac','listab','totalc','totalb','cc','cb','ic','ib','mc','mb'));
   }
 
   /**
@@ -164,7 +172,6 @@ class MobiliariosController extends Controller
         $reparacion->save();
     }
     else{
-
         Session::flash('mensaje','¡Registro Actualizado!');
         return Redirect::to('/mobiliarios');
         }

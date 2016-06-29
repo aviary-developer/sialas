@@ -624,10 +624,22 @@ input[type=radio]:checked + label span{
   border-radius: 100px 100px 100px 100px;
   width: 200px;
 }
+.agrUbi{
+  background-color: $cgris4;
+  color: $cblanco;
+  width: 120px;
+  border: $cnegro solid 1px;
+  margin: 15px;
+  border-radius: 20px 20px 20px 20px;
+}
+.agrUbi:hover{
+  background: $cgris5;
+}
 .supernav{
   text-align: left;
   border-bottom: $cgris3 solid 1px;
   li{
+    -webkit-user-select: none;
     display: table-cell;
     width: inherit;
     padding: 5px 10px 5px 10px;

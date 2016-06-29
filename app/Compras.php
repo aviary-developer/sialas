@@ -20,7 +20,7 @@ class Compras extends Model
 
   public function scopeEstado($query, $entrega){
     if($entrega == null){
-      $entrega = 0;
+      $entrega = 1;
     }
     $query->where('entrega', $entrega);
   }

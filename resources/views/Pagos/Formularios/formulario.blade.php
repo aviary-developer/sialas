@@ -15,7 +15,9 @@ if($bandera==1){
 	</p>
 @else
 	@if($m->credito)
-		Cuotas: <b>{{$f}}</b>/{{$m->num_cuotas}}    |    Capital: <b>{{'$ '.$p}}</b>/{{'$ '.$m->precio}}
+		Cuotas: <b>{{$f}}</b>/{{$m->num_cuotas}}    |    Capital: <b>{{'$ '.number_format($p,2)}}</b>/{{'$ '.number_format($m->precio,2)}} |    Monto de cuota: {{'$ '.number_format($m->val_cuotas,2)}}
+	@else
+		Capital: <b>{{'$ '.number_format($p,2)}}</b>/{{'$ '.number_format(($m->precio + $m->iva),2)}}
 	@endif
 	<div class = "radiosg">
 		{!!Form::label('llabel','Forma de pago:')!!}<br>
@@ -83,4 +85,5 @@ if($bandera==1){
 			{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida','rows'=>'4'])!!}
 		</div>
 	</div>
+	{!! Form::submit('Guardar') !!}
 @endif

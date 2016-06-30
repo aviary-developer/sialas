@@ -12,6 +12,7 @@ use sialas\Rentas;
 use sialas\Planillas;
 use sialas\Datosplanillas;
 use sialas\Valoresplanillas;
+use sialas\Cajausuarios;
 
 class CajausuariosController extends Controller
 {
@@ -91,7 +92,11 @@ class CajausuariosController extends Controller
      */
     public function show($id)
     {
-        //
+        $planilla=Planillas::find($id);
+        $ca=new Cajausuarios();
+        $datos=Datosplanillas::where('planilla_id',$id)->get();
+
+        return view('cajausuarios.show',compact('planilla','datos','ca'));
     }
 
     /**

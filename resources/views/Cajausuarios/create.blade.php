@@ -41,6 +41,7 @@
             @endforeach
             <th>Descuento</th>
             <th>Aportación</th>
+            <th>Sueldo neto</th>
             <input type="hidden" name="arreglo[]" value='<?php echo serialize($otro[0]) ?>)'>
         </tr>
         <?php $cantidad=0;
@@ -76,6 +77,7 @@
             @endfor
             <td>{{number_format($descuento, 2, '.', '')}}</td>
             <td>{{number_format($aporte, 2, '.', '')}}</td>
+            <td>{{number_format(($salario-$descuento), 2, '.', '')}}</td>
           </tr>
           <input type="hidden" name="arreglo[]" value='<?php echo serialize($arreglo[$cantidad]) ?>)'>
           <?php  $cantidad=$cantidad+1;?>

@@ -115,7 +115,8 @@ Route::get('/', function () {
     Route::get('pagoreparaciones/crear/{id}','PagoreparacionesController@crear');
     Route::match(['get','post'],'/guardarPagoreparaciones/{id}','PagoreparacionesController@guardar');
 
-
+    Route::resource('prestamos','PrestamosController');
+    Route::match(['get','post']);
 
 
 

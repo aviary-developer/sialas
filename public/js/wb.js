@@ -43,6 +43,21 @@ function ver ()
 
 
 }
+function verdeposito ()
+{
+  if(document.getElementById('efe1').checked == true)
+  {
+    document.getElementById('banco').style.display='none';
+    document.getElementById('caja').style.display='block';
+  }
+  else if(document.getElementById('efe0').checked == true)
+  {
+    document.getElementById('caja').style.display='none';
+    document.getElementById('banco').style.display='block';
+  }
+
+
+}
 
 function verEstado ()
 {

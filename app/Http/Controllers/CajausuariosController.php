@@ -107,7 +107,9 @@ class CajausuariosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $planilla=Planillas::find($id);
+
+        return view('cajausuarios.pago',compact('planilla'));
     }
 
     /**

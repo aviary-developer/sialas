@@ -75,7 +75,7 @@
         @if($p->estado_pagado)
           <td>Pagado</td>
         @else
-          <td>Pagar</td>
+          <td>{!!link_to_route('cajausuarios.edit', $title = 'Pagar', $parameters = $p->id)!!}</td>
         @endif
         <td>
           <div class="up">

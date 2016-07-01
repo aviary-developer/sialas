@@ -48,4 +48,16 @@ return $total;
     if($tipo->tipo=='Descuento')
     {return true;}else{return false;}
   }
+  public static function cantidad($id){
+    $datosp=Datosplanillas::where('planilla_id',$id)->get();
+    foreach ($datosp as $p) {
+      $valor=Valoresplanillas::where('dato_id',$p->id)->get();
+      return $valor;
+    }
+  }
+
+  public static function nombre($id){
+    $v=Descuentoaportes::find($id);
+    return $v->nombre;
+  }
 }

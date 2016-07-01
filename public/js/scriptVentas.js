@@ -15,6 +15,9 @@
       function addVenta(){
         var correlativo=$("#correlativoVenta").val();
         var total=$("#inputTotalVenta").val();
+        //
+    var promedio=$("#inputPromedioProductosVenta").val();
+
         var articulo=$("#articulos").val();
         var precioUnitario=$("#precioUnitario").val();
         var iva=$("#ivavalor").val();
@@ -34,6 +37,9 @@
         }else{
           correlativo=parseInt(correlativo)+1;
           total=parseFloat(total)+parseFloat(cantidad*precioUnitario)+parseFloat(iva);
+          //
+          promedio=parseFloat(promedio)+parseFloat((productos*precioProducto)+(cantidadProductoVenta*precioUnitario))/2;
+
           subtotal = parseFloat(cantidad*precioUnitario)+parseFloat(iva);
           tablaDatos.append("<tr><td>"+
           parseInt(cantidad)+
@@ -52,6 +58,7 @@
           document.getElementById("correlativoVenta").value=correlativo;
           document.getElementById("inputArticulosVenta").value=correlativo;
           document.getElementById("inputTotalVenta").value=total.toFixed(2);
+          document.getElementById("inputPromedioVenta").value=promedio.toFixed(2);
           reset_camposVenta();
         }
       }
@@ -71,17 +78,24 @@
     $(parent).remove();
     var correlativo=$("#correlativoVenta").val();
     var total=parseFloat($("#inputTotalVenta").val());
+    //
+    var promedio=parseFloat($("#inputPromedioProductosVenta").val());
+
     total=total-(totalFila);
     correlativo=parseInt(correlativo)-1;
     document.getElementById("correlativoVenta").value=correlativo;
     document.getElementById("inputArticulosVenta").value=correlativo;
     document.getElementById("inputTotalVenta").value=total.toFixed(2);
+    //
+    document.getElementById("inputPromedioProductosVenta").value=promedio.toFixed(2);
   });
 
   function submitar(){
     document.forms["formVenta"].submit();
     $("#inputArticulosVenta").val("0");
     $("#inputTotalVenta").val("0");
+    //
+    $("#inputPromedioVenta").val("0");
   }
 
   $(document).on("click",".agrUbi",function(){
@@ -150,6 +164,9 @@
     var producto=$("#productos").val();
     var correlativo=$("#correlativoHiddenVenta").val();
     var total=$("#inputTotalProductosVenta").val();
+    //
+    var promedio=$("#inputPromedioProductosVenta").val();
+
     var precioProducto=$("#precioProductoUnitario").val();
     var iva=$("#ivavalor").val();
     var presentacion=$("#selectPresentacionesVenta").find('option:selected').val();
@@ -189,6 +206,8 @@
       document.getElementById("correlativoHiddenVenta").value=correlativo;
       document.getElementById("inputProductosVenta").value=correlativo;
       document.getElementById("inputTotalProductosVenta").value=total.toFixed(2);
+      //
+      document.getElementById("inputPromedioProductosVenta").value=promedio.toFixed(2);
       reset_camposVenta();
     }
   }
@@ -212,17 +231,24 @@
   $(parent).remove();
   var correlativo=$("#correlativoHiddenVenta").val();
   var total=parseFloat($("#inputTotalProductosVenta").val());
+  //
+  var promedio=parseFloat($("#inputPromedioProductosVenta").val());
+
   total=total-(totalFila);
   correlativo=parseInt(correlativo)-1;
   document.getElementById("correlativoHiddenVenta").value=correlativo;
   document.getElementById("inputProductosVenta").value=correlativo;
   document.getElementById("inputTotalProductosVenta").value=total.toFixed(2);
+  //
+  document.getElementById("inputPromedioProductosVenta").value=promedio.toFixed(2);
   });
 
   function submitar(){
   document.forms["formVenta"].submit();
   $("#inputArticulosVenta").val("0");
   $("#inputTotalVenta").val("0");
+  //
+  $("#inputPromedioVenta").val("0");
   }
 
 

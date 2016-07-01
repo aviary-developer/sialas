@@ -121,7 +121,7 @@
   /* FIN  JAVASCRIPT DE COMPRAS*/
 
   /* INICIO JAVASCRIPT DE VENTAS*/
-  function enter(event){
+  function enter(e){
     var char= event.which || event.keyCode;
     var producto=$("#productos").val();
     if(char==13){

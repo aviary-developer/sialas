@@ -1,19 +1,39 @@
-
+<?php
+if($bandera==1){
+	$valorb=null;
+	$valorc=null;
+}else{
+	$valorb=$remesas->banco_id;
+	$valorc=$remesas->caja_id;
+}
+?>
 <div class="fila">
-	<div>
-		<div class="alerta-errores">
+@if($bandera)
+<div class="alerta-errores">
 			@foreach ($errors->get('caja_id') as $error)
 				<br>{{$error}}
 			@endforeach
 		 </div>
-		 {!!Form::label("LCaja","Caja:")!!}
-    <select  id="TransaCaja" name="cajaTipo">
-      @foreach($TipoCaja as $ca)
-        <option value="{{$ca->id}}">
-          {{$ca->nombre}}
-        </option>
-      @endforeach
-    </select>
+		<div id="TransaCaja">
+			{!!Form::label('LCaja','Caja:')!!}
+			<select name="cajaTipo">
+				@foreach($TipoCaja as $ca)
+					@if($valorc==$ca->id && $valorc!=null)
+						<option value="{{$ca->id}}" selected="selected">{{$ca->nombre}}</option>
+					@else
+						<option value="{{$ca->id}}">{{$ca->nombre}}</option>
+					@endif
+				@endforeach
+			</select>
+		</div>
+	@endif
+	</div>
+
+
+
+
+	
+
 
 		 <div class="alerta-errores">
 			@foreach ($errors->get('banco_id') as $error)
@@ -21,7 +41,7 @@
 			@endforeach
 		 </div>
 		 {!!Form::label("LBanco","Banco:")!!}
-		 <select>
+		 <select name="bancoTipo">
 		 	@foreach($TipoBanco as $ban)
 		 	<option value="{{$ban->id}}">
 		 		{{$ban->nombre}}
@@ -58,6 +78,6 @@
 	 </div>
  </div>
 
-	</div>
+	
 			
 </div>

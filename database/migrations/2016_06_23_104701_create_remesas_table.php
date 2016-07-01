@@ -14,13 +14,14 @@ class CreateRemesasTable extends Migration
     {
         Schema::create('remesas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('banco_id')->unsigned();
-            $table->foreign('banco_id')->references('id')->on('bancos');
             $table->integer('caja_id')->unsigned();
             $table->foreign('caja_id')->references('id')->on('cajas');
-            $table->boolean('transaccion')->default(false);
+            $table->integer('banco_id')->unsigned();
+            $table->foreign('banco_id')->references('id')->on('bancos');
             $table->double('monto');
+            $table->boolean('transaccion')->default(true);
             $table->timestamps();
+           
         });
     }
 

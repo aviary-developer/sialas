@@ -24,7 +24,7 @@ class RemesasController extends Controller
      */
     public function index()
     {
-       
+
     }
 
     /**
@@ -34,10 +34,8 @@ class RemesasController extends Controller
      */
     public function create()
     {
-    
-
-         $TipoCaja=Cajas::where('estado',true)->orderBy('nombre')->get();
-         $TipoBanco=Bancos::where('estado',true)->orderBy('nombre')->get();
+        $TipoCaja=Cajas::where('estado',true)->orderBy('nombre')->get();
+        $TipoBanco=Bancos::where('estado',true)->orderBy('nombre')->get();
         return view('Remesas.create',compact('TipoCaja','TipoBanco'));
     }
 
@@ -49,26 +47,14 @@ class RemesasController extends Controller
      */
     public function store(Request $request)
     {
-        //Remesas::create($request->All());
-       // return redirect('/remesas')->with('mensaje','Registro Guardado');
-
-       if($request->vradio == 'Remesa'){
-            $caja = new Remesas;
-            $caja->monto = $request->monto;
-            $caja->caja_id = $request->caja_id;
-            $caja->banco_id = $request->banco_id;
-            $caja->save();
-            return redirect('/remesas')->with('mensaje','Registro Guardado');
-        } else{
-           /* $banco = new Remesas;
-            $banco->banco_id = $request->banco_id;
-            $banco->monto = $request->monto;
-            $banco->save();*/
-            return redirect('/remesas')->with('mensaje','Registro Guardado');
-        }
+            $remesa = new Remesas;
+            $remesa->caja_id = $request->cajaTipo;
+            $remesa->banco_id = $request->bancoTipo;
+            $remesa->monto = $request->Monto;
+            $remesa->save();
+       return redirect('/remesas/create')->with('mensaje','Registro Guardado');
+        
     }
-
-
 
     /**
      * Display the specified resource.
@@ -89,7 +75,7 @@ class RemesasController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -101,7 +87,7 @@ class RemesasController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        //
     }
 
     /**

@@ -117,4 +117,11 @@ class VentasController extends Controller
       }
       return Response::json($ganancia);
     }
+    public function nombrePresentacionVenta($presentacion){
+      $presentaciones=Presentaciones::where('id',$presentacion)->get();
+      foreach ($presentaciones as $p) {
+        $nombrePresentacion=$p->nombre;
+      }
+      return Response::json($nombrePresentacion);
+    }
 }

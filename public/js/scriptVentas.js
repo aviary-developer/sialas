@@ -169,10 +169,12 @@
       correlativo=parseInt(correlativo)+1;
       total=parseFloat(total)+parseFloat(cantidad*precioProducto);//+parseFloat(iva)
       subTotalVentas = parseFloat(cantidad*precioProducto);//+parseFloat(iva)
-      alert(presentacion+" Cantidad"+cantidad+" PR"+producto+" Precio "+precioProducto+" subtotal"+subTotalVentas);
+      var ruta="/sialas/public/nombrePresentacionVenta/"+presentacion;
+      $.get(ruta,function(res){
+        var presentationName=res;
       tablaDatos.append("<tr><td>"+
       parseInt(cantidad)+
-      "</td><td>"+presentacion+
+      "</td><td>"+presentationName+
       "</td><td><input type='hidden' name='productos[]' value='"+
       producto+"'/><input type='hidden' name='preciosUnitarios[]' value='"+
       parseFloat(precioProducto).toFixed(2)+
@@ -183,6 +185,7 @@
       "</td><td>"+parseFloat(precioProducto).toFixed(2)+
       "</td><td>"+parseFloat(subTotalVentas).toFixed(2)+
       "</td><td class='deleteBuy' style='cursor:pointer;'>Eliminar</td></tr>");
+      });
       document.getElementById("correlativoHiddenVenta").value=correlativo;
       document.getElementById("inputProductosVenta").value=correlativo;
       document.getElementById("inputTotalProductosVenta").value=total.toFixed(2);

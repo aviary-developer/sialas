@@ -32,7 +32,7 @@
         {!!Form::label("Cantidad","Cantidad:")!!}
         {!!Form::number('cantidadProductoVenta',null,['min'=>'1','id'=>'cantidadProductoVenta', 'placeholder'=>'Ingrese Cantidad'])!!}
         {!!Form::label("Cantidad","Precio de Producto")!!}
-        {!!Form::number('precioProductoUnitario',null,['id'=>'precioProductoUnitario', 'placeholder'=>'$0.00','editable'=>'false'])!!}
+        {!!Form::number('precioProductoUnitario',null,['id'=>'precioProductoUnitario', 'placeholder'=>'$0.00','readonly'=>'readonly'])!!}
         <center>
           <input name="agregarVenta" id="agregarVenta" type="button" value="Agregar" onClick="agregarProductoVenta()"/>
           <input name="correlativoHiddenVenta" id="correlativoHiddenVenta" type="hidden" value="0" />
@@ -67,8 +67,6 @@
           <label for="ex1">Costo Total ($):</label>
           <input  name="inputTotalProductosVenta" id="inputTotalProductosVenta" value="0" type="number" disabled/>
         </div>
-
-
 
       </div>
       <input name="registrarVenta" id="registrarVenta" type="button" value="Registrar" onClick="registrarVenta()"/>

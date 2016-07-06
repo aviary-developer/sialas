@@ -37,7 +37,7 @@ class ReparacionesController extends Controller
     public function create()
     {
         //
-       
+
     }
 
     /**
@@ -98,7 +98,7 @@ class ReparacionesController extends Controller
 
      public function crear($mobiliario)
     {
-      
+
       $m= Mobiliarios::find($mobiliario);
       $p= Proveedores::All();
       return view('reparaciones.crear',compact('m','p','mobiliario'));
@@ -108,6 +108,7 @@ class ReparacionesController extends Controller
     {
       $reparacion = new Reparaciones;
       $reparacion->precio = $request->precio;
+      $reparacion->iva = $request->iva;
       $reparacion->fecha_deposito = $request->fecha_deposito;
       $reparacion->diagnostico= $request->diagnostico;
       $reparacion->proveedor_id= $request->proveedor_id;
@@ -123,7 +124,6 @@ class ReparacionesController extends Controller
       $reparacion->val_cuotas=null;
       $reparacion->tiempo_pago=null;
       $reparacion->cuenta=null;
-      $reparacion->dia_pago=null;
     }else
     {
       $reparacion->interes= $request->interes;
@@ -131,9 +131,8 @@ class ReparacionesController extends Controller
       $reparacion->val_cuotas= $request->val_cuotas;
       $reparacion->tiempo_pago= $request->tiempo_pago;
       $reparacion->cuenta= $request->cuenta;
-      $reparacion->dia_pago= $request->dia_pago;
     }
-      
+
       $reparacion->save();
       return redirect('/mobiliarios')->with('mensaje','Reparacion guardada');
     }

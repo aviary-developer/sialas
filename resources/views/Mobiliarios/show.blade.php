@@ -50,20 +50,13 @@
           <li id ="luno" class="activ" onclick="cambio('uno','luno')">Datos</li>
           <li id="ldos" onclick="cambio('dos','ldos')">Compra</li>
           <li id="ltres" onclick="cambio('tres','ltres')">Pagos</li>
+          <li id="lcinco" onclick="cambio('cinco','lcinco')">Reparaciones</li>
           <li id="lcuatro" onclick="cambio('cuatro','lcuatro')">Estado</li>
         </ul>
         <div class="tabs ve" id="uno">
           <!---->
-          <?php
-          $id = $mob->id;
-          $xy = str_pad($id,10,"0",STR_PAD_LEFT);
-          ?>
           <div class="enc">
             <h3 id="txt">Datos</h3>
-          </div>
-          <div class="srow">
-            <span>Identificador</span>
-            <span>{!! $xy !!}</span>
           </div>
           <div class="srow">
             <span>Código</span>
@@ -167,12 +160,10 @@
           @if($mob->credito)
             <div id="graphs"></div>
             <br>
-          @endif
-          <div class="srow">
-            <span>Capital abonado</span>
-            <span>{!! '$ '.number_format($montoTotal,2) !!}</span>
-          </div>
-          @if($mob->credito)
+            <div class="srow">
+              <span>Capital abonado</span>
+              <span>{!! '$ '.number_format($montoTotal,2) !!}</span>
+            </div>
             <div class="srow">
               <span>Interés abonado</span>
               <span>{!! '$ '.number_format($interTotal,2) !!}</span>
@@ -196,11 +187,11 @@
             <span>{!! $cuotas.' de '.$nc!!}</span>
           </div>
           <br><br>
-          <div class="srow">
-            <span>Capital abonado en efectivo</span>
-            <span>{!! '$ '.number_format($cc,2) !!}</span>
-          </div>
           @if($mob->credito)
+            <div class="srow">
+              <span>Capital abonado en efectivo</span>
+              <span>{!! '$ '.number_format($cc,2) !!}</span>
+            </div>
             <div class="srow">
               <span>Interés abonado en efectivo</span>
               <span>{!! '$ '.number_format($ic,2) !!}</span>
@@ -249,11 +240,11 @@
             {!! str_replace ('/?', '?', $listac) !!}
           </div>
           <br><br>
-          <div class="srow">
-            <span>Capital abonado con cheque</span>
-            <span>{!! '$ '.number_format($cb,2) !!}</span>
-          </div>
           @if($mob->credito)
+            <div class="srow">
+              <span>Capital abonado con cheque</span>
+              <span>{!! '$ '.number_format($cb,2) !!}</span>
+            </div>
             <div class="srow">
               <span>Interés abonado con cheque</span>
               <span>{!! '$ '.number_format($ib,2) !!}</span>
@@ -291,59 +282,135 @@
                 <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
                 <td><center>{{$mob->nombreBanco($k->banco_id)}}</center></td>
                 <td><center>{{$k->cheque}}</td>
-                <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
-                @if($mob->credito)
-                  <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
-                  <td><center>{{'$ '.number_format($k->mora,2)}}</center></td>
-                @endif
+                  <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
+                  @if($mob->credito)
+                    <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
+                    <td><center>{{'$ '.number_format($k->mora,2)}}</center></td>
+                  @endif
+                </tr>
+                <?php $a++; ?>
+              @endforeach
+            </table>
+            <div id="act">
+              {!! str_replace ('/?', '?', $listac) !!}
+            </div>
+          </div>
+          <!----->
+          <div class="tabs oc" id = "cinco">
+            <div class="enc">
+              <h3 id="txt">Reparaciones</h3>
+            </div>
+            <div class="srow">
+              <span>Reparaciones al contado</span>
+              <span>{!! $totreparn; !!}</span>
+            </div>
+            <div class="srow">
+              <span>Reparaciones al crédito</span>
+              <span>{!! $totreparc; !!}</span>
+            </div>
+            <div class="srow">
+              <span>Total de reparaciones</span>
+              <span>{!! $totalreparacion !!}</span>
+            </div>
+            <br>
+            <div class="srow">
+              <span>Valor total al contado</span>
+              <span>{!! '$ '.number_format($valreparn,2); !!}</span>
+            </div>
+            <div class="srow">
+              <span>Valor total al crédito</span>
+              <span>{!! '$ '.number_format($valreparc,2); !!}</span>
+            </div>
+            <div class="srow">
+              <span>Valor total en reparaciones</span>
+              <span>{!! '$ '.number_format($valtotal,2); !!}</span>
+            </div>
+            <br>
+            <table>
+              <tr>
+                <th>#</th>
+                <th>Proveedor</th>
+                <th>Deposito</th>
+                <th>Entrega</th>
+                <th>Precio</th>
+                <th>IVA</th>
+                <th>Crédito</th>
+                <th>Pago</th>
               </tr>
-              <?php $a++; ?>
-            @endforeach
-          </table>
-          <div id="act">
-            {!! str_replace ('/?', '?', $listac) !!}
+              <?php $a = 1; ?>
+              @foreach($reparar as $k)
+                <tr>
+                  <td>{{$a}}</td>
+                  <td>{{$mob->nombreProveedor($k->proveedor_id)}}</td>
+                  <td>{{$k->fecha_deposito}}</td>
+                  <td>
+                    @if($k->fecha_entrega == null)
+                      {{ "Pendiente" }}
+                    @else
+                      {{$k->fecha_entrega}}
+                    @endif
+                  </td>
+                  <td><center>{{'$'.number_format($k->precio,2)}}</center></td>
+                  <td>{{'$'.number_format($k->iva,2)}}</td>
+                  <td><center>
+                    @if($k->credito)
+                      {{ "Si" }}
+                    @else
+                      {{ "No" }}
+                    @endif
+                  </center></td>
+                  <td>
+                    <a href={!! asset('/pagoreparaciones/crear/'.$k->id) !!}>
+                      <img src={!! asset('/img/WB/vend.svg') !!} alt="" class="plus"/>
+                    </a>
+
+                  </td>
+                </tr>
+                <?php $a++; ?>
+              @endforeach
+            </table>
+          </div>
+          <!---->
+          <div class="tabs oc" id="cuatro">
+            <div class="enc">
+              <h3 id="txt">Estado</h3>
+            </div>
+            <div class="srow">
+              <span>Estado</span>
+              @if($mob->estado == 0)
+                <?php $var = 'Vendido'?>
+              @elseif($mob->estado == 1)
+                <?php $var = 'En Uso'?>
+              @elseif($mob->estado == 2)
+                <?php $var = 'Desechado'?>
+              @elseif($mob->estado == 3)
+                <?php $var = 'En reparación'?>
+              @else
+                <?php $var = 'Donado'?>
+              @endif
+              <span>{!! $var !!}</span>
+            </div>
+            <div class="srow">
+              <span>Fecha de creación</span>
+              <span>{!! $mob->created_at->format('d-m-Y g:i:s a') !!}</span>
+            </div>
+            <div class="srow">
+              <span>Fecha de última edición</span>
+              <span>{!! $mob->updated_at->format('d-m-Y g:i:s a') !!}</span>
+            </div>
           </div>
         </div>
-        <!----->
-        <div class="tabs oc" id="cuatro">
-          <div class="enc">
-            <h3 id="txt">Estado</h3>
-          </div>
-          <div class="srow">
-            <span>Estado</span>
-            @if($mob->estado == 0)
-              <?php $var = 'Vendido'?>
-            @elseif($mob->estado == 1)
-              <?php $var = 'En Uso'?>
-            @elseif($mob->estado == 2)
-              <?php $var = 'Desechado'?>
-            @elseif($mob->estado == 3)
-              <?php $var = 'En reparación'?>
-            @else
-              <?php $var = 'Donado'?>
-            @endif
-            <span>{!! $var !!}</span>
-          </div>
-          <div class="srow">
-            <span>Fecha de creación</span>
-            <span>{!! $mob->created_at->format('d-m-Y g:i:s a') !!}</span>
-          </div>
-          <div class="srow">
-            <span>Fecha de última edición</span>
-            <span>{!! $mob->updated_at->format('d-m-Y g:i:s a') !!}</span>
-          </div>
-        </div>
-      </div>
-    </center>
-  </div>
-  @if($cuotas > 0 && $mob->credito)
-    <script type="text/javascript">
-    google.charts.load("current", {packages:['corechart']});
-    google.charts.setOnLoadCallback(drawChart);
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Fecha', 'Capital','Interés','Mora','Total'],
-        @foreach($pagoss as $px)
+      </center>
+    </div>
+    <!--Gráfico-->
+    @if($cuotas > 0 && $mob->credito)
+      <script type="text/javascript">
+      google.charts.load("current", {packages:['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Fecha', 'Capital','Interés','Mora','Total'],
+          @foreach($pagoss as $px)
           [
             '{{ $px->created_at->format('d-m-Y') }}',
             {{ $px->monto }},
@@ -351,15 +418,15 @@
             {{ $px->mora }},
             {{ $px->monto + $px->mora + $px->interes }}
           ],
-        @endforeach
-      ]);
-      var options = {'title': 'Pagos de realizados',
-      'width':700,
-      'height':300
-    };
-    var visualization = new google.visualization.LineChart(document.getElementById('graphs'));
-    visualization.draw(data, options);
-  }
-  </script>
-@endif
+          @endforeach
+        ]);
+        var options = {'title': 'Pagos de realizados',
+        'width':700,
+        'height':300
+      };
+      var visualization = new google.visualization.LineChart(document.getElementById('graphs'));
+      visualization.draw(data, options);
+    }
+    </script>
+  @endif
 @stop

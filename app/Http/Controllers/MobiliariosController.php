@@ -108,6 +108,7 @@ class MobiliariosController extends Controller
   public function show($id)
   {
     $mob = Mobiliarios::find($id);
+    //Pagos
     $montoTotal = Pagos::where('mobiliario_id',$id)->sum('monto');
     $interTotal = Pagos::where('mobiliario_id',$id)->sum('interes');
     $moraTotal = Pagos::where('mobiliario_id',$id)->sum('mora');
@@ -123,9 +124,44 @@ class MobiliariosController extends Controller
     $ib = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->sum('interes');
     $mc = Pagos::where('mobiliario_id',$id)->where('caja_id', '>',0)->sum('mora');
     $mb = Pagos::where('mobiliario_id',$id)->where('banco_id', '>',0)->sum('mora');
+    //Reparaciones
+    $totalreparacion = Reparaciones::where('mobiliario_id',$id)->count();
+    $reparar = Reparaciones::where('mobiliario_id',$id)->orderBy('fecha_deposito','asc')->paginate(8);
+    $totreparc = Reparaciones::where('mobiliario_id',$id)->where('credito',true)->count();
+    $valreparc = Reparaciones::where('mobiliario_id',$id)->where('credito',true)->sum('precio');
+    $totreparn = Reparaciones::where('mobiliario_id',$id)->where('credito',false)->count();
+    $valreparn = Reparaciones::where('mobiliario_id',$id)->where('credito',false)->sum('precio');
     $totalc = $cc + $ic + $mc;
     $totalb = $cb + $ib + $mb;
-    return view('Mobiliarios.show',compact('mob','montoTotal','interTotal','cuotas','moraTotal','pagoss','cuotasc','cuotasb','listac','listab','totalc','totalb','cc','cb','ic','ib','mc','mb'));
+    $valtotal = $valreparn + $valreparc;
+    return view('Mobiliarios.show',
+    compact(
+    'mob',
+    'montoTotal',
+    'interTotal',
+    'cuotas',
+    'moraTotal',
+    'pagoss',
+    'cuotasc',
+    'cuotasb',
+    'listac',
+    'listab',
+    'totalc',
+    'totalb',
+    'cc',
+    'cb',
+    'ic',
+    'ib',
+    'mc',
+    'mb',
+    'totalreparacion',
+    'reparar',
+    'totreparn',
+    'totreparc',
+    'valreparc',
+    'valreparn',
+    'valtotal'
+    ));
   }
 
   /**

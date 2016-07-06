@@ -39,10 +39,6 @@ if($bandera==1){
 				@endforeach
 			</select>
 		</div>
-	@endif
-	
-
-   @if($bandera)
 
 		 {!!Form::label("Lmonto","Monto: $")!!}
 		 {!! Form::text('Monto',null,['placeholder'=>'Ingrese El Monto a Transferir']) !!}

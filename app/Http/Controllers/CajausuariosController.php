@@ -13,6 +13,7 @@ use sialas\Planillas;
 use sialas\Datosplanillas;
 use sialas\Valoresplanillas;
 use sialas\Cajausuarios;
+use sialas\Cajas;
 
 class CajausuariosController extends Controller
 {
@@ -108,8 +109,9 @@ class CajausuariosController extends Controller
     public function edit($id)
     {
         $planilla=Planillas::find($id);
+        $cajas=Cajas::buscar("",null);
 
-        return view('cajausuarios.pago',compact('planilla'));
+        return view('cajausuarios.pago',compact('planilla','cajas'));
     }
 
     /**

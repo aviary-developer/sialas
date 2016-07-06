@@ -25,4 +25,9 @@ class Datosplanillas extends Model
     $valores=Valoresplanillas::where('dato_id',$id)->get();
     return $valores;
   }
+  public static function totalPorDesp($p_id,$desp_id){
+    $pl=Datosplanillas::where('planilla_id',$p_id)->get();
+    foreach ($pl as $p) {  
+    }
+  }
 }

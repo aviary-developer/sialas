@@ -15,7 +15,9 @@ if($bandera==1){
 	</p>
 @else
 	@if($m->credito)
-		Cuotas: <b>{{$f}}</b>/{{$m->num_cuotas}}    |    Capital: <b>{{$p}}</b>/{{$m->precio}}
+		Cuotas: <b>{{$f}}</b>/{{$m->num_cuotas}}    |    Capital: <b>{{'$ '.number_format($p,2)}}</b>/{{'$ '.number_format($m->precio,2)}} |    Monto de cuota: {{'$ '.number_format($m->val_cuotas,2)}}
+	@else
+		Capital: <b>{{'$ '.number_format($p,2)}}</b>/{{'$ '.number_format(($m->precio + $m->iva),2)}}
 	@endif
 	<div class = "radiosg">
 		{!!Form::label('llabel','Forma de pago:')!!}<br>
@@ -62,21 +64,23 @@ if($bandera==1){
 				{!!Form::text('cheque',null,['placeholder'=>'Numero de cheque'])!!}
 			</div>
 			{!!Form::label('lmonto','Monto ($):')!!}
-			{!!Form::text('monto',null,['placeholder'=>'Monto a cancelar'])!!}
-			{!!Form::label('liva','IVA ($):')!!}
-			{!!Form::text('iva',null,['placeholder'=>'IVA cancelado'])!!}
+			{!!Form::text('monto',null,['placeholder'=>'00.00'])!!}
 			@if($m->credito == 1)
-					{!!Form::label('linteres','Interes ($):')!!}
-					{!!Form::text('interes',null,['placeholder'=>'Interes cancelado'])!!}
+				<div class="fila">
+					<div class="">
+						{!!Form::label('linteres','Interes ($):')!!}
+						{!!Form::number('interes',null,['placeholder'=>'00.00'])!!}
+					</div>
+					<div class="">
+						{!!Form::label('lmora','Mora ($):')!!}
+						{!!Form::number('mora',null,['placeholder'=>'00.00'])!!}
+					</div>
+				</div>
 			@endif
 		</div>
 		<div>
 			{!!Form::label('lfactura','Número de factura:')!!}
 			{!!Form::text('factura',null,['placeholder'=>'Número de factura o ticket de pago'])!!}
-			@if($m->credito == 1)
-					{!!Form::label('lmora','Mora ($):')!!}
-					{!!Form::text('mora',null,['placeholder'=>'Mora cancelada'])!!}
-			@endif
 			{!!Form::label('ldetalle','Detalle:')!!}
 			{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida','rows'=>'4'])!!}
 		</div>

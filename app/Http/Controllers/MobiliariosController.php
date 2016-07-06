@@ -131,6 +131,8 @@ class MobiliariosController extends Controller
     $valreparc = Reparaciones::where('mobiliario_id',$id)->where('credito',true)->sum('precio');
     $totreparn = Reparaciones::where('mobiliario_id',$id)->where('credito',false)->count();
     $valreparn = Reparaciones::where('mobiliario_id',$id)->where('credito',false)->sum('precio');
+
+    $totpagorep = Reparaciones::join('pagoreparaciones','reparaciones.id','=','pagoreparaciones.reparacion_id')->where('mobiliario_id', $id)->count();
     $totalc = $cc + $ic + $mc;
     $totalb = $cb + $ib + $mb;
     $valtotal = $valreparn + $valreparc;
@@ -160,7 +162,8 @@ class MobiliariosController extends Controller
     'totreparc',
     'valreparc',
     'valreparn',
-    'valtotal'
+    'valtotal',
+    'totpagorep'
     ));
   }
 

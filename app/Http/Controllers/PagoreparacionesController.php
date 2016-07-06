@@ -122,7 +122,15 @@ class PagoreparacionesController extends Controller
       $b= Bancos::where('estado','=', 1)->orderBy('nombre','asc')->get();
       $f= Pagoreparaciones::where('reparacion_id',$reparacion)->count();
       $p= Pagoreparaciones::where('reparacion_id',$reparacion)->sum('monto');
-      return view('pagoreparaciones.crear',compact('c','m','b','f','p','reparacion'));
+      return view('pagoreparaciones.crear',
+      compact(
+      'c',
+      'm',
+      'b',
+      'f',
+      'p',
+      'reparacion'
+      ));
     }
 
     public function guardar(Request $request, $reparacion)

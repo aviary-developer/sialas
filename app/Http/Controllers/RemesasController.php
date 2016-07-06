@@ -51,6 +51,7 @@ class RemesasController extends Controller
             $remesa->caja_id = $request->cajaTipo;
             $remesa->banco_id = $request->bancoTipo;
             $remesa->monto = $request->Monto;
+            $remesa->transaccion = $request->transaccion;
             $remesa->save();
        return redirect('/remesas/create')->with('mensaje','Registro Guardado');
         

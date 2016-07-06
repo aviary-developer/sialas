@@ -8,12 +8,9 @@ if($bandera==1){
 }
 ?>
 <div class="fila">
+<div>	
 @if($bandera)
-<div class="alerta-errores">
-			@foreach ($errors->get('caja_id') as $error)
-				<br>{{$error}}
-			@endforeach
-		 </div>
+
 		<div id="TransaCaja">
 			{!!Form::label('LCaja','Caja:')!!}
 			<select name="cajaTipo">
@@ -27,57 +24,47 @@ if($bandera==1){
 			</select>
 		</div>
 	@endif
-	</div>
+	
+	@if($bandera)
 
-
-
-
+		<div id="TransaBanco">
+			{!!Form::label('LBanco','Banco:')!!}
+			<select name="bancoTipo">
+				@foreach($TipoBanco as $ban)
+					@if($valorb==$ban->id && $valorb!=null)
+						<option value="{{$ban->id}}" selected="selected">{{$ban->nombre}}</option>
+					@else
+						<option value="{{$ban->id}}">{{$ban->nombre}}</option>
+					@endif
+				@endforeach
+			</select>
+		</div>
+	@endif
 	
 
+   @if($bandera)
 
-		 <div class="alerta-errores">
-			@foreach ($errors->get('banco_id') as $error)
-				<br>{{$error}}
-			@endforeach
-		 </div>
-		 {!!Form::label("LBanco","Banco:")!!}
-		 <select name="bancoTipo">
-		 	@foreach($TipoBanco as $ban)
-		 	<option value="{{$ban->id}}">
-		 		{{$ban->nombre}}
-		 	</option>
-		 	@endforeach
-		 </select>
-
-
-		 <div class="alerta-errores">
-			@foreach ($errors->get('monto') as $error)
-				<br>{{$error}}
-			@endforeach
-		 </div>
 		 {!!Form::label("Lmonto","Monto: $")!!}
 		 {!! Form::text('Monto',null,['placeholder'=>'Ingrese El Monto a Transferir']) !!}
-
-		  <div class="alerta-errores">
-			@foreach ($errors->get('transaccion') as $error)
-				<br>{{$error}}
-			@endforeach
-		 </div>
-
- 			<div>
-	 {!!Form::label('llabel','Transacción:')!!}<br>
-	 <div class="fila">
-		 <div>
-			 {!!Form :: radio ( "vradio", 1,true,['id'=>'efe1'])!!}
-			 <label for="efe1"><span></span>Remesa</label>
-		 </div>
-		 <div>
-			 {!!Form :: radio ( "vradio", 0,false,['id'=>'efe0'])!!}
-			 <label for="efe0"><span></span>Retiro</label>
-		 </div>
-	 </div>
- </div>
-
+          <div class="fila">
 	
-			
+		 <div id='rbtnTransac' class='radiosg'>
+			{!!Form::label('lnuevo','Transacción:')!!}<br>
+			<div class="fila">
+				<div>
+					{!!Form :: radio ( "transaccion", 1,true,['id'=>'est1'])!!}
+					<label for="est1"><span></span>Remesa</label>
+				</div>
+				<div>
+					{!!Form :: radio ( "transaccion",0,false,['id'=>'est0'])!!}
+					<label for="est0"><span></span>Retiro</label>
+				</div>
+		 </div>
+		</div>
+		</div>
+	 @endif
+	
+
+  </div>
+
 </div>

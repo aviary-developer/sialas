@@ -60,4 +60,34 @@ return $total;
     $v=Descuentoaportes::find($id);
     return $v->nombre;
   }
+  public static function totalPorDesp($p_id,$desp_id){
+    $total=0;
+    $dp=Datosplanillas::where('planilla_id',$p_id)->get();
+    foreach ($dp as $d) {
+      $vp=Valoresplanillas::where('dato_id',$d->id)->get();
+      foreach ($vp as $v) {
+        if($v->desp_id==$desp_id){
+          $total=$total+$v->monto;
+        }
+      }
+    }
+    return $total;
+  }
+  public static function totalRenta($p_id){
+    $total=0;
+    $dp=Datosplanillas::where('planilla_id',$p_id)->get();
+    foreach ($dp as $d) {
+      $total=$total+$d->valor_renta;
+    }
+    return $total;
+  }
+
+  public static function totalSalarioNeto($p_id){
+    $total=0;
+    $dp=Datosplanillas::where('planilla_id',$p_id)->get();
+    foreach ($dp as $d) {
+      $total=$total+$d->salario_neto;
+    }
+    return $total;
+  }
 }

@@ -123,7 +123,13 @@ class CajausuariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request['planilla_id']=$id;
+        Cajausuarios::create($request->all());
+
+        $p=Planillas::find($id);
+        $p['estado_pagado']=true;
+        $p->save();
+        return redirect('/cajausuarios')->with('mensaje','Registro Guardado');
     }
 
     /**

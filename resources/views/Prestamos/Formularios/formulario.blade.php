@@ -4,12 +4,11 @@ if($bandera==1){
 	$t=null;
 	$valorb=null;
   $valorc=null;
-	$b=1;
+
 }else{
 
 	$valorb=$prestamos->banco_id;
   $valorc=$prestamos->caja_id;
-	$b=0;
 }
 ?>
 
@@ -21,7 +20,7 @@ if($bandera==1){
     </div>
     <div>
       {!!Form::label('lcuenta','Numero de Cuenta:')!!}
-      {!!Form::text('cuenta',null,['placeholder'=>'0000-0000')!!}
+      {!!Form::text('cuenta',null,['placeholder'=>'0000-0000'])!!}
     </div>
 	</div>
 
@@ -44,7 +43,7 @@ if($bandera==1){
 				</div>
 				<div>
 					{!!Form::label('Lvalcuotas','Valor de Cuota ($):')!!}
-					{!!Form::number('val_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01'])!!}
+					{!!Form::number('valor_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01'])!!}
 				</div>
 			</div>
 	</div>
@@ -99,11 +98,11 @@ if($bandera==1){
 
 
 <div class="fila">
-  <div id="caja" style='display:none'>
+  <div id="caja" style='display:block'>
     {!!Form::label('lcaja','Caja:')!!}
     <select name="caja_id">
       @foreach($c as $cajas)
-        @if($valorm==$cajas->id && $valorm!=null)
+        @if($valorc==$cajas->id && $valorc!=null)
           <option value="{{$cajas->id}}" selected="selected">{{$cajas->nombre}}</option>
         @else
           <option value="{{$cajas->id}}">{{$cajas->nombre}}</option>

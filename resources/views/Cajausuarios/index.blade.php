@@ -14,7 +14,7 @@
       <span class="tooltiptext">Atras</span>
     </div>
     <div class="tooltip">
-      <a href="servicios/create">
+      <a href="cajausuarios/create">
         <img src={!! asset('/img/WB/nue.svg') !!} alt="" class="circ"/>
       </a>
       <span class="tooltiptext" id="tt">Nuevo</span>

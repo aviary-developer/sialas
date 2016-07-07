@@ -23,11 +23,6 @@ class ServiciosController extends Controller
      */
     public function index(Request $request)
     {
-
-        /*$activos= Servicios::where('estado', 1)->get();
-        $inactivos= Servicios::where('estado', 0)->get();
-
-        return view('servicios.index',compact('activos','inactivos'));*/
         $state = $request->get('estado');
         $name = $request->get('nombre');
         $serviciosActivos= Servicios::buscar($name,$state);

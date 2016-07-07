@@ -186,102 +186,49 @@
             <span>Cuotas pagadas</span>
             <span>{!! $cuotas.' de '.$nc!!}</span>
           </div>
-          <br><br>
-          @if($mob->credito)
-            <div class="srow">
-              <span>Capital abonado en efectivo</span>
-              <span>{!! '$ '.number_format($cc,2) !!}</span>
-            </div>
-            <div class="srow">
-              <span>Interés abonado en efectivo</span>
-              <span>{!! '$ '.number_format($ic,2) !!}</span>
-            </div>
-            <div class="srow">
-              <span>Interés moratorio (efectivo)</span>
-              <span>{!! '$ '.number_format($mc,2) !!}</span>
-            </div>
-          @endif
-          <div class="srow">
-            <span>Total abonado en efectivo</span>
-            <span>{!! '$ '.number_format($totalc,2) !!}</span>
-          </div>
-          <div class="srow">
-            <span>Cuotas abonadas en efectivo</span>
-            <span>{!! $cuotasc !!}</span>
-          </div>
           <br>
-          <table>
-            <tr>
-              <th>#</th>
-              <th>Fecha</th>
-              <th>Caja</th>
-              <th>Capital</th>
-              @if($mob->credito)
-                <th>Interés</th>
-                <th>Mora</th>
-              @endif
-            </tr>
-            <?php $a = 1; ?>
-            @foreach($listac as $k)
+          @if($cuotasc)
+            <br>
+            @if($mob->credito)
+              <div class="srow">
+                <span>Capital abonado en efectivo</span>
+                <span>{!! '$ '.number_format($cc,2) !!}</span>
+              </div>
+              <div class="srow">
+                <span>Interés abonado en efectivo</span>
+                <span>{!! '$ '.number_format($ic,2) !!}</span>
+              </div>
+              <div class="srow">
+                <span>Interés moratorio (efectivo)</span>
+                <span>{!! '$ '.number_format($mc,2) !!}</span>
+              </div>
+            @endif
+            <div class="srow">
+              <span>Total abonado en efectivo</span>
+              <span>{!! '$ '.number_format($totalc,2) !!}</span>
+            </div>
+            <div class="srow">
+              <span>Cuotas abonadas en efectivo</span>
+              <span>{!! $cuotasc !!}</span>
+            </div>
+            <br>
+            <table>
               <tr>
-                <td><center>{{$a}}</center></td>
-                <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
-                <td><center>{{$mob->nombreCaja($k->caja_id)}}</center></td>
-                <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Caja</th>
+                <th>Capital</th>
                 @if($mob->credito)
-                  <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
-                  <td><center>{{'$ '.number_format($k->mora,2)}}</center></td>
+                  <th>Interés</th>
+                  <th>Mora</th>
                 @endif
               </tr>
-              <?php $a++; ?>
-            @endforeach
-          </table>
-          <div id="act">
-            {!! str_replace ('/?', '?', $listac) !!}
-          </div>
-          <br><br>
-          @if($mob->credito)
-            <div class="srow">
-              <span>Capital abonado con cheque</span>
-              <span>{!! '$ '.number_format($cb,2) !!}</span>
-            </div>
-            <div class="srow">
-              <span>Interés abonado con cheque</span>
-              <span>{!! '$ '.number_format($ib,2) !!}</span>
-            </div>
-            <div class="srow">
-              <span>Interés moratorio (cheque)</span>
-              <span>{!! '$ '.number_format($mb,2) !!}</span>
-            </div>
-          @endif
-          <div class="srow">
-            <span>Total abonado con cheque</span>
-            <span>{!! '$ '.number_format($totalb,2) !!}</span>
-          </div>
-          <div class="srow">
-            <span>Cuotas abonadas con cheque</span>
-            <span>{!! $cuotasb !!}</span>
-          </div>
-          <br>
-          <table>
-            <tr>
-              <th>#</th>
-              <th>Fecha</th>
-              <th>Banco</th>
-              <th>Cheque</th>
-              <th>Capital</th>
-              @if($mob->credito)
-                <th>Interés</th>
-                <th>Mora</th>
-              @endif
-            </tr>
-            <?php $a = 1; ?>
-            @foreach($listab as $k)
-              <tr>
-                <td><center>{{$a}}</center></td>
-                <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
-                <td><center>{{$mob->nombreBanco($k->banco_id)}}</center></td>
-                <td><center>{{$k->cheque}}</td>
+              <?php $a = 1; ?>
+              @foreach($listac as $k)
+                <tr>
+                  <td><center>{{$a}}</center></td>
+                  <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
+                  <td><center>{{$mob->nombreCaja($k->caja_id)}}</center></td>
                   <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
                   @if($mob->credito)
                     <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
@@ -294,12 +241,75 @@
             <div id="act">
               {!! str_replace ('/?', '?', $listac) !!}
             </div>
+            <br>
+          @endif
+          <br>
+          @if($cuotasb)
+            @if($mob->credito)
+              <div class="srow">
+                <span>Capital abonado con cheque</span>
+                <span>{!! '$ '.number_format($cb,2) !!}</span>
+              </div>
+              <div class="srow">
+                <span>Interés abonado con cheque</span>
+                <span>{!! '$ '.number_format($ib,2) !!}</span>
+              </div>
+              <div class="srow">
+                <span>Interés moratorio (cheque)</span>
+                <span>{!! '$ '.number_format($mb,2) !!}</span>
+              </div>
+            @endif
+            <div class="srow">
+              <span>Total abonado con cheque</span>
+              <span>{!! '$ '.number_format($totalb,2) !!}</span>
+            </div>
+            <div class="srow">
+              <span>Cuotas abonadas con cheque</span>
+              <span>{!! $cuotasb !!}</span>
+            </div>
+            <br>
+            <table>
+              <tr>
+                <th>#</th>
+                <th>Fecha</th>
+                <th>Banco</th>
+                <th>Cheque</th>
+                <th>Capital</th>
+                @if($mob->credito)
+                  <th>Interés</th>
+                  <th>Mora</th>
+                @endif
+              </tr>
+              <?php $a = 1; ?>
+              @foreach($listab as $k)
+                <tr>
+                  <td><center>{{$a}}</center></td>
+                  <td><center>{{$k->created_at->format('d-m-Y')}}</center></td>
+                  <td><center>{{$mob->nombreBanco($k->banco_id)}}</center></td>
+                  <td><center>{{$k->cheque}}</td>
+                    <td><center>{{'$ '.number_format($k->monto,2)}}</center></td>
+                    @if($mob->credito)
+                      <td><center>{{'$ '.number_format($k->interes,2)}}</center></td>
+                      <td><center>{{'$ '.number_format($k->mora,2)}}</center></td>
+                    @endif
+                  </tr>
+                  <?php $a++; ?>
+                @endforeach
+              </table>
+              <div id="act">
+                {!! str_replace ('/?', '?', $listac) !!}
+              </div>
+            @endif
           </div>
           <!----->
           <div class="tabs oc" id = "cinco">
             <div class="enc">
               <h3 id="txt">Reparaciones</h3>
             </div>
+            @if($totpagorep>1)
+              <div id="graphsrepar"></div>
+              <br>
+            @endif
             <div class="srow">
               <span>Reparaciones al contado</span>
               <span>{!! $totreparn; !!}</span>
@@ -325,6 +335,10 @@
               <span>Valor total en reparaciones</span>
               <span>{!! '$ '.number_format($valtotal,2); !!}</span>
             </div>
+            <div class="srow">
+              <span>IVA total en reparaciones</span>
+              <span>{!! '$ '.number_format($ivatotal,2); !!}</span>
+            </div>
             <br>
             <table>
               <tr>
@@ -342,16 +356,16 @@
                 <tr>
                   <td>{{$a}}</td>
                   <td>{{$mob->nombreProveedor($k->proveedor_id)}}</td>
-                  <td>{{$k->fecha_deposito}}</td>
-                  <td>
+                  <td><center>{{$k->fecha_deposito}}</center></td>
+                  <td><center>
                     @if($k->fecha_entrega == null)
                       {{ "Pendiente" }}
                     @else
                       {{$k->fecha_entrega}}
                     @endif
-                  </td>
+                  </center></td>
                   <td><center>{{'$'.number_format($k->precio,2)}}</center></td>
-                  <td>{{'$'.number_format($k->iva,2)}}</td>
+                  <td><center>{{'$'.number_format($k->iva,2)}}</center></td>
                   <td><center>
                     @if($k->credito)
                       {{ "Si" }}
@@ -369,6 +383,15 @@
                 <?php $a++; ?>
               @endforeach
             </table>
+            <br>
+            <div class="srow">
+              <span>Pagos de reparaciones</span>
+              <span>{!! $totpagorep; !!}</span>
+            </div>
+            <div class="srow">
+              <span>Valor de pago de reparaciones</span>
+              <span>{!! '$ '.number_format($prereptot,2); !!}</span>
+            </div>
           </div>
           <!---->
           <div class="tabs oc" id="cuatro">
@@ -413,14 +436,14 @@
           @foreach($pagoss as $px)
           [
             '{{ $px->created_at->format('d-m-Y') }}',
-            {{ $px->monto }},
+            {{ $px->monto}},
             {{ $px->interes }},
             {{ $px->mora }},
             {{ $px->monto + $px->mora + $px->interes }}
           ],
           @endforeach
         ]);
-        var options = {'title': 'Pagos de realizados',
+        var options = {'title': 'Pagos realizados',
         'width':700,
         'height':300
       };
@@ -429,4 +452,30 @@
     }
     </script>
   @endif
+  @if($totpagorep > 1)
+    <?php $sum = 0; ?>
+    <script type="text/javascript">
+    //google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Fecha', 'Pago', 'Acumulado'],
+        @foreach($pagosp as $px)
+        [
+          <?php $sum = $sum + $px->monto + $px->mora + $px->interes; ?>
+          '{{ $px->fecha_deposito }}',
+          {{ $px->monto + $px->mora + $px->interes }},
+          {{ $sum }}
+        ],
+        @endforeach
+      ]);
+      var options = {'title': 'Pagos de reparaciones',
+      'width':700,
+      'height':300
+    };
+    var visualization = new google.visualization.LineChart(document.getElementById('graphsrepar'));
+    visualization.draw(data, options);
+  }
+  </script>
+@endif
 @stop

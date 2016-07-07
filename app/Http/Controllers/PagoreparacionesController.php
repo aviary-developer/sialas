@@ -67,7 +67,7 @@ class PagoreparacionesController extends Controller
       $pago->iva = $request->iva;
       $pago->detalle = $request->detalle;
       $pago->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago Guardado');
+      return redirect('/mobiliarios/'.$m->mobiliario_id)->with('mensaje','Pago Guardado');
     }
 
     /**
@@ -143,7 +143,7 @@ class PagoreparacionesController extends Controller
       }else{
         $pagoreparaciones->caja_id = null;
         $pagoreparaciones->banco_id = $request->banco_id;
-        $pago->cheque = $request->cheque;
+        $pagoreparaciones->cheque = $request->cheque;
       }
       $pagoreparaciones->interes = $request->interes;
       $pagoreparaciones->mora = $request->mora;
@@ -153,6 +153,7 @@ class PagoreparacionesController extends Controller
       $pagoreparaciones->iva = $request->iva;
       $pagoreparaciones->detalle = $request->detalle;
       $pagoreparaciones->save();
-      return redirect('/mobiliarios')->with('mensaje','Pago de Reparacion Guardado');
+      $mm = Reparaciones::find($reparacion);
+      return redirect('/mobiliarios/'.$mm->mobiliario_id)->with('mensaje','Pago de Reparacion Guardado');
     }
 }

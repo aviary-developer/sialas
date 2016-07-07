@@ -131,8 +131,11 @@ class MobiliariosController extends Controller
     $valreparc = Reparaciones::where('mobiliario_id',$id)->where('credito',true)->sum('precio');
     $totreparn = Reparaciones::where('mobiliario_id',$id)->where('credito',false)->count();
     $valreparn = Reparaciones::where('mobiliario_id',$id)->where('credito',false)->sum('precio');
+    $ivatotal = Reparaciones::where('mobiliario_id',$id)->sum('iva');
 
     $totpagorep = Reparaciones::join('pagoreparaciones','reparaciones.id','=','pagoreparaciones.reparacion_id')->where('mobiliario_id', $id)->count();
+    $prereptot = Reparaciones::join('pagoreparaciones','reparaciones.id','=','pagoreparaciones.reparacion_id')->where('mobiliario_id', $id)->sum('monto');
+    $pagosp = Reparaciones::join('pagoreparaciones','reparaciones.id','=','pagoreparaciones.reparacion_id')->where('mobiliario_id', $id)->get();
     $totalc = $cc + $ic + $mc;
     $totalb = $cb + $ib + $mb;
     $valtotal = $valreparn + $valreparc;
@@ -163,7 +166,10 @@ class MobiliariosController extends Controller
     'valreparc',
     'valreparn',
     'valtotal',
-    'totpagorep'
+    'totpagorep',
+    'prereptot',
+    'ivatotal',
+    'pagosp'
     ));
   }
 
@@ -201,20 +207,21 @@ class MobiliariosController extends Controller
     $mobiliario=$id;
     $p= Proveedores::All();
     if($mobiliarios->estado == 3){
-        Session::flash('mensaje','¡Registro Actualizado!');
-        return view('reparaciones.crear',compact('id','p','mobiliario'));
+      Session::flash('mensaje','¡Registro Actualizado!');
+      return view('reparaciones.crear',compact('id','p','mobiliario'));
     }
     if($mobiliarios->estado == 1){
-        $reparacion = Reparaciones::where('mobiliario_id','=', $id)->orderBy('fecha_deposito','desc')->first();
-        $date = Carbon::now();
-        $date = $date->format('d-m-Y');
-        $reparacion->fecha_entrega = $date;
-        $reparacion->save();
+      $reparacion = Reparaciones::where('mobiliario_id','=', $id)->orderBy('fecha_deposito','desc')->first();
+      $date = Carbon::now();
+      $date = $date->format('d-m-Y');
+      $reparacion->fecha_entrega = $date;
+      $reparacion->save();
+      Session::flash('mensaje','¡Registro Actualizado!');
+      return Redirect::to('/mobiliarios/'.$id);
+    }else{
+      Session::flash('mensaje','¡Registro Actualizado!');
+      return Redirect::to('/mobiliarios');
     }
-    else{
-        Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/mobiliarios');
-        }
   }
 
   /**

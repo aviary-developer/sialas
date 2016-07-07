@@ -2,39 +2,39 @@
 @section('layout')
   @if(Session::has('mensaje'))
     <?php $men=Session::get('mensaje');
-    echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
-    @endif
-    @if($state == 1 || $state == null)
-      <?php $vendido= 0; ?>
+    echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
+  @endif
+  @if($state == 1 || $state == null)
+    <?php $vendido= 0; ?>
+    <?php $desechado = 2; ?>
+    <?php $reparacion = 3; ?>
+    <?php $donado= 4; ?>
+  @else
+    @if($state == 0)
+      <?php $vendido= 1; ?>
       <?php $desechado = 2; ?>
       <?php $reparacion = 3; ?>
       <?php $donado= 4; ?>
-    @else
-      @if($state == 0)
-        <?php $vendido= 1; ?>
-        <?php $desechado = 2; ?>
-        <?php $reparacion = 3; ?>
-        <?php $donado= 4; ?>
-      @endif
-      @if($state == 2)
-        <?php $vendido= 0; ?>
-        <?php $desechado = 1; ?>
-        <?php $reparacion = 3; ?>
-        <?php $donado= 4; ?>
-      @endif
-      @if($state == 3)
-        <?php $vendido= 0; ?>
-        <?php $desechado = 2; ?>
-        <?php $reparacion = 1; ?>
-        <?php $donado= 4; ?>
-      @endif
-      @if($state == 4)
-        <?php $vendido= 0; ?>
-        <?php $desechado = 2; ?>
-        <?php $reparacion = 3; ?>
-        <?php $donado= 1; ?>
-      @endif
     @endif
+    @if($state == 2)
+      <?php $vendido= 0; ?>
+      <?php $desechado = 1; ?>
+      <?php $reparacion = 3; ?>
+      <?php $donado= 4; ?>
+    @endif
+    @if($state == 3)
+      <?php $vendido= 0; ?>
+      <?php $desechado = 2; ?>
+      <?php $reparacion = 1; ?>
+      <?php $donado= 4; ?>
+    @endif
+    @if($state == 4)
+      <?php $vendido= 0; ?>
+      <?php $desechado = 2; ?>
+      <?php $reparacion = 3; ?>
+      <?php $donado= 1; ?>
+    @endif
+  @endif
 
     <div class="launcher">
       <div class="lfloat"></div>
@@ -168,8 +168,8 @@
             <th>#</th>
             <th>Nombre</th>
             <th>Proveedor</th>
-            <th>Precio ($)</th>
-            <th>Fecha de Adquisición</th>
+            <th>Precio</th>
+            <th>Adquirido</th>
             <th>Acciones</th>
           </tr>
           <?php $a=1; ?>
@@ -178,7 +178,7 @@
               <td>{{$a}}</td>
               <td>{{$mob->nombre}}</td>
               <td>{{$mob->nombreProveedor($mob->proveedor_id)}}</td>
-              <td><center>{{$mob->precio}}</center></td>
+              <td><center>{{'$ '.number_format($mob->precio,2)}}</center></td>
               <td><center>{{$mob->fecha_compra}}</center></td>
               <td>
                 <div class="up">

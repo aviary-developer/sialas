@@ -23,8 +23,8 @@ class PrestamosController extends Controller
      */
     public function index()
     {
-      $reparaciones=Reparaciones::All();
-      return view('reparaciones.index',compact('reparaciones'));
+      $prestamos=Prestamos::All();
+      return view('prestamos.index',compact('prestamos'));
     }
 
     /**
@@ -47,7 +47,30 @@ class PrestamosController extends Controller
      */
     public function store(Request $request)
     {
-      Prestamos::create($request->all());
+
+      $reparacion = new Prestamos;
+      $reparacion->banconombre = $request->banconombre;
+      $reparacion->monto = $request->monto;
+      $reparacion->interes = $request->interes;
+        $reparacion->num_cuotas= $request->num_cuotas;
+      $reparacion->valor_cuotas= $request->valor_cuotas;
+      $reparacion->cuenta= $request->cuenta;
+      $reparacion->tiempo_pago = $request->tiempo_pago;
+      $reparacion->dia_pago= $request->dia_pago;
+      $reparacion->garantia= $request->garantia;
+      $reparacion->deposito= $request->deposito;
+      if($request->deposito == 1)
+      {
+        $reparacion->banco_id = null;
+        $reparacion->caja_id = $request->caja_id;
+      }
+      else {
+        $reparacion->banco_id = $request->banco_id;
+        $reparacion->caja_id = $request-> null;
+      }
+
+
+      $reparacion->save();
       return redirect('/prestamos')->with('mensaje','Registro Guardado');
     }
 

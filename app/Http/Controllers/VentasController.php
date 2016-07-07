@@ -46,12 +46,27 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
-        $venta = new Ventas;
-        $venta->producto_id = $request->proveedorVenta;
-        $venta->usuario_id = 1;
-        $venta->save();
-        return redirect('/ventas')->with('mensaje','Registro Guardado');
-    }
+      $venta = new Ventas;
+      return $request;
+      /*$venta->proveedor_id = $request->proveedorVenta;
+      $venta->usuario_id = 1;
+      $venta->save();
+      foreach ($request->productos as $k => $art) {
+        $detalle = new Detallecompras;
+        $prod = Productos::where('nombre','=', $art)->first();
+        $detalle->producto_id = $prod->id;
+        $pres = Presentaciones::where('nombre',$request->presentaciones[$k])
+                                ->where('producto_id',$prod->id)
+                                ->first();
+        $detalle->presentacion_id = $pres->id;
+        $detalle->compra_id = $venta->id;
+        $detalle->cantidad = $request->cantidades[$k];
+        $detalle->iva = $request->ivas[$k];
+        $detalle->precio = $request->preciosUnitarios[$k];
+        $detalle->save();
+      }
+      return redirect('/ventas')->with('mensaje','Registro Guardado');
+    */}
 
     /**
      * Display the specified resource.

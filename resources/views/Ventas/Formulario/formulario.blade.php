@@ -47,7 +47,7 @@
   </div>
   <div class="der">
     <center>
-      {!! Form::label('tab','Productos') !!}
+      <h3>Productos</h3>
       <table name="tablaProductosVenta" id="tblProductosVenta">
         <tr>
           <th colspan="2">Cantidad</th>
@@ -74,7 +74,7 @@
         </div>
 
       </div>
-      <input name="registrarVenta" id="registrarVenta" type="button" value="Registrar" onClick="registrarVenta()"/>
+      <input name="registrarVenta" id="registrarVenta" type="button" value="Registrar" onClick="Registro2()"/>
     </center>
   </div>
 </div>

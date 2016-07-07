@@ -20,7 +20,7 @@
       <h2>Venta</h2>
       <h3 id="txt">|Nuevo</h3>
     </div>
-{!! Form::open(['route'=>'ventas.store','method'=>'POST'])!!}
+{!! Form::open(['route'=>'ventas.store','method'=>'POST','name'=>'formBuy','id'=>'formBuy'])!!}
 @include('ventas.Formulario.formulario')
 
 {!!Form::close()!!}

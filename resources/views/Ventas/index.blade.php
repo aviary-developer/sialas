@@ -69,30 +69,19 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 		<tr>
 			<th>N°</th>
 			<th>Cliente</th>
-      <th>Producto</th>
-			<th>Precio</th>
+			<th>Fecha de Venta</th>
 			<th>Acciones</th>
 		</tr>
 	<?php $a=1; ?>
 	@foreach($cajasActivas as $ven)
-
-  <td>{{$a}}</td>
 	<tr>
 	<td>{{$a}}</td>
-  <td>{{$ven->nombre_Cliente($ven->cliente_id)}}</td>
-	<td>{{$ven->producto_id}}</td>
-  <td>{{$ven->precio}}</td>
-
+  <td>{{$ven->nombre_Cliente}}</td>
+	<td>{{$ven->created_at->format('d-m-Y g:i:s a')}}</td>
   <td>
     <div class="up">
       <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
       <div class="image">
-        <!--<div class="tooltip">
-          <a href={!! asset('/compras/'.$compra->id.'/edit') !!}>
-            <img src={!! asset('/img/WB/edi.svg') !!} alt="" class="circ"/>
-          </a>
-          <span class="tooltiptextup">Editar</span>
-        </div>-->
         <div class="tooltip">
           <a href={!! asset("/ventas/".$ven->id) !!}>
             <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>

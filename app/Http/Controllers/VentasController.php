@@ -7,6 +7,7 @@ use Response;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Productos;
+use sialas\Detalleventas;
 use sialas\Ventas;
 use sialas\Users;
 use sialas\Clientes;
@@ -47,26 +48,22 @@ class VentasController extends Controller
     public function store(Request $request)
     {
       $venta = new Ventas;
-      return $request;
-      /*$venta->proveedor_id = $request->proveedorVenta;
+      $venta->nombre_Cliente = $request->clienteVenta;
       $venta->usuario_id = 1;
       $venta->save();
-      foreach ($request->productos as $k => $art) {
-        $detalle = new Detallecompras;
-        $prod = Productos::where('nombre','=', $art)->first();
+      foreach ($request->productos as $k => $pro) {
+        $detalle = new Detalleventas;
+        $prod = Productos::where('nombre','=', $pro)->first();
         $detalle->producto_id = $prod->id;
-        $pres = Presentaciones::where('nombre',$request->presentaciones[$k])
-                                ->where('producto_id',$prod->id)
-                                ->first();
-        $detalle->presentacion_id = $pres->id;
-        $detalle->compra_id = $venta->id;
+        $detalle->presentacion_id = $request->presentaciones[$k];
+        $detalle->venta_id = $venta->id;
         $detalle->cantidad = $request->cantidades[$k];
-        $detalle->iva = $request->ivas[$k];
+        //$detalle->iva = $request->ivas[$k];
         $detalle->precio = $request->preciosUnitarios[$k];
         $detalle->save();
       }
       return redirect('/ventas')->with('mensaje','Registro Guardado');
-    */}
+    }
 
     /**
      * Display the specified resource.

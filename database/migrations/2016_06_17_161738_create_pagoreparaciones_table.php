@@ -14,8 +14,8 @@ class CreatePagoreparacionesTable extends Migration
     {
         Schema::create('pagoreparaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('factura',40);
-            $table->integer('reparacion_id')->unsigned()->nullable();
+          $table->string('factura',40);
+          $table->integer('reparacion_id')->unsigned()->nullable();
           $table->foreign('reparacion_id')->references('id')->on('reparaciones');
           $table->integer('caja_id')->unsigned()->nullable();
           $table->foreign('caja_id')->references('id')->on('cajas');

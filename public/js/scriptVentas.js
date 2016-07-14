@@ -14,16 +14,6 @@
       }
     }
 
-    function precioArticulo(){
-      var producto=$("#articulos").val();
-      var presentacion=$("#selectPresentacionesCompra").val();
-      var ruta="/sialas/public/precioProductoCompra/"+producto+"/"+presentacion;
-      var precio=$("#precioUnitarioCompra").val();
-      $.get(ruta,function(res){
-        $("#precioUnitarioCompra").val("");
-          $("#precioUnitarioCompra").val(res);
-      });
-    }
 
         function addProductoCompra(){
           var correlativo=$("#correlativoVenta").val();

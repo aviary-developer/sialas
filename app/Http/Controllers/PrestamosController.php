@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Prestamos;
+use sialas\Pagosprestamos;
 use sialas\Bancos;
 use sialas\Cajas;
 use DB;
@@ -82,8 +83,45 @@ class PrestamosController extends Controller
      */
     public function show($id)
     {
-      $p = Prestamos::find($id);
-      return View::make('Prestamos.show')->with('p', $p);
+      $mob = Prestamos::find($id);
+      //Pagos
+      $montoTotal = Pagosprestamos::where('prestamo_id',$id)->sum('monto');
+      $interTotal = Pagosprestamos::where('prestamo_id',$id)->sum('interes');
+      $moraTotal = Pagosprestamos::where('prestamo_id',$id)->sum('mora');
+      $cuotas = Pagosprestamos::where('prestamo_id',$id)->count();
+      $cuotasc = Pagosprestamos::where('prestamo_id',$id)->where('caja_id', '>',0)->count();
+      $cuotasb = Pagosprestamos::where('prestamo_id',$id)->where('banco_id', '>',0)->count();
+      $pagoss = Pagosprestamos::where('prestamo_id',$id)->orderBy('created_at','asc')->get();
+      $listac = Pagosprestamos::where('prestamo_id',$id)->where('caja_id', '>',0)->orderBy('created_at','asc')->paginate(8);
+      $listab = Pagosprestamos::where('prestamo_id',$id)->where('banco_id', '>',0)->orderBy('created_at','asc')->paginate(8);
+      $cc = Pagosprestamos::where('prestamo_id',$id)->where('caja_id', '>',0)->sum('monto');
+      $cb = Pagosprestamos::where('prestamo_id',$id)->where('banco_id', '>',0)->sum('monto');
+      $ic = Pagosprestamos::where('prestamo_id',$id)->where('caja_id', '>',0)->sum('interes');
+      $ib = Pagosprestamos::where('prestamo_id',$id)->where('banco_id', '>',0)->sum('interes');
+      $mc = Pagosprestamos::where('prestamo_id',$id)->where('caja_id', '>',0)->sum('mora');
+      $mb = Pagosprestamos::where('prestamo_id',$id)->where('banco_id', '>',0)->sum('mora');
+      $totalc = $cc + $ic + $mc;
+      $totalb = $cb + $ib + $mb;
+      return view('Prestamos.show',
+      compact(
+      'mob',
+      'montoTotal',
+      'interTotal',
+      'cuotas',
+      'moraTotal',
+      'pagoss',
+      'cuotasc',
+      'cuotasb',
+      'listac',
+      'listab',
+      'totalc',
+      'totalb',
+      'cc',
+      'cb',
+      'ic',
+      'ib',
+      'mc',
+      'mb'  ));
     }
 
     /**

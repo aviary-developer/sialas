@@ -59,6 +59,8 @@
     Route::resource('compras', 'ComprasController');
     Route::post('ingresoUbicacion','ComprasController@ingresoUbicacion');
     Route::match(['get','post'],'/productospresentaciones/{cadena}','ComprasController@productospresentaciones');
+    Route::match(['get','post'],'/precioProductoCompra/{producto}/{presentacion}','ComprasController@precioProductoCompra');
+    Route::match(['get','post'],'/nombrePresentacionCompra/{presentacion}','ComprasController@nombrePresentacionCompra');
 
     Route::resource('ventas', 'VentasController');
     Route::match(['get','post'],'/llenadoPresentacionesVenta/{nombre}','VentasController@llenadoPresentacionesVenta');

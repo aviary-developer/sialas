@@ -118,10 +118,30 @@ class ComprasController extends Controller
         //
     }
     public function productospresentaciones($nombreProducto){
-      $nombreP = str_replace('%20',' ',$nombreProducto);
-      $producto=Productos::where('nombre','LIKE',$nombreP.'%')->first();
-      $presentaciones=Presentaciones::where('producto_id', '=', $producto->id)->orderBy('equivale')->get();
+      $producto=Productos::where('nombre',$nombreProducto)->get();
+      foreach ($producto as $p) {
+        $idProducto=$p->id;
+      }
+      $presentaciones=Presentaciones::where('producto_id',$idProducto)->get();
       return Response::json($presentaciones);
+    }
+    public function precioProductoCompra($nombreProducto,$idPresentacion){
+      $producto=Productos::where('nombre',$nombreProducto)->get();
+      foreach ($producto as $p) {
+        $idProducto=$p->id;
+      }
+      $presentacion=Presentaciones::where('id',$idPresentacion)->where('producto_id',$idProducto)->get();
+      foreach ($presentacion as $p) {
+        $ganancia=$p->ganancia;
+      }
+      return Response::json($ganancia);
+    }
+    public function nombrePresentacionCompra($presentacion){
+      $presentaciones=Presentaciones::where('id',$presentacion)->get();
+      foreach ($presentaciones as $p) {
+        $nombrePresentacion=$p->nombre;
+      }
+      return Response::json($nombrePresentacion);
     }
     public function ingresoUbicacion(Request $request){
       $idProducto=$request['producto_id'];

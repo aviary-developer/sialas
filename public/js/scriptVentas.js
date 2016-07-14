@@ -1,49 +1,63 @@
     /* INICIO JAVASCRIPT DE COMPRAS*/
-    function ff(){
-      var listaDePresentaciones=$("#selectPresentaciones");
-      var nombreArticulo=$("#articulos").val();
-      if (nombreArticulo!=0) {
-        var ruta="/sialas/public/productospresentaciones/"+nombreArticulo;
-        $.get(ruta,function(res){
-          listaDePresentaciones.empty();
-          $(res).each(function(key,value){
-            listaDePresentaciones.append("<option>"+value.nombre+"</option>");
-          });
-        });
+    function enterCompras(evento){
+      var char= event.which || event.keyCode;
+      var producto=$("#articulos").val();
+      if(char==13){
+      var presentaciones=$("#selectPresentacionesCompra");
+    	var ruta="/sialas/public/productospresentaciones/"+producto;
+    	$.get(ruta,function(res){
+    		presentaciones.empty();
+    		$(res).each(function(key,value){
+    			presentaciones.append("<option value='"+value.id+"'>"+value.nombre+"</option>");
+    		});
+    	});
       }
     }
-        function addVenta(){
+
+    function precioArticulo(){
+      var producto=$("#articulos").val();
+      var presentacion=$("#selectPresentacionesCompra").val();
+      var ruta="/sialas/public/precioProductoCompra/"+producto+"/"+presentacion;
+      var precio=$("#precioUnitarioCompra").val();
+      $.get(ruta,function(res){
+        $("#precioUnitarioCompra").val("");
+          $("#precioUnitarioCompra").val(res);
+      });
+    }
+
+        function addProductoCompra(){
           var correlativo=$("#correlativoVenta").val();
-          var total=$("#inputTotalVenta").val();
+          var total=$("#inputTotalCompra").val();
           //
-      var promedio=$("#inputPromedioProductosVenta").val();
+      //var promedio=$("#inputPromedioProductosVenta").val();
 
           var articulo=$("#articulos").val();
-          var precioUnitario=$("#precioUnitario").val();
+          var precioUnitario=$("#precioUnitarioCompra").val();
           var iva=$("#ivavalor").val();
-          var presentacion=$("#selectPresentaciones").find('option:selected').val();
+          var presentacion=$("#selectPresentacionesCompra").find('option:selected').val();
           if(articulo==0){
-            $("#cantidadArticuloVenta").val("");
+            $("#cantidadArticuloCompra").val("");
             $("#existenciasActualesArticulos").val("");
             $("#precioUnitario").val("");
             $("#ivavalor").val("");
             return swal("Debe seleccionar un artículo", "No Procesado!", "info");
           }
           else{
-           var cantidad=parseInt($("#cantidadArticuloVenta").val());
-           var tablaDatos= $("#tblDatosVenta");
+           var cantidad=parseInt($("#cantidadArticuloCompra").val());
+           var tablaDatos= $("#tblDatosCompra");
            if(cantidad==""||!/^([0-9])*$/.test(cantidad)){
             swal({   title: 'La cantidad no es un numero\n o No es permitido',type:'error',  text: 'Se Cerrará en 2 Segundos',   timer: 2700,   showConfirmButton: false });
           }else{
             correlativo=parseInt(correlativo)+1;
             total=parseFloat(total)+parseFloat(cantidad*precioUnitario)+parseFloat(iva);
-            //
-            promedio=parseFloat(promedio)+parseFloat((productos*precioProducto)+(cantidadProductoVenta*precioUnitario))/2;
-
             subtotal = parseFloat(cantidad*precioUnitario)+parseFloat(iva);
+            alert(articulo+precioUnitario+iva+presentacion+cantidad+total);
+            var ruta="/sialas/public/nombrePresentacionCompra/"+presentacion;
+            $.get(ruta,function(res){
+              var presentationNameSell=res;
             tablaDatos.append("<tr><td>"+
             parseInt(cantidad)+
-            "</td><td>"+presentacion+
+            "</td><td>"+presentationNameSell+
             "</td><td><input type='hidden' name='productos[]' value='"+
             articulo+"'/><input type='hidden' name='preciosUnitarios[]' value='"+
             parseFloat(precioUnitario).toFixed(2)+
@@ -55,19 +69,20 @@
             "</td><td>"+parseFloat(iva).toFixed(2)+
             "</td><td>"+parseFloat(subtotal).toFixed(2)+
             "</td><td class='eliminarVenta' style='cursor:pointer;'>Eliminar</td></tr>");
+          });
             document.getElementById("correlativoVenta").value=correlativo;
             document.getElementById("inputArticulosVenta").value=correlativo;
-            document.getElementById("inputTotalVenta").value=total.toFixed(2);
-            document.getElementById("inputPromedioVenta").value=promedio.toFixed(2);
+            document.getElementById("inputTotalCompra").value=total.toFixed(2);
             reset_camposVenta();
           }
         }
     }
 
     function reset_camposVenta(){
-     $("#cantidadArticuloVenta").val("");
-     $("#precioUnitario").val("");
+     $("#cantidadArticuloCompra").val("");
+     $("#precioUnitarioCompra").val("");
      $("#articulos").val("");
+     $("#selectPresentacionesCompra").val("");
      $("#ivavalor").val("");
     }
     $(document).on("click",".eliminarVenta",function(){
@@ -77,7 +92,7 @@
       alert(cantidadEliminar);
       $(parent).remove();
       var correlativo=$("#correlativoVenta").val();
-      var total=parseFloat($("#inputTotalVenta").val());
+      var total=parseFloat($("#inputTotalCompra").val());
       //
       var promedio=parseFloat($("#inputPromedioProductosVenta").val());
 
@@ -85,17 +100,13 @@
       correlativo=parseInt(correlativo)-1;
       document.getElementById("correlativoVenta").value=correlativo;
       document.getElementById("inputArticulosVenta").value=correlativo;
-      document.getElementById("inputTotalVenta").value=total.toFixed(2);
-      //
-      document.getElementById("inputPromedioProductosVenta").value=promedio.toFixed(2);
+      document.getElementById("inputTotalCompra").value=total.toFixed(2);
     });
 
-    function submitar(){
-      document.forms["formVenta"].submit();
-      $("#inputArticulosVenta").val("0");
-      $("#inputTotalVenta").val("0");
-      //
-      $("#inputPromedioVenta").val("0");
+    function registrarCompra(){
+      document.forms["formSell"].submit();
+      $("#inputArticulosCompra").val("0");
+      $("#inputTotalCompra").val("0");
     }
 
     $(document).on("click",".agrUbi",function(){

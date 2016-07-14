@@ -73,8 +73,8 @@ class VentasController extends Controller
      */
     public function show($id)
     {
-      $c=Ventas::find($id);
-      return view('Ventas.show',compact('Ventas','productos'));
+      $venta=Ventas::find($id);
+      return view('Ventas.show',compact('venta'));
     }
 
     /**

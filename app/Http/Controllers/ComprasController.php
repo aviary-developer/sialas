@@ -57,10 +57,10 @@ class ComprasController extends Controller
           $detalle = new Detallecompras;
           $prod = Productos::where('nombre','=', $art)->first();
           $detalle->producto_id = $prod->id;
-          $pres = Presentaciones::where('nombre',$request->presentaciones[$k])
+          /*$pres = Presentaciones::where('nombre',$request->presentaciones[$k])
                                   ->where('producto_id',$prod->id)
-                                  ->first();
-          $detalle->presentacion_id = $pres->id;
+                                  ->first();*/
+          $detalle->presentacion_id = $request->presentaciones[$k];
           $detalle->compra_id = $compra->id;
           $detalle->cantidad = $request->cantidades[$k];
           $detalle->iva = $request->ivas[$k];

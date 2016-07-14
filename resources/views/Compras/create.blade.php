@@ -20,7 +20,7 @@
       <h2>Pedido</h2>
       <h3 id="txt">|Nuevo</h3>
     </div>
-{!! Form::open(['route'=>'compras.store','method'=>'POST'])!!}
+{!! Form::open(['route'=>'compras.store','method'=>'POST','name'=>'formSell','id'=>'formSell'])!!}
 @include('compras.Forms.formulario')
 
 {!!Form::close()!!}

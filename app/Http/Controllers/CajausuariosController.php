@@ -86,8 +86,10 @@ class CajausuariosController extends Controller
             }
           }
         }
+        $planilla=Planillas::find($cp+1);
+        $cajas=Cajas::buscar("",null);
 
-        return redirect('/cajausuarios')->with('mensaje','Registro Guardado');
+        return view('cajausuarios.pago',compact('planilla','cajas'));
     }
 
     /**

@@ -35,12 +35,12 @@
 
           {!!Form::open(['route'=>'cajausuarios.create','method'=>'GET'])!!}
           <input type="hidden" name="salario" value="2">
-          {!! Form::submit('Semanal') !!}
+          {!! Form::submit('Quincenal') !!}
           {!! Form::close() !!}
 
           {!!Form::open(['route'=>'cajausuarios.create','method'=>'GET'])!!}
           <input type="hidden" name="salario" value="3">
-          {!! Form::submit('Quincenal') !!}
+          {!! Form::submit('Mensual') !!}
           {!! Form::close() !!}
 
           {!!Form::open(['route'=>'cajausuarios.store','method'=>'POST'])!!}

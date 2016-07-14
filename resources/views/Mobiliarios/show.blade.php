@@ -51,6 +51,7 @@
           <li id="ldos" onclick="cambio('dos','ldos')">Compra</li>
           <li id="ltres" onclick="cambio('tres','ltres')">Pagos</li>
           <li id="lcinco" onclick="cambio('cinco','lcinco')">Reparaciones</li>
+          <li id="lseis" onclick="cambio('seis','lseis')">Depreciación</li>
           <li id="lcuatro" onclick="cambio('cuatro','lcuatro')">Estado</li>
         </ul>
         <div class="tabs ve" id="uno">
@@ -146,11 +147,11 @@
               @endif
               <span>{!! $varz !!}</span>
             </div>
-            <div class="srow">
-              <span>Fecha de compra</span>
-              <span>{!! $mob->fecha_compra !!}</span>
-            </div>
           @endif
+          <div class="srow">
+            <span>Fecha de compra</span>
+            <span>{!! $mob->fecha_compra->format('d-m-Y') !!}</span>
+          </div>
         </div>
         <!----->
         <div class="tabs oc" id="tres">
@@ -306,91 +307,165 @@
             <div class="enc">
               <h3 id="txt">Reparaciones</h3>
             </div>
-            @if($totpagorep>1)
-              <div id="graphsrepar"></div>
+            @if($totalreparacion >0)
+              @if($totpagorep>1)
+                <div id="graphsrepar"></div>
+                <br>
+              @endif
+              <div class="srow">
+                <span>Reparaciones al contado</span>
+                <span>{!! $totreparn; !!}</span>
+              </div>
+              <div class="srow">
+                <span>Reparaciones al crédito</span>
+                <span>{!! $totreparc; !!}</span>
+              </div>
+              <div class="srow">
+                <span>Total de reparaciones</span>
+                <span>{!! $totalreparacion !!}</span>
+              </div>
               <br>
+              <div class="srow">
+                <span>Valor total al contado</span>
+                <span>{!! '$ '.number_format($valreparn,2); !!}</span>
+              </div>
+              <div class="srow">
+                <span>Valor total al crédito</span>
+                <span>{!! '$ '.number_format($valreparc,2); !!}</span>
+              </div>
+              <div class="srow">
+                <span>Valor total en reparaciones</span>
+                <span>{!! '$ '.number_format($valtotal,2); !!}</span>
+              </div>
+              <div class="srow">
+                <span>IVA total en reparaciones</span>
+                <span>{!! '$ '.number_format($ivatotal,2); !!}</span>
+              </div>
+              <br>
+              <table>
+                <tr>
+                  <th>#</th>
+                  <th>Proveedor</th>
+                  <th>Deposito</th>
+                  <th>Entrega</th>
+                  <th>Precio</th>
+                  <th>IVA</th>
+                  <th>Crédito</th>
+                  <th>Pago</th>
+                </tr>
+                <?php $a = 1; ?>
+                @foreach($reparar as $k)
+                  <tr>
+                    <td>{{$a}}</td>
+                    <td>{{$mob->nombreProveedor($k->proveedor_id)}}</td>
+                    <td><center>{{$k->fecha_deposito}}</center></td>
+                    <td><center>
+                      @if($k->fecha_entrega == null)
+                        {{ "Pendiente" }}
+                      @else
+                        {{$k->fecha_entrega}}
+                      @endif
+                    </center></td>
+                    <td><center>{{'$'.number_format($k->precio,2)}}</center></td>
+                    <td><center>{{'$'.number_format($k->iva,2)}}</center></td>
+                    <td><center>
+                      @if($k->credito)
+                        {{ "Si" }}
+                      @else
+                        {{ "No" }}
+                      @endif
+                    </center></td>
+                    <td>
+                      <a href={!! asset('/pagoreparaciones/crear/'.$k->id) !!}>
+                        <img src={!! asset('/img/WB/vend.svg') !!} alt="" class="plus"/>
+                      </a>
+
+                    </td>
+                  </tr>
+                  <?php $a++; ?>
+                @endforeach
+              </table>
+              <br>
+              <div class="srow">
+                <span>Pagos de reparaciones</span>
+                <span>{!! $totpagorep; !!}</span>
+              </div>
+              <div class="srow">
+                <span>Valor de pago de reparaciones</span>
+                <span>{!! '$ '.number_format($prereptot,2); !!}</span>
+              </div>
+            @else
+              <p>
+                No hay reparaciones registradas
+              </p>
+            @endif
+          </div>
+          <!---->
+          <div class="tabs oc" id="seis">
+            <div class="enc">
+              <h3 id="txt">Depreciación</h3>
+            </div>
+            @if($mob->fecha_compra->day < 15)
+              <?php $inicio = $mob->fecha_compra->startOfMonth(); ?>
+            @else
+              <?php $inicio = $mob->fecha_compra->addMonth(1)->startOfMonth(); ?>
             @endif
             <div class="srow">
-              <span>Reparaciones al contado</span>
-              <span>{!! $totreparn; !!}</span>
+              <span>Valor inicial del bien</span>
+              <span>{!! '$'.number_format($mob->precio,2) !!}</span>
             </div>
             <div class="srow">
-              <span>Reparaciones al crédito</span>
-              <span>{!! $totreparc; !!}</span>
+              <span>Inicio de depreciación</span>
+              <span>{!! $inicio->format('d-m-Y') !!}</span>
             </div>
+            <?php $tiempo = $mob->depreTipo($mob->tipo_id)-$mob->anios; $fl = false;?>
+            @if($tiempo <= 0)
+              <?php $tiempo = 0; $fl = true; ?>
+            @endif
             <div class="srow">
-              <span>Total de reparaciones</span>
-              <span>{!! $totalreparacion !!}</span>
+              <span>Tiempo a depreciar</span>
+              <span>{!! $tiempo.' años' !!}</span>
             </div>
+            @if(!$fl)
+              <?php $depanual = $mob->precio/$tiempo; ?>
+            @else
+              <?php $depanual = 0; ?>
+            @endif
             <br>
             <div class="srow">
-              <span>Valor total al contado</span>
-              <span>{!! '$ '.number_format($valreparn,2); !!}</span>
+              <span>Depreciación anual</span>
+              <span>{!! '$ '.number_format($depanual,2) !!}</span>
             </div>
+            <?php $depmensual = $depanual/12; ?>
             <div class="srow">
-              <span>Valor total al crédito</span>
-              <span>{!! '$ '.number_format($valreparc,2); !!}</span>
+              <span>Depreciación mensual</span>
+              <span>{!! '$ '.number_format($depmensual,2) !!}</span>
             </div>
-            <div class="srow">
-              <span>Valor total en reparaciones</span>
-              <span>{!! '$ '.number_format($valtotal,2); !!}</span>
-            </div>
-            <div class="srow">
-              <span>IVA total en reparaciones</span>
-              <span>{!! '$ '.number_format($ivatotal,2); !!}</span>
-            </div>
-            <br>
-            <table>
-              <tr>
-                <th>#</th>
-                <th>Proveedor</th>
-                <th>Deposito</th>
-                <th>Entrega</th>
-                <th>Precio</th>
-                <th>IVA</th>
-                <th>Crédito</th>
-                <th>Pago</th>
-              </tr>
-              <?php $a = 1; ?>
-              @foreach($reparar as $k)
-                <tr>
-                  <td>{{$a}}</td>
-                  <td>{{$mob->nombreProveedor($k->proveedor_id)}}</td>
-                  <td><center>{{$k->fecha_deposito}}</center></td>
-                  <td><center>
-                    @if($k->fecha_entrega == null)
-                      {{ "Pendiente" }}
-                    @else
-                      {{$k->fecha_entrega}}
-                    @endif
-                  </center></td>
-                  <td><center>{{'$'.number_format($k->precio,2)}}</center></td>
-                  <td><center>{{'$'.number_format($k->iva,2)}}</center></td>
-                  <td><center>
-                    @if($k->credito)
-                      {{ "Si" }}
-                    @else
-                      {{ "No" }}
-                    @endif
-                  </center></td>
-                  <td>
-                    <a href={!! asset('/pagoreparaciones/crear/'.$k->id) !!}>
-                      <img src={!! asset('/img/WB/vend.svg') !!} alt="" class="plus"/>
-                    </a>
+            @if(!$fl)
+              <?php $tdepreciado = $inicio->diffInMonths($hoy); ?>
+            @else
+              <?php $tdepreciado = 0; ?>
+            @endif
 
-                  </td>
-                </tr>
-                <?php $a++; ?>
-              @endforeach
-            </table>
-            <br>
+            @if($tdepreciado > $tiempo*12)
+              <?php $tdepreciado = $tiempo*12; ?>
+            @endif
             <div class="srow">
-              <span>Pagos de reparaciones</span>
-              <span>{!! $totpagorep; !!}</span>
+              <span>Tiempo depreciado</span>
+              <span>{!! $tdepreciado.' meses' !!}</span>
             </div>
             <div class="srow">
-              <span>Valor de pago de reparaciones</span>
-              <span>{!! '$ '.number_format($prereptot,2); !!}</span>
+              <span>Depreciación acumulada</span>
+              <span>{!! '$ '.number_format(($depmensual*$tdepreciado),2) !!}</span>
+            </div>
+            @if(!$fl)
+              <?php $valor = $mob->precio ?>
+            @else
+              <?php $valor = 0; ?>
+            @endif
+            <div class="srow">
+              <span>Valor actual</span>
+              <span>{!! '$ '.number_format($valor - ($depmensual*$tdepreciado),2) !!}</span>
             </div>
           </div>
           <!---->

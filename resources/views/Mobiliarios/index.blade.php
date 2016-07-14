@@ -179,7 +179,7 @@
               <td>{{$mob->nombre}}</td>
               <td>{{$mob->nombreProveedor($mob->proveedor_id)}}</td>
               <td><center>{{'$ '.number_format($mob->precio,2)}}</center></td>
-              <td><center>{{$mob->fecha_compra}}</center></td>
+              <td><center>{{$mob->fecha_compra->format('d-m-Y')}}</center></td>
               <td>
                 <div class="up">
                   <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>

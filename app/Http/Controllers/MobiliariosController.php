@@ -139,6 +139,7 @@ class MobiliariosController extends Controller
     $totalc = $cc + $ic + $mc;
     $totalb = $cb + $ib + $mb;
     $valtotal = $valreparn + $valreparc;
+    $hoy = Carbon::now();
     return view('Mobiliarios.show',
     compact(
     'mob',
@@ -169,7 +170,8 @@ class MobiliariosController extends Controller
     'totpagorep',
     'prereptot',
     'ivatotal',
-    'pagosp'
+    'pagosp',
+    'hoy'
     ));
   }
 

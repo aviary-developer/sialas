@@ -91,6 +91,7 @@
           </div>
         </td>
         </tr>
+        <?php $c=$c+1; ?>
         @endforeach
       </table>
       <div id="act">

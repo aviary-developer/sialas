@@ -34,12 +34,16 @@ class CajausuariosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $usuarios=User::buscar("",1);
+        $salario = $request->get('salario');
+        if($salario == null){
+          $salario = 1;
+        }
+        $usuarios=User::buscars("",1,$salario);
         $activos= Descuentoaportes::buscarv("",null);
         $renta= new Rentas();
-        return view('cajausuarios.create',compact('usuarios','activos','renta'));
+        return view('cajausuarios.create',compact('usuarios','activos','renta','salario'));
     }
 
     /**
@@ -65,7 +69,7 @@ class CajausuariosController extends Controller
             echo "<br>";
             $arreglou[$i]=unserialize($arreglo[$i]);
             Datosplanillas::create([
-              'id'=>$cdp+$i+1,
+              'id'=>$cdp+$i,
               'planilla_id'=>$cp+1,
               'user_id'=>$arreglou[$i][0],
               'salario_neto'=>Planillas::valorneto($descap[0],$arreglou[$i]),
@@ -75,13 +79,14 @@ class CajausuariosController extends Controller
             for ($b=3; $b < count($arreglou[$i]); $b++) {
               Valoresplanillas::create([
                 'id'=>$cvp+$b-1,
-                'dato_id'=>$cdp+$i+1,
+                'dato_id'=>$cdp+$i,
                 'desp_id'=>$descap[0][$b-3],
                 'monto'=>$arreglou[$i][$b],
               ]);
             }
           }
         }
+
         return redirect('/cajausuarios')->with('mensaje','Registro Guardado');
     }
 

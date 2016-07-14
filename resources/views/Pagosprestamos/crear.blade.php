@@ -1,11 +1,6 @@
 <?php $bandera=1; ?>
 
-  @if($m->num_cuotas==$f || $m->precio <= $p)
-    <?php $se_pago = true; ?>
-  @else
-    <?php $se_pago = false; ?>
-  @endif
-  @if($f==1)
+  @if($m->num_cuotas==$f || $m->monto <= $p)
     <?php $se_pago = true; ?>
   @else
     <?php $se_pago = false; ?>

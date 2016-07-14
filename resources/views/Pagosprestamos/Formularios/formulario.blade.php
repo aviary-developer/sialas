@@ -62,7 +62,6 @@ if($bandera==1){
 			</div>
 			{!!Form::label('lmonto','Monto ($):')!!}
 			{!!Form::text('monto',null,['placeholder'=>'00.00'])!!}
-			@if($m->credito == 1)
 				<div class="fila">
 					<div class="">
 						{!!Form::label('linteres','Interes ($):')!!}
@@ -73,7 +72,7 @@ if($bandera==1){
 						{!!Form::number('mora',null,['placeholder'=>'00.00'])!!}
 					</div>
 				</div>
-			@endif
+			
 		</div>
 		<div>
 			{!!Form::label('lfactura','Número de factura:')!!}

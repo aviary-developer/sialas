@@ -42,6 +42,9 @@ class User extends Model implements AuthenticatableContract,
     public static function buscar($nombre,$estado){
       return User::nombre($nombre)->estado($estado)->orderBy('name')->paginate(8);
     }
+    public static function buscars($nombre,$estado,$salario){
+      return User::nombre($nombre)->estado($estado)->tipo_salario($salario)->orderBy('name')->paginate(8);
+    }
 
     public function scopeNombre($query, $nombre){
       if (trim($nombre)!="") {
@@ -55,6 +58,9 @@ class User extends Model implements AuthenticatableContract,
       }
       $query->where('estado', $estado);
     }
+    public function scopeTipo_salario($query, $salario){
+      $query->where('tipo_salario', $salario);
+    }
         public static function codigo($codigo)
     {
         $cod=null;
@@ -65,6 +71,6 @@ class User extends Model implements AuthenticatableContract,
         return $c;
 
     }
-    
+
 
 }

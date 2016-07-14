@@ -19,11 +19,33 @@
       <div class="panel">
         <div class="enc">
           <h2>Planilla</h2>
-          <h3 id='txt'> |Empleados</h3>
-        </div>
-        <center>
+          @if($salario==1)
+            <h3 id='txt'> |Mensual</h3>
+          @elseif($salario==2)
+            <h3 id='txt'> |Quincenal</h3>
+          @else
+            <h3 id='txt'> |Semanal</h3>
+          @endif
+          </div>
+          <div class="enc">
+          {!!Form::open(['route'=>'cajausuarios.create','method'=>'GET'])!!}
+          <input type="hidden" name="salario" value="1">
+          {!! Form::submit('Mensual') !!}
+          {!! Form::close() !!}
+
+          {!!Form::open(['route'=>'cajausuarios.create','method'=>'GET'])!!}
+          <input type="hidden" name="salario" value="2">
+          {!! Form::submit('Semanal') !!}
+          {!! Form::close() !!}
+
+          {!!Form::open(['route'=>'cajausuarios.create','method'=>'GET'])!!}
+          <input type="hidden" name="salario" value="3">
+          {!! Form::submit('Quincenal') !!}
+          {!! Form::close() !!}
 
           {!!Form::open(['route'=>'cajausuarios.store','method'=>'POST'])!!}
+        </div>
+        <center>
         <table>
           <tr>
             <th>Empleado</th>
@@ -101,8 +123,8 @@
           @endforeach
             <tr>
               <td>Totales= </td>
-              <td>{{$ta_salario}}</td>
-              <td>{{$ta_renta}}</td>
+              <td>{{number_format($ta_salario, 2, '.', '')}}</td>
+              <td>{{number_format($ta_renta, 2, '.', '')}}</td>
               @for($i=0; $i < $cont; $i++)
                 <td>{{number_format($des_p[$i], 2, '.', '')}}</td>
               @endfor

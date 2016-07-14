@@ -30,13 +30,13 @@
       <h2>Detalle de Venta</h2>
     </div>
     <div class="datos">
-      <pre>Número de Factura:&#09;&#09;<span>{!!$c->factura!!}</span></pre>
-      <pre>Producto:&#09;&#09;&#09;&#09;<span>{{$c->nombreProducto($c->producto_id)}}</span></pre>
-      <pre>Usuario:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nombreUsuario($c->usuario_id) }}</span></pre>
-      <pre>Entrega:&#09;&#09;&#09;&#09;&#09;<span>{{$c->estado}}</span></pre>
+      <pre>Número de Factura:&#09;&#09;<span>{!!$venta->factura!!}</span></pre>
+      <pre>Producto:&#09;&#09;&#09;&#09;<span>{{$venta->nombreProducto($venta->producto_id)}}</span></pre>
+      <pre>Usuario:&#09;&#09;&#09;&#09;&#09;<span>{{ $venta->nombreUsuario($venta->usuario_id) }}</span></pre>
+      <pre>Entrega:&#09;&#09;&#09;&#09;&#09;<span>{{$venta->estado}}</span></pre>
 
-      <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$c->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-      <pre>Fecha de última edición:&#09;&#09;<span>{{$c->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
+      <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$venta->created_at->format('d-m-Y g:i:s a')}} </span></pre>
+      <pre>Fecha de última edición:&#09;&#09;<span>{{$venta->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
       <table>
   <tr>
     <th>Id</th>
@@ -67,7 +67,7 @@
   <a id="modalUbi" href="#ex1" rel="modal:open"></a>
   </div>
   </div>
-  <!-- Modal HTML embedded directly into document 
+  <!-- Modal HTML embedded directly into document
    <div id="ex1" style="display:none;">
      <p>Ingrese Ubicación:</p>
        <select id="selectUbicaciones" name="selectUbicaciones" onchange="ubi(this)">
@@ -86,6 +86,6 @@
    </div>
    <input id="temporalProducto" type="hidden" value=0>
    <input id="temporalPresentacion" type="hidden" value=0>
-   <input id="compra_id" type="hidden" value="{{$c->id}}">
+   <input id="compra_id" type="hidden" value="{{$venta->id}}">
    <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">-->
   @stop

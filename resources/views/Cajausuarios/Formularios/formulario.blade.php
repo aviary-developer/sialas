@@ -1,3 +1,4 @@
+<?php $valores=$planilla->cantidad($planilla->id); ?>
 <div class="fila">
   <div>
     {!!Form::label('lfecha','Fecha de planilla:')!!}
@@ -10,26 +11,31 @@
         <option value="{{$c->id}}">{{$c->nombre}}</option>
       @endforeach
     </select>
-    <?php $valores=$planilla->cantidad($planilla->id); ?>
   </div>
 </div>
 <div class="fila">
-  <div>
-    {!!Form::label('ldetalle','Detalle:')!!}
-    {!!Form::textarea('detalle')!!}
-  </div>
 <div >
-  {!!Form::label('Salarios:&#09;&#09;'.$planilla->totalSalarioNeto($planilla->id))!!}
-  <?php echo "<br>"; ?>
-  {!!Form::label('Renta:&#09;&#09;'.$planilla->totalRenta($planilla->id))!!}
-  <?php echo "<br>"; ?>
+  <div class="srow">
+    <span>Salario:</span>
+    <span>{{$planilla->totalSalarioNeto($planilla->id)}}</span>
+  </div>
+  <div class="srow">
+    <span>Renta</span>
+    <span>{{$planilla->totalRenta($planilla->id)}}</span>
+  </div>
     @foreach($valores as $v)
-      {!!Form::label($planilla->nombre($v->desp_id),$planilla->nombre($v->desp_id).':&#09;&#09;'.number_format($planilla->totalPorDesp($planilla->id,$v->desp_id), 2, '.', ''))!!}
-      <?php echo "<br>"; ?>
+      <div class="srow">
+        <span>{{$planilla->nombre($v->desp_id)}}</span>
+        <span>{{number_format($planilla->totalPorDesp($planilla->id,$v->desp_id), 2, '.', '')}}</span>
+      </div>
     @endforeach
     <?php echo "<br>"; ?>
     {!!Form::label('ltotal','Total de planilla:')!!}
-    {!!Form::text('cantidad',$planilla->totalplanilla($planilla->id))!!}
+    {!!Form::text('cantidad',number_format($planilla->totalplanilla($planilla->id), 2, '.', ''))!!}
+</div>
+<div>
+  {!!Form::label('ldetalle','Detalle:')!!}
+  {!!Form::textarea('detalle')!!}
 </div>
 
 </div>

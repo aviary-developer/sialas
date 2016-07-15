@@ -53,12 +53,13 @@ class PrestamosController extends Controller
       $reparacion->banconombre = $request->banconombre;
       $reparacion->monto = $request->monto;
       $reparacion->interes = $request->interes;
-        $reparacion->num_cuotas= $request->num_cuotas;
+      $reparacion->num_cuotas= $request->num_cuotas;
       $reparacion->valor_cuotas= $request->valor_cuotas;
       $reparacion->cuenta= $request->cuenta;
       $reparacion->tiempo_pago = $request->tiempo_pago;
       $reparacion->dia_pago= $request->dia_pago;
-      $reparacion->garantia= $request->garantia;
+      $reparacion->garantia = $request->garantia;
+      $reparacion->fecha_prestamos = $request->fecha_prestamos;
       $reparacion->deposito= $request->deposito;
       if($request->deposito == 1)
       {

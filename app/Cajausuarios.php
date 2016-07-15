@@ -12,4 +12,5 @@ class Cajausuarios extends Model
       $u= User::find($id);
       return $u->nom_usuario;
     }
+
 }

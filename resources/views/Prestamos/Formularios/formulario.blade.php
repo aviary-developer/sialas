@@ -12,7 +12,12 @@ if($bandera==1){
 }
 ?>
 
-
+<div class="fila">
+	<div>
+	{!!Form::label('lfechaprestamo','Fecha del Prestamo:')!!}
+	{!!Form::date('fecha_prestamos',null,['placeholder'=>'Ingrese fecha'])!!}
+	</div>
+</div>
 	<div class="fila">
 		<div>
       {!!Form::label('lbanconombre','Nombre de la Institucion:')!!}
@@ -43,7 +48,7 @@ if($bandera==1){
 				</div>
 				<div>
 					{!!Form::label('Lvalcuotas','Valor de Cuota ($):')!!}
-					{!!Form::number('valor_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01'])!!}
+					{!!Form::number('valor_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01','onfocus'=>'cuota("monto","interes","num_cuotas","valor_cuotas")'])!!}
 				</div>
 			</div>
 	</div>
@@ -110,7 +115,7 @@ if($bandera==1){
       @endforeach
     </select>
   </div>
-  <div id="banco" style='display:none'>
+  <div id="banco" style='display:none; margin-right:30px'>
     {!!Form::label('lbanco','Banco:')!!}
     <select name="banco_id">
       @foreach($b as $banco)
@@ -122,12 +127,8 @@ if($bandera==1){
       @endforeach
     </select>
   </div>
-</div>
-
-
-<div class="fila">
 	<div class="delta">
 		{!!Form::label('lgarantia','Garantia:')!!}
-		{!!Form::textarea('Garantia',null,['placeholder'=>'Descripción de la Garantia:','rows'=>'4'])!!}
+		{!!Form::textarea('garantia',null,['placeholder'=>'Descripción de la Garantia:','rows'=>'4'])!!}
 	</div>
 </div>

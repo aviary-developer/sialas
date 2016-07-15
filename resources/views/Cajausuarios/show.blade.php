@@ -100,6 +100,11 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
         <td>{{number_format($ssn, 2,'.','')}}</td>
       </tr>
     </table>
+    <br>
+    <div class="srow">
+      <span>Total</span>
+      <span>{{number_format($sd+$sa+$ssn, 2, '.', '')}}</span>
+    </div>
   </center>
 </div>
 @stop

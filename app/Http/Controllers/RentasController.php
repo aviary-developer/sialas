@@ -84,7 +84,8 @@ class RentasController extends Controller
      */
     public function create()
     {
-        //
+
+      
     }
 
     /**
@@ -95,7 +96,6 @@ class RentasController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -117,7 +117,12 @@ class RentasController extends Controller
      */
     public function edit($id)
     {
-        //
+        //$users = User::all();
+       $renta=Rentas::all($id);
+        return view('rentas.edit', compact('renta'));
+       // $valor=Rentas::find($id);
+
+        //return view('rentas.edit',compact('valor'));
     }
 
     /**
@@ -129,7 +134,10 @@ class RentasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       $renta=Rentas::find($id);
+        $renta->fill($request->all());
+        $renta->save();
+        return Redirect::to('/rentas');
     }
 
     /**

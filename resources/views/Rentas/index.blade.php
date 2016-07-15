@@ -32,7 +32,8 @@
     @for($i=0;$i<3;$i++)
 
       <table>
-        <h3 id='txt'> Remuneraciones gravadas pagadas de forma {{$pago[$i]}}</h3>
+        <h3  id='txt'> <a href={!! asset('/rentas/edit') !!}>Remuneraciones gravadas pagadas de forma {{$pago[$i]}} </a></h3>
+       
         <tr>
           <th>Tramo</th>
           <th>Desde</th>

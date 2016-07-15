@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Requests\ProveedoresRequest;
 use sialas\Http\Controllers\Controller;
-use sialas\proveedores;
+use sialas\Proveedores;
 use DB;
 use Redirect;
 use Session;

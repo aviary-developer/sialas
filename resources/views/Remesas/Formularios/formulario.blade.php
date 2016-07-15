@@ -45,7 +45,7 @@ if($bandera==1){
           <div class="fila">
 	
 		 <div id='rbtnTransac' class='radiosg'>
-			{!!Form::label('lnuevo','Transacción:')!!}<br>
+			{!!Form::label('ltransaccion','Transacción:')!!}<br>
 			<div class="fila">
 				<div>
 					{!!Form :: radio ( "transaccion", 1,true,['id'=>'est1'])!!}

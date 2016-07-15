@@ -74,7 +74,6 @@ class CajausuariosController extends Controller
           $descap[0]=unserialize($arreglo[0]);
           $cdp=Datosplanillas::count();
           for ($i=1; $i < count($arreglo); $i++) {
-            echo "<br>";
             $arreglou[$i]=unserialize($arreglo[$i]);
             Datosplanillas::create([
               'id'=>$cdp+$i,

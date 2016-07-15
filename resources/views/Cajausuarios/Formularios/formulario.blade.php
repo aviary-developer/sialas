@@ -15,6 +15,7 @@
 </div>
 <div class="fila">
 <div >
+  <div></div>
   <div class="srow2">
     <span>Salario:</span>
     <span>{{$planilla->totalSalarioNeto($planilla->id)}}</span>
@@ -35,7 +36,7 @@
 </div>
 <div>
   {!!Form::label('ldetalle','Detalle:')!!}
-  {!!Form::textarea('detalle')!!}
+  {!!Form::textarea('detalle',null,['placeholder'=>'Detalle de salida','rows'=>'4'])!!}
 </div>
 
 </div>

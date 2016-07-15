@@ -12,7 +12,12 @@ if($bandera==1){
 }
 ?>
 
-
+<div class="fila">
+	<div>
+	{!!Form::label('lfechaprestamo','Fecha del Prestamo:')!!}
+	{!!Form::date('fecha_prestamos',null,['placeholder'=>'Ingrese fecha'])!!}
+	</div>
+</div>
 	<div class="fila">
 		<div>
       {!!Form::label('lbanconombre','Nombre de la Institucion:')!!}
@@ -124,6 +129,6 @@ if($bandera==1){
   </div>
 	<div class="delta">
 		{!!Form::label('lgarantia','Garantia:')!!}
-		{!!Form::textarea('Garantia',null,['placeholder'=>'Descripción de la Garantia:','rows'=>'4'])!!}
+		{!!Form::textarea('garantia',null,['placeholder'=>'Descripción de la Garantia:','rows'=>'4'])!!}
 	</div>
 </div>

@@ -128,6 +128,6 @@ if($bandera==1){
 <div class="fila">
 	<div class="delta">
 		{!!Form::label('lgarantia','Garantia:')!!}
-		{!!Form::textarea('Garantia',null,['placeholder'=>'Descripción de la Garantia:','rows'=>'4'])!!}
+		{!!Form::textarea('garantia',null,['placeholder'=>'Descripción de la Garantia:','rows'=>'4'])!!}
 	</div>
 </div>

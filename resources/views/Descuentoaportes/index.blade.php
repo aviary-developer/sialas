@@ -53,7 +53,7 @@
 
 <div class="panel">
   <div class="enc">
-    <h2>Descuentos y<br> aportaciones</h2>
+    <h2>Descuentos y aportaciones</h2>
     @if(!$cam)
       <h3 id='txt'> |Activos</h3>
     @else

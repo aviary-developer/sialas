@@ -8,7 +8,7 @@ class Planillas extends Model
 {
   protected $table ='planillas';
 
-  protected $fillable = ['id','fecha','estado_pagado'];
+  protected $fillable = ['id','fecha','estado_pagado','tipo_salario'];
 
   public static function buscar($fecha){
     return Planillas::fecha($fecha)->orderBy('fecha')->paginate(8);
@@ -89,5 +89,17 @@ return $total;
       $total=$total+$d->salario_neto;
     }
     return $total;
+  }
+
+  public static function existe($fecha,$tipo){
+    $cantidad=Planillas::fecha($fecha)->tipo_salario($tipo)->get();
+    if(count($cantidad)>0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+  public function scopeTipo_salario($query,$tipo){
+    $query->where('tipo_salario', $tipo);
   }
 }

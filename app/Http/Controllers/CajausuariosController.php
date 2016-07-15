@@ -36,6 +36,8 @@ class CajausuariosController extends Controller
      */
     public function create(Request $request)
     {
+        Rentas::iniciandoRentas();
+        Descuentoaportes::iniciandoDesp();
         $salario = $request->get('salario');
         if($salario == null){
           $salario = 1;
@@ -54,14 +56,20 @@ class CajausuariosController extends Controller
      */
     public function store(Request $request)
     {
+      $date = Carbon::now();
+      $date = $date->format('Y-m-d');
+      $existe=Planillas::existe($date,$request['salario']);
+    /*  if(!$existe){
+        return redirect('/cajausuarios')->with('mensaje','Planilla ya se encontraba elaborada');
+      }*/
+
         $arreglo=$request['arreglo'];
         if(count($arreglo)>0){
           $cp=Planillas::count();
-          $date = Carbon::now();
-          $date = $date->format('d-m-Y');
           Planillas::create([
             'id'=>$cp+1,
             'fecha'=>$date,
+            'tipo_salario'=>$request['salario'],
           ]);
           $descap[0]=unserialize($arreglo[0]);
           $cdp=Datosplanillas::count();

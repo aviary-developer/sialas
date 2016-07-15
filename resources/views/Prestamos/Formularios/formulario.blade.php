@@ -12,7 +12,12 @@ if($bandera==1){
 }
 ?>
 
-
+<div class="fila">
+	<div>
+	{!!Form::label('lfechaprestamo','Fecha del Prestamo:')!!}
+	{!!Form::date('fecha_prestamos',null,['placeholder'=>'Ingrese fecha'])!!}
+	</div>
+</div>
 	<div class="fila">
 		<div>
       {!!Form::label('lbanconombre','Nombre de la Institucion:')!!}

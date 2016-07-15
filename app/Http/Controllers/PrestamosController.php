@@ -57,7 +57,6 @@ class PrestamosController extends Controller
       $reparacion->valor_cuotas= $request->valor_cuotas;
       $reparacion->cuenta= $request->cuenta;
       $reparacion->tiempo_pago = $request->tiempo_pago;
-      $reparacion->dia_pago= $request->dia_pago;
       $reparacion->garantia = $request->garantia;
       $reparacion->fecha_prestamos = $request->fecha_prestamos;
       $reparacion->deposito= $request->deposito;

@@ -90,10 +90,6 @@
             <span>{!! $mob->tiempo_pago!!}</span>
           </div>
           <div class="srow">
-            <span>Dia de Pago</span>
-            <span>{!! $mob->dia_pago !!}</span>
-          </div>
-          <div class="srow">
             <span>Deposito</span>
             @if($mob->deposito)
             <span>{{$mob->nombreCaja($mob->caja_id)}}</span>

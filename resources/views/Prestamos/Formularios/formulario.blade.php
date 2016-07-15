@@ -81,10 +81,7 @@ if($bandera==1){
 				@endif
 			</select>
 		</div>
-			<div>
-				{!!Form::label('ldiapago','Día de Pago: ')!!}
-				{!!Form::number('dia_pago',null,['placeholder'=>'Día de compra','min'=>'1','step'=>'1'])!!}
-			</div>
+			
   </div>
 
   <div class = "radiosg">

@@ -26,6 +26,21 @@ function ivalue(uno,ivar){
   k = i[0].value * 0.13;
   j[0].value = k.toFixed(2);
 }
+
+function cuota(capital,interes,plazo,cuota){
+  var k = document.getElementsByName(capital);
+  var i = document.getElementsByName(interes);
+  var p = document.getElementsByName(plazo);
+  var r = document.getElementsByName(cuota);
+  var its = i[0].value / 100;
+  var per = p[0].value * -1;
+  var num = k[0].value * its;
+  var sum = 1 + its;
+  var pot = Math.pow(sum, per);
+  var den = 1-pot;
+  var c = num/den;
+  r[0].value = c.toFixed(2);
+}
 function ver ()
 {
   if(document.getElementById('efe1').checked == true)

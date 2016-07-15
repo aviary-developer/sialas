@@ -203,7 +203,7 @@ if($bandera==1){
 			<div class="fila">
 				<div class="credit">
 					{!!Form::label('Lvalcuotas','Valor de Cuota ($):')!!}
-					{!!Form::number('val_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01'])!!}
+					{!!Form::number('val_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01','onfocus'=>'cuota("precio","interes","num_cuotas","val_cuotas")'])!!}
 				</div>
 				<div class="credit">
 					{!!Form::label('cuenta','Número de Cuenta:')!!}

@@ -494,7 +494,7 @@ input[type=radio]:checked + label span{
 }
 .search{
   display: -webkit-inline-box;
-  input[type='text']{
+  input[type='text'],input[type='date']{
     height: 16px;
     width: 200px;
     margin-top: 15px;
@@ -620,6 +620,33 @@ input[type=radio]:checked + label span{
     font-weight: bold;
   }
 }
+.srow2{
+  display: flex;
+  width: 290px;
+  padding: 2px;
+  height: inherit;
+  :first-child{
+    padding-top: 5px;
+    text-align: center;
+    background: $cceleste;
+    width: 300px;
+    border-radius: 20px 0px 0px 20px;
+    font-size: 13pt;
+  }
+  :last-child{
+    padding-left: 50px;
+    padding-top: 5px;
+    padding-right: 30px;
+    padding-bottom: 5px;
+    text-align: justify;
+    width: 100px;
+    border-radius: 0px 20px 20px 0px;
+    background: $cgris6;
+    font-size: 13pt;
+    font-weight: bold;
+  }
+}
+
 .icirc{
   border-radius: 100px 100px 100px 100px;
   width: 200px;

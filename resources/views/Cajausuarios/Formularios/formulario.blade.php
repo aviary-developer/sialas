@@ -15,16 +15,16 @@
 </div>
 <div class="fila">
 <div >
-  <div class="srow">
+  <div class="srow2">
     <span>Salario:</span>
     <span>{{$planilla->totalSalarioNeto($planilla->id)}}</span>
   </div>
-  <div class="srow">
+  <div class="srow2">
     <span>Renta</span>
     <span>{{$planilla->totalRenta($planilla->id)}}</span>
   </div>
     @foreach($valores as $v)
-      <div class="srow">
+      <div class="srow2">
         <span>{{$planilla->nombre($v->desp_id)}}</span>
         <span>{{number_format($planilla->totalPorDesp($planilla->id,$v->desp_id), 2, '.', '')}}</span>
       </div>

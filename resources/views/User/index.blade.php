@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('layout')
-@if(Session::has('mensaje'))
-<?php $men=Session::get('mensaje');
-echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
-@endif
+  @if(Session::has('mensaje'))
+    <?php $men=Session::get('mensaje');
+    echo "<script>swal('$men', 'Click al botón', 'success')</script>";?>
+  @endif
 @if($state == 1 || $state == null)
   <?php $cam = 0; ?>
 @else

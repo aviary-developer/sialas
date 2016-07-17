@@ -62,7 +62,7 @@ class UsersController extends Controller
     {
         //
         $user = User::find($id);
-        
+
         return view('User.show',compact('user'));
     }
 
@@ -90,7 +90,7 @@ class UsersController extends Controller
     {
         $usuario=User::find($id);
         if(!empty($request['password'])){
-            $request['password']=bcrypt($request['password']);  
+            $request['password']=bcrypt($request['password']);
         }else{
             $request['password']=$usuario['password'];
         }

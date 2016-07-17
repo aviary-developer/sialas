@@ -63,6 +63,7 @@
           <th>#</th>
           <th>Fecha</th>
           <th>Total</th>
+          <th>Tipo de pago</th>
           <th>Estado</th>
           <th>Acciones</th>
         </tr>
@@ -72,6 +73,15 @@
           <td>{{$c}}</td>
           <td>{{date("d-m-Y",strtotime($p->fecha))}}</td>
           <td>{{number_format($p->totalplanilla($p->id), 2,'.','')}}</td>
+          <?php
+          if($p->tipo_salario==1)
+          {$tsv="Mensual";}
+          elseif($p->tipo_salario==2)
+          {$tsv="Quincenal";}
+          else
+          {$tsv="Semanal";}
+           ?>
+        <td>{{$tsv}}</td>
         @if($p->estado_pagado)
           <td>Pagado</td>
         @else

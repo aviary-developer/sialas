@@ -42,6 +42,6 @@
 			@endforeach
 		</div>
 		{!!Form::label('ltecho','Techo (si no posee dejar vacío):')!!}
-		{!!Form::text('techo',null,['placeholder'=>'Techo'])!!}
+		{!!Form::text('techo',null,['placeholder'=>'$'])!!}
 	</div>
 </div>

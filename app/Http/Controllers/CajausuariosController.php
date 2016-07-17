@@ -59,9 +59,9 @@ class CajausuariosController extends Controller
       $date = Carbon::now();
       $date = $date->format('Y-m-d');
       $existe=Planillas::existe($date,$request['salario']);
-    /*  if(!$existe){
+    if(!$existe){
         return redirect('/cajausuarios')->with('mensaje','Planilla ya se encontraba elaborada');
-      }*/
+      }
 
         $arreglo=$request['arreglo'];
         if(count($arreglo)>0){

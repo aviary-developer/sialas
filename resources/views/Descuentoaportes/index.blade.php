@@ -84,7 +84,7 @@
             @if($s->techo==0)
               No posee
             @else
-            {{$s->techo}}
+            $ {{number_format($s->techo, 2,'.','')}}
           @endif
           </td>
           <td>

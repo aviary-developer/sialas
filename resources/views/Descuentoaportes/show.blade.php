@@ -55,12 +55,12 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     @else
       <?php  $variable="Descuento empleado";?>
     @endif
-    <pre>Tipo:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{$variable}}</span></pre>
-    <pre>Valor:&#09;&#09;&#09;&#09;&#09;<span>{{ $s->valor."%" }}</span></pre>
+    <pre>Tipo:&#09;&#09;&#09;&#09;&#09;<span>{{$variable}}</span></pre>
+    <pre>Valor:&#09;&#09;&#09;&#09;&#09;<span>{{$s->valor."%"}}</span></pre>
     @if($s->techo==0)
       <pre>Techo:&#09;&#09;&#09;&#09;&#09;<span>No posee</span></pre>
     @else
-      <pre>Techo:&#09;&#09;&#09;&#09;&#09;<span>{{ $s->techo }}</span></pre>
+      <pre>Techo:&#09;&#09;&#09;&#09;&#09;<span>$ {{$s->techo}}</span></pre>
     @endif
     @if($s->estado == 1)
       <?php $var = 'Activo'?>

@@ -62,8 +62,8 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
         <td>{{$ca->nombreUsuario($d->user_id)}}</td>
         <?php  $total=$d->salario_neto+$d->valor_renta+$d->sumaDescuentos($d->id);
                $ta_salario=$ta_salario+$total?>
-        <td>{{number_format($total, 2,'.','')}}</td>
-        <td>{{number_format($d->valor_renta, 2,'.','')}}</td>
+        <td>$ {{number_format($total, 2,'.','')}}</td>
+        <td>$ {{number_format($d->valor_renta, 2,'.','')}}</td>
         <?php   $ta_renta=$ta_renta+$d->valor_renta;
                 $valores=$d->montos($d->id);
                 $cuenta=0;
@@ -74,30 +74,30 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
           @else
             <?php $aporte=$aporte+$v->monto;?>
           @endif
-          <td>{{number_format($v->monto, 2,'.','')}}</td>
+          <td>$ {{number_format($v->monto, 2,'.','')}}</td>
           <?php $ta_d[$cuenta]=$ta_d[$cuenta]+$v->monto;
                 $cuenta=$cuenta+1; ?>
         @endforeach
           <?php $sd=$sd+$descuento;
                 $sa=$sa+$aporte;
                 $ssn=$ssn+$d->salario_neto;?>
-          <td>{{$descuento}}</td>
-          <td>{{$aporte}}</td>
-          <td>{{$d->salario_neto}}</td>
+          <td>$ {{number_format($descuento, 2,'.','')}}</td>
+          <td>$ {{number_format($aporte, 2,'.','')}}</td>
+          <td>$ {{number_format($d->salario_neto, 2,'.','')}}</td>
       </tr>
       <?php $cont=$cont+1; ?>
       @endforeach
       <tr>
         <td></td>
         <td>Total =</td>
-        <td>{{number_format($ta_salario, 2,'.','')}}</td>
-        <td>{{number_format($ta_renta, 2,'.','')}}</td>
+        <td>$ {{number_format($ta_salario, 2,'.','')}}</td>
+        <td>$ {{number_format($ta_renta, 2,'.','')}}</td>
         @for($i=0; $i <$cu ; $i++)
-          <td>{{number_format($ta_d[$i], 2,'.','')}}</td>
+          <td>${{number_format($ta_d[$i], 2,'.','')}}</td>
         @endfor
-        <td>{{number_format($sd, 2,'.','')}}</td>
-        <td>{{number_format($sa, 2,'.','')}}</td>
-        <td>{{number_format($ssn, 2,'.','')}}</td>
+        <td>$ {{number_format($sd, 2,'.','')}}</td>
+        <td>$ {{number_format($sa, 2,'.','')}}</td>
+        <td>$ {{number_format($ssn, 2,'.','')}}</td>
       </tr>
     </table>
     <br>

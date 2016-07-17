@@ -4,6 +4,14 @@ namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
 use sialas\Cajas;
+use sialas\Bancos;
+use sialas\Prestamos;
+use sialas\Pagoservicios;
+use sialas\Pagos;
+use sialas\Pagoreparaciones;
+use sialas\Pagosprestamos;
+use sialas\Pagocompras;
+use sialas\Remesas;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use DB;
@@ -110,5 +118,24 @@ class CajasController extends Controller
          $cajas->save();
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/cajas');
+    }
+    //Función para mostrar las estadisticas
+    public function stats(){
+      //Listar cajas
+      $lista_cajas = Cajas::get();
+      //Listar bancos
+      $lista_bancos = Bancos::get();
+
+      //Saldos por caja
+      foreach ($lista_cajas as $i => $lc) {
+        $ingreso_caja = $egreso_caja = 0;
+        $ingreso_caja = Cajas::ingreso_caja($lc->id);
+        $egreso_caja = Cajas::
+      }
+      //Renderizar la view
+      return view('cajas.stats', compact(
+        'saldo_actual_caja',
+        'saldo_actual_banco'
+      ));
     }
 }

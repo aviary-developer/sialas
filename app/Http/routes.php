@@ -24,6 +24,7 @@
 
     Route::resource('cajas', 'CajasController');
     Route::match(['get','post'],'/darAltaCaja/{id}','CajasController@darAlta');
+    Route::match(['get','post'],'/stats','CajasController@stats');
 
     Route::resource('cuentas', 'CuentasController');
 

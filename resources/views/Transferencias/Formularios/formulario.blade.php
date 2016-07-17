@@ -45,10 +45,10 @@ if($bandera==1){
 <div class="fila">
   <div>
 	{!!Form::label('Lmonto','Monto a Transferir:')!!}
-	{!!Form::text('monto',null,['placeholder'=>'$000.00 :'])!!}
+	{!!Form::text('monto',null,['placeholder'=>'$ 00.00'])!!}
 </div>
 <div>
-  {!!Form::label('Ldetalle','Detalle de la salid:')!!}
-	{!!Form::textarea('detalle',null,['placeholder'=>'Describa el motivo :'])!!}
+  {!!Form::label('Ldetalle','Detalle de la salida:')!!}
+	{!!Form::textarea('detalle',null,['placeholder'=>'Describa el motivo','rows'=>'4'])!!}
 </div>
 </div>

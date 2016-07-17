@@ -26,20 +26,39 @@ class Cajas extends Model
       $query->where('estado', $estado);
     }
 
-    public function ingreso_caja($id){
+    public static function ingreso_caja($id){
       $ingreso_prestamo = Prestamos::where('caja_id',$id)->sum('monto');
       $ingreso_venta = 0;
       $ingreso_retiro = Remesas::where('caja_id',$id)->where('transaccion',false)->sum('monto');
-      return $ingreso_prestamo + $ingreso_venta + $ingreso_retiro;
+      $ingreso_transferencia = Transferencias::where('caja_id',$id)->sum('monto');
+      return $ingreso_prestamo + $ingreso_venta + $ingreso_retiro + $ingreso_transferencia;
     }
 
-    public function egreso_caja($id){
+    public static function egreso_caja($id){
       $egreso_servicio = Pagoservicios::where('caja_id',$id)->sum('monto');
       $egreso_mobiliario = Pagos::where('caja_id',$id)->sum('monto');
       $egreso_prestamo = Pagosprestamos::where('caja_id',$id)->sum('monto');
       $egreso_compra = Pagocompras::where('caja_id',$id)->sum('monto');
       $egreso_reparacion = Pagoreparaciones::where('caja_id',$id)->sum('monto');
       $egreso_remesa = Remesas::where('caja_id',$id)->where('transaccion',true)->sum('monto');
+      $egreso_transferencia = Transferencias::where('cajita',$id)->sum('monto');
+      return $egreso_servicio + $egreso_mobiliario + $egreso_prestamo + $egreso_compra + $egreso_reparacion + $egreso_remesa + $egreso_transferencia;
+    }
+
+    public static function ingreso_banco($id){
+      $ingreso_prestamo = Prestamos::where('banco_id',$id)->sum('monto');
+      $ingreso_venta = 0;
+      $ingreso_retiro = Remesas::where('banco_id',$id)->where('transaccion',true)->sum('monto');
+      return $ingreso_prestamo + $ingreso_venta + $ingreso_retiro;
+    }
+
+    public static function egreso_banco($id){
+      $egreso_servicio = Pagoservicios::where('banco_id',$id)->sum('monto');
+      $egreso_mobiliario = Pagos::where('banco_id',$id)->sum('monto');
+      $egreso_prestamo = Pagosprestamos::where('banco_id',$id)->sum('monto');
+      $egreso_compra = Pagocompras::where('banco_id',$id)->sum('monto');
+      $egreso_reparacion = Pagoreparaciones::where('banco_id',$id)->sum('monto');
+      $egreso_remesa = Remesas::where('banco_id',$id)->where('transaccion',false)->sum('monto');
       return $egreso_servicio + $egreso_mobiliario + $egreso_prestamo + $egreso_compra + $egreso_reparacion + $egreso_remesa;
     }
 }

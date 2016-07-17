@@ -8,6 +8,7 @@ use sialas\Bancos;
 use sialas\Prestamos;
 use sialas\Pagoservicios;
 use sialas\Pagos;
+use sialas\Transferencias;
 use sialas\Pagoreparaciones;
 use sialas\Pagosprestamos;
 use sialas\Pagocompras;
@@ -122,20 +123,31 @@ class CajasController extends Controller
     //Función para mostrar las estadisticas
     public function stats(){
       //Listar cajas
-      $lista_cajas = Cajas::get();
+      $lista_caja = Cajas::orderBy('nombre')->get();
       //Listar bancos
-      $lista_bancos = Bancos::get();
+      $lista_banco = Bancos::orderBy('nombre')->get();
 
       //Saldos por caja
-      foreach ($lista_cajas as $i => $lc) {
+      foreach ($lista_caja as $i => $lc) {
         $ingreso_caja = $egreso_caja = 0;
         $ingreso_caja = Cajas::ingreso_caja($lc->id);
-        $egreso_caja = Cajas::
+        $egreso_caja = Cajas::egreso_caja($lc->id);
+        $saldo_caja[$i]['nombre'] = $lc->nombre;
+        $saldo_caja[$i]['saldo'] = $ingreso_caja - $egreso_caja;
+      }
+
+      //Saldo por bancos
+      foreach ($lista_banco as $i => $lb) {
+        $ingreso_banco = $egreso_banco = 0;
+        $ingreso_banco = Cajas::ingreso_banco($lb->id);
+        $egreso_banco = Cajas::egreso_banco($lb->id);
+        $saldo_banco[$i]['nombre'] = $lb->nombre;
+        $saldo_banco[$i]['saldo'] = $ingreso_banco - $egreso_banco;
       }
       //Renderizar la view
       return view('cajas.stats', compact(
-        'saldo_actual_caja',
-        'saldo_actual_banco'
+        'saldo_caja',
+        'saldo_banco'
       ));
     }
 }

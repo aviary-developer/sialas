@@ -22,7 +22,7 @@ class TransferenciasController extends Controller
      */
     public function index()
     {
-        $Transferencias= Transferencias::All();
+        $Transferencias= Transferencias::orderBy('fecha_transferencia')->get();
         return view('Transferencias.index',compact('Transferencias'));
     }
 
@@ -33,7 +33,7 @@ class TransferenciasController extends Controller
      */
     public function create()
     {
-        $c = Cajas::All();
+        $c = Cajas::orderBy('nombre')->get();
         return view('Transferencias.create',compact('c'));
     }
 

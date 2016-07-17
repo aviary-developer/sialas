@@ -18,7 +18,7 @@
   </div>
 <div class="panel">
 	<div class="enc">
-		<h2>Tipos</h2>
+		<h2>Transferencias de cajas</h2>
     <h3 id="txt">|Nuevo</h3>
 	</div>
 	{!!Form::open(['route'=>'transferencias.store','method'=>'POST'])!!}

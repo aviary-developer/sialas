@@ -28,7 +28,7 @@
   <div class="panel">
     <div class="enc">
       <h2>Transferencia</h2>
-      <h3 id="txt"> |{{$c->fecha_transferencia}}</h3>
+      <h3 id="txt"> |{{$c->fecha_transferencia->format('d-m-Y')}}</h3>
     </div>
 
     <!--Pane-->
@@ -50,11 +50,11 @@
           </div>
           <div class="srow">
             <span>fecha de transferencia</span>
-            <span>{!! $c->fecha_transferencia !!}</span>
+            <span>{!! $c->fecha_transferencia->format('d-m-Y') !!}</span>
           </div>
           <div class="srow">
             <span>Monto</span>
-            <span>{!! $c->monto !!}</span>
+            <span>{!! '$'.number_format($c->monto,2) !!}</span>
           </div>
           <div class="srow">
             <span>Caja Emisora</span>

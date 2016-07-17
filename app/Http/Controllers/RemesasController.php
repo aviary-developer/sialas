@@ -24,6 +24,8 @@ class RemesasController extends Controller
      */
     public function index()
     {
+      $r= Remesas::All();
+      return view('Remesas.index',compact('r'));
 
     }
 
@@ -53,8 +55,8 @@ class RemesasController extends Controller
             $remesa->monto = $request->Monto;
             $remesa->transaccion = $request->transaccion;
             $remesa->save();
-       return redirect('/remesas/create')->with('mensaje','Registro Guardado');
-        
+       return redirect('/remesas')->with('mensaje','Registro Guardado');
+
     }
 
     /**
@@ -65,7 +67,8 @@ class RemesasController extends Controller
      */
     public function show($id)
     {
-        //
+      $r = Remesas::find($id);
+      return View::make('Remesas.show')->with('r', $r);
     }
 
     /**

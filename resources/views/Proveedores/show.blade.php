@@ -47,23 +47,69 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <h2>Proveedores</h2>
     <h3 id="txt"> |{{$p->nombre}}</h3>
   </div>
-  <div class="datos">
-    <pre>Identificador:&#09;&#09;&#09;&#09;&#09;&#09;<span>{!!$p->id !!}</span></pre>
-    <pre>Nombre de la Empresa:&#09;&#09;&#09;&#09;<span>{{ $p->nombre }}</span></pre>
-    <pre>Nombre del Contacto:&#09;&#09;&#09;&#09;<span>{{ $p->contacto }}</span></pre>
-    <pre>Número de Identificación Tributaria:&#09;<span>{{ $p->nif }}</span></pre>
-    <pre>Dirección:&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $p->direccion }}</span></pre>
-    <pre>Correo Electronico:&#09;&#09;&#09;&#09;&#09;<span>{{ $p->correo }}</span></pre>
-    <pre>Teléfono:&#09;&#09;&#09;&#09;&#09;&#09;&#09;<span>{{ $p->telefono }}</span></pre>
+  <center>
+    <div class="tpcontenido">
+      <ul class="supernav">
+        <li id ="luno" class="activ" onclick="cambio('uno','luno')">Datos</li>
+        <li id="ldos" onclick="cambio('dos','ldos')">Estado</li>
+      </ul>
 
-    @if($p->estado == 1)
-      <?php $var = 'Activo'?>
-    @else
-      <?php $var = 'En papelera'?>
-    @endif
-    <pre>Estado:&#09;&#09;&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
-    <pre>Fecha de creación:&#09;&#09;&#09;&#09;&#09;<span>{{$p->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <pre>Fecha de última edición:&#09;&#09;&#09;&#09;<span>{{$p->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
-  </div>
+      <div class="tabs ve" id="uno">
+        <!---->
+        <div class="enc">
+          <h3 id="txt">Datos</h3>
+        </div>
+        <div class="srow">
+          <span>Código</span>
+          <span>{!! $p->id!!}</span>
+        </div>
+        <div class="srow">
+          <span>Nombre de la Empresa</span>
+          <span>{!! $p->nombre !!}</span>
+        </div>
+        <div class="srow">
+          <span>Numero de Identificacion Tributaria</span>
+          <span>{!! $p->nif !!}</span>
+        </div>
+        <div class="srow">
+          <span>Direccion</span>
+          <span>{!! $p->direccion !!}</span>
+        </div>
+        <div class="srow">
+          <span>Correo</span>
+          <span>{!! $p->correo !!}</span>
+        </div>
+        <div class="srow">
+          <span>Telefono</span>
+          <span>{!! $p->telefono !!}</span>
+        </div>
+      </div>
+      <!---->
+      <!----->
+      <div class="tabs oc" id="dos">
+          <div class="enc">
+            <h3 id="txt">Estado</h3>
+          </div>
+          <div class="srow">
+            @if($p->estado == 1)
+              <?php $var = 'Activo'?>
+            @else
+              <?php $var = 'En papelera'?>
+            @endif
+            <span>Estado</span>
+            <span>{!! $var !!}</span>
+          </div>
+
+          <div class="srow">
+            <span>Fecha de creación</span>
+            <span>{!! $p->created_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+          <div class="srow">
+            <span>Fecha de última edición</span>
+            <span>{!! $p->updated_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+      </div>
+      </div>
+    </center>
 </div>
 @stop

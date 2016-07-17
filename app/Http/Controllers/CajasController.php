@@ -130,7 +130,7 @@ class CajasController extends Controller
       foreach ($lista_cajas as $i => $lc) {
         $ingreso_caja = $egreso_caja = 0;
         $ingreso_caja = Cajas::ingreso_caja($lc->id);
-        $egreso_caja = Cajas::
+        
       }
       //Renderizar la view
       return view('cajas.stats', compact(

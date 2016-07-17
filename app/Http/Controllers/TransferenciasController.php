@@ -33,7 +33,7 @@ class TransferenciasController extends Controller
      */
     public function create()
     {
-        $c = Cajas::All();
+        $c = Cajas::where('estado',true)->orderBy('nombre')->get();
         return view('Transferencias.create',compact('c'));
     }
 

@@ -123,7 +123,7 @@ Route::get('/', function () {
     Route::get('pagosprestamos/crear/{id}','PagosprestamosController@crear');
     Route::match(['get','post'],'/guardarPagosprestamos/{id}','PagosprestamosController@guardar');
 
-
+    Route::resource('transferencias', 'transferenciasController');
 
 
 

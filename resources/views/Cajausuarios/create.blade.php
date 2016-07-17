@@ -84,12 +84,12 @@
             <?php  $arreglo[$cantidad][]=$u->id;
             $salario=number_format($u->salario, 2, '.', '');
             $ta_salario=$ta_salario+$salario;?>
-            <td>{{$salario}}</td>
+            <td>$ {{$salario}}</td>
             <?php   $arreglo[$cantidad][]=$salario;
             $vrenta=number_format($renta->renta($u->tipo_salario,$u->salario), 2, '.', '');
             $ta_renta=$ta_renta+$vrenta;
             ?>
-            <td>{{$vrenta}}</td>
+            <td>$ {{$vrenta}}</td>
             <?php  $arreglo[$cantidad][]=$vrenta;
             $descuento=$vrenta;
             $primero=true;?>
@@ -102,7 +102,7 @@
               <?php $desp=number_format(($vtecho*$des[$i]/100), 2, '.', ''); ?>
               <?php $des_p[$i]=$des_p[$i]+$desp;?>
 
-              <td>{{$desp}}</td>
+              <td>$ {{$desp}}</td>
               <?php   $arreglo[$cantidad][]=$desp;
               if($tipo[$i]==trim('Descuento')){
                 $descuento=$descuento+$desp;
@@ -116,25 +116,30 @@
             $ta_aporte=$ta_aporte+$aporte;
             $ta_salario_des=$ta_salario_des+$salario-$descuento;
             ?>
-            <td>{{number_format($descuento, 2, '.', '')}}</td>
-            <td>{{number_format($aporte, 2, '.', '')}}</td>
-            <td>{{$sd=number_format(($salario-$descuento), 2, '.', '')}}</td>
+            <td>$ {{number_format($descuento, 2, '.', '')}}</td>
+            <td>$ {{number_format($aporte, 2, '.', '')}}</td>
+            <td>$ {{$sd=number_format(($salario-$descuento), 2, '.', '')}}</td>
           </tr>
           <input type="hidden" name="arreglo[]" value='<?php echo serialize($arreglo[$cantidad]) ?>)'>
           <?php  $cantidad=$cantidad+1;?>
         @endforeach
         <tr>
           <td>Totales= </td>
-          <td>{{number_format($ta_salario, 2, '.', '')}}</td>
-          <td>{{number_format($ta_renta, 2, '.', '')}}</td>
+          <td>$ {{number_format($ta_salario, 2, '.', '')}}</td>
+          <td>$ {{number_format($ta_renta, 2, '.', '')}}</td>
           @for($i=0; $i < $cont; $i++)
-            <td>{{number_format($des_p[$i], 2, '.', '')}}</td>
+            <td>$ {{number_format($des_p[$i], 2, '.', '')}}</td>
           @endfor
-          <td>{{number_format($ta_descuento, 2, '.', '')}}</td>
-          <td>{{number_format($ta_aporte, 2, '.', '')}}</td>
-          <td>{{number_format($ta_salario_des, 2, '.', '')}}</td>
+          <td>$ {{number_format($ta_descuento, 2, '.', '')}}</td>
+          <td>$ {{number_format($ta_aporte, 2, '.', '')}}</td>
+          <td>$ {{number_format($ta_salario_des, 2, '.', '')}}</td>
         </tr>
       </table>
+      <br>
+      <div class="srow">
+        <span>Total</span>
+        <span>{{number_format($ta_descuento+$ta_aporte+$ta_salario_des, 2, '.', '')}}</span>
+      </div>
       <input type="hidden" name="salario" value='{{$s}}'>
 
       {!!Form::submit('Guardar')!!}

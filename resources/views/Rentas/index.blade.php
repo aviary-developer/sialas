@@ -33,7 +33,7 @@
 
       <table>
         <h3  id='txt'> <a href={!! asset('/rentas/edit') !!}>Remuneraciones gravadas pagadas de forma {{$pago[$i]}} </a></h3>
-       
+
         <tr>
           <th>Tramo</th>
           <th>Desde</th>
@@ -46,10 +46,10 @@
             @if($r->pago==$pago[$i])
           <tr>
             <td>{{$r->tramo}}</td>
-            <td>{{number_format($r->desde, 2, '.', '')}}</td>
+            <td>$ {{number_format($r->desde, 2, '.', '')}}</td>
             <td>
               @if($r->tramo!="IV")
-              {{number_format($r->hasta, 2, '.', '')}}
+              $ {{number_format($r->hasta, 2, '.', '')}}
             @else
               En adelante
             @endif
@@ -61,14 +61,14 @@
             </td>
             <td>
               @if($r->tramo!="I")
-              {{number_format($r->exceso, 2, '.', '')}}
+              $ {{number_format($r->exceso, 2, '.', '')}}
             @else
              Sin retención
             @endif
             </td>
             <td>
               @if($r->tramo!="I")
-              {{number_format($r->cuota, 2, '.', '')}}
+              $ {{number_format($r->cuota, 2, '.', '')}}
             @endif
             </td>
           </tr>

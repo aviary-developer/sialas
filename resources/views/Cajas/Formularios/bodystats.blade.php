@@ -13,18 +13,18 @@
       <div id="grafico_efectivo"></div>
 
       <br>
-      <div class="srow">
-        <span>Efectivo en caja</span>
-        <span>{!! '$ '.number_format($saldo_actual_caja,2) !!}</span>
-      </div>
-      <div class="srow">
-        <span>Efectivo en banco</span>
-        <span>{!! '$ '.number_format($saldo_actual_banco,2) !!}</span>
-      </div>
-      <div class="srow">
-        <span>Efectivo total</span>
-        <span>{!! '$ '.number_format($saldo_actual_banco+$saldo_actual_caja,2) !!}</span>
-      </div>
+      @foreach($saldo_caja as $sc)
+        <div class="srow">
+          <span>Saldo en {{ $sc['nombre'] }}</span>
+          <span>{!! '$ '.number_format($sc['saldo'],2) !!}</span>
+        </div>
+      @endforeach
+      @foreach($saldo_banco as $sb)
+        <div class="srow">
+          <span>Saldo en {{ $sb['nombre'] }}</span>
+          <span>{!! '$ '.number_format($sb['saldo'],2) !!}</span>
+        </div>
+      @endforeach
     </div>
     {{--  --}}
     <div class="tabs oc" id = "dos">
@@ -40,15 +40,19 @@ google.charts.load("current", {packages:['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
   var data = google.visualization.arrayToDataTable([
-    ['Efectivo','Monto'],
+    ['Lugar','Monto'],
+    @foreach($saldo_caja as $sc)
     [
-      'Caja',
-      {{ $saldo_actual_caja }},
+      '{{ $sc['nombre'] }}',
+      {{ $sc['saldo'] }}
     ],
+    @endforeach
+    @foreach($saldo_banco as $sb)
     [
-      'Banco',
-      {{ $saldo_actual_banco }}
-    ]
+      '{{ $sb['nombre'] }}',
+      {{ $sb['saldo'] }}
+    ],
+    @endforeach
   ]);
   var options = {'title': 'Efectivo actual',
   'width':700,

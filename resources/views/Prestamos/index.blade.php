@@ -58,17 +58,9 @@
           <td>{{$p->nombreBanco($p->banco_id)}}</td>
           @endif
           <td>
-            <div class="up">
-              <img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
-              <div class="image">
-                <div class="tooltip">
-                  <a href={!! asset('/prestamos/'.$p->id) !!}>
-                    <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-                  </a>
-                  <span class="tooltiptextup">Ver</span>
-                </div>
-              </div>
-            </div>
+            <a href={!! asset('/prestamos/'.$p->id) !!}>
+              <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="plus"/>
+            </a>
           </td>
         </tr>
         <?php $a++; ?>

@@ -1,9 +1,9 @@
 @extends('welcome')
 @section('layout')
-@if(Session::has('mensaje'))
-<?php $men=Session::get('mensaje');
-echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
-@endif
+  @if(Session::has('mensaje'))
+    <?php $men=Session::get('mensaje');
+    echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
+  @endif
 
 <div class="launcher">
   <div class="lfloat"></div>
@@ -41,7 +41,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 		<table id="block">
 			<tr>
 				<th>#</th>
-				<th>fecha</th>
+				<th>Fecha</th>
 				<th>monto</th>
 				<th>Caja Emisora</th>
         <th>Caja Destino</th>
@@ -51,29 +51,21 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 			@foreach($Transferencias as $tip)
 			<tr>
 				<td>{{$a}}</td>
-				<td>{{$tip->fecha_transferencia}}</td>
-				<td>{{$tip->monto}}</td>
-        <td>{{$tip->nombreCajas($tip->cajita)}}</td>
-        <td>{{$tip->nombreCajas($tip->caja_id)}}</td>
+				<td><center>{{$tip->fecha_transferencia->format('d-m-Y')}}</center></td>
+				<td><center>{{'$ '.number_format($tip->monto,2)}}</center></td>
+        <td><center>{{$tip->nombreCajas($tip->cajita)}}</center></td>
+        <td><center>{{$tip->nombreCajas($tip->caja_id)}}</center></td>
 
 				<td>
-					<div class="up">
-						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
-						<div class="image">
-							<div class="tooltip">
-								<a href={!! asset("/transferencias/".$tip->id) !!}>
-									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-								</a>
-								<span class="tooltiptextup">Ver</span>
-							</div>
-						</div>
-					</div>
+          <a href={!! asset("/transferencias/".$tip->id) !!}>
+            <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="plus"/>
+          </a>
 				</td>
 			</tr>
 			<?php $a=$a+1; ?>
 			@endforeach
 		</table>
-		     
+
 	</center>
 </div>
 @stop

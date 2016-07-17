@@ -3,7 +3,11 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Mail;
 use Auth;
+use DB;
+use Session;
+use Redirect;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 
@@ -14,9 +18,9 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
     }
 
     /**
@@ -92,5 +96,17 @@ class LoginController extends Controller
     public function logout(){
         Auth::logout();
         return Redirect('/');
+    }
+    public function pass(){
+      return view('auth.mail');
+    }
+    public function correo(Request $request){
+      echo $request['email'];
+      Mail::raw("Hola",
+      function($msj) use ($request){
+        $msj->subject('Correo de contacto');
+        $msj->to($request['email']);
+      });
+
     }
 }

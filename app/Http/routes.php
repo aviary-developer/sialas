@@ -92,8 +92,8 @@
 
 Route::resource('login','LoginController');
 Route::get('logout','LoginController@logout');//salir
-
-
+Route::get('pass','LoginController@pass');//recuperar contrasena
+Route::post('/pass/correo','LoginController@correo');
 Route::get('/', function () {
     $users=DB::select('select * from users');
         $cuenta=0;

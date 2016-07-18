@@ -4,6 +4,10 @@
     <?php $men=Session::get('mensaje');
     echo "<script>swal('$men', 'Click al botón', 'success')</script>";?>
   @endif
+  @if(Session::has('error'))
+    <?php $men=Session::get('error');
+    echo "<script>swal('$men', 'Click al botón', 'error')</script>";?>
+  @endif
 <div class="panel">
 <div class="enc">
   <h2>Ingreso</h2>

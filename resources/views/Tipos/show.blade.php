@@ -18,7 +18,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     </a>
     <span class="tooltiptext">Editar</span>
   </div>
-  
+
   <div class="tooltip">
     <a href="#">
       <img src={!! asset('/img/WB/imp.svg') !!} alt="" class="circ"/>
@@ -34,26 +34,60 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 </div>
 <div class="panel">
   <div class="enc">
-    <h2>Tipos de Depresiacion</h2>
+    <h2>Tipo de Depresiacion</h2>
     <h3 id="txt"> |{{$c->nombre}}</h3>
   </div>
-  <div class="datos">
-    
-    <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$c->id !!}</span></pre>
-    <pre>Codigo:&#09;&#09;&#09;&#09;&#09;<span>{{$c->codigo}}</span></pre>
-    <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $c->nombre }}</span></pre>
-    <pre>Tipo de Depresiacion:<span>
+  <center>
+    <div class="tpcontenido">
+      <ul class="supernav">
+        <li id ="luno" class="activ" onclick="cambio('uno','luno')">Datos</li>
+        <li id="ldos" onclick="cambio('dos','ldos')">Estado</li>
+      </ul>
 
-           @if($c->descripcion==0)<?php echo 'Edificaciones' ?>@endif
-          @if($c->descripcion==1)<?php echo 'Maquinaria'?>@endif
-          @if($c->descripcion==2)<?php echo 'Vehiculo'?>@endif
-          @if($c->descripcion==3)<?php echo 'Otros bienes muebles'?>@endif
+      <div class="tabs ve" id="uno">
+        <!---->
+        <div class="enc">
+          <h3 id="txt">Datos</h3>
+        </div>
+        <div class="srow">
+          <span>Identificacion</span>
+          <span>{!! $c->id!!}</span>
+        </div>
+        <div class="srow">
+          <span>Codigo</span>
+          <span>{!! $c->codigo !!}</span>
+        </div>
+        <div class="srow">
+          <span>Nombre</span>
+          <span>{!! $c->nombre !!}</span>
+        </div>
+        <div class="srow">
+          <span>Tipo de Depresiacion</span>
+          @if($c->descripcion==0)<?php $var ='Edificaciones'; ?>@endif
+         @if($c->descripcion==1)<?php $var = 'Maquinaria';?>@endif
+         @if($c->descripcion==2)<?php $var = 'Vehiculo';?>@endif
+         @if($c->descripcion==3)<?php $var = 'Otros bienes muebles';?>@endif
+          <span>{!! $var !!}</span>
+        </div>
 
-  </span></pre>
-    
-    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$c->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <pre>Fecha de última edición:&#09;&#09;<span>{{$c->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
+      </div>
+      <!---->
+      <!----->
+        <div class="tabs oc" id="dos">
+          <div class="enc">
+            <h3 id="txt">Estado</h3>
+          </div>
 
-  </div>
+          <div class="srow">
+            <span>Fecha de creación</span>
+            <span>{!! $c->created_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+          <div class="srow">
+            <span>Fecha de última edición</span>
+            <span>{!! $c->updated_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+        </div>
+      </div>
+    </center>
 </div>
 @stop

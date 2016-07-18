@@ -35,15 +35,6 @@
     Route::resource('tipos', 'TiposController');
     Route::match(['get','post'],'/darAltaTipos/{id}','TiposController@darAlta');
 
-
-
-//});
-
-//Route::group(['middleware'=>['auth','admingerentevendedor']], function(){ //ADMINISTRADOR-GERENTE-VENDEDOR
-
-    Route::resource ('clientes', 'ClientesController');
-    Route::match(['get','post'],'/darAltaClientes/{id}','ClientesController@darAlta');
-
     Route::resource('distribuidores', 'DistribuidoresController');
     Route::match(['get','post'],'/darAltaDistribuidores/{id}','DistribuidoresController@darAlta');
 
@@ -63,12 +54,6 @@
     Route::match(['get','post'],'/precioProductoCompra/{producto}/{presentacion}','ComprasController@precioProductoCompra');
     Route::match(['get','post'],'/nombrePresentacionCompra/{presentacion}','ComprasController@nombrePresentacionCompra');
 
-    Route::resource('ventas', 'VentasController');
-    Route::match(['get','post'],'/llenadoPresentacionesVenta/{nombre}','VentasController@llenadoPresentacionesVenta');
-    Route::match(['get','post'],'/precioProductoVenta/{producto}/{presentacion}','VentasController@precioProductoVenta');
-    Route::match(['get','post'],'/nombrePresentacionVenta/{presentacion}','VentasController@nombrePresentacionVenta');
-    Route::resource('detallecompras', 'DetallecomprasController');
-
     Route::resource ('asistencias', 'AsistenciasController');
 
     Route::resource ('pagos', 'PagosController');
@@ -82,32 +67,6 @@
     Route::resource ('pagocompras', 'PagocomprasController');
     Route::get('pagocompras/crear/{id}','PagocomprasController@crear');
     Route::match(['get','post'],'/guardarPagosc/{id}','PagocomprasController@guardar');
-//});
-
-//Route::group(['middleware'=>['auth','todos']], function(){ //ADMINISTRADOR-GERENTE-VENDEDOR-CAJERO
-
-
-//});
-//////////////////////////RUTAS DE ACCESO PUBLICO////////////////////////////////////////////////////
-
-Route::resource('login','LoginController');
-Route::get('logout','LoginController@logout');//salir
-
-
-Route::get('/', function () {
-    $users=DB::select('select * from users');
-        $cuenta=0;
-        foreach ($users as $us) {
-          $cuenta=$cuenta+1;
-        }
-        if($cuenta==0){
-            return view('primerUsuario');
-
-        }else{
-            return view('auth/login');
-        }
-});
-
 
 
     Route::resource ('reparaciones', 'ReparacionesController');
@@ -126,42 +85,57 @@ Route::get('/', function () {
 
     Route::resource('transferencias', 'transferenciasController');
 
+    Route::resource('detallecompras', 'DetallecomprasController');
+
+    Route::resource('cajaservicios', 'CajaserviciosController');
+    Route::resource('cajamobiliarios', 'CajamobiliariosController');
+
+    Route::resource('bancomobiliarios', 'BancomobiliariosController');
+    Route::resource('bancoservicios', 'BancoserviciosController');
+
+    Route::resource('remesas', 'RemesasController');
+
+    Route::resource('rentas','RentasController');
+
+    Route::resource('cajausuarios','CajausuariosController');
+    Route::resource('descuentoaportes','DescuentoaportesController');
+    Route::match(['get','post'],'/darAltaDescuentoaportes/{id}','DescuentoaportesController@darAlta');
+//});
+
+//Route::group(['middleware'=>['auth','admingerentevendedor']], function(){ //ADMINISTRADOR-GERENTE-VENDEDOR
 
 
+//});
 
+//Route::group(['middleware'=>['auth','todos']], function(){ //ADMINISTRADOR-GERENTE-VENDEDOR-CAJERO
 
-
-
-
-
-
-
-
-
-
-
-
-
+Route::resource('ventas', 'VentasController');
+Route::match(['get','post'],'/llenadoPresentacionesVenta/{nombre}','VentasController@llenadoPresentacionesVenta');
+Route::match(['get','post'],'/precioProductoVenta/{producto}/{presentacion}','VentasController@precioProductoVenta');
+Route::match(['get','post'],'/nombrePresentacionVenta/{presentacion}','VentasController@nombrePresentacionVenta');
 Route::resource('detallecompras', 'DetallecomprasController');
 
+Route::resource ('clientes', 'ClientesController');
+Route::match(['get','post'],'/darAltaClientes/{id}','ClientesController@darAlta');
 
 
+//});
+//////////////////////////RUTAS DE ACCESO PUBLICO////////////////////////////////////////////////////
 
+Route::resource('login','LoginController');
+Route::get('logout','LoginController@logout');//salir
+Route::get('pass','LoginController@pass');//recuperar contrasena
+Route::post('/pass/correo','LoginController@correo');
+Route::get('/', function () {
+    $users=DB::select('select * from users');
+        $cuenta=0;
+        foreach ($users as $us) {
+          $cuenta=$cuenta+1;
+        }
+        if($cuenta==0){
+            return view('primerUsuario');
 
-
-Route::resource('cajaservicios', 'CajaserviciosController');
-Route::resource('cajamobiliarios', 'CajamobiliariosController');
-
-Route::resource('bancomobiliarios', 'BancomobiliariosController');
-Route::resource('bancoservicios', 'BancoserviciosController');
-
-Route::resource('remesas', 'RemesasController');
-
-
-
-Route::resource('rentas','RentasController');
-
-
-Route::resource('cajausuarios','CajausuariosController');
-Route::resource('descuentoaportes','DescuentoaportesController');
-Route::match(['get','post'],'/darAltaDescuentoaportes/{id}','DescuentoaportesController@darAlta');
+        }else{
+            return view('auth/login');
+        }
+});

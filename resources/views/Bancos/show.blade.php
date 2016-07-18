@@ -47,19 +47,62 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <h2>Bancos</h2>
     <h3 id="txt"> |{{$banco->nombre}}</h3>
   </div>
-  <div class="datos">
-    <pre>Identificador:&#09;&#09;&#09;&#09;&#09;&#09;<span>{!!$banco->id !!}</span></pre>
-    <pre>Nombre de Banco:&#09;&#09;&#09;&#09;&#09;<span>{{ $banco->nombre }}</span></pre>
-    <pre>Número de Cuenta Bancaria:&#09;&#09;&#09;<span>{{ $banco->numero}}</span></pre>
-    <pre>Representante de Cuenta Bancaria:&#09;<span>{{ $banco->representante}}</span></pre>
-    @if($banco->estado == 1)
-      <?php $var = 'Activo'?>
-    @else
-      <?php $var = 'En papelera'?>
-    @endif
-    <pre>Estado:&#09;&#09;&#09;&#09;&#09;<span>{{$var}}</span></pre>
-    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$banco->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <pre>Fecha de última edición:&#09;&#09;<span>{{$banco->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
-  </div>
+  <center>
+    <div class="tpcontenido">
+      <ul class="supernav">
+        <li id ="luno" class="activ" onclick="cambio('uno','luno')">Datos</li>
+        <li id="ldos" onclick="cambio('dos','ldos')">Estado</li>
+      </ul>
+
+      <div class="tabs ve" id="uno">
+        <!---->
+        <div class="enc">
+          <h3 id="txt">Datos</h3>
+        </div>
+        <div class="srow">
+          <span>Código</span>
+          <span>{!! $banco->id!!}</span>
+        </div>
+        <div class="srow">
+          <span>Nombre</span>
+          <span>{!! $banco->nombre !!}</span>
+        </div>
+        <div class="srow">
+          <span>Cuenta Bancaria</span>
+          <span>{!! $banco->numero !!}</span>
+        </div>
+        <div class="srow">
+          <span>Nombre del Representante</span>
+          <span>{!! $banco->representante !!}</span>
+        </div>
+
+      </div>
+      <!---->
+      <!----->
+        <div class="tabs oc" id="dos">
+          <div class="enc">
+            <h3 id="txt">Estado</h3>
+          </div>
+          <div class="srow">
+            @if($banco->estado == 1)
+              <?php $var = 'Activo'?>
+            @else
+              <?php $var = 'En papelera'?>
+            @endif
+            <span>Estado</span>
+            <span>{!! $var !!}</span>
+          </div>
+
+          <div class="srow">
+            <span>Fecha de creación</span>
+            <span>{!! $banco->created_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+          <div class="srow">
+            <span>Fecha de última edición</span>
+            <span>{!! $banco->updated_at->format('d-m-Y g:i:s a') !!}</span>
+          </div>
+        </div>
+      </div>
+    </center>
 </div>
 @stop

@@ -103,7 +103,7 @@ class BancosController extends Controller
       $bancos = Bancos::find($id);
        $bancos->estado=false;
        $bancos->save();
-       Bitacoras::bitacora("Banco de baja: ".$request['nombre']);
+       Bitacoras::bitacora("Banco enviado a papelera: ".$bancos['nombre']);
        Session::flash('mensaje','Registro dado de Baja');
 
        return Redirect::to('/bancos');
@@ -112,7 +112,7 @@ class BancosController extends Controller
       $bancos = Bancos::find($id);
          $bancos->estado=true;
          $bancos->save();
-      Bitacoras::bitacora("Modificación de banco: ".$request['nombre']);
+      Bitacoras::bitacora("Banco activado: ".$bancos['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/bancos');
     }

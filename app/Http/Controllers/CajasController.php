@@ -57,7 +57,7 @@ class CajasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Bitacoras::bitacora("Registro de nueva caja: ".$request['nombre']);
         Cajas::create($request->All());
         return redirect('/cajas')->with('mensaje','Registro Guardado');
     }
@@ -95,7 +95,7 @@ class CajasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { Bitacoras::bitacora("Modificación de caja: ".$request['nombre']);
       $cajas=Cajas::find($id);
       $cajas->fill($request->all());
       $cajas->save();
@@ -114,6 +114,7 @@ class CajasController extends Controller
         $cajas = Cajas::find($id);
          $cajas->estado=false;
          $cajas->save();
+         Bitacoras::bitacora("Caja enviada a papelera: ".$cajas['nombre']);
          Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/cajas');
     }
@@ -121,6 +122,7 @@ class CajasController extends Controller
       $cajas = Cajas::find($id);
          $cajas->estado=true;
          $cajas->save();
+         Bitacoras::bitacora("Caja activada: ".$cajas['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/cajas');
     }
@@ -201,7 +203,7 @@ class CajasController extends Controller
         $stock[$i]['nombre'] = $lp->nombre;
         $stock[$i]['cantidad'] = Cajas::stock($lp->id);
       }
-      
+
       //Renderizar la view
       return view('cajas.stats', compact(
         'hoy',

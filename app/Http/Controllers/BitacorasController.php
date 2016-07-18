@@ -3,14 +3,13 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-use sialas\User;
+
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
-use sialas\Asistencia;
 use sialas\Bitacoras;
+use sialas\User;
 
-
-class AsistenciasController extends Controller
+class BitacorasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +18,9 @@ class AsistenciasController extends Controller
      */
     public function index()
     {
-
+        $bitacoras=Bitacoras::buscar();
+        $usr = new User;
+        return view('bitacoras.index',compact('bitacoras','usr'));
     }
 
     /**
@@ -29,7 +30,7 @@ class AsistenciasController extends Controller
      */
     public function create()
     {
-        return view('Asistencias.create');
+        //
     }
 
     /**
@@ -40,17 +41,7 @@ class AsistenciasController extends Controller
      */
     public function store(Request $request)
     {
-      $var=0;
-        $id=User::where('codigo',$request['users_id'])->get();
-        foreach ($id as $i) {
-          $var=$i->id;
-        }
-        Asistencia::create([
-          'users_id'=>$var,
-        ]);
-        Bitacoras::bitacora("Registro de asistencia");
-        return redirect('/asistencias')->with('mensaje','Registro Guardado');
-
+        //
     }
 
     /**

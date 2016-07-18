@@ -8,6 +8,7 @@
         {!! Html::script('https://www.gstatic.com/charts/loader.js') !!}
 
         {!!Html::script('js/scriptVentas.js')!!}
+        {!!Html::script('js/jquery.maskedinput.js')!!}
         {!!Html::style('css/wb.min.css')!!}
         {!!Html::script('js/wb.js')!!}
         <!--<script type="text/javascript" src="{{{ asset('/js/wb.js') }}}"></script>-->

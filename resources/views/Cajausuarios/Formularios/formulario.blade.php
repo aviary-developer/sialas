@@ -2,7 +2,7 @@
 <div class="fila">
   <div>
     {!!Form::label('lfecha','Fecha de planilla:')!!}
-    {!!Form::date('fecha')!!}
+    {!!Form::date('fecha',null,['readonly'=>'readonly'])!!}
   </div>
   <div>
     {!!Form::label('lcaja','Caja:')!!}
@@ -32,7 +32,7 @@
     @endforeach
     <?php echo "<br>"; ?>
     {!!Form::label('ltotal','Total de planilla:')!!}
-    {!!Form::text('cantidad',number_format($planilla->totalplanilla($planilla->id), 2, '.', ''))!!}
+    {!!Form::text('cantidad',number_format($planilla->totalplanilla($planilla->id), 2, '.', ''),['readonly'=>'readonly'])!!}
 </div>
 <div>
   {!!Form::label('ldetalle','Detalle:')!!}

@@ -23,6 +23,7 @@
           <div class="doption">
             <li class="mhome"><img src ={!! asset('img/WB/general/WB.svg') !!} alt="Logo" class="logoInicio" /></li>
           </div>
+          <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2 || Auth::user()->tipo==3 || Auth::user()->tipo==4)-->
           <div class = "doption">
             <li class="moption">
               <a href="#">
@@ -34,6 +35,8 @@
               <a href={!! asset('/clientes') !!}>Clientes</a>
             </div>
           </div>
+          <!--coment@endif-->
+          <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2)-->
           <div class = "doption">
             <li class="moption">
               <a href="#">
@@ -80,6 +83,7 @@
               <a href={!! asset('/servicios') !!}>Servicios</a>
             </div>
           </div>
+        <!--coment@endif-->
         </div>
       </nav>
     </header>

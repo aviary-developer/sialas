@@ -1,3 +1,4 @@
+<?php $a=1 ?>
 @extends('base')
 @section('layout')
   <div class="panel">

@@ -201,6 +201,7 @@ class CajasController extends Controller
         $stock[$i]['nombre'] = $lp->nombre;
         $stock[$i]['cantidad'] = Cajas::stock($lp->id);
       }
+      
       //Renderizar la view
       return view('cajas.stats', compact(
         'hoy',

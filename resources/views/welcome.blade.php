@@ -52,13 +52,6 @@
           <div class = "doption">
             <li class="moption">
               <a href="#">
-                Inventario
-              </a>
-            </li>
-          </div>
-          <div class = "doption">
-            <li class="moption">
-              <a href="#">
                 Administración
               </a>
             </li>

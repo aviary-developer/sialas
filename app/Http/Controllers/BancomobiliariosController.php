@@ -13,6 +13,7 @@ use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
+use sialas\Bitacoras;
 
 class BancomobiliariosController extends Controller
 {
@@ -48,7 +49,7 @@ class BancomobiliariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Bitacoras::bitacora("Registro nuevo pago de mobiliario");
         Bancomobiliarios::create($request->All());
         return redirect('/bancomobiliarios')->with('mensaje','Registro Guardado');
     }
@@ -62,7 +63,7 @@ class BancomobiliariosController extends Controller
     public function show($id)
     {
         $c = Bancomobiliarios::find($id);
-        
+
         return View::make('Bancomobiliarios.show')->with('c', $c);
     }
 
@@ -90,7 +91,7 @@ class BancomobiliariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Bitacoras::bitacora("Modificación datos pago  de mobiliario");
         $bancomobiliarios = Bancomobiliarios::find($id);
         $bancomobiliarios->fill($request->All());
         $bancomobiliarios->save();
@@ -107,7 +108,7 @@ class BancomobiliariosController extends Controller
     public function destroy($id)
     {
         //
-      
+
     }
-    
+
 }

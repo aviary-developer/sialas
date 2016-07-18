@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Bancos;
@@ -12,6 +12,8 @@ use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
+use sialas\Bitacora;
+use Auth;
 
 class BancosController extends Controller
 {
@@ -45,7 +47,7 @@ class BancosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { Bitacoras::bitacora("Registro de nuevo banco: ".$request['nombre']);
       Bancos::create($request->All());
       return redirect('/bancos')->with('mensaje','Registro Guardado');
     }
@@ -82,7 +84,7 @@ class BancosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {Bitacoras::bitacora("Modificación de banco: ".$request['nombre']);
       $bancos=Bancos::find($id);
       $bancos->fill($request->all());
       $bancos->save();
@@ -101,13 +103,16 @@ class BancosController extends Controller
       $bancos = Bancos::find($id);
        $bancos->estado=false;
        $bancos->save();
+       Bitacoras::bitacora("Banco de baja: ".$request['nombre']);
        Session::flash('mensaje','Registro dado de Baja');
+
        return Redirect::to('/bancos');
     }
     public function darAlta($id){
       $bancos = Bancos::find($id);
          $bancos->estado=true;
          $bancos->save();
+      Bitacoras::bitacora("Modificación de banco: ".$request['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/bancos');
     }

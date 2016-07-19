@@ -78,13 +78,15 @@
               <a href={!! asset('/productos') !!}>Productos</a>
               <a href={!! asset('/mobiliarios') !!}>Mobiliarios</a>
               <a href={!! asset('/servicios') !!}>Servicios</a>
+              <a href={!! asset('/rentas') !!}>Impuesto/renta</a>
+              <a href={!! asset('/descuentoaportes') !!}>Descuentos/Aportaciones</a>
             </div>
           </div>
           <!--coment@endif-->
             <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2 || Auth::user()->tipo==3 || Auth::user()->tipo==4)-->
           <div class = "doption">
             <li class="moption">
-              <a href="/logout">
+              <a href={!! asset('/logout') !!}>
                 Salir
               </a>
             </li>

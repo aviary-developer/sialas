@@ -92,11 +92,14 @@
 								</a>
 								<span class="tooltiptextup">Editar</span>
 							</div>
-
+              @if(Auth::check()==1)
+                @if(Auth::user()->id!=$user->id)
 							<div class="tooltip">
 								@include('User.Formularios.darDeBaja')
 								<span class="tooltiptextup">Papelera</span>
 							</div>
+            @endif
+            @endif
 							<div class="tooltip">
 								<a href={!! asset("/users/".$user->id) !!}>
 									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>

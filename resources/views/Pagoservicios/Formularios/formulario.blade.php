@@ -50,14 +50,8 @@ if($bandera==1){
 			</select>
 		</div>
 		<div id='cheque' style='display:none'>
-			
 			{!!Form::label('lcheque','Número de Cheque:')!!}
 			{!!Form::text('cheque',null,['placeholder'=>'Numero de cheque'])!!}
-		</div>
-		<div class="alerta-errores">
-			@foreach ($errors->get('monto') as $error)
-				<br>{{$error}}
-			@endforeach
 		</div>
 		{!!Form::label('lmonto','Monto ($):')!!}
 		{!!Form::text('monto',null,['placeholder'=>'Monto a cancelar'])!!}
@@ -65,20 +59,10 @@ if($bandera==1){
 		{!!Form::text('iva',null,['placeholder'=>'IVA cancelado'])!!}
 	</div>
 	<div>
-		<div class="alerta-errores">
-			@foreach ($errors->get('factura') as $error)
-				<br>{{$error}}
-			@endforeach
-		</div>
 		{!!Form::label('lfactura','Número de factura:')!!}
 		{!!Form::text('factura',null,['placeholder'=>'Número de factura o ticket de pago'])!!}
 		{!!Form::label('lfactura','Renta retenida:')!!}
 		{!!Form::text('renta',null,['placeholder'=>'Valor de renta retenida'])!!}
-		<div class="alerta-errores">
-			@foreach ($errors->get('detalle') as $error)
-				<br>{{$error}}
-			@endforeach
-		</div>
 		{!!Form::label('ldetalle','Detalle:')!!}
 		{!!Form::textarea('detalle',null,['placeholder'=>'Describa el detalle de esta salida','rows'=>'4'])!!}
 	</div>

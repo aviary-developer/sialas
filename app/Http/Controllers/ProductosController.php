@@ -12,7 +12,7 @@ use sialas\Presentaciones;
 use sialas\Detallecompras;
 use sialas\Marcas;
 use sialas\Productos;
-
+use sialas\Bitacoras;
 use Redirect;
 use View;
 use Session;
@@ -52,7 +52,7 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { Bitacoras::bitacora("Registro de nuevo producto: ".$request['nombre']);
        $file = Input::file('nombre_img');
        //Creamos una instancia de la libreria instalada
        $image = \Image::make(\Input::file('nombre_img'));
@@ -124,7 +124,7 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   Bitacoras::bitacora("Modificación en producto: "$request['nombre']);
         $productos = Productos::find($id);
 
         $file = Input::file('nombre_img');
@@ -156,10 +156,10 @@ class ProductosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        $productos = Productos::find($id);
+    { $productos = Productos::find($id);
          $productos->estado=false;
          $productos->save();
+         Bitacoras::bitacora("Producto enviado a papelera: ".$productos['nombre']);
          Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/productos');
     }
@@ -167,6 +167,7 @@ class ProductosController extends Controller
          $productos = Productos::find($id);
          $productos->estado=true;
          $productos->save();
+         Bitacoras::bitacora("Producto activado: ".$productos['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/productos');
     }

@@ -57,10 +57,13 @@
             </li>
             <div class="lista">
               <a href={!! asset('/users') !!}>Usuarios</a>
-              <a href={!! asset('/remesas') !!}>Retiro / Remesa</a>
+              <a href={!! asset('/remesas/create') !!}>Retiro / Remesa</a>
               <a href={!! asset('/transferencias') !!}>Tranferencia</a>
               <a href={!! asset('/prestamos') !!}>Prestamos</a>
               <a href={!! asset('/stats') !!}>Estadísticas</a>
+              <a href={!! asset('/cajausuarios') !!}>Planillas</a>
+              <a href={!! asset('/bitacoras') !!}>Bitacora</a>
+
             </div>
           </div>
           <div class = "doption">
@@ -75,13 +78,15 @@
               <a href={!! asset('/productos') !!}>Productos</a>
               <a href={!! asset('/mobiliarios') !!}>Mobiliarios</a>
               <a href={!! asset('/servicios') !!}>Servicios</a>
+              <a href={!! asset('/rentas') !!}>Impuesto/renta</a>
+              <a href={!! asset('/descuentoaportes') !!}>Descuentos/Aportaciones</a>
             </div>
           </div>
           <!--coment@endif-->
             <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2 || Auth::user()->tipo==3 || Auth::user()->tipo==4)-->
           <div class = "doption">
             <li class="moption">
-              <a href="/logout">
+              <a href={!! asset('/logout') !!}>
                 Salir
               </a>
             </li>

@@ -92,7 +92,6 @@
 								</a>
 								<span class="tooltiptextup">Editar</span>
 							</div>
-
 							<div class="tooltip">
 								@include('User.Formularios.darDeBaja')
 								<span class="tooltiptextup">Papelera</span>

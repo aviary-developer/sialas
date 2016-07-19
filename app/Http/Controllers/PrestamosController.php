@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Prestamos;
@@ -48,7 +48,7 @@ class PrestamosController extends Controller
      */
     public function store(Request $request)
     {
-
+      Bitacoras::bitacora("Registro de nuevo prestamo");
       $reparacion = new Prestamos;
       $reparacion->banconombre = $request->banconombre;
       $reparacion->monto = $request->monto;
@@ -144,7 +144,7 @@ class PrestamosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { Bitacoras::bitacora("Modificación en prestamo");
       $prestamos=Prestamos::find($id);
       $prestamos->fill($request->All());
       $prestamos->save();

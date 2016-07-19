@@ -22,8 +22,8 @@
   </div>
   <div class="panel">
     <div class="enc">
-      <h2>Retiro / Remesa</h2>
-
+      <h2>Movimientos</h2>
+      
     </div>
     {!! Form::open(['route'=>'remesas.store','method'=>'POST'])!!}
     @include('Remesas.Formularios.formulario')

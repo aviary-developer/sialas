@@ -14,6 +14,7 @@ use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
+use sialas\Bitacoras;
 
 class BancoserviciosController extends Controller
 {
@@ -54,9 +55,9 @@ class BancoserviciosController extends Controller
         return redirect('/bancoservicios')->with('mensaje','Registro Guardado');
     }*/
 
-    public function store(BancoserviciosRequest $request)
+    public function store(Request $request)
     {
-        //
+        Bitacoras::bitacora("Registro nuevo pago de servicio");
         if($request->vradio == 'Cheque'){
             $banco = new Bancoservicios;
             $banco->cantidad = $request->cantidad;
@@ -105,8 +106,8 @@ class BancoserviciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BancoserviciosRequest $request, $id)
-    {
+    public function update(Request $request, $id)
+    {   Bitacoras::bitacora("Modificación datos pago  de servicio");
         $bancoservicios = Bancoservicios::find($id);
         $bancoservicios->fill($request->All());
         $bancoservicios->save();

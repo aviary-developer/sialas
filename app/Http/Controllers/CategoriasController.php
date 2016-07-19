@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Categorias;
@@ -47,7 +47,7 @@ class CategoriasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Bitacoras::bitacora("Registro nueva categoria :".$request['nombre']);
         Categorias::create($request->All());
         return redirect('/categorias')->with('mensaje', 'Registro Guardado');
     }
@@ -87,7 +87,7 @@ class CategoriasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   Bitacoras::bitacora("Modificación de categoria".$request['nombre']);
         //
         $categoria = Categorias::find($id);
         $categoria->fill($request->All());
@@ -104,10 +104,10 @@ class CategoriasController extends Controller
      */
     public function destroy($id)
     {
-        //
         $categorias = Categorias::find($id);
          $categorias->estado=false;
          $categorias->save();
+         Bitacoras::bitacora("Categoria enviada a papelera: ".$categorias['nombre']);
          Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/categorias');
     }
@@ -115,6 +115,7 @@ class CategoriasController extends Controller
       $categorias = Categorias::find($id);
          $categorias->estado=true;
          $categorias->save();
+         Bitacoras::bitacora("Categoria activada: ".$categorias['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/categorias');
     }

@@ -47,6 +47,7 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
+      Bitacoras::bitacora("Registro de venta");
       $venta = new Ventas;
       $venta->nombre_Cliente = $request->clienteVenta;
       $venta->usuario_id = 1;

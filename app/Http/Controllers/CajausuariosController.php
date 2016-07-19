@@ -1,7 +1,7 @@
 <?php
 
 namespace sialas\Http\Controllers;
-
+use sialas\Bitacoras;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use sialas\Http\Requests;
@@ -62,9 +62,9 @@ class CajausuariosController extends Controller
     if(!$existe){
         return redirect('/cajausuarios')->with('mensaje','Planilla ya se encontraba elaborada');
       }
-
         $arreglo=$request['arreglo'];
         if(count($arreglo)>0){
+          Bitacoras::bitacora("Registro de planilla");
           $cp=Planillas::count();
           Planillas::create([
             'id'=>$cp+1,
@@ -136,7 +136,7 @@ class CajausuariosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   Bitacoras::bitacora("Pago de planilla");
         $request['planilla_id']=$id;
         Cajausuarios::create($request->all());
 

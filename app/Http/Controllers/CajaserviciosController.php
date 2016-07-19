@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use Input;
 use Response;
@@ -48,7 +48,7 @@ class CajaserviciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Bitacoras::bitacora("Pago de servicio");
         Cajaservicios::create($request->All());
         return redirect('/cajaservicios')->with('mensaje','Registro Guardado');
     }
@@ -62,7 +62,7 @@ class CajaserviciosController extends Controller
     public function show($id)
     {
         $c = Cajaservicios::find($id);
-        
+
         return View::make('Cajaservicios.show')->with('c', $c);
     }
 
@@ -79,7 +79,7 @@ class CajaserviciosController extends Controller
         $m= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
         return view('Cajaservicios.edit',compact('cajaservicios','c','m'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -89,7 +89,7 @@ class CajaserviciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {   Bitacoras::bitacora("Modificación pago de servicio");
         $cajaservicios = Cajaservicios::find($id);
         $cajaservicios->fill($request->All());
         $cajaservicios->save();

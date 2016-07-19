@@ -1,7 +1,7 @@
 <?php
 
 namespace sialas\Http\Controllers;
-
+use sialas\Bitacoras;
 use Illuminate\Http\Request;
 use Response;
 use sialas\Http\Requests;
@@ -48,7 +48,7 @@ class ComprasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Bitacoras::bitacora("Registro de compra");
         $compra = new Compras;
         $compra->proveedor_id = $request->proveedorVenta;
         $compra->usuario_id = 1;

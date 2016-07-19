@@ -1,7 +1,7 @@
 <?php
 
 namespace sialas\Http\Controllers;
-
+use sialas\Bitacoras;
 use Illuminate\Http\Request;
 use Mail;
 use Auth;
@@ -45,6 +45,7 @@ class LoginController extends Controller
     {
         if(Auth::attempt(['name'=>$request['name'],'password'=>$request['password']])){
             return view('welcome');
+            Bitacoras::bitacora("Ingreso al sistema");
         }else{
             return redirect('/');
         }
@@ -96,6 +97,7 @@ class LoginController extends Controller
     }
 
     public function logout(){
+        Bitacoras::bitacora("Salida del sistema");
         Auth::logout();
         return Redirect('/');
     }

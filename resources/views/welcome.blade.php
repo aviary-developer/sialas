@@ -77,6 +77,15 @@
               <a href={!! asset('/servicios') !!}>Servicios</a>
             </div>
           </div>
+          <!--coment@endif-->
+            <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2 || Auth::user()->tipo==3 || Auth::user()->tipo==4)-->
+          <div class = "doption">
+            <li class="moption">
+              <a href="/logout">
+                Salir
+              </a>
+            </li>
+          </div>
         <!--coment@endif-->
         </div>
       </nav>

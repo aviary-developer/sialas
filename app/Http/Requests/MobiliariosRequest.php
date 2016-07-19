@@ -24,7 +24,7 @@ class MobiliariosRequest extends Request
     public function rules()
     {
         return [
-            'codigo'=>'required'
+            'codigo'=>'required',
             'nombre'=>'required | min:5',
             'precio'=>'required',
             'descripcion'=>'required|min:5',

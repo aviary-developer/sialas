@@ -35,7 +35,7 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
 
 <div class="panel">
 	<div class="enc">
-    <h2>Remesas</h2>
+    <h2>Retiro / Remesa</h2>
   </div>
 	<center>
 		<table id="block">
@@ -55,25 +55,16 @@ echo "<script>swal('$men', 'Click al botón', 'success')<\script";?>
           @if($rs->transaccion==0)<?php echo 'Retiro' ?>@endif
           @if($rs->transaccion==1)<?php echo 'Remesa'?>@endif
         </td>
-        <td>{{$rs->monto}}</td>
+        <td><center>{{'$ '.number_format($rs->monto,2)}}</center></td>
 				<td>{{$rs->nombreCajas($rs->caja_id)}}</td>
         <td>{{$rs->nombreBancos($rs->banco_id)}}</td>
 
 
       </td></center>
 				<td>
-					<div class="up">
-						<img src={!! asset('/img/WB/mas.svg') !!} alt="" class="plus"/>
-						<div class="image">
-
-							<div class="tooltip">
-								<a href={!! asset("/remesas/".$rs->id) !!}>
-									<img src={!! asset('/img/WB/ver.svg') !!} alt="" class="circ"/>
-								</a>
-								<span class="tooltiptextup">Ver</span>
-							</div>
-						</div>
-					</div>
+          <a href={!! asset("/remesas/".$rs->id) !!}>
+            <img src={!! asset('/img/WB/ver.svg') !!} alt="" class="plus"/>
+          </a>
 				</td>
 			</tr>
 			<?php $a=$a+1; ?>

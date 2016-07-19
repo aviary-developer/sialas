@@ -53,7 +53,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
         </div>
         <div class="srow">
           <span>Monto</span>
-          <span>{!! $r->monto !!}</span>
+          <span>{!! '$ '.number_format($r->monto,2) !!}</span>
         </div>
         <div class="srow">
           <span>Caja</span>

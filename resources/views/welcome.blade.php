@@ -57,7 +57,7 @@
             </li>
             <div class="lista">
               <a href={!! asset('/users') !!}>Usuarios</a>
-              <a href={!! asset('/remesas/create') !!}>Retiro / Remesa</a>
+              <a href={!! asset('/remesas') !!}>Retiro / Remesa</a>
               <a href={!! asset('/transferencias') !!}>Tranferencia</a>
               <a href={!! asset('/prestamos') !!}>Prestamos</a>
               <a href={!! asset('/stats') !!}>Estadísticas</a>

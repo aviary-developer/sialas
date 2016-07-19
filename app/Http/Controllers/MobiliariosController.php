@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Http\Requests\MobiliariosRequest;
@@ -57,7 +57,7 @@ class MobiliariosController extends Controller
   */
   public function store(MobiliariosRequest $request)
   {
-
+    Bitacoras::bitacora("Registro de nuevo mobiliario: ".$request['nombre']);
     $mobiliario = new Mobiliarios;
     $mobiliario->codigo = $request->codigo;
     $mobiliario->nombre= $request->nombre;
@@ -200,7 +200,7 @@ class MobiliariosController extends Controller
   */
   public function update(MobiliariosRequest $request, $id)
   {
-    //
+    Bitacoras::bitacora("Modificación de mobiliario: ".$request['nombre']);
     $mobiliarios = Mobiliarios::find($id);
     $mobiliarios->codigo = $request->codigo;
     $mobiliarios->nombre= $request->nombre;
@@ -235,10 +235,10 @@ class MobiliariosController extends Controller
   */
   public function destroy($id)
   {
-    //
     $mobiliarios = Mobiliarios::find($id);
     $mobiliarios->estado=false;
     $mobiliarios->save();
+    Bitacoras::bitacora("Mobiliario enviado a papelera: ".$mobiliarios['nombre']);
     Session::flash('mensaje','Registro dado de Baja');
     return Redirect::to('/mobiliarios');
   }

@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Transferencias;
@@ -44,7 +44,7 @@ class TransferenciasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { Bitacoras::bitacora("Registro de nueva transferencia");
       Transferencias::create($request->All());
       return redirect('/transferencias')->with('mensaje','Registro Guardado');
     }

@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Pagoservicios;
@@ -101,7 +101,7 @@ class PagoserviciosController extends Controller
     }
 
     public function guardar(Request $request, $servicio)
-    {
+    { Bitacoras::bitacora("Pago de servicio");
       $pago = new Pagoservicios;
       if($request->vradio){
         $pago->banco_id = null;

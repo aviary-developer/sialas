@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Marcas;
 use sialas\Productos;
@@ -52,7 +52,7 @@ class MarcasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(MarcasRequest $request)
-    {
+    {   Bitacoras::bitacora("Registro de nueva marca: ".$request['nombre']);
         Marcas::create($request->All());
         return redirect('/marcas')->with('mensaje','Registro Guardado');
 
@@ -94,7 +94,7 @@ class MarcasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(MarcasRequest $request, $id)
-    {
+    {   Bitacoras::bitacora("Modificación de marca: ".$request['nombre']);
         $marcas = Marcas::find($id);
         $marcas->fill($request->All());
         $marcas->save();
@@ -113,6 +113,7 @@ class MarcasController extends Controller
         $marcas = Marcas::find($id);
          $marcas->estado=false;
          $marcas->save();
+         Bitacoras::bitacora("Marca enviada a papelera: ".$marcas['nombre']);
          Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/marcas');
     }
@@ -120,6 +121,7 @@ class MarcasController extends Controller
         $marcas = Marcas::find($id);
          $marcas->estado=true;
          $marcas->save();
+         Bitacoras::bitacora("Marca activada: ".$marcas['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/marcas');
     }

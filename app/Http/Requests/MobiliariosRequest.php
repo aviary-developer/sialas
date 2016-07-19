@@ -24,7 +24,7 @@ class MobiliariosRequest extends Request
     public function rules()
     {
         return [
-            'codigo'=>'required'
+            'codigo'=>'required | min:6',
             'nombre'=>'required | min:5',
             'precio'=>'required',
             'descripcion'=>'required|min:5',
@@ -32,8 +32,9 @@ class MobiliariosRequest extends Request
     }
     public function messages()
     {
-        return [
+        return[
             'codigo.required'=>'El campo codigo es obligatorio',
+            'codigo.min'=>'El campo código debe contener al menos 6 caracteres',
 
             'nombre.required' => 'El nombre es obligatorio',
             'nombre.min' => 'Nombre nombre debe contener al menos 5 caracteres',

@@ -3,20 +3,13 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-use sialas\Bitacoras;
+
 use sialas\Http\Requests;
-use Input;
-use Response;
 use sialas\Http\Controllers\Controller;
-use sialas\Cajas;
-use sialas\Servicios;
-use sialas\Cajaservicios;
+use sialas\Bitacoras;
+use sialas\User;
 
-use Redirect;
-use View;
-use Session;
-
-class CajaserviciosController extends Controller
+class BitacorasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,8 +18,9 @@ class CajaserviciosController extends Controller
      */
     public function index()
     {
-        $cajaservicios=Cajaservicios::orderBy('created_at','asc')->paginate(8);
-        return view('Cajaservicios.index',compact('cajaservicios'));
+        $bitacoras=Bitacoras::buscar();
+        $usr = new User;
+        return view('bitacoras.index',compact('bitacoras','usr'));
     }
 
     /**
@@ -36,9 +30,7 @@ class CajaserviciosController extends Controller
      */
     public function create()
     {
-        $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        $m= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        return view('cajaservicios.create',compact('c','m'));
+        //
     }
 
     /**
@@ -48,9 +40,8 @@ class CajaserviciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {   Bitacoras::bitacora("Pago de servicio");
-        Cajaservicios::create($request->All());
-        return redirect('/cajaservicios')->with('mensaje','Registro Guardado');
+    {
+        //
     }
 
     /**
@@ -61,9 +52,7 @@ class CajaserviciosController extends Controller
      */
     public function show($id)
     {
-        $c = Cajaservicios::find($id);
-
-        return View::make('Cajaservicios.show')->with('c', $c);
+        //
     }
 
     /**
@@ -74,12 +63,8 @@ class CajaserviciosController extends Controller
      */
     public function edit($id)
     {
-        $cajaservicios =Cajaservicios::find($id);
-        $c= Cajas::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        $m= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
-        return view('Cajaservicios.edit',compact('cajaservicios','c','m'));
+        //
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -89,12 +74,8 @@ class CajaserviciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   Bitacoras::bitacora("Modificación pago de servicio");
-        $cajaservicios = Cajaservicios::find($id);
-        $cajaservicios->fill($request->All());
-        $cajaservicios->save();
-        Session::flash('mensaje','¡Registro Actualizado!');
-        return Redirect::to('/cajaservicios');
+    {
+        //
     }
 
     /**

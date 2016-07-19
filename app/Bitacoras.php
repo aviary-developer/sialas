@@ -17,4 +17,8 @@ class Bitacoras extends Model
         ]);
         }
       }
+
+      public static function buscar(){
+        return Bitacoras::orderBy('created_at')->paginate(8);
+      }
 }

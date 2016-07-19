@@ -139,3 +139,5 @@ Route::get('/', function () {
             return view('auth/login');
         }
 });
+
+Route::resource('bitacoras','BitacorasController');

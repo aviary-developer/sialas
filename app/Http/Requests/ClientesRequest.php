@@ -54,7 +54,7 @@ class ClientesRequest extends Request
             'nit.max' => 'El nit de cliente debe contener 17 caracteres',
 
             'direccion.required' => 'El campo direccion de cliente es obligatorio',
-            'direccion.min' => 'El campo direccion debe contener al menos 10 caracteres'
+            'direccion.min' => 'El campo direccion debe contener al menos 10 caracteres',
 
             'correo.required' => 'El campo correo de cliente es obligatorio',
             'correo.email' => 'El correo no es valido',

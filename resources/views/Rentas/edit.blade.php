@@ -20,9 +20,11 @@
       <h2>Rentas</h2>
       <h3 id='txt'> |Editar</h3>
     </div>
+
+
   {!!Form::model($renta,['route'=>['rentas.update',$renta->id],'method'=>'PUT'])!!}
 
-    @include('Proveedores.Formularios.formulario')
+    @include('Rentas.Tabla.tabla')
 
   {!!Form::submit('Actualizar')!!}
 

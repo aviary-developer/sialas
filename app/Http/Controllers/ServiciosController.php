@@ -12,6 +12,7 @@ use DB;
 use Redirect;
 use Session;
 use View;
+use sialas\Pagoservicios;
 
 
 class ServiciosController extends Controller
@@ -60,7 +61,9 @@ class ServiciosController extends Controller
     public function show($id)
     {
         $s = Servicios::find($id);
-        return View::make('Servicios.show')->with('s', $s);
+        $p = Pagoservicios::where('servicio_id',$id)->get();
+        return view('Servicios.show',compact('s','p'));
+
     }
 
     /**

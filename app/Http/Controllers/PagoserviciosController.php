@@ -5,6 +5,7 @@ namespace sialas\Http\Controllers;
 use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
+use sialas\Http\Requests\PagoserviciosRequest;
 use sialas\Http\Controllers\Controller;
 use sialas\Pagoservicios;
 use sialas\Servicios;
@@ -100,7 +101,7 @@ class PagoserviciosController extends Controller
       return view('pagoservicios.crear',compact('c','s','b','servicio'));
     }
 
-    public function guardar(Request $request, $servicio)
+    public function guardar(PagoserviciosRequest $request, $servicio)
     {
       $pago = new Pagoservicios;
       if($request->vradio){

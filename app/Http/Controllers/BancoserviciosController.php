@@ -54,7 +54,7 @@ class BancoserviciosController extends Controller
         return redirect('/bancoservicios')->with('mensaje','Registro Guardado');
     }*/
 
-    public function store(Request $request)
+    public function store(BancoserviciosRequest $request)
     {
         //
         if($request->vradio == 'Cheque'){
@@ -69,7 +69,7 @@ class BancoserviciosController extends Controller
             $caja->save();
             return redirect('/cajaservicios')->with('mensaje','Registro Guardado');
         }
-        
+
     }
 
     /**
@@ -96,7 +96,7 @@ class BancoserviciosController extends Controller
         $s= Servicios::where('estado','=', 1)->orderBy('nombre','asc')->get();
         return view('Bancoservicios.edit',compact('bancoservicios','s','b'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -105,7 +105,7 @@ class BancoserviciosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BancoserviciosRequest $request, $id)
     {
         $bancoservicios = Bancoservicios::find($id);
         $bancoservicios->fill($request->All());

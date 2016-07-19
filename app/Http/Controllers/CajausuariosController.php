@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\CajausuariosRequest;
 use sialas\User;
 use sialas\Descuentoaportes;
 use sialas\Rentas;
@@ -54,7 +55,7 @@ class CajausuariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CajausuariosRequest $request)
     {
       $date = Carbon::now();
       $date = $date->format('Y-m-d');
@@ -135,7 +136,7 @@ class CajausuariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CajausuariosRequest $request, $id)
     {
         $request['planilla_id']=$id;
         Cajausuarios::create($request->all());

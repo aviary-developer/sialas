@@ -19,11 +19,13 @@ use sialas\Pagocompras;
 use sialas\Remesas;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\CajasRequest;
 use DB;
 use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
+use sialas\Bitacoras;
 
 class CajasController extends Controller
 {
@@ -56,7 +58,7 @@ class CajasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CajasRequest $request)
     {   Bitacoras::bitacora("Registro de nueva caja: ".$request['nombre']);
         Cajas::create($request->All());
         return redirect('/cajas')->with('mensaje','Registro Guardado');
@@ -94,7 +96,7 @@ class CajasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CajasRequest $request, $id)
     { Bitacoras::bitacora("Modificación de caja: ".$request['nombre']);
       $cajas=Cajas::find($id);
       $cajas->fill($request->all());

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\PagocomprasRequest;
 use sialas\Pagocompras;
 use sialas\Compras;
 use sialas\Detallecompras;
@@ -43,7 +44,7 @@ class PagocomprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PagocomprasRequest $request)
     {
         //
     }
@@ -77,7 +78,7 @@ class PagocomprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PagocomprasRequest $request, $id)
     {
         //
     }

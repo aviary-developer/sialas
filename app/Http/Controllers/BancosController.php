@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\BancosRequest;
 use sialas\Bancos;
 use DB;
 use Redirect;
 use Session;
 use View;
 use Carbon\Carbon;
-use sialas\Bitacora;
 use Auth;
 
 class BancosController extends Controller
@@ -46,7 +46,7 @@ class BancosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BancosRequest $request)
     { Bitacoras::bitacora("Registro de nuevo banco: ".$request['nombre']);
       Bancos::create($request->All());
       return redirect('/bancos')->with('mensaje','Registro Guardado');
@@ -83,7 +83,7 @@ class BancosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BancosRequest $request, $id)
     {Bitacoras::bitacora("Modificación de banco: ".$request['nombre']);
       $bancos=Bancos::find($id);
       $bancos->fill($request->all());

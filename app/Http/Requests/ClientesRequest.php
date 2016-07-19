@@ -28,7 +28,7 @@ class ClientesRequest extends Request
             'apellido'=>'required|min:3 | max:30', 
             'dui'=>'required | max:10',
             'nit'=>'required | max:17',
-            'direccion'=>'required',
+            'direccion'=>'required | min:10',
             'correo'=>'required|email|unique:clientes',
             'telefono'=>'required | max:9',
 
@@ -54,6 +54,7 @@ class ClientesRequest extends Request
             'nit.max' => 'El nit de cliente debe contener 17 caracteres',
 
             'direccion.required' => 'El campo direccion de cliente es obligatorio',
+            'direccion.min' => 'El campo direccion debe contener al menos 10 caracteres'
 
             'correo.required' => 'El campo correo de cliente es obligatorio',
             'correo.email' => 'El correo no es valido',

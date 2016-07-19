@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\CategoriasRequest;
 use sialas\Categorias;
 use sialas\Productos;
 use Redirect;
@@ -46,7 +47,7 @@ class CategoriasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoriasRequest $request)
     {
         Categorias::create($request->All());
         return redirect('/categorias')->with('mensaje', 'Registro Guardado');
@@ -86,7 +87,7 @@ class CategoriasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoriasRequest $request, $id)
     {
         //
         $categoria = Categorias::find($id);

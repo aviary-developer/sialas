@@ -8,9 +8,13 @@ use sialas\Http\Requests;
 use sialas\Marcas;
 use sialas\Productos;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\MarcasRequest;
+use DB;
 use Redirect;
-use View;
 use Session;
+use View;
+use Carbon\Carbon;
+use Auth;
 
 class MarcasController extends Controller
 {
@@ -47,7 +51,7 @@ class MarcasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MarcasRequest $request)
     {
         Marcas::create($request->All());
         return redirect('/marcas')->with('mensaje','Registro Guardado');
@@ -89,7 +93,7 @@ class MarcasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MarcasRequest $request, $id)
     {
         $marcas = Marcas::find($id);
         $marcas->fill($request->All());

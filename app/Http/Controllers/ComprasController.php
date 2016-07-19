@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Response;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\ComprasRequest;
 use sialas\Productos;
 use sialas\Proveedores;
 use sialas\Presentaciones;
@@ -47,7 +48,7 @@ class ComprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComprasRequest $request)
     {
         $compra = new Compras;
         $compra->proveedor_id = $request->proveedorVenta;
@@ -102,7 +103,7 @@ class ComprasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComprasRequest $request, $id)
     {
         //
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\BancosRequest;
 use sialas\Bancomobiliarios;
 use sialas\Bancos;
 use sialas\Mobiliarios;
@@ -48,7 +49,7 @@ class BancomobiliariosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BancomobiliariosRequest $request)
     {   Bitacoras::bitacora("Registro nuevo pago de mobiliario");
         Bancomobiliarios::create($request->All());
         return redirect('/bancomobiliarios')->with('mensaje','Registro Guardado');
@@ -89,7 +90,7 @@ class BancomobiliariosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BancomobiliariosRequest $request, $id)
     {
         Bitacoras::bitacora("Modificación datos pago  de mobiliario");
         $bancomobiliarios = Bancomobiliarios::find($id);

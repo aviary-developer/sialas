@@ -1,7 +1,7 @@
 <?php
 
 namespace sialas\Http\Controllers;
-
+use sialas\Bitacoras;
 use Illuminate\Http\Request;
 use sialas\Bitacoras;
 use sialas\Http\Requests;

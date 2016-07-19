@@ -25,6 +25,8 @@ class ProductosRequest extends Request
     {
         return [
             'nombre'=>'required | min:3',
+            'proveedor'=>'required|min:4',
+            'n_recibo'=>'required|min:6',
         
         ];
     }
@@ -35,6 +37,7 @@ class ProductosRequest extends Request
             'nombre.required' => 'El campo tipo de servicio es obligatorio',
             'nombre.min' => 'Tipo de servicio debe contener al menos 3 caracteres',
 
+            'proveedor.required'=>'El campo proveedores obligatorio',
             'proveedor.min' => 'Proveedor debe contener al menos 4 caracteres',
 
             'n_recibo.required'  => 'El campo número de factura es obligatorio',

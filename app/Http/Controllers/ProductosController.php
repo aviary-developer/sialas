@@ -123,7 +123,7 @@ class ProductosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductosRequest $request, $id)
     {   Bitacoras::bitacora("Modificación en producto: "$request['nombre']);
         $productos = Productos::find($id);
 

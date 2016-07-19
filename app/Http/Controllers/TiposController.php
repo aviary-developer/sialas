@@ -1,9 +1,9 @@
 <?php
 
 namespace sialas\Http\Controllers;
-
+use sialas\Bitacoras;
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Tipos;
@@ -22,7 +22,7 @@ class TiposController extends Controller
     public function index(Request $request)
     {
         //
-        
+
         $name = $request->get('nombre');
         $tipos= Tipos::buscar($name);
         return view('tipos.index',compact('tipos','name'));
@@ -47,7 +47,7 @@ class TiposController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   Bitacoras::bitacora("Registro de nuevo tipo: ".$request['nombre']);
         Tipos::create($request->All());
         return redirect('/tipos');
     }
@@ -87,7 +87,7 @@ class TiposController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Bitacoras::bitacora("Modificación de tipo: ".$request['nombre']);
         $tipo = Tipos::find($id);
         $tipo->fill($request->All());
         $tipo->save();
@@ -103,7 +103,7 @@ class TiposController extends Controller
      */
     public function destroy($id)
     {
-        
+
     }
-    
+
 }

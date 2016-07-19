@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use DB;
@@ -45,7 +45,7 @@ class UbicacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    { Bitacoras::bitacora("Registro de nueva ubicación: ".$request['nombre']);
       Ubicaciones::create($request->All());
       return redirect('/ubicaciones')->with('mensaje','Registro Guardado');
     }
@@ -83,7 +83,7 @@ class UbicacionesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { Bitacoras::bitacora("Modificación de ubicación: ".$request['nombre']);
       $ubicaciones=Ubicaciones::find($id);
       $ubicaciones->fill($request->all());
       $ubicaciones->save();
@@ -102,6 +102,7 @@ class UbicacionesController extends Controller
       $ubicaciones = Ubicaciones::find($id);
        $ubicaciones->estado=false;
        $ubicaciones->save();
+       Bitacoras::bitacora("Ubicación enviada a papelera: ".$ubicaciones['nombre']);
        Session::flash('mensaje','Registro dado de Baja');
        return Redirect::to('/ubicaciones');
     }
@@ -109,6 +110,7 @@ class UbicacionesController extends Controller
       $ubicaciones = Ubicaciones::find($id);
          $ubicaciones->estado=true;
          $ubicaciones->save();
+         Bitacoras::bitacora("Ubicación activada: ".$ubicaciones['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/ubicaciones');
     }

@@ -2,6 +2,7 @@
 
   namespace sialas\Http\Controllers;
 
+
   use Illuminate\Http\Request;
   use Response;
   use sialas\Http\Requests;
@@ -102,8 +103,7 @@
       {
           //
       }
-
-      /**
+        /**
        * Remove the specified resource from storage.
        *
        * @param  int  $id

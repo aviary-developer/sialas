@@ -15,10 +15,20 @@ if($bandera==1){
 ?>
 <div class="fila">
 	<div class="">
+		<div class="alerta-errores">
+			@foreach ($errors->get('codigo') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('Lcodigo','Código:')!!}
 		{!!Form::text('codigo',null,['placeholder'=>'Ingrese código'])!!}
 	</div>
 	<div class="">
+		<div class="alerta-errores">
+			@foreach ($errors->get('nombre') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('LNombre','Nombre del Mobiliario:')!!}
 		{!!Form::text('nombre',null,['placeholder'=>'Ingrese nombre'])!!}
 	</div>
@@ -26,6 +36,11 @@ if($bandera==1){
 @if($bandera)
 	<div class="fila">
 		<div class="">
+			<div class="alerta-errores">
+			@foreach ($errors->get('fecha_compra') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 			{!!Form::label('lfecha','Fecha de Compra:')!!}
 			{!!Form::date('fecha_compra',null,['placeholder'=>'Ingrese fecha'])!!}
 		</div>
@@ -106,10 +121,20 @@ if($bandera==1){
 		@endif
 	</div>
 	<div id='precio' style='display:none'>
+		<div class="alerta-errores">
+			@foreach ($errors->get('precioventa') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('lprecioventa','Precio de Venta ($):')!!}
 		{!!Form::text('precioventa',null,['placeholder'=>'$00.00'])!!}
 	</div>
 	<div id='institu' style='display:none'>
+		<div class="alerta-errores">
+			@foreach ($errors->get('institucion') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('linstitucion','Institución a que fue Donado:')!!}
 		{!!Form::text('institucion',null,['placeholder'=>'Escriba el nombre'])!!}
 	</div>
@@ -150,10 +175,20 @@ if($bandera==1){
 	<div class="fila">
 		<div class="fila">
 			<div class="">
+				<div class="alerta-errores">
+			@foreach ($errors->get('precio') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 				{!!Form::label('lprecio','Precio ($):')!!}
 				{!!Form::number('precio',null,['placeholder'=>'$00.00','min'=>'0','step'=>'0.01'])!!}
 			</div>
 			<div class="">
+				<div class="alerta-errores">
+			@foreach ($errors->get('iva') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 				{!!Form::label('liva','IVA ($):')!!}
 				{!!Form::number('iva',null,['placeholder'=>'$00.00','min'=>'0','step'=>'0.01','onfocus'=>'ivalue("precio","iva")'])!!}
 			</div>
@@ -161,10 +196,21 @@ if($bandera==1){
 		<div class="credit">
 			<div class="fila">
 				<div>
+					<div class="alerta-errores">
+			@foreach ($errors->get('interes') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 					{!!Form::label('Linteres','Interés (%):')!!}
 					{!!Form::number('interes',null,['placeholder'=>'Ingrese interés','min'=>'0','step'=>'0.01'])!!}
 				</div>
+
 				<div>
+					<div class="alerta-errores">
+			@foreach ($errors->get('num_cuotas') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 					{!!Form::label('Lnumcuotas','Número de Cuotas:')!!}
 					{!!Form::number('num_cuotas',null,['placeholder'=>'Número de cuotas','min'=>'0','step'=>'1'])!!}
 				</div>
@@ -202,10 +248,20 @@ if($bandera==1){
 		</div>
 			<div class="fila">
 				<div class="credit">
+					<div class="alerta-errores">
+			@foreach ($errors->get('val_cuotas') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 					{!!Form::label('Lvalcuotas','Valor de Cuota ($):')!!}
 					{!!Form::number('val_cuotas',null,['placeholder'=>'Valor de la cuota','min'=>'1','step'=>'0.01','onfocus'=>'cuota("precio","interes","num_cuotas","val_cuotas")'])!!}
 				</div>
 				<div class="credit">
+					<div class="alerta-errores">
+			@foreach ($errors->get('cuenta') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 					{!!Form::label('cuenta','Número de Cuenta:')!!}
 					{!!Form::number('cuenta',null,['placeholder'=>'Número de cuenta','min'=>'1','step'=>'1'])!!}
 				</div>
@@ -216,11 +272,21 @@ if($bandera==1){
 	<div>
 		@if($bandera)
 			<div id='nuevo' style='display:none'>
+				<div class="alerta-errores">
+			@foreach ($errors->get('anios') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 				{!!Form::label('Lanios','Años de Servicio:')!!}
 				{!!Form::text('anios',null,['placeholder'=>'Ingrese años','min'=>'0','step'=>'1'])!!}
 			</div>
 		@endif
 	<div class="delta">
+		<div class="alerta-errores">
+			@foreach ($errors->get('descripcion') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('ldescripcion','Descripción de Bien:')!!}
 		{!!Form::textarea('descripcion',null,['placeholder'=>'Descripción del bien:','rows'=>'4'])!!}
 	</div>

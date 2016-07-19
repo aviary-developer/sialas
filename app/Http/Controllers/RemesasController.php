@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\remesas;
@@ -48,7 +48,7 @@ class RemesasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {       Bitacoras::bitacora("Registro de remesa");
             $remesa = new Remesas;
             $remesa->caja_id = $request->cajaTipo;
             $remesa->banco_id = $request->bancoTipo;

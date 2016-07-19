@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Rentas;
+use Redirect;
+use Session;
 
 class RentasController extends Controller
 {
@@ -64,7 +66,7 @@ class RentasController extends Controller
     public function edit($id)
     {
         //$users = User::all();
-       $renta=Rentas::all($id);
+       $renta=Rentas::find($id);
         return view('rentas.edit', compact('renta'));
        // $valor=Rentas::find($id);
 

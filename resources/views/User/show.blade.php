@@ -51,7 +51,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     <pre>Identificador:&#09;&#09;&#09;&#09;<span>{!!$user->id !!}</span></pre>
     <pre>Nombre:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->nom_usuario }}</span></pre>
     <pre>Correo:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->email }}</span></pre>
-    <pre>Nombre de usuario:&#09;&#09;&#09;<span>{{ $user->name }}</span></pre>
+    <pre>Nombre de usuario:&#09;&#09;<span>{{ $user->name }}</span></pre>
     <pre>Salario:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->salario }}</span></pre>
     <pre>Fecha de nacimiento:&#09;&#09;<span>{{ date("d-m-Y",strtotime($user->fecha_de_nacimiento))}}</span></pre>
     <pre>Teléfono:&#09;&#09;&#09;&#09;&#09;<span>{{ $user->telefono }}</span></pre>
@@ -74,18 +74,8 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
     @endif
 
     <pre>Tipo de usuario:&#09;&#09;&#09;<span>{{ $tip }}</span></pre>
-    <pre>Fecha de creación:&#09;&#09;&#09;<span>{{$user->created_at->format('d-m-Y g:i:s a')}} </span></pre>
-    <pre>Fecha de última edición:&#09;&#09;<span>{{$user->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
+    <pre>Fecha de creación:&#09;&#09;<span>{{$user->created_at->format('d-m-Y g:i:s a')}} </span></pre>
+    <pre>Fecha de última edición:&#09;<span>{{$user->updated_at->format('d-m-Y g:i:s a')}} </span></pre>
   </div>
-  <div class="enc">
-    <h2>Transacciones</h2>
-  </div>
-	<table>
-		<tr>
-			<th>N°</th>
-			<th>Tipo</th>
-			<th>Valor</th>
-		</tr>
-	</table>
 </div>
 @stop

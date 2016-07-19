@@ -32,7 +32,7 @@
               </a>
             </li>
             <div class="lista">
-              <a href='#'>Venta</a>
+              <a href={!! asset('/ventas') !!}>Venta</a>
               <a href={!! asset('/clientes') !!}>Clientes</a>
             </div>
           </div>

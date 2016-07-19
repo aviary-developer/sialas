@@ -198,7 +198,7 @@ class MobiliariosController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(MobiliariosRequest $request, $id)
+  public function update(Request $request, $id)
   {
     //
     $mobiliarios = Mobiliarios::find($id);

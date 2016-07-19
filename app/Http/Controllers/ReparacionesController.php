@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Mobiliarios;
@@ -105,7 +105,7 @@ class ReparacionesController extends Controller
     }
 
     public function guardar(Request $request, $mobiliario)
-    {
+    { Bitacoras::bitacora("Registro de reparación");
       $reparacion = new Reparaciones;
       $reparacion->precio = $request->precio;
       $reparacion->iva = $request->iva;

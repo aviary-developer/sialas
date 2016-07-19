@@ -44,8 +44,8 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         if(Auth::attempt(['name'=>$request['name'],'password'=>$request['password']])){
-            return view('welcome');
             Bitacoras::bitacora("Ingreso al sistema");
+            return view('welcome');
         }else{
             return redirect('/');
         }
@@ -122,7 +122,7 @@ class LoginController extends Controller
         }
 
         echo $u;
-
+      DB::beginTransaction();
        DB::table('users')
             ->where('email',$request['email'])
             ->update([
@@ -137,16 +137,19 @@ class LoginController extends Controller
              try {
             $msj->to($request['email']);
           } catch (\Swift_RfcComplianceException $e) {
+            DB::rollback();
             return redirect('/')->with('error','Lo sentimos el correo no pudo ser enviado');
           }
         });
       }catch (\Swift_TransportException $e) {
+        DB::rollback();
         return redirect('/')->with('error','Revise el acceso a internet');
       }
-
+        DB::commit();
         return redirect('/')->with('mensaje','Usuario y nueva contraseña enviados');
         }
         else{
+
             return redirect('/')->with('error','Ningún usuario registrado con ese correo');
         }
 

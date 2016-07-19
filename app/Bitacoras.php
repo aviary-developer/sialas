@@ -15,6 +15,15 @@ class Bitacoras extends Model
           'id_usuario'=>Auth::user()->id,
           'detalle'=>$detalle,
         ]);
+      }elseif(User::count()>0){
+          $usr=User::all();
+          foreach ($usr as $u) {
+            $id=$u->id;
+          }
+          Bitacoras::create([
+          'id_usuario'=>$id,
+          'detalle'=>$detalle,
+        ]);
         }
       }
 

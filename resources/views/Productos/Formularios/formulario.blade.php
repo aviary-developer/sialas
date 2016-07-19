@@ -9,6 +9,11 @@ if($bandera==1){
  ?>
  <div class="fila">
  	<div>
+ 		<div class="alerta-errores">
+			@foreach ($errors->get('nombre') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('lnombre','Nombre:')!!}
 		{!!Form::text('nombre',null,['placeholder'=>'Nombre del producto'])!!}
 		{!!Form::label('lmarca','Marca:')!!}
@@ -21,10 +26,20 @@ if($bandera==1){
 				@endif
 			@endforeach
 		</select>
+		<div class="alerta-errores">
+			@foreach ($errors->get('nombre_img') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('limagen','Imagen:')!!}
 		{!!Form::file('nombre_img',['value'=>'Elija'])!!}
  	</div>
 	<div>
+		<div class="alerta-errores">
+			@foreach ($errors->get('codigo_barra') as $error)
+				<br>{{$error}}
+			@endforeach
+		</div>
 		{!!Form::label('lcodigo','Código de barra:')!!}
 		{!!Form::text('codigo_barra',null,['placeholder'=>'Código de barra'])!!}
 		{!!Form::label('lcategoria','Categoría:')!!}

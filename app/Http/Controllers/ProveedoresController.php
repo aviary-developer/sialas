@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Requests\ProveedoresRequest;
 use sialas\Http\Controllers\Controller;
@@ -37,7 +37,7 @@ class ProveedoresController extends Controller
      */
     public function create()
     {
-        
+
         return view('proveedores.create');
     }
 
@@ -49,7 +49,7 @@ class ProveedoresController extends Controller
      */
     public function store(ProveedoresRequest $request)
     {
-
+          Bitacoras::bitacora("Registro de nuevo proveedor: ".$request['nombre']);
          Proveedores::create($request->All());
         return redirect('/proveedores')->with('mensaje','Registro Guardado');
     }
@@ -88,7 +88,7 @@ class ProveedoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    {    Bitacoras::bitacora("Modificación de proveedor: ".$request['nombre']);
          $proveedor=Proveedores::find($id);
         $proveedor->fill($request->all());
         $proveedor->save();
@@ -102,10 +102,10 @@ class ProveedoresController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-         $proveedores = Proveedores::find($id);
+    {    $proveedores = Proveedores::find($id);
          $proveedores->estado=false;
          $proveedores->save();
+         Bitacoras::bitacora("Proveedor enviado a papelera: ".$proveedores['nombre']);
          Session::flash('mensaje','Registro dado de Baja');
          return Redirect::to('/proveedores');
     }
@@ -115,6 +115,7 @@ class ProveedoresController extends Controller
         $proveedores = Proveedores::find($id);
          $proveedores->estado=true;
          $proveedores->save();
+         Bitacoras::bitacora("Proveedor activado: ".$proveedores['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/proveedores');
 

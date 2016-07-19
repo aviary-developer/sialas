@@ -12,7 +12,6 @@ use DB;
 use Redirect;
 use Session;
 use View;
-use sialas\Pagoservicios;
 
 
 class ServiciosController extends Controller
@@ -47,7 +46,7 @@ class ServiciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(ServiciosRequest $request)
-    {
+    { Bitacoras::bitacora("Registro de nuevo servicio: ".$request['nombre']);
       Servicios::create($request->all());
       return redirect('/servicios')->with('mensaje','Registro Guardado');
     }
@@ -61,9 +60,7 @@ class ServiciosController extends Controller
     public function show($id)
     {
         $s = Servicios::find($id);
-        $p = Pagoservicios::where('servicio_id',$id)->get();
-        return view('Servicios.show',compact('s','p'));
-
+        return View::make('Servicios.show')->with('s', $s);
     }
 
     /**
@@ -89,7 +86,7 @@ class ServiciosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(ServiciosRequest $request, $id)
-    {
+    {   Bitacoras::bitacora("Modificación de servicio: ".$request['nombre']);
         $servicios=Servicios::find($id);
 
         $servicios->fill($request->All());
@@ -110,6 +107,7 @@ class ServiciosController extends Controller
         $servicios = Servicios::find($id);
          $servicios->estado=false;
          $servicios->save();
+         Bitacoras::bitacora("Servicio enviado a papelera: ".$servicios['nombre']);
          Session::flash('mensaje','Registro enviado a papelera');
          return Redirect::to('/servicios');
     }
@@ -119,6 +117,7 @@ class ServiciosController extends Controller
         $servicios = Servicios::find($id);
          $servicios->estado=true;
          $servicios->save();
+         Bitacoras::bitacora("Servicio activado: ".$servicios['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/servicios');
 

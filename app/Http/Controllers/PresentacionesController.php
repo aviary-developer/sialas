@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Presentaciones;
@@ -98,7 +98,7 @@ class PresentacionesController extends Controller
     }
 
     public function guardar(Request $request, $producto)
-    {
+    {   Bitacoras::bitacora("Registro de nueva presentación: ".$request['nombre']);
         $id = Presentaciones::all()->count();
         $pres = new Presentaciones;
         $pres->id = $id;

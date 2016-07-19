@@ -15,6 +15,11 @@ use sialas\Datosplanillas;
 use sialas\Valoresplanillas;
 use sialas\Cajausuarios;
 use sialas\Cajas;
+use DB;
+use Redirect;
+use Session;
+use View;
+use Auth;
 
 class CajausuariosController extends Controller
 {

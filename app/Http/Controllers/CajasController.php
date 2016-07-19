@@ -136,7 +136,7 @@ class CajasController extends Controller
       //Hoy y hace 3 días
       $hoy = Carbon::now();
       $dia3 = Carbon::now();
-      $dia3 = $dia3->subDays(3);
+      $dia3 = $dia3->subDays(15);
       //Listar cajas
       $lista_caja = Cajas::orderBy('nombre')->get();
       //Listar bancos

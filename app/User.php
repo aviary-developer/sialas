@@ -72,5 +72,10 @@ class User extends Model implements AuthenticatableContract,
 
     }
 
+    public static function nombre($id){
+      $v=User::find($id);
+      return $v->nom_usuario;
+    }
+
 
 }

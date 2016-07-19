@@ -8,6 +8,7 @@
         {!! Html::script('https://www.gstatic.com/charts/loader.js') !!}
 
         {!!Html::script('js/scriptVentas.js')!!}
+        {!!Html::script('js/jquery.maskedinput.js')!!}
         {!!Html::style('css/wb.min.css')!!}
         {!!Html::script('js/wb.js')!!}
         <!--<script type="text/javascript" src="{{{ asset('/js/wb.js') }}}"></script>-->
@@ -23,6 +24,7 @@
           <div class="doption">
             <li class="mhome"><img src ={!! asset('img/WB/general/WB.svg') !!} alt="Logo" class="logoInicio" /></li>
           </div>
+          <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2 || Auth::user()->tipo==3 || Auth::user()->tipo==4)-->
           <div class = "doption">
             <li class="moption">
               <a href="#">
@@ -34,6 +36,8 @@
               <a href={!! asset('/clientes') !!}>Clientes</a>
             </div>
           </div>
+          <!--coment@endif-->
+          <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2)-->
           <div class = "doption">
             <li class="moption">
               <a href="#">
@@ -44,13 +48,6 @@
               <a href={!! asset('/compras') !!}>Pedidos</a>
               <a href={!! asset('/proveedores') !!}>Proveedores</a>
             </div>
-          </div>
-          <div class = "doption">
-            <li class="moption">
-              <a href="#">
-                Inventario
-              </a>
-            </li>
           </div>
           <div class = "doption">
             <li class="moption">
@@ -80,6 +77,16 @@
               <a href={!! asset('/servicios') !!}>Servicios</a>
             </div>
           </div>
+          <!--coment@endif-->
+            <!--coment@if(Auth::user()->tipo==1 || Auth::user()->tipo==2 || Auth::user()->tipo==3 || Auth::user()->tipo==4)-->
+          <div class = "doption">
+            <li class="moption">
+              <a href="/logout">
+                Salir
+              </a>
+            </li>
+          </div>
+        <!--coment@endif-->
         </div>
       </nav>
     </header>

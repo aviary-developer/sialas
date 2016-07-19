@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Cuentas;
@@ -79,7 +79,7 @@ class CuentasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(CuentasRequest $request, $id)
-    {
+    {   Bitacoras::bitacora("Modificación de cuenta: ".$request['cuenta']);
         $cuentas=Cuentas::find($id);
 
         $cuentas->fill($request->All());

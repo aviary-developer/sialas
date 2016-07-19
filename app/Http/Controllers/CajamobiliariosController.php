@@ -13,6 +13,7 @@ use sialas\Mobiliarios;
 use Redirect;
 use Session;
 use View;
+use sialas\Bitacoras;
 
 class CajamobiliariosController extends Controller
 {
@@ -49,7 +50,7 @@ class CajamobiliariosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Bitacoras::bitacora("Registro nuevo pago de mobiliario");
         if($request->vradio == 'Efectivo'){
             $caja = new Cajamobiliarios;
             $caja->monto = $request->monto;
@@ -68,7 +69,7 @@ class CajamobiliariosController extends Controller
             $banco->save();
             return redirect('/bancomobiliarios')->with('mensaje','Registro Guardado');
         }
-        
+
     }
 
     /**
@@ -81,7 +82,7 @@ class CajamobiliariosController extends Controller
     {
         //
         $c = Cajamobiliarios::find($id);
-        
+
         return View::make('Cajamobiliarios.show')->with('c', $c);
     }
 
@@ -109,7 +110,7 @@ class CajamobiliariosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Bitacoras::bitacora("Modificación datos pago  de mobiliario");
         $cajamobiliarios = Cajamobiliarios::find($id);
         $cajamobiliarios->fill($request->All());
         $cajamobiliarios->save();

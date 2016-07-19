@@ -10,6 +10,7 @@ use sialas\Productos;
 use sialas\Detalleventas;
 use sialas\Ventas;
 use sialas\Users;
+use DB;
 use sialas\Clientes;
 use sialas\Presentaciones;
 
@@ -47,6 +48,7 @@ class VentasController extends Controller
      */
     public function store(Request $request)
     {
+      Bitacoras::bitacora("Registro de venta");
       $venta = new Ventas;
       $venta->nombre_Cliente = $request->clienteVenta;
       $venta->usuario_id = 1;
@@ -123,11 +125,38 @@ class VentasController extends Controller
       foreach ($producto as $p) {
         $idProducto=$p->id;
       }
+      $totalCompra=DB::select('select  (p.equivale*dc.cantidad) as cantidades,dc.precio from detallecompras dc
+      inner join presentaciones p on p.id=dc.presentacion_id
+      where dc.producto_id='.$idProducto);
+
+      $unidadesSalidas=DB::select('select sum(p.equivale*dc.cantidad) from detalleventas dc
+      inner join presentaciones p on p.id=dc.presentacion_id
+      where dc.producto_id='.$idProducto);
+      foreach ($unidadesSalidas as $us) {
+        $unidadesVendidas=$us->sum;
+      }
+      foreach ($totalCompra as $tc) {
+        if($unidadesVendidas==null){
+          echo "Primera vez!";
+        }
+        else if($unidadesVendidas>=$tc->cantidades){
+
+        }else{
+
+        }
+      }
+    var_dump($unidadesVendidas);
+    return "REsul";
+      return Response::json();
+      /*$producto=Productos::where('nombre',$nombreProducto)->get();
+      foreach ($producto as $p) {
+        $idProducto=$p->id;
+      }
       $presentacion=Presentaciones::where('id',$idPresentacion)->where('producto_id',$idProducto)->get();
       foreach ($presentacion as $p) {
         $ganancia=$p->ganancia;
       }
-      return Response::json($ganancia);
+      return Response::json($ganancia);*/
     }
     public function nombrePresentacionVenta($presentacion){
       $presentaciones=Presentaciones::where('id',$presentacion)->get();

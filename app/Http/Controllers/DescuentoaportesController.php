@@ -3,7 +3,7 @@
 namespace sialas\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use sialas\Bitacoras;
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
 use sialas\Descuentoaportes;
@@ -46,7 +46,7 @@ class DescuentoaportesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(DescuentoaportesRequest $request)
-    {
+    { Bitacoras::bitacora("Registro descuento/aportación: ".$request['nombre']);
       if($request['techo']==""){
         $request['techo']=0;
       }
@@ -87,7 +87,7 @@ class DescuentoaportesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(descuentoaportesRequest $request, $id)
-    {
+    { Bitacoras::bitacora("Modificación de descuento/aportación: ".$request['nombre']);
       $valor=Descuentoaportes::find($id);
 
       if($request['techo']==""){
@@ -107,19 +107,19 @@ class DescuentoaportesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-      $valor = Descuentoaportes::find($id);
+    {$valor = Descuentoaportes::find($id);
        $valor->estado=false;
        $valor->save();
+       Bitacoras::bitacora("Descuento/aportación enviado a papelera: ".$valor['nombre']);
        Session::flash('mensaje','Registro enviado a papelera');
        return Redirect::to('/descuentoaportes');
     }
 
     public function darAlta($id){
-
         $valor = Descuentoaportes::find($id);
          $valor->estado=true;
          $valor->save();
+         Bitacoras::bitacora("Descuento/aportación activado: ".$valor['nombre']);
          Session::flash('mensaje','Registro dado de Alta');
          return Redirect::to('/descuentoaportes');
 

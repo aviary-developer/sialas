@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use sialas\Http\Requests;
 use sialas\Http\Controllers\Controller;
+use sialas\Http\Requests\MobiliariosRequest;
 use sialas\Mobiliarios;
 use sialas\Reparaciones;
 use sialas\Tipos;
@@ -54,7 +55,7 @@ class MobiliariosController extends Controller
   * @param  \Illuminate\Http\Request  $request
   * @return \Illuminate\Http\Response
   */
-  public function store(Request $request)
+  public function store(MobiliariosRequest $request)
   {
 
     $mobiliario = new Mobiliarios;
@@ -197,7 +198,7 @@ class MobiliariosController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function update(Request $request, $id)
+  public function update(MobiliariosRequest $request, $id)
   {
     //
     $mobiliarios = Mobiliarios::find($id);

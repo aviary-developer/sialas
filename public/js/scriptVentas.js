@@ -41,7 +41,6 @@
             correlativo=parseInt(correlativo)+1;
             total=parseFloat(total)+parseFloat(cantidad*precioUnitario)+parseFloat(iva);
             subtotal = parseFloat(cantidad*precioUnitario)+parseFloat(iva);
-            alert(articulo+precioUnitario+iva+presentacion+cantidad+total);
             var ruta="/sialas/public/nombrePresentacionCompra/"+presentacion;
             $.get(ruta,function(res){
               var presentationNameSell=res;
@@ -79,7 +78,6 @@
       var totalFila=parseFloat($(this).parents('tr').find('td:eq(5)').html());
       var cantidadEliminar=$(this).parents('tr').find('td:eq(0)').html();
       var parent = $(this).parents().get(0);
-      alert(cantidadEliminar);
       $(parent).remove();
       var correlativo=$("#correlativoVenta").val();
       var total=parseFloat($("#inputTotalCompra").val());
@@ -105,7 +103,7 @@
       var idVenta=$('#venta_id').val();
       document.getElementById("temporalProducto").value=idProducto;
       document.getElementById("temporalPresentacion").value=presentacion;
-      document.getElementById('modalUbi').click();/*alert("ID PRoducto: "+idProducto2+" ID VEnta:"+idVenta);*/
+      document.getElementById('modalUbi').click();
     });
 
     function addUbicacion(e){
@@ -153,12 +151,15 @@
     function obtenerPrecioProducto(){
       var producto=$("#productos").val();
       var presentacion=$("#selectPresentacionesVenta").val();
-      alert(producto+"<-Producto"+"presentacion->"+presentacion);
       var ruta="/sialas/public/precioProductoVenta/"+producto+"/"+presentacion;
       var precio=$("#precioProductoUnitario").val();
       $.get(ruta,function(res){
-        $("#precioProductoUnitario").val("");
-          $("#precioProductoUnitario").val(res);
+        $("#precioProductoUnitario").val("0.00");
+        if(res=="1704"){
+          swal({   title: 'No hay compras del producto',type:'error',  text: 'Se Cerrará en 2 Segundos',   timer: 2700,   showConfirmButton: false });
+        }else{
+        $("#precioProductoUnitario").val(res);
+        }
       });
     }
     function agregarProductoVenta(){
@@ -216,13 +217,11 @@
   "</td>
   <input type='hidden' name='ivas[]' value='"+parseFloat(iva).toFixed(2)+"'/>*/
   function Registro2(){
-    alert("OLA K ASE? REGISTRANDO 2 O K ASE?");
     document.forms["formBuy"].submit();
     $("#inputProductosVenta").val("0");
     $("#inputTotalProductosVenta").val("0");
   }
     function reiniciarCamposVenta(){
-      alert("OLA K ASE? REININICIANDO O K ASE?");
     $("#cantidadProductoVenta").val("");
     $("#precioProductoUnitario").val("");
     $("#productos").val("");

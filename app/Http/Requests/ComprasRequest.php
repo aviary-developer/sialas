@@ -31,6 +31,6 @@ class ComprasRequest extends Request
     {
         return [
             'factura.required' => 'El campo de factura es obligatorio',
-            'factura.unique' => 'Factura ya existe!',
+            'factura.unique' => 'Factura ya existe!',];
     }
 }

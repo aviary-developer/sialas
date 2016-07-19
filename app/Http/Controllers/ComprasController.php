@@ -48,7 +48,7 @@ class ComprasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ComprasRequest $request)
+    public function store(Request $request)
     {
         $compra = new Compras;
         $compra->proveedor_id = $request->proveedorVenta;

@@ -61,6 +61,9 @@
               <a href={!! asset('/transferencias') !!}>Tranferencia</a>
               <a href={!! asset('/prestamos') !!}>Prestamos</a>
               <a href={!! asset('/stats') !!}>Estadísticas</a>
+              <a href={!! asset('/cajausuarios') !!}>Planillas</a>
+              <a href={!! asset('/bitacoras') !!}>Bitacora</a>
+
             </div>
           </div>
           <div class = "doption">

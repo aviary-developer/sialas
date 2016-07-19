@@ -39,7 +39,7 @@
         @foreach($bitacoras as $b)
         <tr>
           <td>{{$cont}}</td>
-          <td>{{$usr->nombre($b->id_usuario)}}</td>
+          <td>{{$usr->nombreu($b->id_usuario)}}</td>
           <td>{{$b->detalle}}</td>
           <td>{{$b->created_at->format('d-m-Y g:i:s a')}}</td>
         </tr>

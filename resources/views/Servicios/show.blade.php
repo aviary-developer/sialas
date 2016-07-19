@@ -51,6 +51,7 @@ echo "<script>swal('$men', 'Click al botón!', 'success')</script>";?>
 <div class="panel">
   <div class="enc">
     <h2>Servicios</h2>
+    <h2></h2>
     <h3 id="txt"> |{{$s->nombre}}</h3>
   </div>
   <center>

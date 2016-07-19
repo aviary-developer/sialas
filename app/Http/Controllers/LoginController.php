@@ -44,8 +44,8 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         if(Auth::attempt(['name'=>$request['name'],'password'=>$request['password']])){
-            return view('welcome');
             Bitacoras::bitacora("Ingreso al sistema");
+            return view('welcome');
         }else{
             return redirect('/');
         }

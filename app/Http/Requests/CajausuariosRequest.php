@@ -24,6 +24,7 @@ class CajausuariosRequest extends Request
     public function rules()
     {
         return [
+          'detalle'=>'required | min:5',
         ];
     }
     public function messages()

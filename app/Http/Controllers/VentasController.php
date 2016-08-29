@@ -2,7 +2,6 @@
 
 namespace sialas\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use Response;
 use sialas\Http\Requests;

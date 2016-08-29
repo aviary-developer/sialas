@@ -31,7 +31,7 @@
     </div>
     <div class="datos">
       <pre>Número de Factura:&#09;&#09;<span>{!!$venta->factura!!}</span></pre>
-      <pre>Producto:&#09;&#09;&#09;&#09;<span>{{$venta->nombreProducto($venta->producto_id)}}</span></pre>
+      <pre>Producto:&#09;&#09;&#09;&#09;<span>{{$venta->producto_id}}</span></pre>
       <pre>Usuario:&#09;&#09;&#09;&#09;&#09;<span>{{ $venta->nombreUsuario($venta->usuario_id) }}</span></pre>
       <pre>Entrega:&#09;&#09;&#09;&#09;&#09;<span>{{$venta->estado}}</span></pre>
 
@@ -44,7 +44,7 @@
   	<th>Precio</th>
     <th colspan="2">Estado Entrega</th>
   </tr>
-  <!--@foreach($detallesCompras as $dc)
+  <!--@foreach($venta as $dc)
     <tr>
       <td>{{$dc->producto_id}}</td>
   	<td>{{$dc->nombreProducto($dc->producto_id)}}</td>

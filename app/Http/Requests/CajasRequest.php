@@ -34,8 +34,8 @@ class CajasRequest extends Request
             'nombre.required' => 'El nombre de caja es obligatorio',
             'nombre.min' => 'Nombre de caja debe contener al menos 5 caracteres',
 
-            'ubicacion.required' => 'El campo ubicacion es obligatorio',
-            'ubicacion.min' => 'Ubicacion debe contener al menos 4 caracteres',
+            'ubicacion.required' => 'El campo ubicación es obligatorio',
+            'ubicacion.min' => 'Ubicación debe contener al menos 4 caracteres',
         ];
     }
 }

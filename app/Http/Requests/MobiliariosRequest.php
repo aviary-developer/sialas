@@ -33,15 +33,15 @@ class MobiliariosRequest extends Request
     public function messages()
     {
         return[
-            'codigo.required'=>'El campo codigo es obligatorio',
+            'codigo.required'=>'El campo código es obligatorio',
             'codigo.min'=>'El campo código debe contener al menos 6 caracteres',
 
             'nombre.required' => 'El nombre es obligatorio',
-            'nombre.min' => 'Nombre nombre debe contener al menos 5 caracteres',
+            'nombre.min' => 'El campo nombre debe contener al menos 5 caracteres',
 
             'precio.required' => 'El campo precio es obligatorio',
 
-            'descripcion.required' => 'El campo descripcion es obligatorio',
+            'descripcion.required' => 'El campo descripción es obligatorio',
             'descripcion.min'=>'El campo descripcion debe contener al menos 5 caracteres',
         ];
     }

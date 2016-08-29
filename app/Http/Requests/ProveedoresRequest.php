@@ -27,9 +27,9 @@ class ProveedoresRequest extends Request
             'nombre'=>'required | min:5 |max:30 | regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'contacto'=>'required | min:5 |max:30 | regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
             'nif'=>'required | max:9',
-            'direccion'=>'required',
+            'direccion'=>'required | min:10',
             'correo'=>'required|email|unique:proveedores',
-            'telefono'=>'required | max:9',
+            'telefono'=>'required | max:9 | min:9',
         ];
     }
     public function messages()
@@ -37,27 +37,29 @@ class ProveedoresRequest extends Request
         return [
             'nombre.required' => 'El campo nombre es obligatorio',
             'nombre.min' => 'El nombre de la empresa debe contener al menos 5 caracteres',
-            'nombre.max' => 'El nombre de la empresa debe contener maximo 30 caracteres',
+            'nombre.max' => 'El nombre de la empresa debe contener máximo 30 caracteres',
             'nombre.regex' => 'El nombre posee solo letras',
 
             'contacto.required' => 'El nombre del contacto es obligatorio',
             'contacto.min' => 'El nombre del contacto debe contener al menos 5 caracteres',
-            'contacto.max' => 'El nombre del contacto debe contener maximo 30 caracteres',
+            'contacto.max' => 'El nombre del contacto debe contener máximo 30 caracteres',
             'contacto.regex' => 'El nombre de contacto posee solo letras',
 
             'nif.required' => 'El campo nif es obligatorio',
-            'nif.max' => 'El nif de la empresa debe contener maximo 9 caracteres',
+            'nif.max' => 'El nif de la empresa debe contener máximo 9 caracteres',
 
-            'direccion.required' => 'El campo direccion es obligatorio',
+            'direccion.required' => 'El campo dirección es obligatorio',
+            'direccion.min' => 'La dirección debe contener al menos 10 caracteres',
 
             'correo.required' => 'El campo correo de proveedor es obligatorio',
             'correo.email' => 'El correo no es valido',
             'correo.unique' => 'El correo ya existe',
 
-            'telefono.required' => 'El campo telefono de cliente es obligatorio',
-            'telefono.max' => 'El telefono de cliente debe contener maximo 9 caracteres',
+            'telefono.required' => 'El campo teléfono de cliente es obligatorio',
+            'telefono.max' => 'El télefono de cliente debe contener máximo 9 caracteres',
+            'telefono.min' => 'El télefono de cliente debe contener al menos 9 caracteres',
             //'telefono.regex' => 'No es formato de telefono',
-            
+
         ];
     }
 }

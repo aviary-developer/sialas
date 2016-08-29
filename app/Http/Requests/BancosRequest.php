@@ -26,7 +26,7 @@ class BancosRequest extends Request
         return [
             'nombre'=>'required | min:5',
             'numero'=>'required | min:10 | max:10',
-            'representante'=>'required | min:3',
+            'representante'=>'required | min:10 | regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ]*)*)+$/',
         ];
     }
     public function messages()
@@ -39,7 +39,8 @@ class BancosRequest extends Request
             'numero.min' => 'Número de cheque debe contener 10 caracteres',
 
             'representante.required'  => 'El campo de representante es obligatorio',
-            'representante.min' => 'Nombre de representante debe contener al menos 3 carácteres',
+            'representante.min' => 'Nombre de representante debe contener al menos 10 carácteres',
+            'representante.regex' => 'El campo representante debe contener solo letras',
         ];
     }
 }
